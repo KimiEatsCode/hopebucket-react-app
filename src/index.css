@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.light-theme {
+  background-color: whitesmoke;
+  color: #333;
+}
+
+.dark-theme {
+  background-color: #333;
+  color: whitesmoke;
+}
+
+.offcanvas-bottom {
+  height:auto!important;
+}
+
+.itemCount {
+  z-index: 10;
+  top: 9rem;
+  font-size: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+nav {
+display:flex;
+flex-direction:column;
+align-items: end;
+justify-items: right;
+position:fixed;
+right:0;
+bottom:50%;
+}
+
+nav a {
+  padding-top:10px;
+}
+.bucketIcon {
+  text-align: center;
+  font-weight: bold;
+}
+
+.no-wrap{
+  flex: 0 0 auto;
+}
+button.list-group-item.list-group-item-dark.list-group-item-action {
+  background-color: #bde9ff!important;
+  padding: 2em, 0, 2em, 0!important;
+}
+
+.hopeItem {
+  display:flex;
+  flex-direction: row;
+  align-items:center;
+  word-break: break-all;
+  height:50px;
+
+}
+
+.alignRightX {
+  font-style: bold;
+  text-align: left;
+  float: left;
+  font-weight: 700;
+  padding:10px 15px;
+  margin-right: 20px;
+}
+
+.newsletter-button {
+  position: absolute;
+  z-index:1000;
+  bottom: 10px;
+  right: 10px;
+}
+
+.textWhite {
+  color: #fff!important;
+  text-decoration:none;
+}
+
+.car-right {
+  position: absolute;
+  top: 86%;
+  left: -200px;
+  z-index: 10;
+}
+
+.transit-right {
+  -webkit-transform: translate(1920px,0);
+  -webkit-transition: all 30s ease-in-out;
+  transition: all 30s ease-in-out;
+  z-index: 10;
+}
+
+.bg-salmon {
+  background-color:red;
+}
