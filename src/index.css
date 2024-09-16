@@ -36,17 +36,19 @@ code {
 
 nav {
 display:flex;
-flex-direction:column;
+flex-direction:row;
 align-items: end;
 justify-items: right;
 position:fixed;
 right:0;
-bottom:50%;
+bottom:20px;
 }
 
+
 nav a {
-  padding-top:10px;
+  padding: 5px;
 }
+
 .bucketIcon {
   text-align: center;
   font-weight: bold;
@@ -58,6 +60,10 @@ nav a {
 button.list-group-item.list-group-item-dark.list-group-item-action {
   background-color: #bde9ff!important;
   padding: 2em, 0, 2em, 0!important;
+}
+
+.list-group {
+  padding-left: 50px;
 }
 
 .hopeItem {
