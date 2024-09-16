@@ -8,7 +8,6 @@ import ListGroup from "react-bootstrap/ListGroup";
 // import FormDrawer from "../FormDrawer";
 function List() {
   const listContext = useContext(Context);
-
   const list = listContext.list;
 
   console.log("bucket list localStorage using listContext " + list);
@@ -25,17 +24,17 @@ function List() {
     listContext.setList((list) => (list = []));
   }
 
-  if (totalHope < 5) {
+  if (totalHope < 10) {
     return (
       <>
         <Row>
           <h3 className="mt-4 text-center">
-            {totalHope === 0 ? "Add things to the list. Try to add 5!" : ""}
+            {totalHope === 0 ? "Add 10 things (thoughts, events, people, an action you took etc.) that bring you hope to the list!" : ""}
           </h3>
         </Row>
         <Row>
           <Col>
-        
+
                    <ListGroup>
               {list.map((item) => {
                 return (
