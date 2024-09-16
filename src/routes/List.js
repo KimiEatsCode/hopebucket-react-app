@@ -76,10 +76,15 @@ function List() {
     return (
       <>
         <Row>
-          <h3 className="mt-4 text-center">
+          <h3 className="mt-3 mb-5 text-center">
             <button onClick={startNewList} class="btn btn-primary mt-2">
               Start New List
             </button>
+          </h3>
+        </Row>
+        <Row>
+          <h3 className="mb-5 text-center">
+            {totalHope === 10 ? "Great Job! You've completed 10 hope items! Start a new list and fill up on hope!" : ""}
           </h3>
         </Row>
         <Row>
@@ -113,6 +118,13 @@ function List() {
               })}
             </ListGroup>
           </Col>
+        </Row>
+        <Row>
+          <h3 className="mt-5 mb-5 text-center">
+            <button onClick={startNewList} class="btn btn-primary mt-2">
+              Start New List
+            </button>
+          </h3>
         </Row>
       </>
     );
