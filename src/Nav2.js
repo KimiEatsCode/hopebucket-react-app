@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -24,6 +24,8 @@ function OffCanvasExample({ name, ...props }) {
     setInput(input);
   }
 
+  const fieldFocus = useRef(null)
+
   const handleNavClick = (event) => {
     setToggle((current) => !current);
   };
@@ -31,9 +33,9 @@ function OffCanvasExample({ name, ...props }) {
   const navStyles = {
     textAlign: "center",
     padding: "2%",
+    backgroundColor: "#ccc",
+    position: "fixed",
     navAlign: {
-      backgroundColor: "#ccc",
-      padding:"10px",
       position: "fixed",
       left: isLeft ? 0 : "",
       right: isLeft ? "" : "0",
@@ -45,15 +47,14 @@ function OffCanvasExample({ name, ...props }) {
   };
 
   function addItem() {
-    if (totalHope === 5) {
+    if (totalHope === 10) {
       navigate("/");
       setShow(false);
-    } else if (list.length <= 4) {
+    } else if (list.length <= 10) {
       if (input !== "") {
         input = {
           id: Math.random(),
           value: input,
-          autoFocus: true,
         };
 
         listContext.setList((list) => [...list, input]);
@@ -69,7 +70,11 @@ function OffCanvasExample({ name, ...props }) {
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
   const handleClose = () => setShow(false);
-  const handleOpen = () => (totalHope < 5 ? setShow(true) : setShow(false));
+  const handleOpen = () =>  {
+    totalHope < 10 ? setShow(true) : setShow(false); setTimeout(() => {
+    fieldFocus.current.focus();
+  }, "100")
+}
 
   return (
     <>
@@ -81,9 +86,9 @@ function OffCanvasExample({ name, ...props }) {
           <Row mb={3}>
             <Col>
               <Form.Control
-                placeholder="What is something positive that happened today?"
+                placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
-                autoFocus={true}
+                ref={fieldFocus}
                 value={input}
                 onChange={(item) => updateInput(item.target.value)}
                 aria-label="add something positive"
@@ -94,13 +99,7 @@ function OffCanvasExample({ name, ...props }) {
 
             <Button
               onClick={addItem}
-              onKeyDown={(e) => {
-                // if (e.key === "Enter") {
-                //   this.setState({ message: e.target.value }, () => {
-                //     alert(this.state.message);
-                //   });
-                // }
-              }}
+
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -118,7 +117,7 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
 
       <nav>
-        <div style={navStyles.navAlign} class="d-flex align-items-end flex-column">
+        <div style={navStyles.navAlign}>
           {toggle ? (
             <Link onClick={handleNavClick} to="/list">
               <button type="button" class="btn btn-primary">
@@ -152,11 +151,12 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           )}
 
-          <Link onClick={handleOpen}>
+          <Link onClick={handleOpen} >
             <button
               type="button"
               class="btn btn-primary"
-              disabled={totalHope >= 5}
+              disabled={totalHope >= 10}
+              ref={fieldFocus}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
