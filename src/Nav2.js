@@ -93,7 +93,7 @@ function OffCanvasExample({ name, ...props }) {
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
-                autoFocus
+                autoFocus={input = "test"}
                 value={input}
                 onChange={(item) => updateInput(item.target.value)}
                 aria-label="add something positive"
