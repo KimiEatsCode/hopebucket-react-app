@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { Context } from "../ListContext";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-
 
 function List() {
   const listContext = useContext(Context);
@@ -29,27 +28,28 @@ function List() {
       <>
         <Row>
           <h3 className="mt-5 text-center">
-            {totalHope === 0 ? "Add 10 things (thoughts, events, people, an action you took etc.) that bring you hope to the list!" : ""}
+            {totalHope === 0
+              ? "Add 10 things (thoughts, events, people, an action you took etc.) that bring you hope to the list!"
+              : ""}
           </h3>
         </Row>
         <Row>
           <Col>
-
-                   <ListGroup>
+            <ListGroup>
               {list.map((item) => {
                 return (
                   <ListGroup.Item
                     className="pt-3 pb-3"
                     key={item.id}
                     variant="light"
-
                   >
-                    <button className="closeX btn"
-                           action
-                           onClick={() => {
-                             deleteItem(item.id);
-                           }}
-                         >
+                    <button
+                      className="closeX btn"
+                      action
+                      onClick={() => {
+                        deleteItem(item.id);
+                      }}
+                    >
                       {" "}
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -83,7 +83,9 @@ function List() {
         </Row>
         <Row>
           <h3 className="mb-5 text-center">
-            {totalHope === 10 ? "Great Job! You've completed 10 hope items. View your list! Start a new list and fill up on hope!" : ""}
+            {totalHope === 10
+              ? "Great Job! You've completed 10 hope items. View your list! Start a new list and fill up on hope!"
+              : ""}
           </h3>
         </Row>
         <Row>
@@ -120,7 +122,11 @@ function List() {
         </Row>
         <Row>
           <h3 className="mt-5 mb-5 text-center">
-            <Button size="lg" onClick={startNewList} class="btn btn-primary mt-2">
+            <Button
+              size="lg"
+              onClick={startNewList}
+              class="btn btn-primary mt-2"
+            >
               Start New List
             </Button>
           </h3>
