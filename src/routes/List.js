@@ -28,7 +28,7 @@ function List() {
     return (
       <>
         <Row>
-          <h3 className="mt-4 text-center">
+          <h3 className="mt-5 text-center">
             {totalHope === 0 ? "Add 10 things (thoughts, events, people, an action you took etc.) that bring you hope to the list!" : ""}
           </h3>
         </Row>
@@ -41,7 +41,7 @@ function List() {
                   <ListGroup.Item
                     className="pt-3 pb-3"
                     key={item.id}
-                    variant="dark"
+                    variant="light"
 
                   >
                     <button className="alignRightX"

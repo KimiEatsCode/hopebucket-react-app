@@ -89,15 +89,13 @@ function OffCanvasExample({ name, ...props }) {
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
             <Col>
-            <input type="text" autofocus/>
               <Form.Control
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
-                autoFocus="true"
                 value={input}
                 onChange={(item) => updateInput(item.target.value)}
-                aria-label="add something positive"
+                aria-label="form field to type text"
                 aria-describedby="basic-addon2"
               />
             </Col>
