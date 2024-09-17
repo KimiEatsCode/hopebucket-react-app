@@ -64,6 +64,7 @@ nav a {
 
 .list-group {
   padding-left: 50px;
+  display:inherit;
 }
 
 .hopeItem {
@@ -72,7 +73,7 @@ nav a {
   align-items:center;
   word-break: break-all;
   height:40px;
-  padding:25px;
+  padding:10px;
   font-size:1.2em;
 
 }
