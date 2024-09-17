@@ -2,8 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import { Link } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
-//react-bootsrap version that is installed which is 5 requires this stylesheet
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -11,8 +9,6 @@ import Bucket from "./routes/List";
 import Nav2 from "./Nav2";
 import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-// import FormDrawer from "./FormDrawer";
-// import List from "./routes/List";
 import Level from "./routes/Bucket";
 import App from "./App";
 import ListContext from "./ListContext";
@@ -58,7 +54,4 @@ ReactDOM.render(
   document.getElementById("root")
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+
