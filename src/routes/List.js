@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../ListContext";
-
+import Button from 'react-bootstrap/Button';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -121,9 +121,9 @@ function List() {
         </Row>
         <Row>
           <h3 className="mt-5 mb-5 text-center">
-            <button onClick={startNewList} class="btn btn-primary mt-2">
+            <Button size="lg" onClick={startNewList} class="btn btn-primary mt-2">
               Start New List
-            </button>
+            </Button>
           </h3>
         </Row>
       </>

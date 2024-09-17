@@ -39,9 +39,9 @@ function Bucket() {
         <Row>
           <Col>
             <h4 className="text-center mt-5">
-              Great job! You built up {{ totalHope }} items of hope. Reward
-              yourself with something good to eat, buy yourself something nice,
-              or take a well earned break!
+              Great job! You built up 10 items of hope. Reward yourself with
+              something good to eat, buy yourself something nice, or take a well
+              earned break!
             </h4>
             <h3 className="mt-4 text-center">
               <button class="btn btn-primary mt-2">
