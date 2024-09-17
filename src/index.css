@@ -75,7 +75,7 @@ nav a {
   display:inline-flex;
   flex-direction: row;
   align-items:center;
-  /* word-break: break-all; */
+  word-break: break-all;
   padding:10px;
   font-size:1.2em;
 
