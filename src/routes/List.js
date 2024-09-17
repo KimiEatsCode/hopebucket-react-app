@@ -35,15 +35,15 @@ function List() {
         </Row>
         <Row>
           <Col>
-            <ListGroup>
+            <ListGroup horizontal>
               {list.map((item) => {
                 return (
                   <ListGroup.Item
-                    className="pt-3 pb-3"
+                    className="d-flex flex-nowrap pt-3 pb-3"
                     key={item.id}
                     variant="light"
                   >
-                    <button
+                   <button
                       className="closeX btn"
                       action
                       onClick={() => {
@@ -62,7 +62,8 @@ function List() {
                         <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
                       </svg>
                     </button>
-                    <div className="hopeItem">{item.value}</div>
+
+                    <div className="d-flex hopeItem w-100 flex-shrink-1 ">{item.value}</div>
                   </ListGroup.Item>
                 );
               })}
