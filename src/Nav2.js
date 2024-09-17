@@ -169,7 +169,7 @@ function OffCanvasExample({ name, ...props }) {
               type="button"
               class="btn btn-primary"
               disabled={totalHope >= 10}
-         
+
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -217,6 +217,24 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           )}
         </div>
+        <Row className="mt-2">
+
+<form
+action="https://buttondown.com/api/emails/embed-subscribe/kimicodes"
+method="post"
+target="popupwindow"
+onsubmit="window.open('https://buttondown.com/kimicodes', 'popupwindow')"
+className="d-flex justify-content-center"
+>
+
+<input type="email" name="email" id="bd-email"/>
+
+<input type="submit" value="Subscribe" />
+<p>
+<Link to="https://buttondown.com/refer/kimicodes" target="_blank"></Link>
+</p>
+</form>
+</Row>
       </nav>
     </>
   );

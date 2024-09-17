@@ -9,7 +9,7 @@ function Bucket() {
 
   let totalHope = listContext.list.length;
 
-  if (totalHope < 10) {
+  // if (totalHope < 10) {
     return (
       <>
         <Row>
@@ -33,47 +33,31 @@ function Bucket() {
         </Row>
       </>
     );
-  } else {
-    return (
-      <>
-        <Row>
-          <Col>
-            <h4 className="text-center mt-5">
-              Great job! You built up 10 items of hope. Reward yourself with
-              something good to eat, buy yourself something nice, or take a well
-              earned break!
-            </h4>
-            <h3 className="mt-4 text-center">
-              <button class="btn btn-primary mt-2">
-                <Link className="textWhite" to="/list">
-                  Start a new list
-                </Link>
-              </button>
-            </h3>
- <h4 className="text-center mt-5">Please sign up for updates to<br></br> learn about opportunities to provide feedback <br></br>and annoucements about new features.</h4>
-          </Col>
-        </Row>
-        <Row className="mt-2">
-
-        <form
-  action="https://buttondown.com/api/emails/embed-subscribe/kimicodes"
-  method="post"
-  target="popupwindow"
-  onsubmit="window.open('https://buttondown.com/kimicodes', 'popupwindow')"
-  className="d-flex justify-content-center"
->
-
-  <input type="email" name="email" id="bd-email"/>
-
-  <input type="submit" value="Subscribe" />
-  <p>
-    <Link to="https://buttondown.com/refer/kimicodes" target="_blank"></Link>
-  </p>
-</form>
-</Row>
-      </>
-    );
   }
-}
+//   // else {
+//   //   return (
+//   //     <>
+//   //       <Row>
+//   //         <Col>
+//   //           <h4 className="text-center mt-5">
+//   //             Great job! You built up 10 items of hope. Reward yourself with
+//   //             something good to eat, buy yourself something nice, or take a well
+//   //             earned break!
+//   //           </h4>
+//   //           <h3 className="mt-4 text-center">
+//   //             <button class="btn btn-primary mt-2">
+//   //               <Link className="textWhite" to="/list">
+//   //                 Start a new list
+//   //               </Link>
+//   //             </button>
+//   //           </h3>
+
+//   //         </Col>
+//   //       </Row>
+
+//   //     </>
+//   //   );
+//   // }
+// }
 
 export default Bucket;
