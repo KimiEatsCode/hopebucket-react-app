@@ -34,7 +34,7 @@ ReactDOM.render(
               marginTop: "20px",
             }}
           >
-            <Link to="/">Hope Bucket</Link>
+            <h1>Hope Bucket</h1>
           </h1>
           <hr />
 
