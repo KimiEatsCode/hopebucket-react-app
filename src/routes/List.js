@@ -35,16 +35,17 @@ function List() {
         </Row>
         <Row>
           <Col>
-            <ListGroup horizontal>
+            <ListGroup>
               {list.map((item) => {
                 return (
+                  // <ListGroup.Item className="d-flex flex-wrap">
                   <ListGroup.Item
-                    className="d-flex flex-nowrap pt-3 pb-3"
+                    className="pt-3 pb-3 d-flex flex-nowrap "
                     key={item.id}
                     variant="light"
                   >
                    <button
-                      className="closeX btn"
+                      className="closeX btn "
                       action
                       onClick={() => {
                         deleteItem(item.id);
@@ -63,8 +64,9 @@ function List() {
                       </svg>
                     </button>
 
-                    <div className="d-flex hopeItem w-100 flex-shrink-1 ">{item.value}</div>
+                    <div className=" hopeItem ">{item.value}</div>
                   </ListGroup.Item>
+                  // </ListGroup.Item>
                 );
               })}
             </ListGroup>
