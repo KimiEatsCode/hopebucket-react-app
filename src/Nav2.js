@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext, useRef, useEffect } from "react";
+import { useState, useContext, useRef } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -12,7 +12,8 @@ import { useNavigate } from "react-router-dom";
 function OffCanvasExample({ name, ...props }) {
   const [show, setShow] = useState(false);
   const [isLeft, setLeft] = useState(true);
-  const [toggle, setToggle] = useState(true);
+  const [toggleBucket, setToggleBucket] = useState(true);
+  const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
   const listContext = useContext(Context);
@@ -24,11 +25,12 @@ function OffCanvasExample({ name, ...props }) {
     setInput(input);
   }
 
-  const fieldFocus = useRef(null)
+  const fieldFocus = useRef(null);
 
   const handleNavClick = (event) => {
-    setToggle((current) => !current);
+    setToggleBucket((current) => !current);
   };
+
 
   const navStyles = {
     textAlign: "center",
@@ -44,6 +46,7 @@ function OffCanvasExample({ name, ...props }) {
 
   const handleNavAlign = (event) => {
     setLeft((isLeft) => !isLeft);
+    setToggleAlignNav((current) => !current);
   };
 
   function addItem() {
@@ -70,11 +73,12 @@ function OffCanvasExample({ name, ...props }) {
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
   const handleClose = () => setShow(false);
-  const handleOpen = () =>  {
-    totalHope < 10 ? setShow(true) : setShow(false); setTimeout(() => {
-    fieldFocus.current.focus();
-  }, "100")
-}
+  const handleOpen = () => {
+    totalHope < 10 ? setShow(true) : setShow(false);
+    setTimeout(() => {
+      fieldFocus.current.focus();
+    }, "100");
+  };
 
   return (
     <>
@@ -89,6 +93,7 @@ function OffCanvasExample({ name, ...props }) {
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
+                autoFocus
                 value={input}
                 onChange={(item) => updateInput(item.target.value)}
                 aria-label="add something positive"
@@ -97,10 +102,7 @@ function OffCanvasExample({ name, ...props }) {
             </Col>
             <p></p>
 
-            <Button
-              onClick={addItem}
-
-            >
+            <Button onClick={addItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -117,29 +119,54 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
 
       <nav>
+      <i class="bi bi-box-arrow-left"></i>
         <div style={navStyles.navAlign}>
-        <Link onClick={handleNavAlign}>
-            <button type="button" class="btn btn-outline-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="44"
-                height="44"
-                fill="currentColor"
-                class="bi btn"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
-                />
-                <path
-                  fill-rule="evenodd"
-                  d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
-                />
-              </svg>
-            </button>
-          </Link>
-          <Link onClick={handleOpen} >
+          {toggleAlignNav ? (
+            <Link onClick={handleNavAlign}>
+              <button type="button" class="btn btn-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="44"
+                  height="44"
+                  fill="currentColor"
+                  class="bi bi-box-arrow-right"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
+                  />
+                </svg>
+              </button>
+            </Link>
+          ) : (
+            <Link onClick={handleNavAlign}>
+              <button type="button" class="btn btn-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="44"
+                  height="44"
+                  fill="currentColor"
+                  class="bi bi-box-arrow-left"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
+                  />
+                </svg>
+              </button>
+            </Link>
+          )}
+          <Link onClick={handleOpen}>
             <button
               type="button"
               class="btn btn-primary"
@@ -159,7 +186,7 @@ function OffCanvasExample({ name, ...props }) {
             </button>
           </Link>
 
-          {toggle ? (
+          {toggleBucket ? (
             <Link onClick={handleNavClick} to="/list">
               <button type="button" class="btn btn-primary">
                 <svg
@@ -175,7 +202,7 @@ function OffCanvasExample({ name, ...props }) {
                 </svg>
               </button>
             </Link>
-          ) :(
+          ) : (
             <Link onClick={handleNavClick} to="/level">
               <button type="button" class="btn btn-primary">
                 <svg
@@ -191,8 +218,6 @@ function OffCanvasExample({ name, ...props }) {
               </button>
             </Link>
           )}
-
-
         </div>
       </nav>
     </>
