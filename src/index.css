@@ -77,10 +77,9 @@ nav a {
 
 }
 
-.alignRightX {
+.closeX {
   font-style: bold;
   text-align: left;
-  float: left;
   font-weight: 700;
   padding:10px 15px;
   margin-right: 20px;

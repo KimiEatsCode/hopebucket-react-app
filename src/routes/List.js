@@ -44,8 +44,7 @@ function List() {
                     variant="light"
 
                   >
-                    <button className="alignRightX"
-
+                    <button className="closeX btn btn-secondary"
                            action
                            onClick={() => {
                              deleteItem(item.id);
