@@ -5,7 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 
-// import FormDrawer from "../FormDrawer";
+
 function List() {
   const listContext = useContext(Context);
   const list = listContext.list;
@@ -84,7 +84,7 @@ function List() {
         </Row>
         <Row>
           <h3 className="mb-5 text-center">
-            {totalHope === 10 ? "Great Job! You've completed 10 hope items! Start a new list and fill up on hope!" : ""}
+            {totalHope === 10 ? "Great Job! You've completed 10 hope items. View your list! Start a new list and fill up on hope!" : ""}
           </h3>
         </Row>
         <Row>
@@ -93,7 +93,7 @@ function List() {
               {list.map((item) => {
                 return (
                   <ListGroup.Item className="pt-3 pb-3">
-                    <div className="alignRightX" key={item.id} variant="dark">test
+                    <div className="alignRightX" key={item.id} variant="dark">
                       {/* <div className="alignRightX"
                      key={item.id}
                      variant="dark"
