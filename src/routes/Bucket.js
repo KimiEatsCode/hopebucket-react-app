@@ -14,7 +14,7 @@ function Bucket() {
       <>
         <Row>
           <Col>
-            <div>
+            <div className="pt-5">
               <div className="itemCount">{totalHope}</div>
               <div className="bucketIcon">
                 <svg
