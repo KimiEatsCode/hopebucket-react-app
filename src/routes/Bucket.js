@@ -50,8 +50,27 @@ function Bucket() {
                 </Link>
               </button>
             </h3>
+ <h4 className="text-center mt-5">Please sign up for updates to<br></br> learn about opportunities to provide feedback <br></br>and annoucements about new features.</h4>
           </Col>
         </Row>
+        <Row className="mt-2">
+
+        <form
+  action="https://buttondown.com/api/emails/embed-subscribe/kimicodes"
+  method="post"
+  target="popupwindow"
+  onsubmit="window.open('https://buttondown.com/kimicodes', 'popupwindow')"
+  className="d-flex justify-content-center"
+>
+
+  <input type="email" name="email" id="bd-email"/>
+
+  <input type="submit" value="Subscribe" />
+  <p>
+    <Link to="https://buttondown.com/refer/kimicodes" target="_blank"></Link>
+  </p>
+</form>
+</Row>
       </>
     );
   }

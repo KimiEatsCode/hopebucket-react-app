@@ -25,12 +25,11 @@ function OffCanvasExample({ name, ...props }) {
     setInput(input);
   }
 
-  const fieldFocus = useRef(null);
+  const fieldFocus = useRef();
 
   const handleNavClick = (event) => {
     setToggleBucket((current) => !current);
   };
-
 
   const navStyles = {
     textAlign: "center",
@@ -118,7 +117,7 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
 
       <nav>
-      <i class="bi bi-box-arrow-left"></i>
+        <i class="bi bi-box-arrow-left"></i>
         <div style={navStyles.navAlign}>
           {toggleAlignNav ? (
             <Link onClick={handleNavAlign}>
@@ -170,7 +169,7 @@ function OffCanvasExample({ name, ...props }) {
               type="button"
               class="btn btn-primary"
               disabled={totalHope >= 10}
-              ref={fieldFocus}
+         
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
