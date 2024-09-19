@@ -1,3 +1,8 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AR:wght@100..400&display=swap');
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,15 +10,19 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color:aliceblue!important;
 }
 
 .container {
   padding-bottom:150px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.logoName {
+  font-family: "Playwrite AR", cursive;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  padding-top:10px;
 }
 
 .light-theme {
@@ -46,6 +55,7 @@ justify-items: right;
 position:fixed;
 right:0;
 bottom:30px;
+padding-top:20px;
 }
 
 
@@ -56,6 +66,9 @@ nav a {
 .bucketIcon {
   text-align: center;
   font-weight: bold;
+  margin: 0 auto;
+  max-width:500px;
+
 }
 
 .no-wrap{
@@ -94,6 +107,9 @@ nav a {
   right: 10px;
 }
 
+.form-control {
+  border:2px solid!important;
+}
 .textWhite {
   color: #fff!important;
   text-decoration:none;
@@ -111,8 +127,4 @@ nav a {
   -webkit-transition: all 30s ease-in-out;
   transition: all 30s ease-in-out;
   z-index: 10;
-}
-
-.bg-salmon {
-  background-color:red;
 }
