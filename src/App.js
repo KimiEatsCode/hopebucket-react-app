@@ -1,5 +1,5 @@
 import React from "react";
-import Bucket from "./routes/Bucket";
+import Bucket from "./components/Bucket";
 
 function App() {
   return (
