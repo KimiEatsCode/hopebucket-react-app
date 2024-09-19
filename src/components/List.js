@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import  Newsletter from "./Newsletter"
 
 function List() {
   const listContext = useContext(Context);
@@ -87,16 +88,17 @@ function List() {
         <Row>
           <h3 className="mb-5 text-center">
             {totalHope === 10
-              ? "Great Job! You've completed 10 hope items. View your list! Start a new list and fill up on hope!"
+              ? "Great Job! You've completed 10 hope items. Start a new list and fill up on more hope! Sign up for updates below."
               : ""}
           </h3>
         </Row>
-        <Row>
+        <Newsletter></Newsletter>
+        <Row className="mt-5">
           <Col>
             <ListGroup>
               {list.map((item) => {
                 return (
-                  <ListGroup.Item className="pt-3 pb-3">
+                  <ListGroup.Item className="pt-1 pb-1">
                     <div className="alignRightX" key={item.id} variant="dark">
                       {/* <div className="alignRightX"
                      key={item.id}
