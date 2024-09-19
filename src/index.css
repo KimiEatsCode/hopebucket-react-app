@@ -13,6 +13,9 @@ body {
   background-color:aliceblue!important;
 }
 
+iframe {
+  width:100%!important;
+}
 
 .logoName {
   font-family: "Delicious Handrawn", cursive;

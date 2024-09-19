@@ -6,7 +6,7 @@ function Newsletter() {
 
   return (
     <>
-      <Row className="mt-5">
+      <Row className="mt-2">
         <div className="col-xs-1 col-md-2"></div>
         <div className="col-md-8">
           <iframe className="col-md-12" src="https://buttondown.com/kimicodes?as_embed=true" title="newsletterSignUp"
