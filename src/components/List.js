@@ -28,10 +28,21 @@ function List() {
     return (
       <>
         <Row>
-          <h3 className="mt-5 text-center">
+          <h3 className="text-center">
             {totalHope === 0
               ? "Add 10 things (thoughts, events, people, an action you took etc.) that bring you hope to the list!"
               : ""}
+          </h3>
+        </Row>
+        <Row>
+          <h3 className="mt-4 mb-5 text-center">
+            <Button
+              size="lg"
+              onClick={startNewList}
+              class="btn btn-primary mt-2"
+            >
+              Start New List
+            </Button>
           </h3>
         </Row>
         <Row>

@@ -72,8 +72,14 @@ function OffCanvasExample({ name, ...props }) {
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
   const handleClose = () => setShow(false);
-  const handleOpen = () => {
-    totalHope < 10 ? setShow(true) : setShow(false);
+  const handleOpen = (e) => {
+
+    if(totalHope < 10) {
+      setShow(true);
+    } else {
+      e.preventDefault();
+      setShow(false);
+    }
     setTimeout(() => {
       fieldFocus.current.focus();
     }, "100");
@@ -218,7 +224,7 @@ function OffCanvasExample({ name, ...props }) {
         </div>
         <Row className="mt-2"></Row>
       </nav>
-     
+
     </>
   );
 }

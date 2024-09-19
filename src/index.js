@@ -24,7 +24,7 @@ ReactDOM.render(
       <BrowserRouter>
         <Container style={containerStyles}>
 
-            <h1 className="logoName">Hope Bucket</h1>
+            <h1 className="logoName mb-4">Hope Bucket</h1>
 
           <Routes>
             <Route path="/" element={<App />} />

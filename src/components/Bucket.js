@@ -8,7 +8,7 @@ function Bucket() {
 
   let totalHope = listContext.list.length;
 
-  // if (totalHope < 10) {
+
     return (
       <>
         <Row>
@@ -30,7 +30,15 @@ function Bucket() {
 
           </Col>
         </Row>
-
+        <Row className="text-center mt-5">
+          <Col>
+        <h2>
+        {totalHope < 10
+              ? ""
+              : "Congrats! You completed 10 hope items!!"}
+              </h2>
+              </Col>
+              </Row>
       </>
     );
   }
