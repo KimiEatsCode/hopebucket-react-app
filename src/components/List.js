@@ -28,23 +28,13 @@ function List() {
     return (
       <>
         <Row>
-          <h3 className="text-center">
+          <h3 className="text-center mt-4">
             {totalHope === 0
-              ? "Add 10 things (thoughts, events, people, an action you took etc.) that bring you hope to the list!"
+              ? "Add 10 things to your hope list that bring you hope. Get started by clicking on the plus + button below. Thoughts, events, people, an action you took etc, hope comes in many forms!"
               : ""}
           </h3>
         </Row>
-        <Row>
-          <h3 className="mt-4 mb-5 text-center">
-            <Button
-              size="lg"
-              onClick={startNewList}
-              class="btn btn-primary mt-2"
-            >
-              Start New List
-            </Button>
-          </h3>
-        </Row>
+
         <Row>
           <Col>
             <ListGroup>

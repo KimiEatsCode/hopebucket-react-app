@@ -77,8 +77,9 @@ function OffCanvasExample({ name, ...props }) {
     if(totalHope < 10) {
       setShow(true);
     } else {
-      e.preventDefault();
       setShow(false);
+      return;
+
     }
     setTimeout(() => {
       fieldFocus.current.focus();
