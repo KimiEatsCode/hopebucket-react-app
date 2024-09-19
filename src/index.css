@@ -13,9 +13,6 @@ body {
   background-color:aliceblue!important;
 }
 
-.container {
-  padding-bottom:150px;
-}
 
 .logoName {
   font-family: "Playwrite AR", cursive;
@@ -58,7 +55,9 @@ bottom:30px;
 padding-top:20px;
 }
 
-
+h3 {
+  padding:0px 20px!important;
+}
 nav a {
   padding: 5px;
 }
@@ -88,7 +87,7 @@ nav a {
   display:inline-flex;
   flex-direction: row;
   align-items:center;
-  word-break: break-all;
+  word-break: break-word;
   padding:10px;
   font-size:1.2em;
 

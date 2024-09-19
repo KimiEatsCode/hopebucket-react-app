@@ -25,7 +25,7 @@ function Newsletter() {
             target="popupwindow"
             onsubmit="window.open('https://buttondown.email/kimicodes', 'popupwindow')"
           >
-            <div className="text-center">
+            <div className="d-flex m-4 mt-0">
               <input
                 type="email"
                 name="email"
@@ -33,7 +33,7 @@ function Newsletter() {
                 className="form-control text-center mt-3"
                 placeholder="Enter Your Email Here"
               />
-              <button type="submit" onSubmit={handleSubmit} class="btn btn-primary mt-2">
+              <button type="submit" onSubmit={handleSubmit} class="btn btn-primary mt-3">
                 Submit
               </button>
               <p></p>
@@ -41,10 +41,10 @@ function Newsletter() {
           </form>
         </div>
         <div className="col-xs-2 col-md-3"></div>
-        <Row className="mt-5 text-center justify-content-center">
-        Feedback and questions are welcome.
+        <Row className="text-center justify-content-center">
+        Feedback and questions are welcome:
         <Link to="https://docs.google.com/forms/d/e/1FAIpQLSdhIeE7uxjgCDGPrtk8OPqp_E20o0QQF5o3MmmFZ007ra70NQ/viewform?vc=0&c=0&w=1&flr=0" target="_blank">
-          Feedback form Link
+          Give Feedback
         </Link>
       </Row>
       </Row>
