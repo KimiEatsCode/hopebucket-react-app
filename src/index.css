@@ -13,13 +13,17 @@ body {
   background-color:aliceblue!important;
 }
 
-
+.iframe {
+  background-color:aliceblue!important;
+}
 .logoName {
   font-family: "Playwrite AR", cursive;
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
   padding-top:10px;
+  text-align:center;
+  margin-top:10px;
 }
 
 .light-theme {

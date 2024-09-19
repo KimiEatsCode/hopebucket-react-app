@@ -23,18 +23,8 @@ ReactDOM.render(
     <ListContext>
       <BrowserRouter>
         <Container style={containerStyles}>
-          <h1
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              fontWeight: "bolder",
-              marginTop: "20px",
-            }}
-          >
-            <h1 className="logoName">Hope Bucket</h1>
-          </h1>
 
+            <h1 className="logoName">Hope Bucket</h1>
 
           <Routes>
             <Route path="/" element={<App />} />
