@@ -1,18 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Bucket from "./routes/List";
-import Nav2 from "./Nav2";
+import Bucket from "./components/List";
+import Nav2 from "./components/Nav2";
 import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Level from "./routes/Bucket";
+import Level from "./components/Bucket";
 import App from "./App";
 import ListContext from "./ListContext";
-import Newsletter from "./routes/Newsletter";
 
 const containerStyles = {
   display: "flex",
@@ -34,15 +32,14 @@ ReactDOM.render(
               marginTop: "20px",
             }}
           >
-            <h1>Hope Bucket</h1>
+            <h1 className="logoName">Hope Bucket</h1>
           </h1>
-          <hr />
+
 
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="level" element={<Level />} />
             <Route path="list" element={<Bucket />} />
-            <Route path="newsletter" element={<Newsletter />} />
           </Routes>
           <Nav2></Nav2>
         </Container>
@@ -53,5 +50,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById("root")
 );
-
-
