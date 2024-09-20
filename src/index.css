@@ -61,15 +61,25 @@ align-items: end;
 justify-items: right;
 position:fixed;
 right:0;
-bottom:30px;
+bottom:20px;
 padding-top:20px;
+}
+
+nav a {
+  padding: 5px;
+}
+
+.topNav {
+  text-align:right;
+  padding:10px 20px;
+}
+
+.feedback a {
+  font-size:1.5em;
 }
 
 h3 {
   padding:0px 20px!important;
-}
-nav a {
-  padding: 5px;
 }
 
 .bucketIcon {
@@ -100,7 +110,6 @@ nav a {
   word-break: break-word;
   padding:10px;
   font-size:1.2em;
-
 }
 
 .closeX {

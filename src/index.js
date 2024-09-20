@@ -11,6 +11,8 @@ import Container from "react-bootstrap/Container";
 import Bucket from "./components/Bucket";
 import App from "./App";
 import ListContext from "./ListContext";
+import Newsletter from "./components/Newsletter";
+import TopMenu from "./components/TopMenu";
 
 const containerStyles = {
   display: "flex",
@@ -22,6 +24,7 @@ ReactDOM.render(
   <React.StrictMode>
     <ListContext>
       <BrowserRouter>
+      <TopMenu></TopMenu>
         <Container style={containerStyles}>
 
             <h1 className="logoName mb-4">Hope Bucket</h1>
@@ -30,6 +33,7 @@ ReactDOM.render(
             <Route path="/" element={<App />} />
             <Route path="bucket" element={<Bucket />} />
             <Route path="list" element={<List />} />
+            <Route path="newsletter" element={<Newsletter />} />
           </Routes>
           <Nav2></Nav2>
         </Container>

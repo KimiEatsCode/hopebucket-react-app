@@ -34,8 +34,8 @@ function Bucket() {
           <Col>
         <h2>
         {totalHope === 10
-              ? ""
-              : "Congrats! You completed 10 hope items!!"}
+              ? "Congrats! You completed 10 hope items!!"
+              : ""}
               </h2>
               </Col>
               </Row>

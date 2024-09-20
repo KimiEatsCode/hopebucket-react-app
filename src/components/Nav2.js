@@ -223,9 +223,9 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           )}
         </div>
-        <Row className="mt-2"></Row>
-      </nav>
 
+      </nav>
+    
     </>
   );
 }
