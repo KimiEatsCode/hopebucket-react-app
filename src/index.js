@@ -4,11 +4,11 @@ import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Bucket from "./components/List";
+import List from "./components/List";
 import Nav2 from "./components/Nav2";
 import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Level from "./components/Bucket";
+import Bucket from "./components/Bucket";
 import App from "./App";
 import ListContext from "./ListContext";
 
@@ -28,8 +28,8 @@ ReactDOM.render(
 
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="level" element={<Level />} />
-            <Route path="list" element={<Bucket />} />
+            <Route path="bucket" element={<Bucket />} />
+            <Route path="list" element={<List />} />
           </Routes>
           <Nav2></Nav2>
         </Container>
