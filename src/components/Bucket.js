@@ -39,6 +39,15 @@ function Bucket() {
               </h2>
               </Col>
               </Row>
+              <Row>
+              <Col className="d-flex justify-content-center">
+          <h3 className="text-center mt-4">
+            {totalHope === 0
+              ? "Add 10 things to your hope list that bring you hope. Get started by clicking on the plus + button below. Thoughts, events, people, an action you took etc, hope comes in many forms!"
+              : ""}
+          </h3>
+          </Col>
+        </Row>
       </>
     );
   }
