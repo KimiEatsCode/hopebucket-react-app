@@ -33,7 +33,7 @@ function Bucket() {
         <Row className="text-center mt-5">
           <Col>
         <h2>
-        {totalHope < 10
+        {totalHope === 10
               ? ""
               : "Congrats! You completed 10 hope items!!"}
               </h2>

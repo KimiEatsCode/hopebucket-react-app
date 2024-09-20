@@ -207,7 +207,7 @@ function OffCanvasExample({ name, ...props }) {
               </button>
             </Link>
           ) : (
-            <Link onClick={handleNavClick} to="/level">
+            <Link onClick={handleNavClick} to="/bucket">
               <button type="button" class="btn btn-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
