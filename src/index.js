@@ -24,10 +24,9 @@ ReactDOM.render(
   <React.StrictMode>
     <ListContext>
       <BrowserRouter>
-      <TopMenu></TopMenu>
+        <TopMenu></TopMenu>
         <Container style={containerStyles}>
-
-            <h1 className="logoName mb-4">Hope Bucket</h1>
+          <h1 className="logoName mb-2">Hope Bucket</h1>
 
           <Routes>
             <Route path="/" element={<App />} />

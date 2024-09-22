@@ -32,14 +32,10 @@ function OffCanvasExample({ name, ...props }) {
   };
 
   const navStyles = {
-    textAlign: "center",
-    padding: "2%",
-    backgroundColor: "#ccc",
-    position: "fixed",
     navAlign: {
       position: "fixed",
-      left: isLeft ? 0 : "",
-      right: isLeft ? "" : "0",
+      right: isLeft ? "10px": "",
+      left: isLeft ? "" : "10px",
     },
   };
 
@@ -73,13 +69,11 @@ function OffCanvasExample({ name, ...props }) {
 
   const handleClose = () => setShow(false);
   const handleOpen = (e) => {
-
-    if(totalHope < 10) {
+    if (totalHope < 10) {
       setShow(true);
     } else {
       setShow(false);
       return;
-
     }
     setTimeout(() => {
       fieldFocus.current.focus();
@@ -113,7 +107,7 @@ function OffCanvasExample({ name, ...props }) {
                 width="40"
                 height="40"
                 fill="currentColor"
-                class="bi bi-plus-circle-fill"
+                className="bi bi-plus-circle-fill"
                 viewBox="0 0 16 16"
               >
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
@@ -124,48 +118,49 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
 
       <nav>
-        <i class="bi bi-box-arrow-left"></i>
+        <i className="bi bi-box-arrow-left"></i>
         <div style={navStyles.navAlign}>
           {toggleAlignNav ? (
             <Link onClick={handleNavAlign}>
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="44"
                   height="44"
                   fill="currentColor"
-                  class="bi bi-box-arrow-right"
+                  className="bi bi-box-arrow-left"
                   viewBox="0 0 16 16"
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
+                    <path
+                    fillRule="evenodd"
+                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
                   />
                   <path
-                    fill-rule="evenodd"
-                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
+                    fillRule="evenodd"
+                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
                   />
+
                 </svg>
               </button>
             </Link>
           ) : (
             <Link onClick={handleNavAlign}>
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="44"
                   height="44"
                   fill="currentColor"
-                  class="bi bi-box-arrow-left"
+                  className="bi bi-box-arrow-right"
                   viewBox="0 0 16 16"
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
+ <path
+                    fillRule="evenodd"
+                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
                   />
                   <path
-                    fill-rule="evenodd"
-                    d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
+                    fillRule="evenodd"
+                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
                   />
                 </svg>
               </button>
@@ -174,7 +169,7 @@ function OffCanvasExample({ name, ...props }) {
           <Link onClick={handleOpen}>
             <button
               type="button"
-              class="btn btn-primary"
+              className="btn btn-primary"
               disabled={totalHope >= 10}
             >
               <svg
@@ -182,7 +177,7 @@ function OffCanvasExample({ name, ...props }) {
                 width="44"
                 height="44"
                 fill="currentColor"
-                class="bi bi-plus-circle-fill"
+                className="bi bi-plus-circle-fill"
                 viewBox="0 0 16 16"
               >
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
@@ -192,13 +187,13 @@ function OffCanvasExample({ name, ...props }) {
 
           {toggleBucket ? (
             <Link onClick={handleNavClick} to="/list">
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="44"
                   height="44"
                   fill="currentColor"
-                  class="bi bi-card-list"
+                  className="bi bi-card-list"
                   viewBox="0 0 16 16"
                 >
                   <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
@@ -208,13 +203,13 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           ) : (
             <Link onClick={handleNavClick} to="/bucket">
-              <button type="button" class="btn btn-primary">
+              <button type="button" className="btn btn-primary">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="44"
                   height="44"
                   fill="#fff"
-                  class="bi bi-bucket"
+                  className="bi bi-bucket"
                   viewBox="0 0 16 16"
                 >
                   <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z"></path>
@@ -223,9 +218,7 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           )}
         </div>
-
       </nav>
-    
     </>
   );
 }

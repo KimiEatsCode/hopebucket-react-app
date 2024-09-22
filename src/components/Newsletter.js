@@ -1,6 +1,6 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 
 function Newsletter() {
   return (
@@ -23,7 +23,7 @@ function Newsletter() {
       </Row>
       <Row className="mt-3 text-center">
         {" "}
-        <h4> Feedback and questions are welcome</h4>
+        <h4> Feedback and questions are welcome &#x2661;</h4>
         <span className="feedback">
           <Link
             to="https://docs.google.com/forms/d/e/1FAIpQLSdhIeE7uxjgCDGPrtk8OPqp_E20o0QQF5o3MmmFZ007ra70NQ/viewform?vc=0&c=0&w=1&flr=0"
@@ -32,6 +32,13 @@ function Newsletter() {
             Give Feedback
           </Link>
         </span>
+      </Row>
+      <Row>
+        <h3 className="mt-3 mb-5 text-center">
+          <Link to="/bucket">
+            <button className="btn btn-primary startButton mt-2">Get Started!</button>
+          </Link>
+        </h3>
       </Row>
     </>
   );

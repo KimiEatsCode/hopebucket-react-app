@@ -8,6 +8,11 @@ function Bucket() {
 
   let totalHope = listContext.list.length;
 
+  function startNewList() {
+    listContext.setList((list) => (list = []));
+  }
+
+
   return (
     <>
       <Row>
@@ -27,20 +32,22 @@ function Bucket() {
           </div>
         </Col>
       </Row>
-      <Row className="text-center mt-1">
+      <Row className="text-center mt-4">
         <Col>
           <h2>
-            {totalHope === 10 ? "Congrats! You completed 10 hope items!!" : ""}
+            {totalHope === 10 ? "Congrats! 10 hope items!!" : ""}
+            {totalHope === 0 ? "Add 10 hope items to fill your bucket!" : ""}
           </h2>
         </Col>
       </Row>
-      <Row>
-        <Col className="d-flex justify-content-center">
-          <h3 className="text-center mt-2">
-            {totalHope === 0 ? "Add 10 hope items to fill your bucket!" : ""}
+      <Row >
+          <h3 className="mt-3 mb-5 text-center">
+            <button onClick={startNewList} className="btn btn-primary startButton mt-2">
+              Start New List
+            </button>
           </h3>
-        </Col>
-      </Row>
+        </Row>
+     
     </>
   );
 }

@@ -1,10 +1,10 @@
 import React from "react";
-import Bucket from "./components/Bucket";
+import Newsletter from "./components/Newsletter";
 
 function App() {
   return (
     <>
-      <Bucket></Bucket>
+      <Newsletter></Newsletter>
     </>
   );
 }
