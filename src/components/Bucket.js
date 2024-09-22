@@ -30,7 +30,7 @@ function Bucket() {
 
           </Col>
         </Row>
-        <Row className="text-center mt-5">
+        <Row className="text-center mt-1">
           <Col>
         <h2>
         {totalHope === 10
@@ -41,9 +41,9 @@ function Bucket() {
               </Row>
               <Row>
               <Col className="d-flex justify-content-center">
-          <h3 className="text-center mt-4">
+          <h3 className="text-center mt-1">
             {totalHope === 0
-              ? "Add 10 things to your hope list that bring you hope."
+              ? "Add 10 things hope items."
               : ""}
           </h3>
           </Col>
