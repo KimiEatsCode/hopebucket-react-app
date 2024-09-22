@@ -8,9 +8,9 @@ function Bucket() {
 
   let totalHope = listContext.list.length;
 
-  function startNewList() {
-    listContext.setList((list) => (list = []));
-  }
+  // function startNewList() {
+  //   listContext.setList((list) => (list = []));
+  // }
 
 
   return (
