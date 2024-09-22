@@ -31,9 +31,9 @@ ReactDOM.render(
 
           <Routes>
             <Route path="/" element={<App />} />
-            <Route path="bucket" element={<Bucket />} />
-            <Route path="list" element={<List />} />
-            <Route path="newsletter" element={<Newsletter />} />
+            <Route path="/bucket" element={<Bucket />} />
+            <Route path="/list" element={<List />} />
+            <Route path="/newsletter" element={<Newsletter />} />
           </Routes>
           <Nav2></Nav2>
         </Container>
