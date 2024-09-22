@@ -36,7 +36,7 @@ function List() {
           <Col className="d-flex jusity-content-center">
             <h3 className="text-center mt-4">
               {totalHope === 0
-                ? "Add 10 things to your hope list that bring you hope. Get started by clicking on the plus + button below. Thoughts, events, people, an action you took etc, hope comes in many forms!"
+                ? "Get started by clicking on the plus [+] button below. Thoughts, events, people, an action you took etc, hope comes in many forms!"
                 : ""}
             </h3>
           </Col>
@@ -88,11 +88,11 @@ function List() {
       <>
 
         <Row>
-          <h3 className="mb-3 text-center">
+          <h4 className="mb-3 mt-3 text-center">
             {totalHope === 10
               ? "Great Job! You've completed 10 hope items. Start a new list and fill up on more hope!"
               : ""}
-          </h3>
+          </h4>
         </Row>
         <Row>
           <h3 className="mt-3 mb-2 text-center">
@@ -102,7 +102,7 @@ function List() {
           </h3>
         </Row>
 
-        <Row className="mt-5">
+        <Row className="mt-4">
           <Col>
             <ListGroup>
               {list.map((item) => {

@@ -34,10 +34,10 @@ function Bucket() {
       </Row>
       <Row className="text-center mt-4">
         <Col>
-          <h2>
+          <h3>
             {totalHope === 10 ? "Congrats! 10 hope items!!" : ""}
             {totalHope === 0 ? "Add 10 hope items to fill your bucket!" : ""}
-          </h2>
+          </h3>
         </Col>
       </Row>
       {/* <Row >

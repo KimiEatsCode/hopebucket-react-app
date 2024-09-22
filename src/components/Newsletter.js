@@ -5,13 +5,13 @@ import Row from "react-bootstrap/Row";
 function Newsletter() {
   return (
     <>
-      <Row className="mt-2">
+      <Row className="mt-3">
         <div className="col-xs-1 col-md-2"></div>
         <div className="col-md-8 text-center">
-          <h3>
+          <h4>
             Sign up for updates below to follow HopeBucket app progress and show
             your support.
-          </h3>
+          </h4>
           <iframe
             className="col-md-12"
             src="https://buttondown.com/kimicodes?as_embed=true"
@@ -31,15 +31,16 @@ function Newsletter() {
           >
             Give Feedback
           </Link>
+         
         </span>
       </Row>
-      <Row>
+      {/* <Row>
         <h3 className="mt-3 mb-5 text-center">
           <Link to="/bucket">
             <button className="btn btn-primary startButton mt-2">Get Started!</button>
           </Link>
         </h3>
-      </Row>
+      </Row> */}
     </>
   );
 }
