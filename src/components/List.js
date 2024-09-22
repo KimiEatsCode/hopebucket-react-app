@@ -86,18 +86,19 @@ function List() {
   } else {
     return (
       <>
-        <Row>
-          <h3 className="mt-3 mb-5 text-center">
-            <button onClick={startNewList} className="btn btn-primary mt-2">
-              Start New List
-            </button>
-          </h3>
-        </Row>
+
         <Row>
           <h3 className="mb-3 text-center">
             {totalHope === 10
               ? "Great Job! You've completed 10 hope items. Start a new list and fill up on more hope!"
               : ""}
+          </h3>
+        </Row>
+        <Row>
+          <h3 className="mt-3 mb-2 text-center">
+            <button onClick={startNewList} className="btn btn-primary mt-2">
+              Start New List
+            </button>
           </h3>
         </Row>
 
