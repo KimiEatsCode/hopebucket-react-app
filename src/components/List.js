@@ -94,7 +94,7 @@ function List() {
           </h3>
         </Row>
         <Row>
-          <h3 className="mb-5 text-center">
+          <h3 className="mb-3 text-center">
             {totalHope === 10
               ? "Great Job! You've completed 10 hope items. Start a new list and fill up on more hope!"
               : ""}
