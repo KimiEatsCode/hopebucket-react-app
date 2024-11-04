@@ -1,16 +1,20 @@
 import React, { useContext, useEffect } from "react";
-import { Context } from "../ListContext";
+import { ListContext } from "../ListContext";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
 
 function List() {
-  const listContext = useContext(Context);
+  const listContext = useContext(ListContext);
   const list = listContext.list;
 
-  console.log("bucket list localStorage using listContext " + list);
-  // const test = window.localStorage.getItem("hopeList")
+  console.log(
+    "bucket list localStorage using listContext " + JSON.stringify(list)
+  );
+
+  const [expDate, setListDate] = useLocalStorage("listDate", "");
 
   let totalHope = listContext.list.length;
 
@@ -19,17 +23,25 @@ function List() {
     listContext.setList(updateList);
   }
 
+
+  const today = new Date();
+
+  const nextDay = new Date();
+  nextDay.setDate(nextDay.getDate() + 1);
+
   function startNewList() {
     listContext.setList((list) => (list = []));
+    return setListDate(nextDay);
   }
 
+  //useEffect used to deal with state changes?
   useEffect(() => {
-    if (totalHope === 10) {
+    if (totalHope === 3) {
       window.scrollTo(0, 0);
     }
   }, [totalHope]);
 
-  if (totalHope < 10) {
+  if (totalHope < 3 || expDate === today) {
     return (
       <>
         <Row>
@@ -40,6 +52,13 @@ function List() {
                 : ""}
             </h3>
           </Col>
+        </Row>
+        <Row>
+          <h3 className="mt-3 mb-2 text-center">
+            <button onClick={startNewList} className="btn btn-primary mt-2">
+              Start New List
+            </button>
+          </h3>
         </Row>
 
         <Row>
@@ -55,7 +74,6 @@ function List() {
                   >
                     <button
                       className="closeX btn "
-                      action
                       onClick={() => {
                         deleteItem(item.id);
                       }}
@@ -86,10 +104,9 @@ function List() {
   } else {
     return (
       <>
-
         <Row>
           <h4 className="mb-3 mt-3 text-center">
-            {totalHope === 10
+            {totalHope === 3
               ? "Great Job! You've completed 10 hope items. Start a new list and fill up on more hope!"
               : ""}
           </h4>

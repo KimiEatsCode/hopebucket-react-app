@@ -1,17 +1,12 @@
 import React, { useContext } from "react";
-import { Context } from "../ListContext";
+import { ListContext } from "../ListContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function Bucket() {
-  const listContext = useContext(Context);
+  const listContext = useContext(ListContext);
 
   let totalHope = listContext.list.length;
-
-  // function startNewList() {
-  //   listContext.setList((list) => (list = []));
-  // }
-
 
   return (
     <>

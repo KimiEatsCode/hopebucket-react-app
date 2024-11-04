@@ -1,41 +1,19 @@
 import React, { createContext } from "react";
 import { useLocalStorage } from "./hooks/useLocalStorageReceipe";
-import Cookies from 'js-cookie';
 
-export const Context = createContext();
+export const ListContext = createContext();
+export const ListAgeContext = createContext();
+export const ListContextProvider = (props) => {
 
-function clearCookiesForNextDay() {
-  const cookies = Cookies.get();
-
-  for (const cookieName in cookies) {
-    const cookie = Cookies.get(cookieName);
-    if (cookie) {
-      // Set the cookie to expire at the end of the current day
-      const expirationDate = new Date();
-      expirationDate.setHours(23, 59, 59, 999);
-      Cookies.set(cookieName, cookie, { expires: expirationDate });
-    }
-  }
-}
-
-// clearCookiesForNextDay();
-
-function clearCookiesForNextMinute() {
-  const cookies = Cookies.get();
-
-  for (const cookieName in cookies) {
-    Cookies.remove(cookieName, { path: '/' }); // Set the path to clear cookies across the entire domain
-  }
-}
-
-clearCookiesForNextMinute()
-
-function ListContext({ children }) {
-  const [list, setList] = useLocalStorage("hopeList", []);
+const [list, setList] = useLocalStorage("hopeList", []);
 
   return (
-    <Context.Provider value={{ list, setList }}>{children}</Context.Provider>
+
+    <ListContext.Provider value={{list, setList}}>
+   {props.children}</ListContext.Provider>
+
+    //props children are the components that render from index js that has a router that routes certain components depending on route url. ListContextProvider is on index js wrapped around stuff that is props children
   );
 }
 
-export default ListContext;
+

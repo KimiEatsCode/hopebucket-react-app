@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { Context } from "../ListContext";
+import { ListContext } from "../ListContext";
 import { useNavigate } from "react-router-dom";
 
 function OffCanvasExample({ name, ...props }) {
@@ -15,8 +15,9 @@ function OffCanvasExample({ name, ...props }) {
   const [toggleBucket, setToggleBucket] = useState(true);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
+  const [hideAddItem, setShowAdd] = useState(true);
 
-  const listContext = useContext(Context);
+  const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
   const navigate = useNavigate();
@@ -68,6 +69,7 @@ function OffCanvasExample({ name, ...props }) {
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
   const handleClose = () => setShow(false);
+
   const handleOpen = (e) => {
     if (totalHope < 10) {
       setShow(true);
@@ -101,7 +103,9 @@ function OffCanvasExample({ name, ...props }) {
             </Col>
             <p></p>
 
-            <Button onClick={addItem}>
+            <Button v-if = (showAddItem) {
+
+            } onClick={addItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"

@@ -10,7 +10,7 @@ import { Outlet } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Bucket from "./components/Bucket";
 import App from "./App";
-import ListContext from "./ListContext";
+import { ListContextProvider, ListAgeProvider } from "./ListContext";
 import Newsletter from "./components/Newsletter";
 import TopMenu from "./components/TopMenu";
 
@@ -22,7 +22,8 @@ const containerStyles = {
 
 ReactDOM.render(
   <React.StrictMode>
-    <ListContext>
+    <ListContextProvider>
+
       <BrowserRouter>
         <TopMenu></TopMenu>
         <Container style={containerStyles}>
@@ -39,7 +40,8 @@ ReactDOM.render(
       </BrowserRouter>
 
       <Outlet />
-    </ListContext>
+   
+    </ListContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
