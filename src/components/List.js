@@ -1,10 +1,11 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { ListContext } from "../ListContext";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
+import { handleOpen } from "../components/Nav2";
 
 function List() {
   const listContext = useContext(ListContext);
@@ -13,7 +14,7 @@ function List() {
   console.log(
     "bucket list localStorage using listContext " + JSON.stringify(list)
   );
-
+  const [showNewList, setShowListLinks] = useState(true);
   const [expDate, setListDate] = useLocalStorage("listDate", "");
 
   let totalHope = listContext.list.length;
@@ -23,16 +24,28 @@ function List() {
     listContext.setList(updateList);
   }
 
-
   const today = new Date();
 
   const nextDay = new Date();
   nextDay.setDate(nextDay.getDate() + 1);
 
-  function startNewList() {
-    listContext.setList((list) => (list = []));
-    return setListDate(nextDay);
+  if (expDate === nextDay) {
+    setListDate(nextDay);
   }
+
+ const handleNewList = (event) => {
+    listContext.setList((list) => (list = []));
+  };
+
+    //check state of total hope if 0 show new list icon and buttons
+    useEffect(() => {
+      if (totalHope === 0 || totalHope >= 3) {
+        setShowListLinks(true);
+      } else {
+        setShowListLinks(false);
+      }
+    }, [totalHope]);
+
 
   //useEffect used to deal with state changes?
   useEffect(() => {
@@ -41,25 +54,37 @@ function List() {
     }
   }, [totalHope]);
 
+  // useEffect(() => {
+  //   if (expDate === nextDay) {
+  //    setList("");
+  //   }
+  // },[expDate]);
+
   if (totalHope < 3 || expDate === today) {
     return (
       <>
-        <Row>
+      <Row className="d-flex text-center mt-5"><h2><strong>{totalHope } of 3</strong></h2></Row>
+        <Row className="text-center mt-5">
           <Col className="d-flex jusity-content-center">
-            <h3 className="text-center mt-4">
-              {totalHope === 0
-                ? "Get started by clicking on the plus [+] button below. Thoughts, events, people, an action you took etc, hope comes in many forms!"
-                : ""}
-            </h3>
+
+          <h4> {totalHope === 0 &&  "Get started by clicking [+] button below."
+  } <p></p>
+   {totalHope === 0 && "Fill your hope bucket with thoughts, things that happen during the day, people that give you hope, or a action you took that gives you hope."}<p></p>
+{totalHope === 0 && "Hope comes in many forms!"}<p></p>
+{totalHope === 0 && "Make your hope list today!"}
+             </h4>
+
+
           </Col>
         </Row>
-        <Row>
-          <h3 className="mt-3 mb-2 text-center">
-            <button onClick={startNewList} className="btn btn-primary mt-2">
-              Start New List
+     {/* <Row>
+     { showNewList && <h2 className="mt-3 text-center">
+            <button onClick={handleOpen} className="btn btn-primary p-4 mt-2">
+              Add hope
             </button>
-          </h3>
-        </Row>
+          </h2>
+           }
+        </Row> */}
 
         <Row>
           <Col>
@@ -107,15 +132,16 @@ function List() {
         <Row>
           <h4 className="mb-3 mt-3 text-center">
             {totalHope === 3
-              ? "Great Job! You've completed 10 hope items. Start a new list and fill up on more hope!"
+              ? "Great Job! You've filled up your hope! Start a new list and fill up on more hope!"
               : ""}
           </h4>
         </Row>
         <Row>
           <h3 className="mt-3 mb-2 text-center">
-            <button onClick={startNewList} className="btn btn-primary mt-2">
+            { showNewList && <button onClick={handleNewList} className="btn btn-primary mt-2">
               Start New List
             </button>
+  }
           </h3>
         </Row>
 
@@ -137,21 +163,12 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-        <Row>
-          <h3 className="mt-5 mb-5 text-center">
-            <Button
-              size="lg"
-              onClick={startNewList}
-              className="btn btn-primary mt-2"
-            >
-              Start New List
-            </Button>
-          </h3>
-        </Row>
+
       </>
     );
   }
 }
-// }
+
+
 
 export default List;
