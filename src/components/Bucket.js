@@ -12,7 +12,7 @@ function Bucket() {
     <>
       <Row>
         <Col>
-          <div className="itemCount">{totalHope}</div>
+          <div className="itemCount mt-5">{totalHope}</div>
           <div className="bucketIcon">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -30,12 +30,12 @@ function Bucket() {
       <Row className="text-center mt-4">
         <Col>
           <h3>
-            {totalHope === 10 ? "Congrats! 10 hope items!!" : ""}
-            {totalHope === 0 ? "Add 10 hope items to fill your bucket!" : ""}
+            {totalHope === 3 ? "Congrats! You fill your hope bucket!" : ""}
+            {totalHope === 0 ? "Add hope to fill up your hope bucket!" : ""}
           </h3>
         </Col>
       </Row>
-    
+
 
     </>
   );

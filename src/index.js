@@ -23,7 +23,6 @@ const containerStyles = {
 ReactDOM.render(
   <React.StrictMode>
     <ListContextProvider>
-
       <BrowserRouter>
         <TopMenu></TopMenu>
         <Container style={containerStyles}>
@@ -40,7 +39,6 @@ ReactDOM.render(
       </BrowserRouter>
 
       <Outlet />
-   
     </ListContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
