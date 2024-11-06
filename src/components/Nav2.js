@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useContext, useRef } from "react";
+import { useState, useContext, useRef, useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
@@ -10,16 +10,17 @@ import { ListContext } from "../ListContext";
 import { useNavigate } from "react-router-dom";
 
 function OffCanvasExample({ name, ...props }) {
-  const [show, setShow] = useState(false);
+  const [showAddField, setShow] = useState(false);
   const [isLeft, setLeft] = useState(true);
   const [toggleBucket, setToggleBucket] = useState(true);
+  const [showNewList, setShowListLinks] = useState(true);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
-  const [hideAddItem, setShowAdd] = useState(true);
 
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
+
   const navigate = useNavigate();
 
   function updateInput(input) {
@@ -35,7 +36,7 @@ function OffCanvasExample({ name, ...props }) {
   const navStyles = {
     navAlign: {
       position: "fixed",
-      right: isLeft ? "10px": "",
+      right: isLeft ? "10px" : "",
       left: isLeft ? "" : "10px",
     },
   };
@@ -45,11 +46,26 @@ function OffCanvasExample({ name, ...props }) {
     setToggleAlignNav((current) => !current);
   };
 
+  const handleNewList = (event) => {
+    setShowListLinks(false);
+    listContext.setList((list) => (list = []));
+  };
+
+  //check state of total hope if 0 show new list icon and buttons
+
+  useEffect(() => {
+    if (totalHope === 0 || totalHope >= 3) {
+      setShowListLinks(true);
+    } else {
+      setShowListLinks(false);
+    }
+  }, [totalHope]); // The dependency array ensures this effect runs only when 'count' changes
+
   function addItem() {
-    if (totalHope === 10) {
+    if (totalHope === 3) {
       navigate("/");
       setShow(false);
-    } else if (list.length <= 10) {
+    } else if (list.length <= 3) {
       if (input !== "") {
         input = {
           id: Math.random(),
@@ -71,7 +87,7 @@ function OffCanvasExample({ name, ...props }) {
   const handleClose = () => setShow(false);
 
   const handleOpen = (e) => {
-    if (totalHope < 10) {
+    if (totalHope < 3) {
       setShow(true);
     } else {
       setShow(false);
@@ -82,9 +98,21 @@ function OffCanvasExample({ name, ...props }) {
     }, "100");
   };
 
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    fill="currentColor"
+    className="bi bi-file-earmark-plus"
+    viewBox="0 0 16 16"
+  >
+    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+  </svg>;
+
   return (
     <>
-      <Offcanvas show={show} onHide={handleClose} {...props}>
+      <Offcanvas show={showAddField} onHide={handleClose} {...props}>
         <Offcanvas.Header>
           <Offcanvas.Title></Offcanvas.Title>
         </Offcanvas.Header>
@@ -103,9 +131,7 @@ function OffCanvasExample({ name, ...props }) {
             </Col>
             <p></p>
 
-            <Button v-if = (showAddItem) {
-
-            } onClick={addItem}>
+            <Button onClick={addItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -135,7 +161,7 @@ function OffCanvasExample({ name, ...props }) {
                   className="bi bi-box-arrow-left"
                   viewBox="0 0 16 16"
                 >
-                    <path
+                  <path
                     fillRule="evenodd"
                     d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
                   />
@@ -143,7 +169,6 @@ function OffCanvasExample({ name, ...props }) {
                     fillRule="evenodd"
                     d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
                   />
-
                 </svg>
               </button>
             </Link>
@@ -158,7 +183,7 @@ function OffCanvasExample({ name, ...props }) {
                   className="bi bi-box-arrow-right"
                   viewBox="0 0 16 16"
                 >
- <path
+                  <path
                     fillRule="evenodd"
                     d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
                   />
@@ -170,11 +195,30 @@ function OffCanvasExample({ name, ...props }) {
               </button>
             </Link>
           )}
+
+          {showNewList && (
+            <Link onClick={handleNewList}>
+              <button type="button" className="btn btn-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="44"
+                  height="44"
+                  fill="currentColor"
+                  className="bi bi-file-earmark-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                </svg>
+              </button>
+            </Link>
+          )}
+
           <Link onClick={handleOpen}>
             <button
               type="button"
               className="btn btn-primary"
-              disabled={totalHope >= 10}
+              disabled={totalHope >= 3}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
