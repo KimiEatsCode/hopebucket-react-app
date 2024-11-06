@@ -35,13 +35,7 @@ function Bucket() {
           </h3>
         </Col>
       </Row>
-      {/* <Row >
-          <h3 className="mt-3 mb-5 text-center">
-            <button onClick={startNewList} className="btn btn-primary startButton mt-2">
-              Start New List
-            </button>
-          </h3>
-        </Row> */}
+    
 
     </>
   );
