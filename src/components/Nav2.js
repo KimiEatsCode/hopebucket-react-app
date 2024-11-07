@@ -17,7 +17,7 @@ function OffCanvasExample({ name, ...props }) {
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
-  const [expDate, setListDate] = useLocalStorage("listDate", "");
+  const [expDate, setExpDate] = useLocalStorage("listDate", "");
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
@@ -43,15 +43,27 @@ function OffCanvasExample({ name, ...props }) {
     setToggleAlignNav((current) => !current);
   };
 
+  let today = new Date();
+  //getMonth starts at 0 so add 1 to be this month
+  const dd1 = today.getDate();
+  const mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+
+  today = mm + "/" + dd1 + "/" + yyyy;
+
+  const dd2 = dd1 + 1;
+  const tomorrow = mm + "/" + dd2 + "/" + yyyy;
+
   const handleNewList = (event) => {
     setShowListLinks(false);
-    setListDate(new Date().getTime());
+    setExpDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
   //check state of total hope if 0 show new list icon and buttons
 
   useEffect(() => {
+    console.log(expDate)
     if (totalHope >= 3) {
       setShowListLinks(true);
     } else {
@@ -129,7 +141,7 @@ function OffCanvasExample({ name, ...props }) {
             </Col>
             <p></p>
 
-            <Button onClick={addItem}>
+            {expDate &&  <Button onClick={addItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -141,6 +153,7 @@ function OffCanvasExample({ name, ...props }) {
                 <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
               </svg>
             </Button>
+}
           </Row>
         </Offcanvas.Body>
       </Offcanvas>
