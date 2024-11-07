@@ -20,6 +20,7 @@ const containerStyles = {
   display: "flex",
   flexDirection: "column",
   minHeight: "80vh",
+  paddingTop:"20px"
 };
 
 ReactDOM.render(

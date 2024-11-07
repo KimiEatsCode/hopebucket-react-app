@@ -12,7 +12,7 @@ function Newsletter() {
             Sign up for updates to follow HopeBucket app progress and show
             your support.
           </h4>
-          <span className="mt-3">
+          <span className="mt-4">
           <Link to="https://buttondown.com/kimicodes"><button className="btn btn-primary">HopeBucket Newsletter</button></Link>
           </span>
 
