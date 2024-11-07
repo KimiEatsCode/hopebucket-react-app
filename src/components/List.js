@@ -43,17 +43,16 @@ function List() {
     listContext.setList((list) => (list = []));
   };
 
-  // const checkTime = (event) => {
-    if (expDate === tomorrow) {
-      console.log(expDate + " expDate vs. today's date " + today);
-      listContext.setList((list) => (list = []));
-      console.log()
-    } else {
-      console.log("You still have time. It's still today not tomorrow");
-    }
+  //BELOW causes infinite loop
 
-    console.log("Today " + today);
-    console.log("Tomorrow expDate " + expDate);
+  // const checkTime = (event) => {
+    // if (expDate === today) {
+    //   console.log(expDate + " expDate vs. today's date " + today);
+    //   listContext.setList((list) => (list = []));
+    //   console.log()
+    // } else {
+    //   console.log("You still have time. It's still today not tomorrow");
+    // }
   // };
 
   //check state of total hope if 0 show new list icon and buttons
@@ -155,7 +154,6 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-        <Nav2></Nav2>
       </>
     );
   } else {
@@ -196,7 +194,7 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-        <Nav2></Nav2>
+
       </>
     );
   }

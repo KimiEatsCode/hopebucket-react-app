@@ -12,9 +12,9 @@ import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
-  const [isLeft, setLeft] = useState(true);
+  // const [isLeft, setLeft] = useState(true);
   const [showNewList, setShowListLinks] = useState(false);
-  const [toggleAlignNav, setToggleAlignNav] = useState(true);
+  // const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
   const [expDate, setExpDate] = useLocalStorage("listDate", "");
@@ -32,16 +32,16 @@ function OffCanvasExample({ name, ...props }) {
 
   const navStyles = {
     navAlign: {
-      position: "fixed",
-      right: isLeft ? "10px" : "",
-      left: isLeft ? "" : "10px",
+      textAlign: "center",
+      // right: isLeft ? "10px" : "",
+      // left: isLeft ? "" : "10px",
     },
   };
 
-  const handleNavAlign = (event) => {
-    setLeft((isLeft) => !isLeft);
-    setToggleAlignNav((current) => !current);
-  };
+  // const handleNavAlign = (event) => {
+  //   setLeft((isLeft) => !isLeft);
+  //   setToggleAlignNav((current) => !current);
+  // };
 
   let today = new Date();
   //getMonth starts at 0 so add 1 to be this month
@@ -61,9 +61,7 @@ function OffCanvasExample({ name, ...props }) {
   };
 
   //check state of total hope if 0 show new list icon and buttons
-
   useEffect(() => {
-    console.log(expDate)
     if (totalHope >= 3) {
       setShowListLinks(true);
     } else {
@@ -158,10 +156,10 @@ function OffCanvasExample({ name, ...props }) {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <nav>
+      <nav style={navStyles.navAlign}>
         <i className="bi bi-box-arrow-left"></i>
-        <div style={navStyles.navAlign}>
-          {toggleAlignNav ? (
+
+          {/* {toggleAlignNav ? (
             <Link onClick={handleNavAlign}>
               <button type="button" className="btn btn-primary">
                 <svg
@@ -205,7 +203,7 @@ function OffCanvasExample({ name, ...props }) {
                 </svg>
               </button>
             </Link>
-          )}
+          )} */}
 
           {showNewList && (
             <Link onClick={handleNewList}>
@@ -243,40 +241,6 @@ function OffCanvasExample({ name, ...props }) {
               </svg>
             </button>
           </Link>
-
-          {/* {toggleBucket ? (
-            <Link onClick={handleNavClick} to="/list">
-              <button type="button" className="btn btn-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="44"
-                  height="44"
-                  fill="currentColor"
-                  className="bi bi-card-list"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                  <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z" />
-                </svg>
-              </button>
-            </Link>
-          ) : (
-            <Link onClick={handleNavClick} to="/bucket">
-              <button type="button" className="btn btn-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="44"
-                  height="44"
-                  fill="#fff"
-                  className="bi bi-bucket"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527zm9.892 1-1.286 8.574a.5.5 0 0 1-.494.426H4.36a.5.5 0 0 1-.494-.426L2.58 6h10.838z"></path>
-                </svg>
-              </button>
-            </Link>
-          )} */}
-        </div>
       </nav>
     </>
   );
