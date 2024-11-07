@@ -13,8 +13,7 @@ import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
   const [isLeft, setLeft] = useState(true);
-  // const [toggleBucket, setToggleBucket] = useState(true);
-  const [showNewList, setShowListLinks] = useState(true);
+  const [showNewList, setShowListLinks] = useState(false);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
@@ -30,10 +29,6 @@ function OffCanvasExample({ name, ...props }) {
   }
 
   const fieldFocus = useRef();
-
-  // const handleNavClick = (event) => {
-  //   setToggleBucket((current) => !current);
-  // };
 
   const navStyles = {
     navAlign: {
@@ -57,7 +52,7 @@ function OffCanvasExample({ name, ...props }) {
   //check state of total hope if 0 show new list icon and buttons
 
   useEffect(() => {
-    if (totalHope === 0 || totalHope >= 3) {
+    if (totalHope >= 3) {
       setShowListLinks(true);
     } else {
       setShowListLinks(false);
