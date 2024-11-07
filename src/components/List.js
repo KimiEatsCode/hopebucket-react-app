@@ -42,15 +42,18 @@ function List() {
   let startTime = new Date();
 
   // const intervalId = setInterval(() => {
+    const checkTime = () => {
     let endTime = new Date();
     let elapsedTime = endTime.getTime() - startTime.getTime();
 
-    if (elapsedTime === 5000) {
+    if (elapsedTime == 5000) {
       console.log("5 seconds have passed!");
     }
+    return;
+  }
   // });
 
-
+console.log(checkTime)
   // console.log("exp date is " + expDate);
   // console.log("next day is " + nextDay);
 
