@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../ListContext";
 //bootstrap
-import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
@@ -11,17 +10,15 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
 //components
 import { handleOpen } from "../components/Nav2";
+import Nav2 from "../components/Nav2";
 
 function List() {
   const listContext = useContext(ListContext);
   const list = listContext.list;
 
-  console.log(
-    "bucket list localStorage using listContext " + JSON.stringify(list)
-  );
+
   const [showNewList, setShowListLinks] = useState(true);
-  const [elapsedTime, setTime] = useState(true);
-  const [expDate, setListDate] = useLocalStorage("listDate", "");
+  const [expDate, setExpDate] = useLocalStorage("listDate", "");
 
   let totalHope = listContext.list.length;
 
@@ -30,29 +27,34 @@ function List() {
     listContext.setList(updateList);
   }
 
+  let today = new Date();
+  //getMonth starts at 0 so add 1 to be this month
+  const dd1 = today.getDate();
+  const mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+
+  today = mm + "/" + dd1 + "/" + yyyy;
+
+  const dd2 = dd1 + 1;
+  const tomorrow = mm + "/" + dd2 + "/" + yyyy;
+
   const handleNewList = (event) => {
-    setListDate(new Date().getTime());
+    setExpDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
-const checkTime = (event) => {
-  // let nextDay = new Date();
-  // nextDay = nextDay.getTime() + 5000;
+  // const checkTime = (event) => {
+    if (expDate === tomorrow) {
+      console.log(expDate + " expDate vs. today's date " + today);
+      listContext.setList((list) => (list = []));
+      console.log()
+    } else {
+      console.log("You still have time. It's still today not tomorrow");
+    }
 
-  setTime(expDate + 5000)
-
-const timeDiff = elapsedTime - expDate;
-
-if (timeDiff >= 10000) {
-  console.log("10 seconds have passed!");
-  listContext.setList((list) => (list = []));
-} else {
-  console.log("You still have time.")
-}
-console.log(expDate)
-// console.log(nextDay)
-console.log(elapsedTime)
-}
+    console.log("Today " + today);
+    console.log("Tomorrow expDate " + expDate);
+  // };
 
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {
@@ -75,31 +77,36 @@ console.log(elapsedTime)
     return (
       <>
         <Row className="d-flex text-center mt-5">
-        <button onClick={checkTime} className="btn btn-primary mt-2">
-               Check if 10 seconds has passed since new list started
-              </button>
-              Seconds of day started: {expDate}
-              <p></p>Seconds of 10 seconds passed: {elapsedTime}
-         <Link to="/"> <h1>
-            <strong>{totalHope} of 3</strong>
-          </h1>
-        </Link>
+          {/* <button onClick={checkTime} className="btn btn-primary mt-2">
+            Check if 10 seconds has passed since new list started
+          </button>
+          ExpDate: {expDate}
+          <p></p>Today's Date: {today} */}
+          <Link to="/">
+            {" "}
+            <h1>
+              <strong>{totalHope} of 3</strong>
+            </h1>
+          </Link>
         </Row>
         <Row className="text-center mt-3">
-          <Col className="d-flex jusity-content-center">
-            <h4>
+          <Col className="col-2"></Col>
+          <Col className="d-flex jusity-content-center col-8">
+            <h5>
               {" "}
               {totalHope === 0 &&
                 "Get started by clicking [+] button below."}{" "}
               <p></p>
               {totalHope === 0 &&
-                "Fill your hope bucket with thoughts, things that happen during the day, people that give you hope, or a action you took that gives you hope."}
-              <p></p>
-              {totalHope === 0 && "Hope comes in many forms!"}
+                "Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who help and support you, or an action you took that gives you hope."
+               }
+                <p></p>
+                 {totalHope === 0 && "Each day your hope list resets. Try to get 3 hope items before the day ends and a new day begins!"}
               <p></p>
               {totalHope === 0 && "Make your hope list today!"}
-            </h4>
+            </h5>
           </Col>
+          <Col className="col-2"></Col>
         </Row>
         {/* <Row>
      { showNewList && <h2 className="mt-3 text-center">
@@ -148,6 +155,7 @@ console.log(elapsedTime)
             </ListGroup>
           </Col>
         </Row>
+        <Nav2></Nav2>
       </>
     );
   } else {
@@ -188,6 +196,7 @@ console.log(elapsedTime)
             </ListGroup>
           </Col>
         </Row>
+        <Nav2></Nav2>
       </>
     );
   }
