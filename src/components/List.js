@@ -1,10 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+//context
 import { ListContext } from "../ListContext";
+//bootstrap
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
+//hooks
 import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
+//components
 import { handleOpen } from "../components/Nav2";
 
 function List() {
@@ -24,28 +29,43 @@ function List() {
     listContext.setList(updateList);
   }
 
-  const today = new Date();
+  // const today = new Date();
 
-  const nextDay = new Date();
-  nextDay.setDate(nextDay.getDate() + 1);
+  // const nextDay = new Date();
+  // nextDay.setDate(nextDay.getSeconds() + 5);
 
-  if (expDate === nextDay) {
-    setListDate(nextDay);
-  }
+  // if (expDate === nextDay) {
+  //   listContext.setList((list) => (list = []));
+  //   setListDate(nextDay);
+  // }
 
- const handleNewList = (event) => {
+  let startTime = new Date();
+
+  // const intervalId = setInterval(() => {
+    let endTime = new Date();
+    let elapsedTime = endTime.getTime() - startTime.getTime();
+
+    if (elapsedTime === 5000) {
+      console.log("5 seconds have passed!");
+    }
+  // });
+
+
+  // console.log("exp date is " + expDate);
+  // console.log("next day is " + nextDay);
+
+  const handleNewList = (event) => {
     listContext.setList((list) => (list = []));
   };
 
-    //check state of total hope if 0 show new list icon and buttons
-    useEffect(() => {
-      if (totalHope === 0 || totalHope >= 3) {
-        setShowListLinks(true);
-      } else {
-        setShowListLinks(false);
-      }
-    }, [totalHope]);
-
+  //check state of total hope if 0 show new list icon and buttons
+  useEffect(() => {
+    if (totalHope === 0 || totalHope >= 3) {
+      setShowListLinks(true);
+    } else {
+      setShowListLinks(false);
+    }
+  }, [totalHope]);
 
   //useEffect used to deal with state changes?
   useEffect(() => {
@@ -54,30 +74,33 @@ function List() {
     }
   }, [totalHope]);
 
-  // useEffect(() => {
-  //   if (expDate === nextDay) {
-  //    setList("");
-  //   }
-  // },[expDate]);
-
-  if (totalHope < 3 || expDate === today) {
+  // if (totalHope < 3 || expDate === today) {
+  if (totalHope < 3) {
     return (
       <>
-      <Row className="d-flex text-center mt-5"><h2><strong>{totalHope } of 3</strong></h2></Row>
-        <Row className="text-center mt-5">
+        <Row className="d-flex text-center mt-5">
+         <Link to="/"> <h1>
+            <strong>{totalHope} of 3</strong>
+          </h1>
+        </Link>
+        </Row>
+        <Row className="text-center mt-3">
           <Col className="d-flex jusity-content-center">
-
-          <h4> {totalHope === 0 &&  "Get started by clicking [+] button below."
-  } <p></p>
-   {totalHope === 0 && "Fill your hope bucket with thoughts, things that happen during the day, people that give you hope, or a action you took that gives you hope."}<p></p>
-{totalHope === 0 && "Hope comes in many forms!"}<p></p>
-{totalHope === 0 && "Make your hope list today!"}
-             </h4>
-
-
+            <h4>
+              {" "}
+              {totalHope === 0 &&
+                "Get started by clicking [+] button below."}{" "}
+              <p></p>
+              {totalHope === 0 &&
+                "Fill your hope bucket with thoughts, things that happen during the day, people that give you hope, or a action you took that gives you hope."}
+              <p></p>
+              {totalHope === 0 && "Hope comes in many forms!"}
+              <p></p>
+              {totalHope === 0 && "Make your hope list today!"}
+            </h4>
           </Col>
         </Row>
-     {/* <Row>
+        {/* <Row>
      { showNewList && <h2 className="mt-3 text-center">
             <button onClick={handleOpen} className="btn btn-primary p-4 mt-2">
               Add hope
@@ -138,10 +161,11 @@ function List() {
         </Row>
         <Row>
           <h3 className="mt-3 mb-2 text-center">
-            { showNewList && <button onClick={handleNewList} className="btn btn-primary mt-2">
-              Start New List
-            </button>
-  }
+            {showNewList && (
+              <button onClick={handleNewList} className="btn btn-primary mt-2">
+                Start New List
+              </button>
+            )}
           </h3>
         </Row>
 
@@ -163,12 +187,9 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-
       </>
     );
   }
 }
-
-
 
 export default List;

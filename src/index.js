@@ -1,16 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+//css
 import "./index.css";
+//bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Container from "react-bootstrap/Container";
+//components
 import List from "./components/List";
 import Nav2 from "./components/Nav2";
-import { Outlet } from "react-router-dom";
-import Container from "react-bootstrap/Container";
 import Bucket from "./components/Bucket";
 import App from "./App";
-import { ListContextProvider, ListAgeProvider } from "./ListContext";
+import { ListContextProvider } from "./ListContext";
 import Newsletter from "./components/Newsletter";
 import TopMenu from "./components/TopMenu";
 
@@ -26,7 +28,7 @@ ReactDOM.render(
       <BrowserRouter>
         <TopMenu></TopMenu>
         <Container style={containerStyles}>
-          <h1 className="logoName mb-2">Hope Bucket</h1>
+        <Link  to="/"><h1 className="logoName mb-2">HopeBucket</h1></Link>
 
           <Routes>
             <Route path="/" element={<App />} />

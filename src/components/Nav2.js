@@ -1,13 +1,13 @@
-import React from "react";
-import { useState, useContext, useRef, useEffect } from "react";
+import { React, useState, useContext, useRef, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+//bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
-import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+//context
 import { ListContext } from "../ListContext";
-import { useNavigate } from "react-router-dom";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
@@ -233,7 +233,7 @@ function OffCanvasExample({ name, ...props }) {
             </button>
           </Link>
 
-          {toggleBucket ? (
+          {/* {toggleBucket ? (
             <Link onClick={handleNavClick} to="/list">
               <button type="button" className="btn btn-primary">
                 <svg
@@ -264,7 +264,7 @@ function OffCanvasExample({ name, ...props }) {
                 </svg>
               </button>
             </Link>
-          )}
+          )} */}
         </div>
       </nav>
     </>
