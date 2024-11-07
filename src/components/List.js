@@ -29,37 +29,27 @@ function List() {
     listContext.setList(updateList);
   }
 
-  // const today = new Date();
-
-  // const nextDay = new Date();
-  // nextDay.setDate(nextDay.getSeconds() + 5);
-
-  // if (expDate === nextDay) {
-  //   listContext.setList((list) => (list = []));
-  //   setListDate(nextDay);
-  // }
-
-  let startTime = new Date();
-
-  // const intervalId = setInterval(() => {
-    const checkTime = () => {
-    let endTime = new Date();
-    let elapsedTime = endTime.getTime() - startTime.getTime();
-
-    if (elapsedTime == 5000) {
-      console.log("5 seconds have passed!");
-    }
-    return;
-  }
-  // });
-
-console.log(checkTime)
-  // console.log("exp date is " + expDate);
-  // console.log("next day is " + nextDay);
-
   const handleNewList = (event) => {
+    setListDate(new Date().getTime());
     listContext.setList((list) => (list = []));
   };
+
+const checkTime = (event) => {
+  let nextDay = new Date();
+  nextDay = nextDay.getTime() + 5000;
+
+let elapsedTime = nextDay - expDate;
+
+if (elapsedTime >= 10000) {
+  console.log("10 seconds have passed!");
+  listContext.setList((list) => (list = []));
+} else {
+  console.log("You still have time.")
+}
+console.log(expDate)
+console.log(nextDay)
+console.log(elapsedTime)
+}
 
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {
@@ -82,6 +72,9 @@ console.log(checkTime)
     return (
       <>
         <Row className="d-flex text-center mt-5">
+        <button onClick={checkTime} className="btn btn-primary mt-2">
+               Check Time
+              </button>
          <Link to="/"> <h1>
             <strong>{totalHope} of 3</strong>
           </h1>

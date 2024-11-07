@@ -8,15 +8,17 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 //context
 import { ListContext } from "../ListContext";
+import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
   const [isLeft, setLeft] = useState(true);
-  const [toggleBucket, setToggleBucket] = useState(true);
+  // const [toggleBucket, setToggleBucket] = useState(true);
   const [showNewList, setShowListLinks] = useState(true);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
+  const [expDate, setListDate] = useLocalStorage("listDate", "");
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
@@ -29,9 +31,9 @@ function OffCanvasExample({ name, ...props }) {
 
   const fieldFocus = useRef();
 
-  const handleNavClick = (event) => {
-    setToggleBucket((current) => !current);
-  };
+  // const handleNavClick = (event) => {
+  //   setToggleBucket((current) => !current);
+  // };
 
   const navStyles = {
     navAlign: {
@@ -48,6 +50,7 @@ function OffCanvasExample({ name, ...props }) {
 
   const handleNewList = (event) => {
     setShowListLinks(false);
+    setListDate(new Date().getTime());
     listContext.setList((list) => (list = []));
   };
 
