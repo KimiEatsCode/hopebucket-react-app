@@ -1,10 +1,10 @@
 import React from "react";
-import Bucket from "./components/Bucket";
+import Intro from "./components/Intro";
 
 function App() {
   return (
     <>
-      <Bucket></Bucket>
+      <Intro></Intro>
     </>
   );
 }
