@@ -20,6 +20,7 @@ function List() {
     "bucket list localStorage using listContext " + JSON.stringify(list)
   );
   const [showNewList, setShowListLinks] = useState(true);
+  const [elapsedTime, setTime] = useState(true);
   const [expDate, setListDate] = useLocalStorage("listDate", "");
 
   let totalHope = listContext.list.length;
@@ -35,19 +36,21 @@ function List() {
   };
 
 const checkTime = (event) => {
-  let nextDay = new Date();
-  nextDay = nextDay.getTime() + 5000;
+  // let nextDay = new Date();
+  // nextDay = nextDay.getTime() + 5000;
 
-let elapsedTime = nextDay - expDate;
+  setTime(expDate + 5000)
 
-if (elapsedTime >= 10000) {
+const timeDiff = elapsedTime - expDate;
+
+if (timeDiff >= 10000) {
   console.log("10 seconds have passed!");
   listContext.setList((list) => (list = []));
 } else {
   console.log("You still have time.")
 }
 console.log(expDate)
-console.log(nextDay)
+// console.log(nextDay)
 console.log(elapsedTime)
 }
 
@@ -73,8 +76,10 @@ console.log(elapsedTime)
       <>
         <Row className="d-flex text-center mt-5">
         <button onClick={checkTime} className="btn btn-primary mt-2">
-               Check Time
+               Check if 10 seconds has passed since new list started
               </button>
+              Seconds of day started: {expDate}
+              <p></p>Seconds of 10 seconds passed: {elapsedTime}
          <Link to="/"> <h1>
             <strong>{totalHope} of 3</strong>
           </h1>
