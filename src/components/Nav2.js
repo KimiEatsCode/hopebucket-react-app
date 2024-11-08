@@ -33,6 +33,7 @@ function OffCanvasExample({ name, ...props }) {
   const navStyles = {
     navAlign: {
       textAlign: "center",
+      paddingBottom:"20px",
       // right: isLeft ? "10px" : "",
       // left: isLeft ? "" : "10px",
     },
@@ -217,7 +218,7 @@ function OffCanvasExample({ name, ...props }) {
 {expDate && <Link onClick={handleOpen}>
           <button
             type="button"
-            className="btn btn-primary mb-5"
+            className="btn btn-primary"
             disabled={totalHope >= 3}
           >
             <svg
