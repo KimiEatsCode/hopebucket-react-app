@@ -23,6 +23,7 @@ const containerStyles = {
   flexDirection: "column",
   minHeight: "80vh",
   paddingTop: "20px",
+  justifyContent: "center"
 };
 
 ReactDOM.render(

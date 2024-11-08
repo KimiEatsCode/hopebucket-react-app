@@ -63,6 +63,7 @@ function List() {
   if (totalHope < 3) {
     return (
       <>
+
         <Row className="d-flex text-center mt-5">
           {/* <button onClick={checkTime} className="btn btn-primary mt-2">
             Check if 10 seconds has passed since new list started
@@ -76,8 +77,8 @@ function List() {
             </h1>
           </Link>
         </Row>
-        <Row className="text-center mt-3">
-          <Col className="d-flex jusity-content-center">
+        <Row className="text-center mt-3 jusity-content-center ">
+          <Col className="col-md-8 mx-auto">
             <h5>
               {" "}
               {totalHope === 0 &&
@@ -140,6 +141,7 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
+
       </>
     );
   } else {
@@ -180,6 +182,7 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
+
       </>
     );
   }
