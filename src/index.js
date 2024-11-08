@@ -15,37 +15,39 @@ import App from "./App";
 import TopMenu from "./components/TopMenu";
 
 //context
-import { ListContextProvider } from "./ListContext";
-
+import { ListContextProvider } from "./contexts/ListContext";
+import { ExpContextProvider } from "./contexts/ExpContext";
 
 const containerStyles = {
   display: "flex",
   flexDirection: "column",
   minHeight: "80vh",
-  paddingTop:"20px"
+  paddingTop: "20px",
 };
 
 ReactDOM.render(
   <React.StrictMode>
-    <ListContextProvider>
-      <BrowserRouter>
-        <TopMenu></TopMenu>
-        <Container style={containerStyles}>
-        <Link  to="/"><h1 className="logoName mb-2">HopeBucket</h1></Link>
+    <ExpContextProvider>
+      <ListContextProvider>
+        <BrowserRouter>
+          <TopMenu></TopMenu>
+          <Container style={containerStyles}>
+            <Link to="/">
+              <h1 className="logoName mb-2">HopeBucket</h1>
+            </Link>
 
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="/bucket" element={<Bucket />} />
-            <Route path="/list" element={<List />} />
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="/bucket" element={<Bucket />} />
+              <Route path="/list" element={<List />} />
+            </Routes>
+          </Container>
+          <Nav2></Nav2>
+        </BrowserRouter>
 
-          </Routes>
-
-        </Container>
-        <Nav2></Nav2>
-      </BrowserRouter>
-
-      <Outlet />
-    </ListContextProvider>
+        <Outlet />
+      </ListContextProvider>
+    </ExpContextProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

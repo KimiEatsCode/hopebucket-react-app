@@ -16,6 +16,7 @@ function List() {
   const list = listContext.list;
 
   const expContext = useContext(ExpContext);
+  const expDate = expContext.expDate;
 
   const [showNewList, setShowListLinks] = useState(true);
 
@@ -38,25 +39,13 @@ function List() {
   const tomorrow = mm + "/" + dd2 + "/" + yyyy;
 
   const handleNewList = (event) => {
-    expContext.setExpDate(tomorrow);
+    expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
-  //BELOW causes infinite loop
-
-  // const checkTime = (event) => {
-  // if (expDate === today) {
-  //   console.log(expDate + " expDate vs. today's date " + today);
-  //   ListContext.setList((list) => (list = []));
-  //   console.log()
-  // } else {
-  //   console.log("You still have time. It's still today not tomorrow");
-  // }
-  // };
-
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {
-    if (totalHope === 0 || totalHope >= 3) {
+    if (totalHope === 0 || totalHope >= 3 || !expDate) {
       setShowListLinks(true);
     } else {
       setShowListLinks(false);
@@ -88,7 +77,6 @@ function List() {
           </Link>
         </Row>
         <Row className="text-center mt-3">
-
           <Col className="d-flex jusity-content-center">
             <h5>
               {" "}
@@ -104,7 +92,6 @@ function List() {
               {totalHope === 0 && "Make your hope list today!"}
             </h5>
           </Col>
-      
         </Row>
         {/* <Row>
      { showNewList && <h2 className="mt-3 text-center">
