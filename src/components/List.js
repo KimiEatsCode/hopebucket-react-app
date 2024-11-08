@@ -1,24 +1,23 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 //context
-import { ListContext } from "../ListContext";
+import { ListContext } from "../contexts/ListContext";
+import { ExpContext } from "../contexts/ExpContext";
 //bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //hooks
-import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
+
 //components
-import { handleOpen } from "../components/Nav2";
-import Nav2 from "../components/Nav2";
 
 function List() {
   const listContext = useContext(ListContext);
   const list = listContext.list;
 
+  const expContext = useContext(ExpContext);
 
   const [showNewList, setShowListLinks] = useState(true);
-  const [expDate, setExpDate] = useLocalStorage("listDate", "");
 
   let totalHope = listContext.list.length;
 
@@ -39,20 +38,20 @@ function List() {
   const tomorrow = mm + "/" + dd2 + "/" + yyyy;
 
   const handleNewList = (event) => {
-    setExpDate(tomorrow);
+    expContext.setExpDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
   //BELOW causes infinite loop
 
   // const checkTime = (event) => {
-    // if (expDate === today) {
-    //   console.log(expDate + " expDate vs. today's date " + today);
-    //   listContext.setList((list) => (list = []));
-    //   console.log()
-    // } else {
-    //   console.log("You still have time. It's still today not tomorrow");
-    // }
+  // if (expDate === today) {
+  //   console.log(expDate + " expDate vs. today's date " + today);
+  //   ListContext.setList((list) => (list = []));
+  //   console.log()
+  // } else {
+  //   console.log("You still have time. It's still today not tomorrow");
+  // }
   // };
 
   //check state of total hope if 0 show new list icon and buttons
@@ -89,23 +88,23 @@ function List() {
           </Link>
         </Row>
         <Row className="text-center mt-3">
-          <Col className="col-2"></Col>
-          <Col className="d-flex jusity-content-center col-8">
+
+          <Col className="d-flex jusity-content-center">
             <h5>
               {" "}
               {totalHope === 0 &&
                 "Get started by clicking [+] button below."}{" "}
               <p></p>
               {totalHope === 0 &&
-                "Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who help and support you, or an action you took that gives you hope."
-               }
-                <p></p>
-                 {totalHope === 0 && "Each day your hope list resets. Try to get 3 hope items before the day ends and a new day begins!"}
+                "Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who help and support you, or an action you took that gives you hope."}
+              <p></p>
+              {totalHope === 0 &&
+                "Each day your hope list resets. Try to get 3 hope items before the day ends and a new day begins!"}
               <p></p>
               {totalHope === 0 && "Make your hope list today!"}
             </h5>
           </Col>
-          <Col className="col-2"></Col>
+      
         </Row>
         {/* <Row>
      { showNewList && <h2 className="mt-3 text-center">
@@ -194,7 +193,6 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-
       </>
     );
   }
