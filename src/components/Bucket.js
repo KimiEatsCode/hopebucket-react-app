@@ -10,7 +10,7 @@ function Bucket() {
   const expContext = useContext(ExpContext);
 
   let totalHope = listContext.list.length;
-  let expiry = expContext.expDate;
+  let expDate = expContext.expDate;
 
   return (
     <>
@@ -18,7 +18,7 @@ function Bucket() {
         <Col>
           <Link to="/list">
             <div className="itemCount mt-5">{totalHope}</div>
-            {expiry}
+            <div className="countDowneading text-center"><h4>List Expires: {expDate}</h4></div>
             <div className="bucketIcon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"

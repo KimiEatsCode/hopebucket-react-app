@@ -214,10 +214,10 @@ function OffCanvasExample({ name, ...props }) {
           </Link>
         )}
 
-        <Link onClick={handleOpen}>
+{expDate && <Link onClick={handleOpen}>
           <button
             type="button"
-            className="btn btn-primary"
+            className="btn btn-primary mb-5"
             disabled={totalHope >= 3}
           >
             <svg
@@ -232,6 +232,7 @@ function OffCanvasExample({ name, ...props }) {
             </svg>
           </button>
         </Link>
+}
       </nav>
     </>
   );
