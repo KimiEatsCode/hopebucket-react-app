@@ -10,23 +10,12 @@ body {
   background-color:aliceblue!important;
 }
 
-/* .container {
-  padding-bottom:150px!important;
-} */
-
-iframe {
-  width:90%!important;
-}
-
 .logoName {
   font-family: "Delicious Handrawn", cursive;
-  font-optical-sizing: auto;
   font-size:3.8em;
   font-weight:bold;
   font-style: normal;
-  padding-top:10px;
   text-align:center;
-  margin-top:10px;
 }
 
 .light-theme {
