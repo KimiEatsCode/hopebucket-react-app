@@ -65,13 +65,8 @@ function List() {
       <>
 
         <Row className="d-flex text-center mt-5">
-          {/* <button onClick={checkTime} className="btn btn-primary mt-2">
-            Check if 10 seconds has passed since new list started
-          </button>
-          ExpDate: {expDate}
-          <p></p>Today's Date: {today} */}
           <Link to="/">
-            {" "}
+          <h4>List Expires: {expDate}</h4>
             <h1>
               <strong>{totalHope} of 3</strong>
             </h1>
