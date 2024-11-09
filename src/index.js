@@ -21,7 +21,6 @@ import { ExpContextProvider } from "./contexts/ExpContext";
 const containerStyles = {
   display: "flex",
   flexDirection: "column",
-  minHeight: "80vh",
   paddingTop: "20px",
   justifyContent: "center"
 };

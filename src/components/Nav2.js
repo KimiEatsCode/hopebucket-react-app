@@ -33,7 +33,9 @@ function OffCanvasExample({ name, ...props }) {
   const navStyles = {
     navAlign: {
       textAlign: "center",
-      paddingBottom:"20px",
+      paddingBottom: "20px",
+      position: "relative",
+      bottom: "-150px",
       // right: isLeft ? "10px" : "",
       // left: isLeft ? "" : "10px",
     },
@@ -139,19 +141,26 @@ function OffCanvasExample({ name, ...props }) {
               />
             </Col>
             <p></p>
-              <Button onClick={addItem}>
-              <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" className="bi bi-check-circle-fill" viewBox="0 0 16 16">
-  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
-</svg>
-              </Button>
+            <Button onClick={addItem}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="40"
+                height="40"
+                fill="currentColor"
+                className="bi bi-check-circle-fill"
+                viewBox="0 0 16 16"
+              >
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+              </svg>
+            </Button>
           </Row>
         </Offcanvas.Body>
       </Offcanvas>
-<Row>
-      <nav style={navStyles.navAlign}>
-        <i className="bi bi-box-arrow-left"></i>
+      <Row>
+        <nav style={navStyles.navAlign}>
+          <i className="bi bi-box-arrow-left"></i>
 
-        {/* {toggleAlignNav ? (
+          {/* {toggleAlignNav ? (
             <Link onClick={handleNavAlign}>
               <button type="button" className="btn btn-primary">
                 <svg
@@ -197,44 +206,45 @@ function OffCanvasExample({ name, ...props }) {
             </Link>
           )} */}
 
-        {showNewList && (
-          <Link onClick={handleNewList}>
-            <button type="button" className="btn btn-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="44"
-                height="44"
-                fill="currentColor"
-                className="bi bi-file-earmark-plus"
-                viewBox="0 0 16 16"
-              >
-                <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
-              </svg>
-            </button>
-          </Link>
-        )}
+          {showNewList && (
+            <Link onClick={handleNewList}>
+              <button type="button" className="btn btn-primary">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="44"
+                  height="44"
+                  fill="currentColor"
+                  className="bi bi-file-earmark-plus"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                </svg>
+              </button>
+            </Link>
+          )}
 
-{expDate && <Link onClick={handleOpen}>
-          <button
-            type="button"
-            className="btn btn-primary"
-            disabled={totalHope >= 3}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="44"
-              height="44"
-              fill="currentColor"
-              className="bi bi-plus-circle-fill"
-              viewBox="0 0 16 16"
-            >
-              <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-            </svg>
-          </button>
-        </Link>
-}
-      </nav>
+          {expDate && (
+            <Link onClick={handleOpen}>
+              <button
+                type="button"
+                className="btn btn-primary"
+                disabled={totalHope >= 3}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="44"
+                  height="44"
+                  fill="currentColor"
+                  className="bi bi-plus-circle-fill"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                </svg>
+              </button>
+            </Link>
+          )}
+        </nav>
       </Row>
     </>
   );
