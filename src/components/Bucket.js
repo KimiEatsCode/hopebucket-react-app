@@ -14,11 +14,21 @@ function Bucket() {
 
   return (
     <>
+     <Row className="text-center mt-4 mb-2">
+        <Col>
+          <h3>
+            {totalHope === 3 ? "Congrats! You fill your hope bucket!" : ""}
+            {totalHope === 0 ? "Add hope to fill up your hope bucket!" : ""}
+          </h3>
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Link to="/list">
-            <div className="itemCount mt-5">{totalHope}</div>
-            <div className="countDowneading text-center"><h4>List Expires: {expDate}</h4></div>
+            <div className="hopeCount text-center">
+            <h1>
+              <strong>{totalHope} of 3</strong>
+            </h1></div>
             <div className="bucketIcon">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -34,14 +44,7 @@ function Bucket() {
           </Link>
         </Col>
       </Row>
-      <Row className="text-center mt-4">
-        <Col>
-          <h3>
-            {totalHope === 3 ? "Congrats! You fill your hope bucket!" : ""}
-            {totalHope === 0 ? "Add hope to fill up your hope bucket!" : ""}
-          </h3>
-        </Col>
-      </Row>
+
     </>
   );
 }
