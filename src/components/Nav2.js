@@ -147,7 +147,7 @@ function OffCanvasExample({ name, ...props }) {
           </Row>
         </Offcanvas.Body>
       </Offcanvas>
-
+<Row>
       <nav style={navStyles.navAlign}>
         <i className="bi bi-box-arrow-left"></i>
 
@@ -235,6 +235,7 @@ function OffCanvasExample({ name, ...props }) {
         </Link>
 }
       </nav>
+      </Row>
     </>
   );
 }
