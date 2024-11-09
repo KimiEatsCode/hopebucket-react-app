@@ -65,7 +65,8 @@ function OffCanvasExample({ name, ...props }) {
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    if (totalHope >= 3 || !expDate) {
+    // if (totalHope >= 3 || !expDate) {
+    if (!expDate) {
       setShowListLinks(true);
     } else {
       setShowListLinks(false);
