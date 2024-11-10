@@ -52,7 +52,6 @@ function List() {
       }
       hasRun = true;
     }
-    expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   });
 
