@@ -42,18 +42,32 @@ function List() {
     expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
-
+  console.log(today + " vs " +  expDate)
   useEffect(() => {
-
-    let hasRun = false;
-    if (today === expDate) {
-      if (hasRun === false) {
-        alert("it's a new day");
-      }
-      hasRun = true;
-    }
+    const intervalId = setInterval(() => {
+    
+      if (today === expDate) {
+        console.log("stuff")
+        expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
-  });
+        // Update state when a new day starts
+      }
+    }, 1000); // Check every second
+  
+    return () => clearInterval(intervalId); // Clear interval on unmount
+  }, [expDate,tomorrow ,today, expContext, listContext]);
+  
+  
+  // useEffect(() => {
+  //   let hasRun = false;
+  //   if (today === expDate) {
+  //     if (hasRun === false) {
+  //       alert("it's a new day");
+  //     }
+  //     hasRun = true;
+  //   }
+  //   listContext.setList((list) => (list = []));
+  // });
 
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {

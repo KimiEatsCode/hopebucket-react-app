@@ -65,6 +65,18 @@ function OffCanvasExample({ name, ...props }) {
   // }
 // });
 
+useEffect(() => {
+  const intervalId = setInterval(() => {
+    listContext.setList((list) => (list = []));
+    if (today === expDate) {
+      // Update state when a new day starts
+
+    }
+  }, 1000); // Check every second
+
+  return () => clearInterval(intervalId); // Clear interval on unmount
+}, [expDate, today, listContext]);
+
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
@@ -128,9 +140,7 @@ function OffCanvasExample({ name, ...props }) {
   return (
     <>
       <Offcanvas show={showAddField} onHide={handleClose} {...props}>
-        <Offcanvas.Header>
-          <Offcanvas.Title></Offcanvas.Title>
-        </Offcanvas.Header>
+       
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
             <Col>
