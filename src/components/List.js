@@ -38,23 +38,26 @@ function List() {
   const dd2 = dd1 + 1;
   const tomorrow = mm + "/" + dd2 + "/" + yyyy;
 
-  // let hasRun = false;
-
-//   if(today === expDate) {
-// if(hasRun = false) {
-//   alert("it's a new day")
-// }
-//  hasRun = true;
-  // }
-
   const handleNewList = () => {
     expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
+  useEffect(() => {
+    let hasRun = false;
+
+    if (today === expDate) {
+      if (hasRun === false) {
+        alert("it's a new day");
+      }
+      hasRun = true;
+    }
+    expContext.setListDate(tomorrow);
+    listContext.setList((list) => (list = []));
+  });
+
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {
-
     if (!expDate) {
       setShowListLinks(true);
     } else {
@@ -75,7 +78,7 @@ function List() {
       <>
         <Row className="d-flex text-center mt-5">
           <Link to="/">
-         <h4>List Expires: {expDate}</h4>
+            <h4>List Expires: {expDate}</h4>
 
             <h1>
               <strong>{totalHope} of 3</strong>
@@ -146,7 +149,6 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-
       </>
     );
   } else {
@@ -187,7 +189,6 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-
       </>
     );
   }

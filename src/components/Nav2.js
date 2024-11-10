@@ -32,17 +32,6 @@ function OffCanvasExample({ name, ...props }) {
 
   const fieldFocus = useRef();
 
-  const navStyles = {
-    navAlign: {
-      textAlign: "center",
-      paddingBottom: "20px",
-      position: "relative",
-      bottom: "-150px",
-      // right: isLeft ? "10px" : "",
-      // left: isLeft ? "" : "10px",
-    },
-  };
-
   // const handleNavAlign = (event) => {
   //   setLeft((isLeft) => !isLeft);
   //   setToggleAlignNav((current) => !current);
@@ -160,7 +149,7 @@ function OffCanvasExample({ name, ...props }) {
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-        <nav style={navStyles.navAlign}>
+      <nav class="navbar navbar-default navbar-fixed-bottom">
           <i className="bi bi-box-arrow-left"></i>
 
           {/* {toggleAlignNav ? (
