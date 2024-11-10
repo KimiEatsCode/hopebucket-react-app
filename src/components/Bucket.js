@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ListContext } from "../contexts/ListContext";
-import { ExpContext } from "../contexts/ExpContext";
+// import { ExpContext } from "../contexts/ExpContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function Bucket() {
   const listContext = useContext(ListContext);
-  const expContext = useContext(ExpContext);
+  // const expContext = useContext(ExpContext);
 
   let totalHope = listContext.list.length;
-  let expDate = expContext.expDate;
+  // let expDate = expContext.expDate;
 
   return (
     <>

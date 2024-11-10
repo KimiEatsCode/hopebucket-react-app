@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 //css
-import "./index.css";
+import "./styles/index.css";
+import "./styles/styleConfetti.css";
 //bootstrap
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.css";

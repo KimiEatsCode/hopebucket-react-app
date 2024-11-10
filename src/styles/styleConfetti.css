@@ -1,0 +1,24 @@
+body {
+    font-family: 'Shojumaru', cursive;
+    background-color: #b38867;
+  }
+
+  .title {
+    font-size: 100px;
+    color: white;
+    text-align: center;
+  }
+
+  .emoji-container {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  .emoji {
+    font-size: 200px;
+  }
+
+  .button-container {
+    text-align: center;
+  }

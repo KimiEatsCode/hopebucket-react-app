@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
@@ -38,19 +38,29 @@ function List() {
   const dd2 = dd1 + 1;
   const tomorrow = mm + "/" + dd2 + "/" + yyyy;
 
-  const handleNewList = (event) => {
+  // let hasRun = false;
+
+//   if(today === expDate) {
+// if(hasRun = false) {
+//   alert("it's a new day")
+// }
+//  hasRun = true;
+  // }
+
+  const handleNewList = () => {
     expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {
-    if (totalHope === 0 || totalHope >= 3 || !expDate) {
+
+    if (!expDate) {
       setShowListLinks(true);
     } else {
       setShowListLinks(false);
     }
-  }, [totalHope]);
+  }, [totalHope, expDate]);
 
   //useEffect used to deal with state changes?
   useEffect(() => {
@@ -63,10 +73,10 @@ function List() {
   if (totalHope < 3) {
     return (
       <>
-
         <Row className="d-flex text-center mt-5">
           <Link to="/">
-          <h4>List Expires: {expDate}</h4>
+         <h4>List Expires: {expDate}</h4>
+
             <h1>
               <strong>{totalHope} of 3</strong>
             </h1>
@@ -145,7 +155,7 @@ function List() {
         <Row>
           <h4 className="mb-3 mt-3 text-center">
             {totalHope === 3
-              ? "Great Job! You've filled up your hope! Start a new list and fill up on more hope!"
+              ? "Great Job! You've filled up your hope for today! Treat yourself to some grace, fun, or rest today if you can. Tomorrow is a new day and new list!"
               : ""}
           </h4>
         </Row>

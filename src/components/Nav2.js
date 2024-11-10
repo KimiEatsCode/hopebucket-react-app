@@ -8,7 +8,7 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 //context
 import { ListContext } from "../contexts/ListContext";
-import { useLocalStorage } from "../hooks/useLocalStorageReceipe";
+import { ExpContext } from "../contexts/ExpContext";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
@@ -17,7 +17,9 @@ function OffCanvasExample({ name, ...props }) {
   // const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
-  const [expDate, setExpDate] = useLocalStorage("listDate", "");
+  const expContext = useContext(ExpContext);
+  const expDate = expContext.expDate;
+
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
@@ -59,7 +61,7 @@ function OffCanvasExample({ name, ...props }) {
 
   const handleNewList = (event) => {
     setShowListLinks(false);
-    setExpDate(tomorrow);
+    expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
 
