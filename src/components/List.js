@@ -44,8 +44,8 @@ function List() {
   };
 
   useEffect(() => {
-    let hasRun = false;
 
+    let hasRun = false;
     if (today === expDate) {
       if (hasRun === false) {
         alert("it's a new day");

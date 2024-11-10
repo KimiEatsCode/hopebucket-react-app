@@ -54,6 +54,18 @@ function OffCanvasExample({ name, ...props }) {
     listContext.setList((list) => (list = []));
   };
 
+  // useEffect(() => { 
+  // let hasRun = false;
+  // if (today === expDate) {
+  //   listContext.setList((list) => (list = []));
+  //   if (hasRun === false) {
+  //     console.log("new day")
+  //   }
+  //   hasRun = true;
+  // }
+// });
+
+
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
     // if (totalHope >= 3 || !expDate) {
