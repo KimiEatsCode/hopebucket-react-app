@@ -42,21 +42,7 @@ function List() {
     expContext.setListDate(tomorrow);
     listContext.setList((list) => (list = []));
   };
-  console.log(today + " vs " +  expDate)
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-    
-      if (today === expDate) {
-        console.log("stuff")
-        expContext.setListDate(tomorrow);
-    listContext.setList((list) => (list = []));
-        // Update state when a new day starts
-      }
-    }, 1000); // Check every second
-  
-    return () => clearInterval(intervalId); // Clear interval on unmount
-  }, [expDate,tomorrow ,today, expContext, listContext]);
-  
+
   
   // useEffect(() => {
   //   let hasRun = false;
