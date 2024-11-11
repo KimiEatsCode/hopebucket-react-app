@@ -43,17 +43,18 @@ function List() {
     listContext.setList((list) => (list = []));
   };
 
-  
-  // useEffect(() => {
-  //   let hasRun = false;
-  //   if (today === expDate) {
-  //     if (hasRun === false) {
-  //       alert("it's a new day");
-  //     }
-  //     hasRun = true;
-  //   }
-  //   listContext.setList((list) => (list = []));
-  // });
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+
+      if (today === expDate) {
+        // Update state when a new day starts
+        listContext.setList((list) => (list = []));
+      }
+    }, 1000); // Check every second
+
+    return () => clearInterval(intervalId); // Clear interval on unmount
+  }, [expDate, today, listContext]);
+
 
   //check state of total hope if 0 show new list icon and buttons
   useEffect(() => {
