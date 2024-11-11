@@ -33,15 +33,10 @@ function OffCanvasExample({ name, ...props }) {
   const fieldFocus = useRef();
 
   const navStyles = {
-    textAlign: "center",
-    padding: "2%",
-    backgroundColor: "#ccc",
-    position: "fixed",
-    navAlign: {
       position: "fixed",
+      bottom:"20px",
       left: isLeft ? "20px" : "",
       right: isLeft ? "" : "20px",
-    },
   };
 
   const handleNavAlign = (event) => {
@@ -175,7 +170,7 @@ useEffect(() => {
 
       <nav>
           <i className="bi bi-box-arrow-left"></i>
-<div style={navStyles.navAlign}>
+<div style={navStyles}>
            { toggleAlignNav ? (
             <Link onClick={handleNavAlign}>
               <button type="button" className="btn btn-primary">
