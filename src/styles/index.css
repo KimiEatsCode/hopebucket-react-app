@@ -70,7 +70,7 @@ h3 {
   background-size:contain;
   text-align: center;
   font-weight: bold;
-  margin: 0 auto;
+  margin: 0 auto 20 auto;
   max-width:500px;
   min-width:300px;
 
