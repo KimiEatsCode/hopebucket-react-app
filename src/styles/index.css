@@ -64,15 +64,23 @@ h3 {
 }
 
 .bucketIcon {
+  background-image: url("../images/bucket.svg");
+  background-repeat: no-repeat;
+  background-position: 50%;
+  background-size:contain;
   text-align: center;
   font-weight: bold;
   margin: 0 auto;
   max-width:500px;
+  min-width:300px;
+
 }
 
-.hopeCount.text-center {
+.hopeCount {
   position: relative;
-  top: 155px;
+  top: 20px;
+  left: 29%;
+  font-size:1.8em;
 }
 
 .no-wrap{
@@ -122,6 +130,7 @@ h3 {
   color: #fff!important;
   text-decoration:none;
 }
+
 
 @media screen and (min-width:768px) {
   .hopeCount.text-center {
