@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useRef } from "react";
+import React, { useContext, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
@@ -27,7 +27,7 @@ function List() {
     listContext.setList(updateList);
   }
 
-  let today = new Date();
+  let today = useMemo(() => new Date(),[]);
   //getMonth starts at 0 so add 1 to be this month
   const dd1 = today.getDate();
   const mm = today.getMonth() + 1;
