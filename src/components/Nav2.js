@@ -12,9 +12,9 @@ import { ExpContext } from "../contexts/ExpContext";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
-  // const [isLeft, setLeft] = useState(true);
+  const [isLeft, setLeft] = useState(true);
   const [showNewList, setShowListLinks] = useState(false);
-  // const [toggleAlignNav, setToggleAlignNav] = useState(true);
+  const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
 
   const expContext = useContext(ExpContext);
@@ -32,10 +32,22 @@ function OffCanvasExample({ name, ...props }) {
 
   const fieldFocus = useRef();
 
-  // const handleNavAlign = (event) => {
-  //   setLeft((isLeft) => !isLeft);
-  //   setToggleAlignNav((current) => !current);
-  // };
+  const navStyles = {
+    textAlign: "center",
+    padding: "2%",
+    backgroundColor: "#ccc",
+    position: "fixed",
+    navAlign: {
+      position: "fixed",
+      left: isLeft ? "20px" : "",
+      right: isLeft ? "" : "20px",
+    },
+  };
+
+  const handleNavAlign = (event) => {
+    setLeft((isLeft) => !isLeft);
+    setToggleAlignNav((current) => !current);
+  };
 
   let today = new Date();
   //getMonth starts at 0 so add 1 to be this month
@@ -54,23 +66,12 @@ function OffCanvasExample({ name, ...props }) {
     listContext.setList((list) => (list = []));
   };
 
-  // useEffect(() => { 
-  // let hasRun = false;
-  // if (today === expDate) {
-  //   listContext.setList((list) => (list = []));
-  //   if (hasRun === false) {
-  //     console.log("new day")
-  //   }
-  //   hasRun = true;
-  // }
-// });
-
 useEffect(() => {
   const intervalId = setInterval(() => {
-    listContext.setList((list) => (list = []));
+
     if (today === expDate) {
       // Update state when a new day starts
-
+      listContext.setList((list) => (list = []));
     }
   }, 1000); // Check every second
 
@@ -140,7 +141,7 @@ useEffect(() => {
   return (
     <>
       <Offcanvas show={showAddField} onHide={handleClose} {...props}>
-       
+
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
             <Col>
@@ -171,10 +172,11 @@ useEffect(() => {
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-      <nav class="navbar navbar-default navbar-fixed-bottom">
-          <i className="bi bi-box-arrow-left"></i>
 
-          {/* {toggleAlignNav ? (
+      <nav>
+          <i className="bi bi-box-arrow-left"></i>
+<div style={navStyles.navAlign}>
+           { toggleAlignNav ? (
             <Link onClick={handleNavAlign}>
               <button type="button" className="btn btn-primary">
                 <svg
@@ -218,7 +220,7 @@ useEffect(() => {
                 </svg>
               </button>
             </Link>
-          )} */}
+          )}
 
           {showNewList && (
             <Link onClick={handleNewList}>
@@ -258,6 +260,7 @@ useEffect(() => {
               </button>
             </Link>
           )}
+          </div>
         </nav>
       </Row>
     </>
