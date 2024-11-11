@@ -8,8 +8,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //hooks
-
 //components
+
 
 function List() {
   const listContext = useContext(ListContext);
@@ -27,33 +27,34 @@ function List() {
     listContext.setList(updateList);
   }
 
-  let today = useMemo(() => new Date(),[]);
-  //getMonth starts at 0 so add 1 to be this month
-  const dd1 = today.getDate();
-  const mm = today.getMonth() + 1;
-  const yyyy = today.getFullYear();
+  // let today = useMemo(() => new Date(),[]);
+  // //getMonth starts at 0 so add 1 to be this month
+  // const dd1 = today.getDate();
+  // const mm = today.getMonth() + 1;
+  // const yyyy = today.getFullYear();
 
-  today = mm + "/" + dd1 + "/" + yyyy;
+  // today = mm + "/" + dd1 + "/" + yyyy;
 
-  const dd2 = dd1 + 1;
-  const tomorrow = mm + "/" + dd2 + "/" + yyyy;
+  // const dd2 = dd1 + 1;
+  // const tomorrow = mm + "/" + dd2 + "/" + yyyy;
 
-  const handleNewList = () => {
-    expContext.setListDate(tomorrow);
-    listContext.setList((list) => (list = []));
-  };
+  // const handleNewList = () => {
+  //   expContext.setListDate(tomorrow);
+  //   listContext.setList((list) => (list = []));
+  // };
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
+  // useMemo(() => {
+  //   const intervalId = setInterval(() => {
+  //   console.log("today is " + today)
+  //   console.log("tomorrow is " + tomorrow)
+  //         if (today === expDate) {
+  //       // Update state when a new day starts
+  //       listContext.setList((list) => (list = []));
+  //     }
+  //   }, 60000); // Check every minute
 
-      if (today === expDate) {
-        // Update state when a new day starts
-        listContext.setList((list) => (list = []));
-      }
-    }, 1000); // Check every second
-
-    return () => clearInterval(intervalId); // Clear interval on unmount
-  }, [expDate, today, listContext]);
+  //   return () => clearInterval(intervalId); // Clear interval on unmount
+  // }, [expDate, today, tomorrow,listContext]);
 
 
   //check state of total hope if 0 show new list icon and buttons
@@ -78,7 +79,7 @@ function List() {
       <>
         <Row className="d-flex text-center mt-5">
           <Link to="/">
-            <h4>List Expires: {expDate}</h4>
+            {/* <h4>List Expires: {expDate}</h4> */}
 
             <h1>
               <strong>{totalHope} of 3</strong>
@@ -97,7 +98,7 @@ function List() {
               <p></p>
               {totalHope === 0 &&
                 "Each day your hope list resets. Try to get 3 hope items before the day ends and a new day begins!"}
-            
+
             </h5>
           </Col>
         </Row>
@@ -162,11 +163,11 @@ function List() {
         </Row>
         <Row>
           <h3 className="mt-3 mb-2 text-center">
-            {showNewList && (
+            {/* {showNewList && (
               <button onClick={handleNewList} className="btn btn-primary mt-2">
                 Start New List
               </button>
-            )}
+            )} */}
           </h3>
         </Row>
 

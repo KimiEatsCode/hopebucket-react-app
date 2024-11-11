@@ -33,8 +33,11 @@ function OffCanvasExample({ name, ...props }) {
   const fieldFocus = useRef();
 
   const navStyles = {
+      display:"flex",
       position: "fixed",
       bottom:"20px",
+      //fun use flex direction to change row direction
+      flexDirection: isLeft ? "row-reverse" : "",
       left: isLeft ? "20px" : "",
       right: isLeft ? "" : "20px",
   };
@@ -63,12 +66,12 @@ function OffCanvasExample({ name, ...props }) {
 
 useEffect(() => {
   const intervalId = setInterval(() => {
-
     if (today === expDate) {
       // Update state when a new day starts
+      console.log("new day today!")
       listContext.setList((list) => (list = []));
     }
-  }, 1000); // Check every second
+  }, 60000); // Check every second
 
   return () => clearInterval(intervalId); // Clear interval on unmount
 }, [expDate, today, listContext]);
@@ -85,9 +88,13 @@ useEffect(() => {
   }, [totalHope, expDate]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-    if (totalHope === 3) {
+console.log("totalhope " + list.length)
+    if (list.length === 2) {
       navigate("/");
       setShow(false);
+      // console.log("total Hope " + totalHope )
+      // expContext.setListDate("");
+
     } else if (list.length <= 3) {
       if (input !== "") {
         input = {
