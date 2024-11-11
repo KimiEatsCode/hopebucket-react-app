@@ -14,7 +14,7 @@ function Bucket() {
 
   return (
     <>
-     <Row className="text-center mt-4 mb-2">
+     <Row className="text-center mt-4 mb-2 mx-auto">
         <Col>
           <h3>
             {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
