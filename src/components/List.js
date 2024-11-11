@@ -97,8 +97,7 @@ function List() {
               <p></p>
               {totalHope === 0 &&
                 "Each day your hope list resets. Try to get 3 hope items before the day ends and a new day begins!"}
-              <p></p>
-              {totalHope === 0 && "Make your hope list today!"}
+            
             </h5>
           </Col>
         </Row>
