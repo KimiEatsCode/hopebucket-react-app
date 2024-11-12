@@ -9,6 +9,7 @@ import Form from "react-bootstrap/Form";
 //context
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
+//hook
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShow] = useState(false);
@@ -33,13 +34,13 @@ function OffCanvasExample({ name, ...props }) {
   const fieldFocus = useRef();
 
   const navStyles = {
-      display:"flex",
-      position: "fixed",
-      bottom:"20px",
-      //fun use flex direction to change row direction
-      flexDirection: isLeft ? "row-reverse" : "",
-      left: isLeft ? "20px" : "",
-      right: isLeft ? "" : "20px",
+    display: "flex",
+    position: "fixed",
+    bottom: "20px",
+    //fun use flex direction to change row direction
+    flexDirection: isLeft ? "row-reverse" : "",
+    left: isLeft ? "20px" : "",
+    right: isLeft ? "" : "20px",
   };
 
   const handleNavAlign = (event) => {
@@ -64,18 +65,17 @@ function OffCanvasExample({ name, ...props }) {
     listContext.setList((list) => (list = []));
   };
 
-useEffect(() => {
-  const intervalId = setInterval(() => {
-    if (today === expDate) {
-      // Update state when a new day starts
-      console.log("new day today!")
-      listContext.setList((list) => (list = []));
-    }
-  }, 60000); // Check every second
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      if (today === expDate) {
+        // Update state when a new day starts
+        console.log("new day today!");
+        listContext.setList((list) => (list = []));
+      }
+    }, 60000); // Check every second
 
-  return () => clearInterval(intervalId); // Clear interval on unmount
-}, [expDate, today, listContext]);
-
+    return () => clearInterval(intervalId); // Clear interval on unmount
+  }, [expDate, today, listContext]);
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
@@ -88,13 +88,12 @@ useEffect(() => {
   }, [totalHope, expDate]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-console.log("totalhope " + list.length)
+    console.log("totalhope " + list.length);
     if (list.length === 2) {
       navigate("/");
       setShow(false);
       // console.log("total Hope " + totalHope )
       // expContext.setListDate("");
-
     } else if (list.length <= 3) {
       if (input !== "") {
         input = {
@@ -143,11 +142,12 @@ console.log("totalhope " + list.length)
   return (
     <>
       <Offcanvas show={showAddField} onHide={handleClose} {...props}>
-
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
             <Col>
-              <Form.Control as="textarea" rows={3}
+              <Form.Control
+                as="textarea"
+                rows={3}
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
@@ -174,95 +174,93 @@ console.log("totalhope " + list.length)
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-
-      <nav>
+        <nav>
           <i className="bi bi-box-arrow-left"></i>
-<div style={navStyles}>
-           { toggleAlignNav ? (
+          <div style={navStyles}>
+            {toggleAlignNav ? (
               <Link onClick={handleNavAlign}>
-              <button type="button" className="btn btn-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="44"
-                  height="44"
-                  fill="currentColor"
-                  className="bi bi-box-arrow-right"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
-                  />
-                </svg>
-              </button>
-            </Link>
+                <button type="button" className="btn btn-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="44"
+                    height="44"
+                    fill="currentColor"
+                    className="bi bi-box-arrow-right"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            ) : (
+              <Link onClick={handleNavAlign}>
+                <button type="button" className="btn btn-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="44"
+                    height="44"
+                    fill="currentColor"
+                    className="bi bi-box-arrow-left"
+                    viewBox="0 0 16 16"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
+                    />
+                    <path
+                      fillRule="evenodd"
+                      d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
+                    />
+                  </svg>
+                </button>
+              </Link>
+            )}
 
-          ) : (
-            <Link onClick={handleNavAlign}>
-            <button type="button" className="btn btn-primary">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="44"
-                height="44"
-                fill="currentColor"
-                className="bi bi-box-arrow-left"
-                viewBox="0 0 16 16"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
-                />
-                <path
-                  fillRule="evenodd"
-                  d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
-                />
-              </svg>
-            </button>
-          </Link>
-          )}
+            {showNewList && (
+              <Link onClick={handleNewList}>
+                <button type="button" className="btn btn-primary">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="44"
+                    height="44"
+                    fill="currentColor"
+                    className="bi bi-file-earmark-plus"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
+                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                  </svg>
+                </button>
+              </Link>
+            )}
 
-          {showNewList && (
-            <Link onClick={handleNewList}>
-              <button type="button" className="btn btn-primary">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="44"
-                  height="44"
-                  fill="currentColor"
-                  className="bi bi-file-earmark-plus"
-                  viewBox="0 0 16 16"
+            {expDate && (
+              <Link onClick={handleOpen}>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  disabled={totalHope >= 3}
                 >
-                  <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
-                </svg>
-              </button>
-            </Link>
-          )}
-
-          {expDate && (
-            <Link onClick={handleOpen}>
-              <button
-                type="button"
-                className="btn btn-primary"
-                disabled={totalHope >= 3}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="44"
-                  height="44"
-                  fill="currentColor"
-                  className="bi bi-plus-circle-fill"
-                  viewBox="0 0 16 16"
-                >
-                  <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                </svg>
-              </button>
-            </Link>
-          )}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="44"
+                    height="44"
+                    fill="currentColor"
+                    className="bi bi-plus-circle-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
+                  </svg>
+                </button>
+              </Link>
+            )}
           </div>
         </nav>
       </Row>
