@@ -72,7 +72,7 @@ function OffCanvasExample({ name, ...props }) {
         console.log("new day today!");
         listContext.setList((list) => (list = []));
       }
-    }, 60000); // Check every second
+    }, 1000); // Check every second
 
     return () => clearInterval(intervalId); // Clear interval on unmount
   }, [expDate, today, listContext]);
