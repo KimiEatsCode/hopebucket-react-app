@@ -79,7 +79,7 @@ function List() {
       <>
         <Row className="d-flex text-center mt-5">
           <Link to="/">
-            {/* <h4>List Expires: {expDate}</h4> */}
+        {expDate &&  <h4>List Expires: {expDate}</h4>}   
 
             <h1>
               <strong>{totalHope} of 3</strong>
