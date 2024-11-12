@@ -30,11 +30,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ExpContextProvider>
       <ListContextProvider>
-      <TopMenu></TopMenu>
-      <Container style={containerStyles}>
+
+
         <BrowserRouter>
-
-
+        <TopMenu></TopMenu>
+        <Container style={containerStyles}>
             <Link to="/">
               <h1 className="logoName mb-2">HopeBucket</h1>
             </Link>
@@ -46,8 +46,9 @@ ReactDOM.render(
             </Routes>
 
           <Nav2></Nav2>
+          </Container>
         </BrowserRouter>
-        </Container>
+
 
         <Outlet />
 
