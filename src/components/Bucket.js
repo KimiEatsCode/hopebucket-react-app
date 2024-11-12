@@ -22,7 +22,7 @@ function Bucket() {
           </h3>
         </Col>
       </Row>
-      <Row>
+       <Row className="mx-auto">
         <Col>
           <Link to="/list">
 
