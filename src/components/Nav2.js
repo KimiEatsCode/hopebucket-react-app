@@ -79,8 +79,8 @@ function OffCanvasExample({ name, ...props }) {
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    // if (totalHope >= 3 || !expDate) {
-    if (!expDate) {
+    if (totalHope >= 3 || !expDate) {
+    // if (!expDate) {
       setShowListLinks(true);
     } else {
       setShowListLinks(false);
@@ -88,8 +88,8 @@ function OffCanvasExample({ name, ...props }) {
   }, [totalHope, expDate]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-    console.log("totalhope " + list.length);
-    if (list.length === 2) {
+    console.log("totalhope has 0 for 1 length?" + list.length);
+    if (list.length === 3) {
       navigate("/");
       setShow(false);
       // console.log("total Hope " + totalHope )
@@ -116,7 +116,7 @@ function OffCanvasExample({ name, ...props }) {
   const handleClose = () => setShow(false);
 
   const handleOpen = (e) => {
-    if (totalHope < 3) {
+    if (totalHope <= 3) {
       setShow(true);
     } else {
       setShow(false);

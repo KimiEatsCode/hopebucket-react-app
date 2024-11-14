@@ -18,7 +18,7 @@ function List() {
   const expContext = useContext(ExpContext);
   const expDate = expContext.expDate;
 
-  const [showNewList, setShowListLinks] = useState(true);
+  // const [showNewList, setShowListLinks] = useState(true);
 
   let totalHope = listContext.list.length;
 
@@ -58,13 +58,13 @@ function List() {
 
 
   //check state of total hope if 0 show new list icon and buttons
-  useEffect(() => {
-    if (!expDate) {
-      setShowListLinks(true);
-    } else {
-      setShowListLinks(false);
-    }
-  }, [totalHope, expDate]);
+  // useEffect(() => {
+  //   if (!expDate) {
+  //     setShowListLinks(true);
+  //   } else {
+  //     setShowListLinks(false);
+  //   }
+  // }, [totalHope, expDate]);
 
   //useEffect used to deal with state changes?
   useEffect(() => {
@@ -74,12 +74,12 @@ function List() {
   }, [totalHope]);
 
   // if (totalHope < 3 || expDate === today) {
-  if (totalHope < 3) {
+  if (totalHope <= 3) {
     return (
       <>
         <Row className="d-flex text-center mt-5">
           <Link to="/">
-        {expDate &&  <h4>List Expires: {expDate}</h4>}   
+        {expDate &&  <h4>List Expires: {expDate}</h4>}
 
             <h1>
               <strong>{totalHope} of 3</strong>
