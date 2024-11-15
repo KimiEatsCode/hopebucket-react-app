@@ -21,7 +21,7 @@ const LottieControl = () => {
 
   const confettistyle = {
     position: "absolute",
-    zIndex: "0",
+    zIndex: "-1",
     left: "0",
     top: "0",
     height: "100%",
