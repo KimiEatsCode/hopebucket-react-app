@@ -14,13 +14,13 @@ import LottieControl from '../hooks/LottieControl'
 function List() {
   const listContext = useContext(ListContext);
   const list = listContext.list;
+  let totalHope = listContext.list.length;
 
   const expContext = useContext(ExpContext);
   const expDate = expContext.expDate;
 
   // const [showNewList, setShowListLinks] = useState(true);
 
-  let totalHope = listContext.list.length;
 
   let today = new Date();
   //getMonth starts at 0 so add 1 to be this month
@@ -35,11 +35,11 @@ function List() {
     listContext.setList(updateList);
   }
 
-  useEffect(() => {
-    if (totalHope === 3) {
-      window.scrollTo(0, 0);
-    }
-  }, [totalHope]);
+  // useEffect(() => {
+  //   if (totalHope === 3) {
+  //     window.scrollTo(0, 0);
+  //   }
+  // }, [totalHope]);
 
   // if (totalHope < 3 || expDate === today) {
   if (totalHope <= 3) {

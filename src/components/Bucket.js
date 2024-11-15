@@ -8,12 +8,11 @@ import LottieControl from "../hooks/LottieControl";
 
 function Bucket() {
   const listContext = useContext(ListContext);
-  // const expContext = useContext(ExpContext);
-
+  const list = listContext.list;
   let totalHope = listContext.list.length;
-  // let expDate = expContext.expDate;
 
-  //need specific style to remove text decoration because setting text to relative positioning causes underline on links to be not under but behind text
+
+  //linkRemoveUnderline is for need specific style to remove text decoration because setting text to relative positioning causes underline on links to be not under but behind text
   const linkRemoveUnderline = {
     textDecoration: "none",
   };
