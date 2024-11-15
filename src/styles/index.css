@@ -63,25 +63,38 @@ h3 {
   padding:0px 20px!important;
 }
 
+.section-center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 200px;
+    border: 1px solid #2d2d2d;
+    margin-bottom: 12px;
+}
+
 .bucketIcon {
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  flex-wrap:wrap;
   background-image: url("../images/bucket.svg");
   background-repeat: no-repeat;
   background-position: 50%;
   background-size:contain;
   text-align: center;
   font-weight: bold;
-  margin: 0 auto 20 auto;
-  width:600px;
-  max-width:600px;
-  min-width:300px;
-
+  margin-top:10px;
+  width: 90%;
+  height: 90%;
 }
 
 .hopeCount {
   position: relative;
-  top: 50px;
-  left: 29%;
-  font-size:3rem;
+  width:200px;
+  top:50%;
+  /* padding-top:30%; */
+  font-size:2.5rem;
 }
 
 .no-wrap{

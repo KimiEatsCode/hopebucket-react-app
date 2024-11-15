@@ -40,13 +40,13 @@ function Bucket() {
           <div style={confettiStyle}>
             <LottieControl></LottieControl>
           </div>
-          <Link to="/list" style={linkRemoveUnderline}>
+          <Link to="/list" style={linkRemoveUnderline} >
             <div className="bucketIcon">
               <span className="hopeCount">{totalHope} of 3</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="60%"
-                height="60%"
+                width=""
+                height=""
                 fill="#000"
                 className="bi bi-bucket"
                 viewBox="0 0 16 16"
