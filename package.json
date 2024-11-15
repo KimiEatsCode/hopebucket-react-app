@@ -11,10 +11,10 @@
     "bootstrap-icons": "^1.9.1",
     "canvas-confetti": "^1.9.3",
     "js-cookie": "^3.0.5",
+    "lottie-react": "^2.4.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.1",
     "react-dom": "^17.0.2",
-    "react-lottie": "^1.2.4",
     "react-router-dom": "^6.2.1",
     "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"

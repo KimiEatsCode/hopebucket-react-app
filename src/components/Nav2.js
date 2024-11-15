@@ -89,12 +89,11 @@ function OffCanvasExample({ name, ...props }) {
   }, [totalHope, expDate]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-    console.log("totalhope has 0 for 1 length?" + list.length);
+
     if (list.length === 3) {
       navigate("/");
       setShowAddField(false);
-      // console.log("total Hope " + totalHope )
-      // expContext.setListDate("");
+
     } else if (list.length <= 3) {
       if (input !== "") {
         input = {
@@ -113,7 +112,7 @@ function OffCanvasExample({ name, ...props }) {
   }
 
   window.localStorage.setItem("hopeList", JSON.stringify(list));
-
+  console.log("totalhope items =" + totalHope);
   const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {

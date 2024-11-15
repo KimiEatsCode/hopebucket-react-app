@@ -22,15 +22,14 @@ const containerStyles = {
   display: "flex",
   flexDirection: "column",
   paddingTop: "20px",
-  justifyContent: "center"
+  justifyContent: "center",
+
 };
 
 ReactDOM.render(
   <React.StrictMode>
     <ExpContextProvider>
       <ListContextProvider>
-
-
         <BrowserRouter>
         <TopMenu></TopMenu>
         <Container style={containerStyles}>
@@ -47,10 +46,7 @@ ReactDOM.render(
           <Nav2></Nav2>
           </Container>
         </BrowserRouter>
-
-
-        <Outlet />
-
+            <Outlet />
       </ListContextProvider>
     </ExpContextProvider>
   </React.StrictMode>,

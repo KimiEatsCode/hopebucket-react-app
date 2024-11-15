@@ -71,16 +71,17 @@ h3 {
   text-align: center;
   font-weight: bold;
   margin: 0 auto 20 auto;
-  max-width:500px;
+  width:600px;
+  max-width:600px;
   min-width:300px;
 
 }
 
 .hopeCount {
   position: relative;
-  top: 20px;
+  top: 50px;
   left: 29%;
-  font-size:1.8em;
+  font-size:3rem;
 }
 
 .no-wrap{
