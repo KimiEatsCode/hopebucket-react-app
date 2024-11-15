@@ -1,14 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Roboto');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: 'Cabin', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color:aliceblue!important;
   padding-bottom:20px;
+  color: #254c90;
 }
 
 
@@ -18,6 +20,7 @@ body {
   font-weight:bold;
   font-style: normal;
   text-align:center;
+  color:#254c90;
 }
 
 .light-theme {
@@ -42,9 +45,9 @@ body {
   font-weight: bold;
 }
 
-/* nav {
-  justify-content: center!important;
-} */
+a {
+  color:#254c90!important;
+}
 
 nav a {
  padding: 5px;
@@ -60,9 +63,15 @@ nav a {
 }
 
 h3 {
+  font-family: "Cabin", sans-serif;
   padding:0px 20px!important;
+  color: #254c90!important;
 }
 
+h5 {
+  font-family: "Roboto", sans-serif;
+  color: #254c90!important;
+}
 .section-center-content {
     display: flex;
     justify-content: center;
@@ -78,22 +87,22 @@ h3 {
   align-items:center;
   justify-content: center;
   flex-wrap:wrap;
-  background-image: url("../images/bucket.svg");
-  background-repeat: no-repeat;
-  background-position: 50%;
-  background-size:contain;
+  /* background-image: url("../images/bucket.svg"); */
+  /* background-repeat: no-repeat;
+  background-position: 50% ; */
+  /* background-size:contain; */
   text-align: center;
   font-weight: bold;
   margin-top:10px;
   height: 70%;
-  max-height:600px;
+
 }
 
 .hopeCount {
   position: relative;
   width:200px;
-  top:50%;
-  font-size:2.5rem;
+  top:200px;
+  font-weight:800;
 }
 
 .no-wrap{

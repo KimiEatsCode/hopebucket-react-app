@@ -23,8 +23,8 @@ const LottieControl = () => {
     position: "absolute",
     zIndex: "-1",
     left: "0",
-    top: "0",
-    height: "100%",
+    top: "170px",
+    height: "70%",
     width: "100%",
   };
 

@@ -50,7 +50,7 @@ function List() {
           <Link to="/">
         {expDate !== today &&  <h4>List Expires: {expDate}</h4>}
 
-            <h1>
+            <h1 className="hopeount">
               <strong>{totalHope} of 3</strong>
             </h1>
           </Link>

@@ -5,6 +5,7 @@ import { ListContext } from "../contexts/ListContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LottieControl from "../hooks/confettiControl";
+import BucketControl from "../hooks/bucketControl";
 
 function Bucket() {
   const listContext = useContext(ListContext);
@@ -20,26 +21,20 @@ function Bucket() {
             <LottieControl></LottieControl>
       <Row className="text-center mt-4 mb-2 mx-auto">
         <Col>
-          <h3>
+
+        </Col>
+      </Row>
+      <Row className="mx-auto text-center">
+        <Col>
+        <h3>
             {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
             {totalHope === 0 ? "Add hope to fill up your hope bucket!" : ""}
           </h3>
-        </Col>
-      </Row>
-      <Row className="mx-auto">
-        <Col>
           <Link to="/list" style={linkRemoveUnderline} >
             <div className="bucketIcon">
-              <span className="hopeCount">{totalHope} of 3</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="100%"
-                height="100%"
-                fill="none"
-                stroke="#ccc"
-                className="bi bi-bucket"
-                viewBox="0 0 16 16"
-              ></svg>
+              <h1 className="hopeCount">{totalHope} of 3</h1>
+              <BucketControl></BucketControl>
+
             </div>
           </Link>
         </Col>
