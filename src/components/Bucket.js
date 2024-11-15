@@ -13,20 +13,13 @@ function Bucket() {
   let totalHope = listContext.list.length;
   // let expDate = expContext.expDate;
 
-  const confettiStyle = {
-    display: "block",
-    position: "absolute",
-    top: "0",
-    // border:'1px solid red',
-    margin: "10px auto",
-  };
-
   //need specific style to remove text decoration because setting text to relative positioning causes underline on links to be not under but behind text
   const linkRemoveUnderline = {
     textDecoration: "none",
   };
   return (
     <>
+            <LottieControl></LottieControl>
       <Row className="text-center mt-4 mb-2 mx-auto">
         <Col>
           <h3>
@@ -37,9 +30,6 @@ function Bucket() {
       </Row>
       <Row className="mx-auto">
         <Col>
-          <div style={confettiStyle}>
-            <LottieControl></LottieControl>
-          </div>
           <Link to="/list" style={linkRemoveUnderline} >
             <div className="bucketIcon">
               <span className="hopeCount">{totalHope} of 3</span>
@@ -55,6 +45,7 @@ function Bucket() {
           </Link>
         </Col>
       </Row>
+
     </>
   );
 }

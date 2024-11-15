@@ -22,8 +22,12 @@ useEffect(() => {
 }, [totalHope, list]);
 
 const confettistyle = {
-  height: 500,
-  width: 500
+  position:"absolute",
+  zIndex:'1',
+  height: "100%",
+  width: "100%",
+  border: " 1px solid red"
+
 };
 
   return (

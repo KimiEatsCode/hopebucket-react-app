@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //hooks
 //components
-
+import LottieControl from '../hooks/LottieControl'
 
 function List() {
   const listContext = useContext(ListContext);
@@ -45,6 +45,7 @@ function List() {
   if (totalHope <= 3) {
     return (
       <>
+              <LottieControl></LottieControl>
         <Row className="d-flex text-center mt-5">
           <Link to="/">
         {expDate !== today &&  <h4>List Expires: {expDate}</h4>}
