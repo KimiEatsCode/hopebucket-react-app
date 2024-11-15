@@ -10,14 +10,23 @@ const LottieControl = () => {
   const list = listContext.list;
   let totalHope = listContext.list.length;
 
-//   useEffect(() => {
-//     if (totalHope === 3) {
-//       console.log("totalHope" + list);
-//       lottieRef.current.play();
-//     } else {
-//       lottieRef.current.stop();
-//     }
-//   }, [totalHope, list]);
+  useEffect(() => {
+    if (totalHope === 0) {
+        console.log("totalHope" + list);
+        lottieRef.current.goToAndStop(10, true);
+      } else if (totalHope === 1) {
+      console.log("totalHope" + list);
+      lottieRef.current.goToAndStop(20, true);
+    } else if (totalHope === 2) {
+        console.log("totalHope" + list);
+        lottieRef.current.goToAndStop(55, true);
+      } else if (totalHope === 3) {
+        console.log("totalHope" + list);
+        lottieRef.current.playSegments(55,100);
+      } else {
+        lottieRef.current.stop();
+    }
+  }, [totalHope, list]);
 
   const bucketstyle = {
     position: "absolute",
