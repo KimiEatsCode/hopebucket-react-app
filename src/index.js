@@ -18,13 +18,6 @@ import TopMenu from "./components/TopMenu";
 import { ListContextProvider } from "./contexts/ListContext";
 import { ExpContextProvider } from "./contexts/ExpContext";
 
-const containerStyles = {
-  display: "flex",
-  flexDirection: "column",
-  paddingTop: "20px",
-  justifyContent: "center",
-
-};
 
 ReactDOM.render(
   <React.StrictMode>
@@ -32,7 +25,7 @@ ReactDOM.render(
       <ListContextProvider>
         <BrowserRouter>
         <TopMenu></TopMenu>
-        <Container style={containerStyles}>
+        <Container>
             <Link to="/">
               <h1 className="logoName mb-2">HopeBucket</h1>
             </Link>
