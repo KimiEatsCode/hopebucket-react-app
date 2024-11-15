@@ -23,8 +23,8 @@ function OffCanvasExample({ name, ...props }) {
 
   const listContext = useContext(ListContext);
   const list = listContext.list;
+  let totalHope = list.length;
 
-const totalHope = useRef()
   const navigate = useNavigate(listContext.list.length);
 
   function updateInput(input) {
@@ -103,7 +103,8 @@ const totalHope = useRef()
         };
 
         listContext.setList((list) => [...list, input]);
-
+        totalHope = list.length;
+        console.log("add item equals totalhope as " + totalHope)
         setInput((input) => (input = ""));
         setShowAddField(false);
       }
@@ -113,6 +114,7 @@ const totalHope = useRef()
   }
 
   window.localStorage.setItem("hopeList", JSON.stringify(list));
+
   console.log("totalhope items =" + totalHope);
   const handleClose = () => setShowAddField(false);
 
