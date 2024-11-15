@@ -23,9 +23,9 @@ function OffCanvasExample({ name, ...props }) {
 
   const listContext = useContext(ListContext);
   const list = listContext.list;
-  let totalHope = listContext.list.length;
 
-  const navigate = useNavigate();
+const totalHope = useRef()
+  const navigate = useNavigate(listContext.list.length);
 
   function updateInput(input) {
     setInput(input);

@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //hooks
 //components
-import LottieControl from '../hooks/LottieControl'
+import LottieControl from '../hooks/confettiControl'
 
 function List() {
   const listContext = useContext(ListContext);

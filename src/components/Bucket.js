@@ -4,7 +4,7 @@ import { ListContext } from "../contexts/ListContext";
 // import { ExpContext } from "../contexts/ExpContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LottieControl from "../hooks/LottieControl";
+import LottieControl from "../hooks/confettiControl";
 
 function Bucket() {
   const listContext = useContext(ListContext);
@@ -12,7 +12,6 @@ function Bucket() {
   let totalHope = listContext.list.length;
 
 
-  //linkRemoveUnderline is for need specific style to remove text decoration because setting text to relative positioning causes underline on links to be not under but behind text
   const linkRemoveUnderline = {
     textDecoration: "none",
   };
@@ -36,7 +35,8 @@ function Bucket() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="100%"
                 height="100%"
-                fill="#000"
+                fill="none"
+                stroke="#ccc"
                 className="bi bi-bucket"
                 viewBox="0 0 16 16"
               ></svg>
