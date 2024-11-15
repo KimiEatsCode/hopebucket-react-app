@@ -23,11 +23,11 @@ useEffect(() => {
 
 const confettistyle = {
   position:"absolute",
-  zIndex:'1',
+  zIndex:"1",
+  left:"0",
+  top:"0",
   height: "100%",
   width: "100%",
-  border: " 1px solid red"
-
 };
 
   return (
