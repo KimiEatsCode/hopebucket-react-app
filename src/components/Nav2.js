@@ -12,7 +12,7 @@ import { ExpContext } from "../contexts/ExpContext";
 //hook
 
 function OffCanvasExample({ name, ...props }) {
-  const [showAddField, setShow] = useState(false);
+  const [showAddField, setShowAddField] = useState(false);
   const [isLeft, setLeft] = useState(true);
   const [showNewList, setShowListLinks] = useState(false);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
@@ -68,8 +68,9 @@ function OffCanvasExample({ name, ...props }) {
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (today === expDate) {
-        // Update state when a new day starts
+        // Update list state to empty array when a new day starts but don't update exp date until user clicks on start new list
         console.log("new day today!");
+        setShowListLinks(true);
         listContext.setList((list) => (list = []));
       }
     }, 1000); // Check every second
@@ -79,7 +80,7 @@ function OffCanvasExample({ name, ...props }) {
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    if (totalHope >= 3 || !expDate) {
+    if (totalHope >= 3) {
     // if (!expDate) {
       setShowListLinks(true);
     } else {
@@ -91,7 +92,7 @@ function OffCanvasExample({ name, ...props }) {
     console.log("totalhope has 0 for 1 length?" + list.length);
     if (list.length === 3) {
       navigate("/");
-      setShow(false);
+      setShowAddField(false);
       // console.log("total Hope " + totalHope )
       // expContext.setListDate("");
     } else if (list.length <= 3) {
@@ -104,22 +105,22 @@ function OffCanvasExample({ name, ...props }) {
         listContext.setList((list) => [...list, input]);
 
         setInput((input) => (input = ""));
-        setShow(false);
+        setShowAddField(false);
       }
     } else {
-      setShow(false);
+      setShowAddField(false);
     }
   }
 
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {
     if (totalHope <= 3) {
-      setShow(true);
+      setShowAddField(true);
     } else {
-      setShow(false);
+      setShowAddField(false);
       return;
     }
     setTimeout(() => {
@@ -144,7 +145,7 @@ function OffCanvasExample({ name, ...props }) {
       <Offcanvas show={showAddField} onHide={handleClose} {...props}>
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
-            <Col>
+         <Col>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -158,7 +159,7 @@ function OffCanvasExample({ name, ...props }) {
               />
             </Col>
             <p></p>
-            <Button onClick={addItem}>
+         <Button onClick={addItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -241,7 +242,7 @@ function OffCanvasExample({ name, ...props }) {
               </Link>
             )}
 
-            {expDate && (
+            { !showNewList && (
               <Link onClick={handleOpen}>
                 <button
                   type="button"

@@ -22,51 +22,19 @@ function List() {
 
   let totalHope = listContext.list.length;
 
+  let today = new Date();
+  //getMonth starts at 0 so add 1 to be this month
+  const dd1 = today.getDate();
+  const mm = today.getMonth() + 1;
+  const yyyy = today.getFullYear();
+
+  today = mm + "/" + dd1 + "/" + yyyy;
+
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
     listContext.setList(updateList);
   }
 
-  // let today = useMemo(() => new Date(),[]);
-  // //getMonth starts at 0 so add 1 to be this month
-  // const dd1 = today.getDate();
-  // const mm = today.getMonth() + 1;
-  // const yyyy = today.getFullYear();
-
-  // today = mm + "/" + dd1 + "/" + yyyy;
-
-  // const dd2 = dd1 + 1;
-  // const tomorrow = mm + "/" + dd2 + "/" + yyyy;
-
-  // const handleNewList = () => {
-  //   expContext.setListDate(tomorrow);
-  //   listContext.setList((list) => (list = []));
-  // };
-
-  // useMemo(() => {
-  //   const intervalId = setInterval(() => {
-  //   console.log("today is " + today)
-  //   console.log("tomorrow is " + tomorrow)
-  //         if (today === expDate) {
-  //       // Update state when a new day starts
-  //       listContext.setList((list) => (list = []));
-  //     }
-  //   }, 60000); // Check every minute
-
-  //   return () => clearInterval(intervalId); // Clear interval on unmount
-  // }, [expDate, today, tomorrow,listContext]);
-
-
-  //check state of total hope if 0 show new list icon and buttons
-  // useEffect(() => {
-  //   if (!expDate) {
-  //     setShowListLinks(true);
-  //   } else {
-  //     setShowListLinks(false);
-  //   }
-  // }, [totalHope, expDate]);
-
-  //useEffect used to deal with state changes?
   useEffect(() => {
     if (totalHope === 3) {
       window.scrollTo(0, 0);
@@ -79,7 +47,7 @@ function List() {
       <>
         <Row className="d-flex text-center mt-5">
           <Link to="/">
-        {expDate &&  <h4>List Expires: {expDate}</h4>}
+        {expDate !== today &&  <h4>List Expires: {expDate}</h4>}
 
             <h1>
               <strong>{totalHope} of 3</strong>
@@ -89,10 +57,7 @@ function List() {
         <Row className="text-center mt-3 jusity-content-center ">
           <Col className="col-md-8 mx-auto">
             <h5>
-              {" "}
-              {totalHope === 0 &&
-                "Get started by clicking [+] button below."}{" "}
-              <p></p>
+
               {totalHope === 0 &&
                 "Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who help and support you, or an action you took that gives you hope."}
               <p></p>
