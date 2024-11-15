@@ -18,16 +18,18 @@ useEffect(() => {
     lottieRef.current.play();
   } else {
     lottieRef.current.stop();
+
   }
 }, [totalHope, list]);
 
 const confettistyle = {
   position:"absolute",
-  zIndex:"1",
+  zIndex:"0",
   left:"0",
   top:"0",
   height: "100%",
   width: "100%",
+  border:"1px solid red"
 };
 
   return (

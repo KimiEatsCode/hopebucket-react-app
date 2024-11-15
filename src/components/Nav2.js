@@ -36,6 +36,7 @@ function OffCanvasExample({ name, ...props }) {
   const navStyles = {
     display: "flex",
     position: "fixed",
+    zIndex:"3",
     bottom: "20px",
     //fun use flex direction to change row direction
     flexDirection: isLeft ? "row-reverse" : "",
