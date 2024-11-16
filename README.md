@@ -1,4 +1,4 @@
-Copyright Kimi Rettig 2022
+
 
 # Getting Started with Create React App
 
