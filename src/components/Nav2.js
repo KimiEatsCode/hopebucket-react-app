@@ -37,11 +37,11 @@ function OffCanvasExample({ name, ...props }) {
     display: "flex",
     position: "fixed",
     zIndex:"3",
-    bottom: "20px",
+    bottom: "24px",
     //fun use flex direction to change row direction
     flexDirection: isLeft ? "row-reverse" : "",
-    left: isLeft ? "20px" : "",
-    right: isLeft ? "" : "20px",
+    left: isLeft ? "24px" : "",
+    right: isLeft ? "" : "24px",
   };
 
   const handleNavAlign = (event) => {

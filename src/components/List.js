@@ -46,16 +46,16 @@ function List() {
     return (
       <>
               <LottieControl></LottieControl>
-        <Row className="d-flex text-center mt-5">
+        <Row className="d-flex text-center mt-2">
           <Link to="/">
         {expDate !== today &&  <h4>List Expires: {expDate}</h4>}
 
-            <h1 className="hopeount">
+            <h2 className="pt-2">
               <strong>{totalHope} of 3</strong>
-            </h1>
+            </h2>
           </Link>
         </Row>
-        <Row className="text-center mt-3 jusity-content-center ">
+        <Row className="text-center p-2 mt-3 jusity-content-center ">
           <Col className="col-md-8 mx-auto">
             <h5>
 
@@ -63,7 +63,7 @@ function List() {
                 "Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who help and support you, or an action you took that gives you hope."}
               <p></p>
               {totalHope === 0 &&
-                "Each day your hope list resets. Try to get 3 hope items before the day ends and a new day begins!"}
+                "Try to get 3 hope items before the day ends and a new day/list begins!"}
 
             </h5>
           </Col>
