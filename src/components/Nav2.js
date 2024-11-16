@@ -37,7 +37,7 @@ function OffCanvasExample({ name, ...props }) {
     display: "flex",
     position: "fixed",
     zIndex:"3",
-    bottom: "24px",
+    bottom: "15px",
     //fun use flex direction to change row direction
     flexDirection: isLeft ? "row-reverse" : "",
     left: isLeft ? "24px" : "",

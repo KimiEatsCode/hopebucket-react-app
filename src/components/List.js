@@ -55,17 +55,15 @@ function List() {
             </h2>
           </Link>
         </Row>
-        <Row className="text-center p-2 mt-3 jusity-content-center ">
+        <Row className="text-center p-2 mt-2 jusity-content-center ">
           <Col className="col-md-8 mx-auto">
-            <h5>
+          {totalHope === 0 && <h5>
+                Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who helped or supported you, or an action you took that gives you hope.
+            </h5>}
+          {totalHope < 3 && <h5>
+                Try to add 3 hope items before the day ends and a new day begins!
+            </h5>}
 
-              {totalHope === 0 &&
-                "Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who help and support you, or an action you took that gives you hope."}
-              <p></p>
-              {totalHope === 0 &&
-                "Try to get 3 hope items before the day ends and a new day/list begins!"}
-
-            </h5>
           </Col>
         </Row>
         {/* <Row>
@@ -77,8 +75,8 @@ function List() {
            }
         </Row> */}
 
-        <Row>
-          <Col>
+        <Row className="pb-5">
+          <Col className="pb-5">
             <ListGroup>
               {list.map((item) => {
                 return (

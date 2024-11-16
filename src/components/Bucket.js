@@ -28,7 +28,7 @@ function Bucket() {
         <Col>
         <h4>
             {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
-            {totalHope === 0 ? "Add hope to fill up your hope bucket!" : ""}
+            {totalHope < 3 ? "Add hope to fill up your hope bucket!" : ""}
           </h4>
           <Link to="/list" style={linkRemoveUnderline} >
             <div className="bucketIcon">
