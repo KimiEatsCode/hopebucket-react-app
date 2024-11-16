@@ -1,4 +1,4 @@
-import { React, useState, useContext, useRef, useEffect } from "react";
+import { React, useState, useContext, useRef, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -17,6 +17,7 @@ function OffCanvasExample({ name, ...props }) {
   const [showNewList, setShowListLinks] = useState(false);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
+  let [currDate,setToday] = useState(new Date());
 
   const expContext = useContext(ExpContext);
   const expDate = expContext.expDate;
@@ -49,16 +50,31 @@ function OffCanvasExample({ name, ...props }) {
     setToggleAlignNav((current) => !current);
   };
 
-  let today = new Date();
+
+ const today = useMemo(() => {
+    const dd1 = currDate.getDate();
+    const mm = currDate.getMonth() + 1;
+    //getMonth starts at 0 so add 1 to be this month
+    const yyyy = currDate.getFullYear();
+console.log("currDate is " + currDate)
+    return mm + "/" + dd1 + "/" + yyyy;
+  },[currDate])
+
+const tomorrow = useMemo(() => {
+  const dd1 = currDate.getDate();
+  const mm = currDate.getMonth() + 1;
   //getMonth starts at 0 so add 1 to be this month
-  const dd1 = today.getDate();
-  const mm = today.getMonth() + 1;
-  const yyyy = today.getFullYear();
-
-  today = mm + "/" + dd1 + "/" + yyyy;
-
+  const yyyy = currDate.getFullYear();
   const dd2 = dd1 + 1;
-  const tomorrow = mm + "/" + dd2 + "/" + yyyy;
+  const nextDay = mm + "/" + dd2 + "/" + yyyy;
+  console.log("currDate is " + nextDay)
+  return nextDay;
+},[currDate])
+
+// const complexObject = useMemo(() => {
+//   return { key: value, anotherKey: anotherValue };
+// }, [value, anotherValue]);
+
 
   const handleNewList = (event) => {
     setShowListLinks(false);
