@@ -44,7 +44,6 @@ const LottieControl = () => {
       loop={false}
       animationData={bucketAnimation}
       style={bucketstyle}
-    //   interactivity={interactivity}
     />
   );
 };

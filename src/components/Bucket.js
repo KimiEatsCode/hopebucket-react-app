@@ -26,10 +26,10 @@ function Bucket() {
       </Row>
       <Row className="mx-auto text-center">
         <Col>
-        <h3>
+        <h4>
             {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
             {totalHope === 0 ? "Add hope to fill up your hope bucket!" : ""}
-          </h3>
+          </h4>
           <Link to="/list" style={linkRemoveUnderline} >
             <div className="bucketIcon">
               <h1 className="hopeCount">{totalHope} of 3</h1>

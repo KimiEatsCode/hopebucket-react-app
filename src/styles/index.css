@@ -62,16 +62,11 @@ nav a {
   font-size:1.3em;
 }
 
-h3 {
+h1, h2, h3,h4,h5 {
   font-family: "Cabin", sans-serif;
-  padding:0px 20px!important;
   color: #254c90!important;
 }
 
-h5 {
-  font-family: "Roboto", sans-serif;
-  color: #254c90!important;
-}
 .section-center-content {
     display: flex;
     justify-content: center;

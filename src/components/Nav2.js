@@ -87,7 +87,7 @@ function OffCanvasExample({ name, ...props }) {
     } else {
       setShowListLinks(false);
     }
-  }, [totalHope, expDate]); // The dependency array ensures this effect runs only when 'count' changes
+  }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
 let itemAdded = 0;
@@ -180,7 +180,7 @@ let itemAdded = 0;
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-        <nav>
+       <nav>
           <i className="bi bi-box-arrow-left"></i>
           <div style={navStyles}>
             {toggleAlignNav ? (
@@ -231,7 +231,11 @@ let itemAdded = 0;
 
             {showNewList && (
               <Link onClick={handleNewList}>
-                <button type="button" className="btn btn-primary">
+                <button
+                type="button"
+                className="btn btn-primary"
+                disabled={totalHope === 3}
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="44"
@@ -269,6 +273,7 @@ let itemAdded = 0;
             )}
           </div>
         </nav>
+
       </Row>
     </>
   );
