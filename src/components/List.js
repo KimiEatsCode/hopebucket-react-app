@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState, useMemo } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //hooks
 //components
-import LottieControl from '../hooks/confettiControl'
+import LottieControl from "../hooks/confettiControl";
 
 function List() {
   const listContext = useContext(ListContext);
@@ -20,7 +20,6 @@ function List() {
   const expDate = expContext.expDate;
 
   // const [showNewList, setShowListLinks] = useState(true);
-
 
   let today = new Date();
   //getMonth starts at 0 so add 1 to be this month
@@ -45,10 +44,10 @@ function List() {
   if (totalHope <= 3) {
     return (
       <>
-              <LottieControl></LottieControl>
+        <LottieControl></LottieControl>
         <Row className="d-flex text-center mt-2">
           <Link to="/">
-        {expDate !== today &&  <h4>List Expires: {expDate}</h4>}
+            {expDate !== today && <h4>List Expires: {expDate}</h4>}
 
             <h2 className="pt-2">
               <strong>{totalHope} of 3</strong>
@@ -57,13 +56,19 @@ function List() {
         </Row>
         <Row className="text-center p-2 mt-2 jusity-content-center ">
           <Col className="col-md-8 mx-auto">
-          {totalHope === 0 && <h5>
-                Fill up your hope bucket with positive thoughts, good things that happen during the day, names of people who helped or supported you, or an action you took that gives you hope.
-            </h5>}
-          {totalHope < 3 && <h5>
-                Try to add 3 hope items before the day ends and a new day begins!
-            </h5>}
-
+            {totalHope === 0 && (
+              <h5>
+                Fill up your hope bucket with positive thoughts, good things
+                that happen during the day, names of people who helped or
+                supported you, or an action you took that gives you hope.
+              </h5>
+            )}
+            {totalHope < 3 && (
+              <h5>
+                Try to add 3 hope items before the day ends and a new day
+                begins!
+              </h5>
+            )}
           </Col>
         </Row>
         {/* <Row>

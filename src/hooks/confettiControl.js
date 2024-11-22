@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext, useRef } from "react";
+import React, { useEffect, useContext, useRef } from "react";
 import Lottie from "lottie-react";
 import confettiAnimation from "../images/confetti-lottie.json";
 import { ListContext } from "../contexts/ListContext";

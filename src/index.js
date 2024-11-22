@@ -18,15 +18,14 @@ import TopMenu from "./components/TopMenu";
 import { ListContextProvider } from "./contexts/ListContext";
 import { ExpContextProvider } from "./contexts/ExpContext";
 
-
 ReactDOM.render(
   <React.StrictMode>
     <ExpContextProvider>
       <ListContextProvider>
         <BrowserRouter>
-        <TopMenu></TopMenu>
+          <TopMenu></TopMenu>
 
-        <Container>
+          <Container>
             <Link to="/">
               <h1 className="logoName mb-2">HopeBucket</h1>
             </Link>
@@ -37,10 +36,10 @@ ReactDOM.render(
               <Route path="/list" element={<List />} />
             </Routes>
 
-          <Nav2></Nav2>
+            <Nav2></Nav2>
           </Container>
         </BrowserRouter>
-            <Outlet />
+        <Outlet />
       </ListContextProvider>
     </ExpContextProvider>
   </React.StrictMode>,

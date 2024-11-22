@@ -17,7 +17,7 @@ function OffCanvasExample({ name, ...props }) {
   const [showNewList, setShowListLinks] = useState(false);
   const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
-  let [currDate,setToday] = useState(new Date());
+  let [currDate] = useState(new Date());
 
   const expContext = useContext(ExpContext);
   const expDate = expContext.expDate;
@@ -37,7 +37,7 @@ function OffCanvasExample({ name, ...props }) {
   const navStyles = {
     display: "flex",
     position: "fixed",
-    zIndex:"3",
+    zIndex: "3",
     bottom: "15px",
     //fun use flex direction to change row direction
     flexDirection: isLeft ? "row-reverse" : "",
@@ -50,31 +50,29 @@ function OffCanvasExample({ name, ...props }) {
     setToggleAlignNav((current) => !current);
   };
 
-
- const today = useMemo(() => {
+  const today = useMemo(() => {
     const dd1 = currDate.getDate();
     const mm = currDate.getMonth() + 1;
     //getMonth starts at 0 so add 1 to be this month
     const yyyy = currDate.getFullYear();
-console.log("currDate is " + currDate)
+    console.log("currDate is " + currDate);
     return mm + "/" + dd1 + "/" + yyyy;
-  },[currDate])
+  }, [currDate]);
 
-const tomorrow = useMemo(() => {
-  const dd1 = currDate.getDate();
-  const mm = currDate.getMonth() + 1;
-  //getMonth starts at 0 so add 1 to be this month
-  const yyyy = currDate.getFullYear();
-  const dd2 = dd1 + 1;
-  const nextDay = mm + "/" + dd2 + "/" + yyyy;
-  console.log("currDate is " + nextDay)
-  return nextDay;
-},[currDate])
+  const tomorrow = useMemo(() => {
+    const dd1 = currDate.getDate();
+    const mm = currDate.getMonth() + 1;
+    //getMonth starts at 0 so add 1 to be this month
+    const yyyy = currDate.getFullYear();
+    const dd2 = dd1 + 1;
+    const nextDay = mm + "/" + dd2 + "/" + yyyy;
+    console.log("currDate is " + nextDay);
+    return nextDay;
+  }, [currDate]);
 
-// const complexObject = useMemo(() => {
-//   return { key: value, anotherKey: anotherValue };
-// }, [value, anotherValue]);
-
+  // const complexObject = useMemo(() => {
+  //   return { key: value, anotherKey: anotherValue };
+  // }, [value, anotherValue]);
 
   const handleNewList = (event) => {
     setShowListLinks(false);
@@ -98,7 +96,7 @@ const tomorrow = useMemo(() => {
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
     if (totalHope === 3 || expDate !== tomorrow) {
-    // if (!expDate) {
+      // if (!expDate) {
       setShowListLinks(true);
     } else {
       setShowListLinks(false);
@@ -106,15 +104,14 @@ const tomorrow = useMemo(() => {
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-let itemAdded = 0;
+    let itemAdded = 0;
 
     if (list.length === 3) {
       navigate("/");
       setShowAddField(false);
-
     } else if (list.length <= 3) {
       if (input !== "") {
-        itemAdded =+1;
+        itemAdded = +1;
 
         input = {
           id: Math.random(),
@@ -123,7 +120,7 @@ let itemAdded = 0;
 
         listContext.setList((list) => [...list, input]);
         totalHope = list.length;
-        console.log("add item equals totalhope as " + totalHope)
+        console.log("add item equals totalhope as " + totalHope);
         setInput((input) => (input = ""));
         setShowAddField(false);
       }
@@ -166,7 +163,7 @@ let itemAdded = 0;
       <Offcanvas show={showAddField} onHide={handleClose} {...props}>
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
-         <Col>
+            <Col>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -180,7 +177,7 @@ let itemAdded = 0;
               />
             </Col>
             <p></p>
-         <Button onClick={addItem}>
+            <Button onClick={addItem}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
@@ -196,7 +193,7 @@ let itemAdded = 0;
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-       <nav>
+        <nav>
           <i className="bi bi-box-arrow-left"></i>
           <div style={navStyles}>
             {toggleAlignNav ? (
@@ -248,9 +245,9 @@ let itemAdded = 0;
             {showNewList && (
               <Link onClick={handleNewList}>
                 <button
-                type="button"
-                className="btn btn-primary"
-                disabled={totalHope === 3}
+                  type="button"
+                  className="btn btn-primary"
+                  disabled={totalHope === 3}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -267,7 +264,7 @@ let itemAdded = 0;
               </Link>
             )}
 
-            { !showNewList && (
+            {!showNewList && (
               <Link onClick={handleOpen}>
                 <button
                   type="button"
@@ -289,7 +286,6 @@ let itemAdded = 0;
             )}
           </div>
         </nav>
-
       </Row>
     </>
   );
