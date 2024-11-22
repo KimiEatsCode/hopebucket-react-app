@@ -104,15 +104,11 @@ function OffCanvasExample({ name, ...props }) {
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-    let itemAdded = 0;
-
     if (list.length === 3) {
       navigate("/");
       setShowAddField(false);
     } else if (list.length <= 3) {
       if (input !== "") {
-        itemAdded = +1;
-
         input = {
           id: Math.random(),
           value: input,
