@@ -70,15 +70,6 @@ function OffCanvasExample({ name, ...props }) {
     return nextDay;
   }, [currDate]);
 
-  // const complexObject = useMemo(() => {
-  //   return { key: value, anotherKey: anotherValue };
-  // }, [value, anotherValue]);
-
-  const handleNewList = (event) => {
-    setShowListLinks(false);
-    expContext.setListDate(tomorrow);
-    listContext.setList((list) => (list = []));
-  };
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -92,6 +83,13 @@ function OffCanvasExample({ name, ...props }) {
 
     return () => clearInterval(intervalId); // Clear interval on unmount
   }, [expDate, today, listContext]);
+
+
+  const handleNewList = (event) => {
+    setShowListLinks(false);
+    expContext.setListDate(tomorrow);
+    listContext.setList((list) => (list = []));
+  };
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
