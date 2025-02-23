@@ -47,7 +47,7 @@ function List() {
         <LottieControl></LottieControl>
         <Row className="d-flex text-center mt-2">
           <Link to="/">
-            {expDate !== today && <h4>List Expires: {expDate}</h4>}
+            {/* {expDate !== today && <h4>List Expires: {expDate}</h4>} */}
 
             <h2 className="pt-2">
               <strong>{totalHope} of 3</strong>
@@ -63,12 +63,12 @@ function List() {
                 supported you, or an action you took that gives you hope.
               </h5>
             )}
-            {totalHope < 3 && (
+            {/* {totalHope < 3 && (
               <h5>
                 Try to add 3 hope items before the day ends and a new day
                 begins!
               </h5>
-            )}
+            )} */}
           </Col>
         </Row>
         {/* <Row>
