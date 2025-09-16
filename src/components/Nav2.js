@@ -256,9 +256,14 @@ function OffCanvasExample({ name, ...props }) {
                   </svg>
                 </button>
               </Link>
+            
             )}
 
+  {!showNewList && (
+    <Link to="/bucket"><i class="bi bi-bucket"></i></Link>
+  )}
             {!showNewList && (
+              
               <Link onClick={handleOpen}>
                 <button
                   type="button"
