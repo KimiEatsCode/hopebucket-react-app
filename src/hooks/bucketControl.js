@@ -40,7 +40,7 @@ const LottieControl = () => {
   return (
     <Lottie
       lottieRef={lottieRef}
-      autoPlay={false}
+      autoPlay={true}
       loop={false}
       animationData={bucketAnimation}
       style={bucketstyle}

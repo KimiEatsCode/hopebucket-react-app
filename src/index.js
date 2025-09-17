@@ -31,7 +31,7 @@ ReactDOM.render(
             </Link>
 
             <Routes>
-              <Route path="/" element={<Bucket />} />
+              <Route path="/" element={<App />} />
               <Route path="/bucket" element={<Bucket />} />
               <Route path="/list" element={<List />} />
             </Routes>
