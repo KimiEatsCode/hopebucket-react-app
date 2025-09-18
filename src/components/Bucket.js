@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { ListContext } from "../contexts/ListContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import LottieControl from "../hooks/confettiControl";
-import BucketControl from "../hooks/bucketControl";
+import LottieControlConfetti from "../hooks/confettiControl";
+import LottieControlBucket from "../hooks/bucketControl";
 
 function Bucket() {
   const listContext = useContext(ListContext);
@@ -15,7 +15,7 @@ function Bucket() {
   };
   return (
     <>
-      <LottieControl></LottieControl>
+      <LottieControlConfetti></LottieControlConfetti>
       <Row className="text-center mt-4 mb-2 mx-auto">
         <Col></Col>
       </Row>
@@ -28,7 +28,7 @@ function Bucket() {
           <Link to="/list" style={linkRemoveUnderline}>
             <div className="bucketIcon">
               <h1 className="hopeCount">{totalHope} of 3</h1>
-              <BucketControl></BucketControl>
+              <LottieControlBucket></LottieControlBucket>
             </div>
           </Link>
         </Col>

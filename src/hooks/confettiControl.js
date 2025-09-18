@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import confettiAnimation from "../images/confetti-lottie.json";
 import { ListContext } from "../contexts/ListContext";
 
-const LottieControl = () => {
+const LottieControlConfetti = () => {
   const lottieRef = useRef();
 
   const listContext = useContext(ListContext);
@@ -40,4 +40,4 @@ const LottieControl = () => {
   );
 };
 
-export default LottieControl;
+export default LottieControlConfetti;

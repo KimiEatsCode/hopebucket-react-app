@@ -3,7 +3,7 @@ import Lottie from "lottie-react";
 import bucketAnimation from "../images/bucket-lottie.json";
 import { ListContext } from "../contexts/ListContext";
 
-const LottieControl = () => {
+const LottieControlBucket = () => {
   const lottieRef = useRef();
 
   const listContext = useContext(ListContext);
@@ -48,4 +48,4 @@ const LottieControl = () => {
   );
 };
 
-export default LottieControl;
+export default LottieControlBucket;
