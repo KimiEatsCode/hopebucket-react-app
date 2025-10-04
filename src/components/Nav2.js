@@ -93,7 +93,7 @@ function OffCanvasExample({ name, ...props }) {
 
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    if (totalHope === 3 || expDate !== tomorrow) {
+    if (totalHope === 10 || expDate !== tomorrow) {
       // if (!expDate) {
       setShowListLinks(true);
     } else {
@@ -102,10 +102,10 @@ function OffCanvasExample({ name, ...props }) {
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
   function addItem() {
-    if (list.length === 3) {
+    if (list.length === 10) {
       navigate("/");
       setShowAddField(false);
-    } else if (list.length <= 3) {
+    } else if (list.length <= 10) {
       if (input !== "") {
         input = {
           id: Math.random(),
@@ -129,7 +129,7 @@ function OffCanvasExample({ name, ...props }) {
   const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {
-    if (totalHope <= 3) {
+    if (totalHope <= 10) {
       setShowAddField(true);
     } else {
       setShowAddField(false);
@@ -145,7 +145,7 @@ function OffCanvasExample({ name, ...props }) {
     width="16"
     height="16"
     fill="currentColor"
-    className="bi bi-file-earmark-plus"
+    className="bi bi-file-earmark"
     viewBox="0 0 16 16"
   >
     <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
@@ -188,9 +188,9 @@ function OffCanvasExample({ name, ...props }) {
       </Offcanvas>
       <Row>
         <nav>
-          <i className="bi bi-box-arrow-left"></i>
           <div style={navStyles}>
             {toggleAlignNav ? (
+              
               <Link onClick={handleNavAlign}>
                 <button type="button" className="btn btn-primary">
                   <svg
@@ -235,24 +235,23 @@ function OffCanvasExample({ name, ...props }) {
                 </button>
               </Link>
             )}
-
+ 
             {showNewList && (
               <Link onClick={handleNewList}>
                 <button
                   type="button"
                   className="btn btn-primary"
-                  disabled={totalHope === 3}
+                  disabled={totalHope === 10}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="44"
                     height="44"
                     fill="currentColor"
-                    className="bi bi-file-earmark-plus"
+                    className="bi bi-file-earmark"
                     viewBox="0 0 16 16"
                   >
-                    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
+                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
                   </svg>
                 </button>
               </Link>
@@ -260,7 +259,28 @@ function OffCanvasExample({ name, ...props }) {
             )}
 
   {!showNewList && (
-    <Link to="/bucket"><i class="bi bi-bucket"></i></Link>
+    <>
+    <Link to="/bucket"><button type="button" className="btn btn-primary">
+          <svg width="44px" height="44px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bucket">
+      <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527z"/>
+    </svg>
+  
+    </button></Link>
+     <Link to="/list">
+              <button type="button" className="btn btn-primary">
+               <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="44"
+    height="44"
+    fill="currentColor"
+    className="bi bi-file-earmark"
+    viewBox="0 0 16 16"
+  >
+ <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+  </svg>
+   </button>           
+              </Link>
+              </>
   )}
             {!showNewList && (
               
@@ -268,7 +288,7 @@ function OffCanvasExample({ name, ...props }) {
                 <button
                   type="button"
                   className="btn btn-primary"
-                  disabled={totalHope >= 3}
+                  disabled={totalHope >= 10}
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -282,8 +302,11 @@ function OffCanvasExample({ name, ...props }) {
                   </svg>
                 </button>
               </Link>
+           
             )}
+            
           </div>
+              
         </nav>
       </Row>
     </>

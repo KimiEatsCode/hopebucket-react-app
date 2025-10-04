@@ -35,13 +35,13 @@ function List() {
   }
 
   // useEffect(() => {
-  //   if (totalHope === 3) {
+  //   if (totalHope ===10) {
   //     window.scrollTo(0, 0);
   //   }
   // }, [totalHope]);
 
-  // if (totalHope < 3 || expDate === today) {
-  if (totalHope <= 3) {
+  // if (totalHope <10 || expDate === today) {
+  if (totalHope <= 10) {
     return (
       <>
         <LottieControl></LottieControl>
@@ -50,7 +50,7 @@ function List() {
             {/* {expDate !== today && <h4>List Expires: {expDate}</h4>} */}
 
             <h2 className="pt-2">
-              <strong>{totalHope} of 3</strong>
+              <strong>{totalHope} of 10</strong>
             </h2>
           </Link>
         </Row>
@@ -63,9 +63,9 @@ function List() {
                 supported you, or an action you took that gives you hope.
               </h5>
             )}
-            {/* {totalHope < 3 && (
+            {/* {totalHope < 10 && (
               <h5>
-                Try to add 3 hope items before the day ends and a new day
+                Try to add10 hope items before the day ends and a new day
                 begins!
               </h5>
             )} */}
@@ -125,7 +125,7 @@ function List() {
       <>
         <Row>
           <h4 className="mb-3 mt-3 text-center">
-            {totalHope === 3
+            {totalHope ===10
               ? "Great Job! You've filled up your hope for today! Treat yourself to some grace, fun, or rest today if you can. Tomorrow is a new day and new list!"
               : ""}
           </h4>

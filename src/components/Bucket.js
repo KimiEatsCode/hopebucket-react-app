@@ -22,12 +22,12 @@ function Bucket() {
       <Row className="mx-auto text-center">
         <Col>
           <h4>
-            {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
-            {totalHope < 3 ? "Add hope to fill up your hope bucket!" : ""}
+            {totalHope === 10 ? "Congrats! You filled your hope bucket!" : ""}
+            {totalHope < 10 ? "Add hope to fill up your hope bucket!" : ""}
           </h4>
           <Link to="/list" style={linkRemoveUnderline}>
             <div className="bucketIcon">
-              <h1 className="hopeCount">{totalHope} of 3</h1>
+              <h1 className="hopeCount">{totalHope} of 10</h1>
               <LottieControlBucket></LottieControlBucket>
             </div>
           </Link>

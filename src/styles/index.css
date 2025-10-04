@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
-
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 body {
@@ -51,6 +51,11 @@ a {
 
 nav a {
   padding: 5px;
+}
+
+nav button {
+  width:70px;
+  height:70px;
 }
 
 .topNav {
