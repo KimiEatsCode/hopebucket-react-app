@@ -1,9 +1,9 @@
 import React, { useEffect, useContext, useRef } from "react";
 import Lottie from "lottie-react";
-import bucketAnimation from "../images/bucket-lottie.json";
+import bucketAnimation from "../images/arrow-with-msg.json";
 import { ListContext } from "../contexts/ListContext";
 
-const LottieControl = () => {
+const LottieControlNavMsg = () => {
   const lottieRef = useRef();
 
   const listContext = useContext(ListContext);
@@ -12,23 +12,13 @@ const LottieControl = () => {
 
   useEffect(() => {
     if (totalHope === 0) {
-      console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(10, true);
-    } else if (totalHope === 1) {
-      console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(20, true);
-    } else if (totalHope === 2) {
-      console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(55, true);
-    } else if (totalHope === 3) {
-      console.log("totalHope" + list);
       lottieRef.current.playSegments(55, 100);
-    } else {
-      lottieRef.current.stop();
-    }
+    } else if (totalHope === 1) {
+      lottieRef.current.goToAndStop(20, true);
+    } 
   }, [totalHope, list]);
 
-  const bucketstyle = {
+  const msgstyle = {
     position: "absolute",
     zIndex: "-1",
     left: "0",
@@ -43,9 +33,9 @@ const LottieControl = () => {
       autoPlay={false}
       loop={false}
       animationData={bucketAnimation}
-      style={bucketstyle}
+      style={msgstyle}
     />
   );
 };
 
-export default LottieControl;
+export default LottieControlNavMsg;
