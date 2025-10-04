@@ -1,12 +1,12 @@
-import React, { useContext } from "react";
+import  { useContext } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
-import { ExpContext } from "../contexts/ExpContext";
+// import { ExpContext } from "../contexts/ExpContext";
 //bootstrap
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import ListGroup from "react-bootstrap/ListGroup";
+// import Row from "react-bootstrap/Row";
+// import Col from "react-bootstrap/Col";
+// import ListGroup from "react-bootstrap/ListGroup";
 //hooks
 //components
 import LottieControl from "../hooks/confettiControl";
@@ -16,8 +16,8 @@ function List() {
   const list = listContext.list;
   let totalHope = listContext.list.length;
 
-  const expContext = useContext(ExpContext);
-  const expDate = expContext.expDate;
+  // const expContext = useContext(ExpContext);
+  // const expDate = expContext.expDate;
 
   // const [showNewList, setShowListLinks] = useState(true);
 
@@ -45,7 +45,7 @@ function List() {
     return (
       <>
         <LottieControl></LottieControl>
-        <Row className="d-flex text-center mt-2">
+     
           <Link to="/">
             {/* {expDate !== today && <h4>List Expires: {expDate}</h4>} */}
 
@@ -53,9 +53,10 @@ function List() {
               <strong>{totalHope} of 3</strong>
             </h2>
           </Link>
-        </Row>
-        <Row className="text-center p-2 mt-2 jusity-content-center ">
-          <Col className="col-md-8 mx-auto">
+         
+        <div className="row">
+           <div className="col"></div>
+          <div className="col">
             {totalHope === 0 && (
               <h5>
                 Fill up your hope bucket with positive thoughts, good things
@@ -69,8 +70,9 @@ function List() {
                 begins!
               </h5>
             )} */}
-          </Col>
-        </Row>
+          </div>
+           <div xs={2}  md={2} className="mx-auto"></div>
+        </div>
         {/* <Row>
      { showNewList && <h2 className="mt-3 text-center">
             <button onClick={handleOpen} className="btn btn-primary p-4 mt-2">
@@ -80,57 +82,46 @@ function List() {
            }
         </Row> */}
 
-        <Row className="pb-5">
-          <Col className="pb-5">
-            <ListGroup>
+        <div className="row">
+          <div className="pb-5">
+            <div className="listGroup">
               {list.map((item) => {
                 return (
                   // <ListGroup.Item className="d-flex flex-wrap">
-                  <ListGroup.Item
-                    className="pt-2 pb-2 d-flex flex-nowrap "
-                    key={item.id}
+                  <div className="listGroupItem"  key={item.id}
                     variant="light"
                   >
                     <button
-                      className="closeX btn "
+                      className="removeItem btn "
                       onClick={() => {
                         deleteItem(item.id);
                       }}
                     >
-                      {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-x-lg"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                      </svg>
+                   <i class="bi bi-trash3-fill"></i>
+                     
                     </button>
 
                     <div className=" hopeItem ">{item.value}</div>
-                  </ListGroup.Item>
-                  // </ListGroup.Item>
+                  </div>
+              
                 );
               })}
-            </ListGroup>
-          </Col>
-        </Row>
+            </div>
+          </div>
+        </div>
       </>
     );
   } else {
     return (
       <>
-        <Row>
+        <div className="row">
           <h4 className="mb-3 mt-3 text-center">
             {totalHope === 3
               ? "Great Job! You've filled up your hope for today! Treat yourself to some grace, fun, or rest today if you can. Tomorrow is a new day and new list!"
               : ""}
           </h4>
-        </Row>
-        <Row>
+        </div>
+        <div class="row">
           <h3 className="mt-3 mb-2 text-center">
             {/* {showNewList && (
               <button onClick={handleNewList} className="btn btn-primary mt-2">
@@ -138,26 +129,26 @@ function List() {
               </button>
             )} */}
           </h3>
-        </Row>
+        </div>
 
-        <Row className="mt-4">
-          <Col>
-            <ListGroup>
+        <div className="mt-4">
+          <div className="col"> 
+            <div class="listGroup">
               {list.map((item) => {
                 return (
-                  <ListGroup.Item className="pt-1 pb-1">
+                  <div className="ListGroupItem">
                     <div
                       className="alignRightX"
                       key={item.id}
                       variant="dark"
                     ></div>
                     <div className="hopeItem">{item.value}</div>
-                  </ListGroup.Item>
+                  </div>
                 );
               })}
-            </ListGroup>
-          </Col>
-        </Row>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

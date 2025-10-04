@@ -1,15 +1,11 @@
 import { React, useState, useContext, useRef, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
-//bootstrap
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "react-bootstrap/Button";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
+
 //context
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 //hook
+import LottieControlNavMsg from "../hooks/navMsgControl";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShowAddField] = useState(false);
@@ -70,7 +66,6 @@ function OffCanvasExample({ name, ...props }) {
     return nextDay;
   }, [currDate]);
 
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (today === expDate) {
@@ -83,7 +78,6 @@ function OffCanvasExample({ name, ...props }) {
 
     return () => clearInterval(intervalId); // Clear interval on unmount
   }, [expDate, today, listContext]);
-
 
   const handleNewList = (event) => {
     setShowListLinks(false);
@@ -140,27 +134,15 @@ function OffCanvasExample({ name, ...props }) {
     }, "100");
   };
 
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    fill="currentColor"
-    className="bi bi-file-earmark-plus"
-    viewBox="0 0 16 16"
-  >
-    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
-  </svg>;
-
   return (
     <>
-      <Offcanvas show={showAddField} onHide={handleClose} {...props}>
-        <Offcanvas.Body className="no-wrap">
-          <Row mb={3}>
-            <Col>
-              <Form.Control
-                as="textarea"
-                rows={3}
+      <div className="offCanvas" show={showAddField} onHide={handleClose} {...props}>
+        <div className="no-wrap">
+          <div className="row" mb={3}>
+            <div className="col">
+              <div className="form"> <form 
+                type="textarea"
+
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
@@ -169,128 +151,80 @@ function OffCanvasExample({ name, ...props }) {
                 aria-label="form field to type text"
                 aria-describedby="basic-addon2"
               />
-            </Col>
+            </div>
+            </div>
             <p></p>
-            <Button onClick={addItem}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                fill="currentColor"
-                className="bi bi-check-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-              </svg>
-            </Button>
-          </Row>
-        </Offcanvas.Body>
-      </Offcanvas>
-      <Row>
+            <button onClick={addItem}>
+              <i class="bi bi-plus-circle-fill"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
         <nav>
-          <i className="bi bi-box-arrow-left"></i>
           <div style={navStyles}>
             {toggleAlignNav ? (
               <Link onClick={handleNavAlign}>
                 <button type="button" className="btn btn-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-box-arrow-right"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
-                    />
-                  </svg>
+                  <i class="bi bi-box-arrow-right"></i>
                 </button>
               </Link>
             ) : (
               <Link onClick={handleNavAlign}>
                 <button type="button" className="btn btn-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-box-arrow-left"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
-                    />
-                  </svg>
+                  <i className="bi bi-box-arrow-left"></i>
                 </button>
               </Link>
             )}
+              <Link to="/list">
+                <button type="button" className="btn btn-primary">
+                  <i class="bi bi-file-earmark"></i>
+                </button>
+              </Link>
 
             {showNewList && (
               <Link onClick={handleNewList}>
+                <div class="lottie-wrapper">
+                  {" "}
+                  <LottieControlNavMsg></LottieControlNavMsg>
+                </div>
                 <button
                   type="button"
                   className="btn btn-primary"
                   disabled={totalHope === 3}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-file-earmark-plus"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
-                  </svg>
+                  <i class="bi bi-file-earmark-plus"></i>
                 </button>
               </Link>
-            
             )}
 
-  {!showNewList && (
-    <Link to="/bucket"><i class="bi bi-bucket"></i></Link>
-  )}
             {!showNewList && (
+              <Link to="/bucket">
+                <button type="button" className="btn btn-primary">
+                  <i class="bi bi-bucket"></i>
+                </button>
+              </Link>
               
+            )}
+            {!showNewList && (
               <Link onClick={handleOpen}>
                 <button
                   type="button"
                   className="btn btn-primary"
                   disabled={totalHope >= 3}
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-plus-circle-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                  </svg>
+                  <i className="bi bi-plus-circle-fill"></i>
                 </button>
               </Link>
             )}
           </div>
         </nav>
-      </Row>
+      </div>
     </>
   );
 }
 
-function Nav2() {
+function Nav() {
   return (
     <>
       {["bottom"].map((placement, idx) => (
@@ -300,4 +234,4 @@ function Nav2() {
   );
 }
 
-export default Nav2;
+export default Nav;

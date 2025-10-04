@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ListContext } from "../contexts/ListContext";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import LottieControlConfetti from "../hooks/confettiControl";
 import LottieControlBucket from "../hooks/bucketControl";
 
@@ -16,23 +14,23 @@ function Bucket() {
   return (
     <>
       <LottieControlConfetti></LottieControlConfetti>
-      <Row className="text-center mt-4 mb-2 mx-auto">
-        <Col></Col>
-      </Row>
-      <Row className="mx-auto text-center">
-        <Col>
-          <h4>
+      <div className="row">
+       
+      </div>
+      <div className="row mx-auto text-center">
+   
+          <h5 class="instructions-text">
             {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
             {totalHope < 3 ? "Add hope to fill up your hope bucket!" : ""}
-          </h4>
+          </h5>
           <Link to="/list" style={linkRemoveUnderline}>
             <div className="bucketIcon">
               <h1 className="hopeCount">{totalHope} of 3</h1>
               <LottieControlBucket></LottieControlBucket>
             </div>
           </Link>
-        </Col>
-      </Row>
+
+      </div>
     </>
   );
 }
