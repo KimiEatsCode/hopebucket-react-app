@@ -6,6 +6,7 @@ import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 //hook
 import LottieControlNavMsg from "../hooks/navMsgControl";
+import { Offcanvas } from "react-bootstrap";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShowAddField] = useState(false);
@@ -136,7 +137,7 @@ function OffCanvasExample({ name, ...props }) {
 
   return (
     <>
-      <div className="offCanvas" show={showAddField} onHide={handleClose} {...props}>
+      <Offcanvas className="offCanvas" show={showAddField} onHide={handleClose} {...props}>
         <div className="no-wrap">
           <div className="row" mb={3}>
             <div className="col">
