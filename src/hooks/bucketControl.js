@@ -32,7 +32,7 @@ const LottieControlBucket = () => {
     position: "absolute",
     zIndex: "-1",
     left: "0",
-    top: "170px",
+    top: "140px",
     height: "70%",
     width: "100%",
   };
