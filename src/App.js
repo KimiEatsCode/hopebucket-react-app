@@ -12,7 +12,7 @@ import Container from "react-bootstrap/Container";
 import "bootstrap-icons/font/bootstrap-icons.css";
 //components
 import List from "./components/List";
-import Nav from "./components/Nav";
+import Nav from "./components/Nav2";
 import Bucket from "./components/Bucket";
 //context
 import { ListContextProvider } from "./contexts/ListContext";
