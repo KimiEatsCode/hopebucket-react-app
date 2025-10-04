@@ -2,6 +2,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
+
 body {
   margin: 0;
   font-family: 'Cabin', 'Helvetica Neue',
@@ -10,7 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: aliceblue !important;
   padding-bottom: 20px;
-  color: #254c90;
+  color: #A3C2F3;
 }
 
 
@@ -20,7 +21,7 @@ body {
   font-weight: bold;
   font-style: normal;
   text-align: center;
-  color: #254c90;
+  color: #4F8AE8;
 }
 
 .light-theme {
@@ -46,7 +47,8 @@ body {
 }
 
 a {
-  color: #254c90 !important;
+  color: #4F8AE8 !important;
+  text-decoration:none
 }
 
 nav a {
@@ -68,8 +70,15 @@ h3,
 h4,
 h5 {
   font-family: "Cabin", sans-serif;
-  color: #254c90 !important;
+  color: #1650AC!important;
   line-height: 1.3em !important;
+}
+
+.instructions-text {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-align:center;
 }
 
 .section-center-content {
@@ -78,7 +87,7 @@ h5 {
   align-items: center;
   width: 200px;
   height: 200px;
-  border: 1px solid #2d2d2d;
+  border: 1px solid #4F8AE8;
   margin-bottom: 12px;
 }
 
@@ -87,10 +96,6 @@ h5 {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* background-image: url("../images/bucket.svg"); */
-  /* background-repeat: no-repeat;
-  background-position: 50% ; */
-  /* background-size:contain; */
   text-align: center;
   font-weight: bold;
   margin-top: 10px;
@@ -111,10 +116,12 @@ h5 {
 .list-group {
   padding-left: 50px;
   display: inherit;
+  margin: 0 auto;
+  max-width: 600px;
 }
 
 .list-group-item.list-group-item-light {
-  border: 2px solid #999 !important;
+  /* border: 2px solid #999 !important; */
   margin-bottom: 6px;
 }
 
@@ -125,11 +132,11 @@ h5 {
   word-break: break-word;
   padding: 10px;
   font-size: 1.2em;
+  color: #1650AC !important;
 }
 
-.closeX {
+.removeItem {
   font-style: bold;
-  text-align: left;
   font-weight: 700;
 }
 
@@ -144,8 +151,17 @@ h5 {
   min-width: 200px;
 }
 
-.btn-primary {
-  background-color: #0a58ca !important;
+
+button.btn{
+    color: #fff;
+    padding: 5px;
+    background-color: #16448f !important;
+    border: 0;
+    padding: 7px;
+    border-radius: 5px;
+     width: 60px;
+    height: 60px;
+    font-size: 24px;
 }
 
 .form-control {
