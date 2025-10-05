@@ -20,7 +20,7 @@ if(document.getElementById('copyButton') != null) {
   // Use the Clipboard API
   navigator.clipboard.writeText(textToCopy)
     .then(() => {
-      // alert('Your hope list copied to clipboard!');
+      alert('Your hope list copied to clipboard!');
     })
     .catch(err => {
       console.error('Failed to copy content: ', err);
