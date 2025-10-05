@@ -58,7 +58,7 @@ if(document.getElementById('copyButton') != null) {
       <>
         <LottieControl></LottieControl>
         <Row className="d-flex text-center mt-2">
-          <div id="contentToCopy">Below are things that give me hope!</div>
+          <div id="contentToCopy"></div>
           <Link to="/">
             <h2 className="pt-2">
               <strong>{totalHope} of 10</strong>
@@ -91,10 +91,13 @@ if(document.getElementById('copyButton') != null) {
                   things that happen during the day, names of people who helped
                   or supported you, or an action you took that gives you hope.
                 </h5>
+                <br></br>
                 <h5>
                   Try to add 10 hope items before the day ends and a new day
-                  begins!
+                  begins! Your hope bucket will reset at midnight.
                 </h5>
+                <br></br>
+                <h5>Click the + button below to add hope.</h5>
                
               </>
             )}
