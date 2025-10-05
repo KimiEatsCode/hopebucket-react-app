@@ -135,6 +135,8 @@ if(document.getElementById('copyButton') != null) {
                   </ListGroup.Item>
                 );
               })}
+              <br></br>
+              <hr></hr>
             </ListGroup>
           </Col>
         </Row>
