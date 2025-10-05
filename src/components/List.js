@@ -53,7 +53,6 @@ if(document.getElementById('copyButton') != null) {
     listContext.setList(updateList);
   }
 
-
   if (totalHope < 10) {
     return (
       <>
@@ -85,7 +84,7 @@ if(document.getElementById('copyButton') != null) {
         </Row>
         <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
-            {totalHope = 0 && (
+            {totalHope === 0 && (
               <>
                 <h5>
                   Today,fill up your hope bucket with positive thoughts, good
