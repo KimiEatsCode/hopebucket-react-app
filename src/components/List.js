@@ -61,7 +61,7 @@ if(document.getElementById('copyButton') != null) {
           <div id="contentToCopy"></div>
           <Link to="/">
             <h2 className="pt-2">
-              <strong>{totalHope} of 10</strong>
+              <strong>{totalHope} of 10 - Works best on Desktop</strong>
             </h2>
           </Link>
     <div
