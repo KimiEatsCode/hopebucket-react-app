@@ -15,12 +15,13 @@ function List() {
 
 if(document.getElementById('copyButton') != null) {
   document.getElementById('copyButton').addEventListener('click', function() {
+    
   const contentDiv = document.getElementById('contentToCopy');
   const textToCopy = contentDiv.innerText; // or .textContent for more raw text
   // Use the Clipboard API
   navigator.clipboard.writeText(textToCopy)
     .then(() => {
-      alert('Your hope list copied to clipboard!');
+   
     })
     .catch(err => {
       console.error('Failed to copy content: ', err);
@@ -64,23 +65,7 @@ if(document.getElementById('copyButton') != null) {
               <strong>{totalHope} of 10</strong>
             </h2>
           </Link>
-    <div
-            id="copyButton"
-            class="fb-share-button"
-            data-href="https://hopebucket.online/list"
-            rel="noreferrer"
-            data-layout=""
-            data-size=""
-          >
-            {/* <a
-              target="_blank"
-              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopebucket.online%2Flist&amp;src=sdkpreparse"
-              rel="noreferrer"
-              class="fb-xfbml-parse-ignore"
-            > */}
-              <button class="btn btn-primary">Copy Your HopeBucket and share!</button>
-            {/* </a> */}
-          </div>
+    
         </Row>
         <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
@@ -151,7 +136,16 @@ if(document.getElementById('copyButton') != null) {
               ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
               : ""}
           </h4>
-           
+            <div
+            id="copyButton"
+            class="fb-share-button"
+            data-href="https://hopebucket.online/list"
+            rel="noreferrer"
+            data-layout=""
+            data-size=""
+          >
+              <button class="btn btn-primary">Copy Your HopeBucket and share!</button>
+          </div>
         </Row>
         <Row>
           <h3 className="mt-3 mb-2 text-center">
