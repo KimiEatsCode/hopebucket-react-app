@@ -228,8 +228,7 @@ function OffCanvasExample({ name, ...props }) {
             )}
  
             {showNewList && (
-              <>
-              
+              <>   
                <Link to="/bucket">
      <button type="button" className="btn btn-primary">
        <svg
@@ -254,7 +253,7 @@ function OffCanvasExample({ name, ...props }) {
                     width="26px"
                     height="30px"
                     fill="currentColor"
-                    className="bi bi-file-earmark"
+                    className="bi bi-file-earmark-plus"
                     viewBox="0 0 16 16"
                   >
                   <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
@@ -272,10 +271,11 @@ function OffCanvasExample({ name, ...props }) {
                     width="26px"
                     height="30px"
                     fill="currentColor"
-                    className="bi bi-file-earmark"
+                    className="bi bi-file-earmark-plus"
                     viewBox="0 0 16 16"
                   >
-                  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+               <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5"/>
+  <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
                   </svg>
                 </button>
               </Link>
@@ -288,8 +288,9 @@ function OffCanvasExample({ name, ...props }) {
           <svg width="26px" height="30px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-bucket">
       <path d="M2.522 5H2a.5.5 0 0 0-.494.574l1.372 9.149A1.5 1.5 0 0 0 4.36 16h7.278a1.5 1.5 0 0 0 1.483-1.277l1.373-9.149A.5.5 0 0 0 14 5h-.522A5.5 5.5 0 0 0 2.522 5zm1.005 0a4.5 4.5 0 0 1 8.945 0H3.527z"/>
     </svg>
-  
-    </button></Link>
+    </button>
+    </Link>
+    
      <Link to="/list">
               <button type="button" className="btn btn-primary">
                <svg

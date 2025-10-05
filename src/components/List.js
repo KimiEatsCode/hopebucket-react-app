@@ -10,23 +10,27 @@ import ListGroup from "react-bootstrap/ListGroup";
 //components
 import LottieControl from "../hooks/confettiControl";
 
+
+function List() {
+
 if(document.getElementById('copyButton') != null) {
   document.getElementById('copyButton').addEventListener('click', function() {
   const contentDiv = document.getElementById('contentToCopy');
   const textToCopy = contentDiv.innerText; // or .textContent for more raw text
-
-  // Use the modern Clipboard API
+  // Use the Clipboard API
   navigator.clipboard.writeText(textToCopy)
     .then(() => {
-      alert('Your hope list copied to clipboard!');
+      // alert('Your hope list copied to clipboard!');
     })
     .catch(err => {
       console.error('Failed to copy content: ', err);
     });
 });
-};
+} else {
+  
+  // alert('no copy button');
 
-function List() {
+}
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
@@ -49,30 +53,52 @@ function List() {
     listContext.setList(updateList);
   }
 
+
   if (totalHope < 10) {
     return (
       <>
         <LottieControl></LottieControl>
         <Row className="d-flex text-center mt-2">
+          <div id="contentToCopy">Below are things that give me hope!</div>
           <Link to="/">
             <h2 className="pt-2">
               <strong>{totalHope} of 10</strong>
             </h2>
           </Link>
+    <div
+            id="copyButton"
+            class="fb-share-button"
+            data-href="https://hopebucket.online/list"
+            rel="noreferrer"
+            data-layout=""
+            data-size=""
+          >
+            <a
+              target="_blank"
+              href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopebucket.online%2Flist&amp;src=sdkpreparse"
+              rel="noreferrer"
+              class="fb-xfbml-parse-ignore"
+            >
+              <button class="btn btn-primary">Share Your HopeBucket List!</button>
+            </a>
+          </div>
         </Row>
-        <Row className="text-center p-2 mt-2 jusity-content-center ">
+        <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
-            {totalHope === 0 && (
+            {totalHope = 0 && (
               <>
-              <h5>
-                Fill up your hope bucket with positive thoughts, good things
-                that happen during the day, names of people who helped or
-                supported you, or an action you took that gives you hope.
-              </h5>
-              <h5>Try to add 10 hope items before the day ends and a new day begins!</h5>
+                <h5>
+                  Today,fill up your hope bucket with positive thoughts, good
+                  things that happen during the day, names of people who helped
+                  or supported you, or an action you took that gives you hope.
+                </h5>
+                <h5>
+                  Try to add 10 hope items before the day ends and a new day
+                  begins!
+                </h5>
+               
               </>
             )}
-
           </Col>
         </Row>
         <Row className="pb-5">
@@ -118,10 +144,10 @@ function List() {
         <Row>
           <h4 className="mb-3 mt-3 text-center">
             {totalHope === 10
-              ? "Great Job! You've filled up your hope for today! Treat yourself to some grace, fun, or rest today if you can. Tomorrow is a new day and new list!"
+              ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
               : ""}
           </h4>
-            <div id="copyButton" class="fb-share-button" data-href="https://hopebucket.online/list" rel="noreferrer"  data-layout="" data-size=""><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopebucket.online%2Flist&amp;src=sdkpreparse" rel="noreferrer"  class="fb-xfbml-parse-ignore"><button class="btn btn-primary">Share Your Hope List</button></a></div>
+           
         </Row>
         <Row>
           <h3 className="mt-3 mb-2 text-center">
@@ -151,8 +177,7 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
-        <Row>
-
+        <Row className="mt-5 mb-5">
         </Row>
       </>
     );
