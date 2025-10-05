@@ -21,6 +21,7 @@ body {
   font-style: normal;
   text-align: center;
   color: #254c90;
+  margin-top:10px;
 }
 
 .light-theme {
@@ -54,8 +55,8 @@ nav a {
 }
 
 nav button {
-  width:70px;
-  height:70px;
+  width:50px;
+  height:50px;
 }
 
 .topNav {
@@ -74,7 +75,7 @@ h4,
 h5 {
   font-family: "Cabin", sans-serif;
   color: #254c90 !important;
-  line-height: 1.3em !important;
+  line-height: 1.2em !important;
 }
 
 .section-center-content {
@@ -92,10 +93,6 @@ h5 {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  /* background-image: url("../images/bucket.svg"); */
-  /* background-repeat: no-repeat;
-  background-position: 50% ; */
-  /* background-size:contain; */
   text-align: center;
   font-weight: bold;
   margin-top: 10px;

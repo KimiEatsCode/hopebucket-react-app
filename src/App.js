@@ -5,7 +5,6 @@ import Container from "react-bootstrap/Container";
 import List from "./components/List";
 import Nav2 from "./components/Nav2";
 import Bucket from "./components/Bucket";
-
 //context
 import { ListContextProvider } from "./contexts/ListContext";
 import { ExpContextProvider } from "./contexts/ExpContext";
@@ -13,7 +12,6 @@ import { ExpContextProvider } from "./contexts/ExpContext";
 function App() {
   return (
     <>
-  
   <React.StrictMode>
     <ExpContextProvider>
       <ListContextProvider>

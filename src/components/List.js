@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
@@ -7,9 +7,10 @@ import { ExpContext } from "../contexts/ExpContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-//hooks
 //components
 import LottieControl from "../hooks/confettiControl";
+//npm pkgs
+import {  RedditShareButton, FacebookShareButton, EmailShareButton,  TwitterShareButton,  LinkedinShareButton } from "react-share";
 
 function List() {
   const listContext = useContext(ListContext);
@@ -157,6 +158,9 @@ function List() {
               })}
             </ListGroup>
           </Col>
+        </Row>
+        <Row>
+          
         </Row>
       </>
     );
