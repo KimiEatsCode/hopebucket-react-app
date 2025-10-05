@@ -22,7 +22,7 @@ function Bucket() {
       <Row className="mx-auto text-center">
         <Col>
           <h4>
-            {totalHope === 10 ? "Congrats! You filled your hope bucket!" : ""}
+            {totalHope === 10 ? "Congrats! You filled your hope bucket! Wait another day to fill up on more hope!" : ""}
             {totalHope < 10 ? "Add hope to fill up your hope bucket!" : ""}
           </h4>
           <Link to="/list" style={linkRemoveUnderline}>

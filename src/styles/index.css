@@ -3,16 +3,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 body {
-  margin: 0;
   font-family: 'Cabin', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: aliceblue !important;
-  padding-bottom: 20px;
   color: #254c90;
 }
-
 
 .logoName {
   font-family: "Delicious Handrawn", cursive;
@@ -101,18 +96,31 @@ h5 {
 
 .hopeCount {
   position: relative;
-  width: 200px;
-  top: 200px;
+  width: 198px;
+  top: 167px;
   font-weight: 800;
+  font-size: 1.5em;
 }
 
 .no-wrap {
   flex: 0 0 auto;
 }
 
+#copyButton {
+  text-align: center;
+  font-size: 1.2em;
+  color:#fff;
+}
+
+#copyButton a {
+  color: #fff !important;
+  text-decoration: none;
+}
+
 .list-group {
   padding-left: 50px;
   display: inherit;
+ 
 }
 
 .list-group-item.list-group-item-light {

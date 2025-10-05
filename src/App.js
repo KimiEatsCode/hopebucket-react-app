@@ -17,7 +17,7 @@ function App() {
       <ListContextProvider>
         <BrowserRouter>
     
-          <Container>
+          <Container id="contentToCopy">
             <Link to="/">
               <h1 className="logoName mb-2">HopeBucket</h1>
             </Link>
