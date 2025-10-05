@@ -9,29 +9,13 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //components
 import LottieControl from "../hooks/confettiControl";
+import ClipboardJS from "clipboard";
 
 
 function List() {
 
-if(document.getElementById('copyButton') != null) {
-  document.getElementById('copyButton').addEventListener('click', function() {
-    
-  const contentDiv = document.getElementById('contentToCopy');
-  const textToCopy = contentDiv.innerText; // or .textContent for more raw text
-  // Use the Clipboard API
-  navigator.clipboard.writeText(textToCopy)
-    .then(() => {
-      alert('HopeBucket copied to clipboard! You can now paste it anywhere to share your hope list!');
-    })
-    .catch(err => {
-      console.error('Failed to copy content: ', err);
-    });
-});
-} else {
-  
-  // alert('no copy button');
+  new ClipboardJS('.copyButton')
 
-}
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
@@ -58,8 +42,9 @@ if(document.getElementById('copyButton') != null) {
     return (
       <>
         <LottieControl></LottieControl>
-        <Row className="d-flex text-center mt-2">
       
+        <Row className="d-flex text-center mt-2">
+
           <Link to="/">
             <h2 className="pt-2">
               <strong>{totalHope} of 10</strong>
@@ -68,10 +53,11 @@ if(document.getElementById('copyButton') != null) {
     
         </Row>
         <Row className="text-center p-2 mt-2 jusity-content-center">
-          <Col className="col-md-8 mx-auto" id="contentToCopy">
+          <Col className="col-md-8 mx-auto">
             {totalHope === 0 && (
-              <>
-                <h5>
+              <>            
+  
+                <h5 id="contentToCopy">
                   Today,fill up your hope bucket with positive thoughts, good
                   things that happen during the day, names of people who helped
                   or supported you, or an action you took that gives you hope.
@@ -83,12 +69,12 @@ if(document.getElementById('copyButton') != null) {
                 </h5>
                 <br></br>
                 <h5>Click the + button below to add hope.</h5>
-               
               </>
             )}
           </Col>
         </Row>
         <Row className="pb-5">
+       
           <Col className="pb-5">
             <ListGroup>
               {list.map((item) => {
@@ -136,18 +122,13 @@ if(document.getElementById('copyButton') != null) {
               ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
               : ""}
           </h4>
-            <div
-            id="copyButton"
-            class="fb-share-button"
-            data-href="https://hopebucket.online/list"
-            rel="noreferrer"
-            data-layout=""
-            data-size=""
-          >
-              <button class="btn btn-primary">Copy Your HopeBucket and share!</button>
-          </div>
+            <button class="copyButton" data-clipboard-target="#contentToCopy">
+  Copy Your HopeBucket and share!
+</button>
+ 
         </Row>
         <Row>
+          
           <h3 className="mt-3 mb-2 text-center">
             {/* {showNewList && (
               <button onClick={handleNewList} className="btn btn-primary mt-2">
