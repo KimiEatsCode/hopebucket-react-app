@@ -72,14 +72,14 @@ if(document.getElementById('copyButton') != null) {
             data-layout=""
             data-size=""
           >
-            <a
+            {/* <a
               target="_blank"
               href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhopebucket.online%2Flist&amp;src=sdkpreparse"
               rel="noreferrer"
               class="fb-xfbml-parse-ignore"
-            >
-              <button class="btn btn-primary">Share Your HopeBucket List! Paste list in a post. Works best on Desktop. Go to FB site to see post.</button>
-            </a>
+            > */}
+              <button class="btn btn-primary">Copy Your HopeBucket and share!</button>
+            {/* </a> */}
           </div>
         </Row>
         <Row className="text-center p-2 mt-2 jusity-content-center">
