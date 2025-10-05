@@ -78,7 +78,7 @@ if(document.getElementById('copyButton') != null) {
               rel="noreferrer"
               class="fb-xfbml-parse-ignore"
             >
-              <button class="btn btn-primary">Share Your HopeBucket List!</button>
+              <button class="btn btn-primary">Share Your HopeBucket List! (Paste list in post. Ignore Internal Error, close page). Go to FB site to see post.</button>
             </a>
           </div>
         </Row>
