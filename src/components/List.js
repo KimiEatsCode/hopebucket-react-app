@@ -21,7 +21,7 @@ if(document.getElementById('copyButton') != null) {
   // Use the Clipboard API
   navigator.clipboard.writeText(textToCopy)
     .then(() => {
-   
+      alert('HopeBucket copied to clipboard! You can now paste it anywhere to share your hope list!');
     })
     .catch(err => {
       console.error('Failed to copy content: ', err);
@@ -59,7 +59,7 @@ if(document.getElementById('copyButton') != null) {
       <>
         <LottieControl></LottieControl>
         <Row className="d-flex text-center mt-2">
-          <div id="contentToCopy"></div>
+      
           <Link to="/">
             <h2 className="pt-2">
               <strong>{totalHope} of 10</strong>
@@ -68,7 +68,7 @@ if(document.getElementById('copyButton') != null) {
     
         </Row>
         <Row className="text-center p-2 mt-2 jusity-content-center">
-          <Col className="col-md-8 mx-auto">
+          <Col className="col-md-8 mx-auto" id="contentToCopy">
             {totalHope === 0 && (
               <>
                 <h5>
