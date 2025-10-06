@@ -33,6 +33,10 @@ function List() {
 
   today = mm + "/" + dd1 + "/" + yyyy;
 
+  function onCopy() {
+    alert("Copied your HopeBucket! Share it with peeps!");
+  }
+
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
     listContext.setList(updateList);
@@ -122,8 +126,10 @@ function List() {
               ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
               : ""}
           </h4>
-          <button class="btn btn-primary"> <span class="copyButton" data-clipboard-target="#contentToCopy">
-  Copy Your hopebucket.online and share!
+          <button class="btn btn-primary"  onClick={() => {
+                        onCopy();
+                      }}> <span class="copyButton" data-clipboard-target="#contentToCopy">
+  Copy Your HopeBucket and share!
 </span></button> 
  
         </Row>
