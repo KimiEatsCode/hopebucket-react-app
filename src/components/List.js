@@ -122,9 +122,9 @@ function List() {
               ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
               : ""}
           </h4>
-            <button class="copyButton" data-clipboard-target="#contentToCopy">
-  Copy Your HopeBucket and share!
-</button>
+          <button class="btn btn-primary"> <span class="copyButton" data-clipboard-target="#contentToCopy">
+  Copy Your hopebucket.online and share!
+</span></button> 
  
         </Row>
         <Row>
