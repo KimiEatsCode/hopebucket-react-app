@@ -45,14 +45,21 @@ a {
   color: #254c90 !important;
 }
 
-nav a {
-  padding: 5px;
+nav {
+  display: flex;
+  flex-direction:row;
+  width:90%;
+  gap:10px;
 }
 
 nav button {
-  width:50px;
-  height:50px;
+  width:100%;
 }
+
+nav a:nth-of-type(1) {flex-grow: 1;} 
+nav a:nth-of-type(2) {flex-grow: 3;} 
+nav a:nth-of-type(3) {flex-grow: 1;} 
+nav a:nth-of-type(4) {flex-grow: 1;} 
 
 .topNav {
   text-align: right;
