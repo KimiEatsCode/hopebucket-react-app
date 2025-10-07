@@ -73,6 +73,10 @@ h5 {
   line-height: 1.3em !important;
 }
 
+h5 {
+  font-size: 1.1em !important;
+}
+
 .section-center-content {
   display: flex;
   justify-content: center;

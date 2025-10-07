@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
-import { ExpContext } from "../contexts/ExpContext";
+// import { ExpContext } from "../contexts/ExpContext";
 //bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,8 +20,8 @@ function List() {
   const list = listContext.list;
   let totalHope = listContext.list.length;
 
-  const expContext = useContext(ExpContext);
-  const expDate = expContext.expDate;
+  // const expContext = useContext(ExpContext);
+  // const expDate = expContext.expDate;
 
   // const [showNewList, setShowListLinks] = useState(true);
 
@@ -60,25 +60,32 @@ function List() {
           <Col className="col-md-8 mx-auto">
             {totalHope === 0 && (
               <>            
-  
                 <h5 id="contentToCopy">
-                  Today,fill up your hope bucket with positive thoughts, good
-                  things that happen during the day, names of people who helped
-                  or supported you, or an action you took that gives you hope.
+                  For today, fill up your hope bucket with positive thoughts, good
+                  things that happen, names of people who help
+                  or support you, and actions you took that gives you hope.
                 </h5>
                 <br></br>
                 <h5>
-                  Try to add 10 hope items before the day ends and a new day
-                  begins! Your hope bucket will reset at midnight.
+                  Add 10 hope items before the day ends. Your hope bucket will reset at midnight.
                 </h5>
                 <br></br>
-                <h5>Click the + button below to add hope.</h5>
+                <h5>Click the + button below to add hope. Mindfully, share hope as you go along your day.</h5>
               </>
             )}
           </Col>
         </Row>
+
+
+       <Row className="text-center p-2 mt-2 jusity-content-center">
+          <Col className="col-md-8 mx-auto">
+            {totalHope <= 10 && (          
+           <button type="button" class="btn btn-primary"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
+               )}
+           </Col>
+        </Row>
+
         <Row className="pb-5">
-       
           <Col className="pb-5">
             <ListGroup>
               {list.map((item) => {
@@ -126,22 +133,15 @@ function List() {
               ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
               : ""}
           </h4>
-          <button class="btn btn-primary"  onClick={() => {
-                        onCopy();
-                      }}> <span class="copyButton" data-clipboard-target="#contentToCopy">
-  Copy Your HopeBucket and share!
-</span></button> 
- 
+
         </Row>
-        <Row>
-          
-          <h3 className="mt-3 mb-2 text-center">
-            {/* {showNewList && (
-              <button onClick={handleNewList} className="btn btn-primary mt-2">
-                Start New List
-              </button>
-            )} */}
-          </h3>
+     
+       <Row className="text-center p-2 mt-2 jusity-content-center">
+          <Col className="col-md-8 mx-auto">
+            {totalHope <= 10 && (          
+           <button type="button" class="btn btn-primary"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
+               )}
+           </Col>
         </Row>
 
         <Row className="mt-4">
@@ -184,6 +184,7 @@ function List() {
       </>
     );
   }
+
 }
 
 export default List;
