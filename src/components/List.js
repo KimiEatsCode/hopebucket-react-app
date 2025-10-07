@@ -70,7 +70,7 @@ function List() {
                   Add 10 hope items before the day ends. Your hope bucket will reset at midnight.
                 </h5>
                 <br></br>
-                <h5>Click the + button below to add hope. Mindfully, share hope as you go along your day.</h5>
+                <h5>Click the + button to add hope. Mindfully, copy your list and share hope as you go along your day.</h5>
               </>
             )}
           </Col>
@@ -80,7 +80,7 @@ function List() {
        <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
             {totalHope <= 10 && (          
-           <button type="button" class="btn btn-primary"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
+           <button type="button" class="btn btn-primary mb-3"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
                )}
            </Col>
         </Row>

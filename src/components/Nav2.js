@@ -39,7 +39,7 @@ function OffCanvasExample({ name, ...props }) {
     position: "fixed",
     zIndex: "3",
     bottom: "15px",
-    justifyContent: "space-between",
+    justifyContent: "center",
     // flexDirection: isLeft ? "row-reverse" : "",
     // left: isLeft ? "24px" : "",
     // right: isLeft ? "" : "24px",
@@ -263,6 +263,7 @@ function OffCanvasExample({ name, ...props }) {
               </Link>
               <Link onClick={handleNewList}>
                 <button
+                  id="newListIcon"
                   type="button"
                   className="btn btn-primary"
                   disabled={totalHope === 10}

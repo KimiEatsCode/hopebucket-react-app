@@ -61,6 +61,21 @@ nav a:nth-of-type(2) {flex-grow: 3;}
 nav a:nth-of-type(3) {flex-grow: 1;} 
 nav a:nth-of-type(4) {flex-grow: 1;} 
 
+#newListIcon {
+  background-color:#38f0b2 !important;
+  color:#000;
+  animation: tilt-n-move-shaking 0.5s;
+  border:none;
+}
+
+@keyframes tilt-n-move-shaking {
+  0% { transform: translate(0, 0) }
+  25% { transform: translate(0, 10px) }
+  50% { transform: translate(0, 0) }
+  75% { transform: translate(0, 5px)  }
+  100% { transform: translate(0, 0) }
+}
+
 .topNav {
   text-align: right;
   padding: 10px 20px;
