@@ -64,7 +64,7 @@ nav a:nth-of-type(4) {flex-grow: 1;}
 #newListIcon {
   background-color:#38f0b2 !important;
   color:#000;
-  animation: tilt-n-move-shaking 0.5s;
+  animation: tilt-n-move-shaking 2s;
   border:none;
 }
 

@@ -40,10 +40,12 @@ function OffCanvasExample({ name, ...props }) {
     zIndex: "3",
     bottom: "15px",
     justifyContent: "center",
+    right: "0px",
     // flexDirection: isLeft ? "row-reverse" : "",
     // left: isLeft ? "24px" : "",
     // right: isLeft ? "" : "24px",
   };
+
 
 
   // const handleNavAlign = (event) => {
