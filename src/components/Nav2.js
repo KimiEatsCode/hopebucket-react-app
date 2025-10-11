@@ -1,4 +1,4 @@
-import { React, useState, useContext, useRef, useEffect, useMemo } from "react";
+import { useState, useContext, useRef, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -13,9 +13,7 @@ import { ExpContext } from "../contexts/ExpContext";
 
 function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShowAddField] = useState(false);
-  const [isLeft, setLeft] = useState(true);
   const [showNewList, setShowListLinks] = useState(false);
-  const [toggleAlignNav, setToggleAlignNav] = useState(true);
   let [input, setInput] = useState("");
   let [currDate] = useState(new Date());
 
@@ -41,17 +39,8 @@ function OffCanvasExample({ name, ...props }) {
     bottom: "15px",
     justifyContent: "center",
     right: "0px",
-    // flexDirection: isLeft ? "row-reverse" : "",
-    // left: isLeft ? "24px" : "",
-    // right: isLeft ? "" : "24px",
   };
 
-
-
-  // const handleNavAlign = (event) => {
-  //   setLeft((isLeft) => !isLeft);
-  //   setToggleAlignNav((current) => !current);
-  // };
 
   const today = useMemo(() => {
     const dd1 = currDate.getDate();
@@ -73,19 +62,36 @@ function OffCanvasExample({ name, ...props }) {
     return nextDay;
   }, [currDate]);
 
-
-  useEffect(() => {
+useEffect(() => {
     const intervalId = setInterval(() => {
       if (today === expDate) {
         // Update list state to empty array when a new day starts but don't update exp date until user clicks on start new list
-        console.log("new day today!");
+        console.log("It is a new day today! List resets");
+        console.log("expDate is " + expDate);
+        console.log("today is " + today);
         setShowListLinks(true);
         listContext.setList((list) => (list = []));
       }
     }, 1000); // Check every second
 
     return () => clearInterval(intervalId); // Clear interval on unmount
+    //The clearInterval() method of the Window interface cancels a timed, repeating action which was previously established by a call to setInterval().
+
   }, [expDate, today, listContext]);
+  //run when exp today or listContext changes
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     if (today === expDate) {
+  //       // Update list state to empty array when a new day starts but don't update exp date until user clicks on start new list
+  //       console.log("It is a new day today! List resets");
+  //       setShowListLinks(true);
+  //       listContext.setList((list) => (list = []));
+  //     }
+  //   }, 1000); // Check every second
+
+  //   return () => clearInterval(intervalId); // Clear interval on unmount
+  // }, [expDate, today, listContext]);
 
   const handleNewList = (event) => {
     if( totalHope < 10){

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
-// import { ExpContext } from "../contexts/ExpContext";
+import { ExpContext } from "../contexts/ExpContext";
 //bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,8 +20,8 @@ function List() {
   const list = listContext.list;
   let totalHope = listContext.list.length;
 
-  // const expContext = useContext(ExpContext);
-  // const expDate = expContext.expDate;
+  const expContext = useContext(ExpContext);
+  const expDate = expContext.expDate;
 
   // const [showNewList, setShowListLinks] = useState(true);
 
