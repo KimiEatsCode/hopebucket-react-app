@@ -37,6 +37,10 @@ function List() {
     alert("Copied your HopeBucket! Share it with peeps!");
   }
 
+   function onNoCopy() {
+    alert(`You need ${10 - totalHope} more hope item(s) to copy your HopeBucket. Keep going!`);
+  }
+
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
     listContext.setList(updateList);
@@ -70,7 +74,7 @@ function List() {
                   Add 10 hope items before the day ends. Your hope bucket will reset at midnight.
                 </h5>
                 <br></br>
-                <h5>Click the + button to add hope. Mindfully, copy your list and share hope as you go along your day.</h5>
+                <h5>Click the + button to add hope. Reach 10 items of hope to share your HopeBucket.</h5>
               </>
             )}
           </Col>
@@ -79,8 +83,11 @@ function List() {
 
        <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
-            {totalHope <= 10 && (          
-           <button type="button" class="btn btn-primary mb-3"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
+            {totalHope < 10 && (          
+           <button type="button" class="btn btn-primary" onClick={()=>{onNoCopy()}}> <span class="copyButton" data-clipboard-target="#contentToCopy">You need {10 - totalHope} to copy Your HopeBucket.</span></button>
+               )}
+               {totalHope === 10 && (          
+           <button type="button" class="btn btn-primary"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
                )}
            </Col>
         </Row>
@@ -138,8 +145,11 @@ function List() {
      
        <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
-            {totalHope <= 10 && (          
-           <button type="button" class="btn btn-primary"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
+            {totalHope < 10 && (          
+           <button type="button" class="btn btn-primary" onClick={()=>{onNoCopy()}}> <span class="copyButton" data-clipboard-target="#contentToCopy">You have {totalHope} so you need {10 - totalHope} to copy Your HopeBucket and share.</span></button>
+               )}
+               {totalHope === 10 && (          
+           <button type="button" class="btn btn-primary"  onClick={() => {onCopy()}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
                )}
            </Col>
         </Row>

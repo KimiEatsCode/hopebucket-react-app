@@ -114,7 +114,6 @@ useEffect(() => {
 
   function addItem() {
     if (list.length === 10) {
-      navigate("/");
       setShowAddField(false);
     } else if (list.length <= 10) {
       if (input !== "") {
