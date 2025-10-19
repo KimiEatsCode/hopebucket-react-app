@@ -27,7 +27,7 @@ function Bucket() {
           </h4>
           <Link to="/list" style={linkRemoveUnderline}>
             <div className="bucketIcon">
-              <h1 className="hopeCount">{totalHope} of 10</h1>
+              <h1 className="hopeCount" style={{ textDecoration: "none"}}>{totalHope} of 10</h1>
               <LottieControlBucket></LottieControlBucket>
             </div>
           </Link>

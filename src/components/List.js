@@ -9,12 +9,12 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //components
 import LottieControl from "../hooks/confettiControl";
-import ClipboardJS from "clipboard";
+// import ClipboardJS from "clipboard";
 
 
 function List() {
 
-  new ClipboardJS('.copyButton')
+  // new ClipboardJS('.copyButton')
 
   const listContext = useContext(ListContext);
   const list = listContext.list;
@@ -33,14 +33,6 @@ function List() {
 
   today = mm + "/" + dd1 + "/" + yyyy;
 
-  function onCopy() {
-    alert("Copied your HopeBucket! Share it with peeps!");
-  }
-
-   function onNoCopy() {
-    alert(`You need ${10 - totalHope} more hope item(s) to copy your HopeBucket. Keep going!`);
-  }
-
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
     listContext.setList(updateList);
@@ -53,7 +45,7 @@ function List() {
       
         <Row className="d-flex text-center mt-2">
 
-          <Link to="/">
+          <Link to="/" style={{ textDecoration: "none"}}>
             <h2 className="pt-2">
               <strong>{totalHope} of 10</strong>
             </h2>
@@ -64,41 +56,28 @@ function List() {
           <Col className="col-md-8 mx-auto">
             {totalHope === 0 && (
               <>            
-                <h5 id="contentToCopy">
+                <h5>
                   For today, fill up your hope bucket with positive thoughts, good
                   things that happen, names of people who help
                   or support you, and actions you took that gives you hope.
                 </h5>
                 <br></br>
                 <h5>
-                  Add 10 hope items before the day ends. Your hope bucket will reset at midnight.
+                  Add 10 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will empty on a new day.
                 </h5>
-                <br></br>
-                <h5>Click the + button to add hope. Reach 10 items of hope to share your HopeBucket.</h5>
+          
               </>
             )}
           </Col>
         </Row>
 
-
-       <Row className="text-center p-2 mt-2 jusity-content-center">
-          <Col className="col-md-8 mx-auto">
-            {totalHope < 10 && (          
-           <button type="button" class="btn btn-primary" onClick={()=>{onNoCopy()}}> <span class="copyButton" data-clipboard-target="#contentToCopy">You need {10 - totalHope} to copy Your HopeBucket.</span></button>
-               )}
-               {totalHope === 10 && (          
-           <button type="button" class="btn btn-primary"  onClick={() => {onCopy();}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
-               )}
-           </Col>
-        </Row>
-
         <Row className="pb-5">
           <Col className="pb-5">
-            <ListGroup>
+            <ListGroup id="contentToCopy">
               {list.map((item) => {
                 return (
                   <ListGroup.Item
-                    className="pt-2 pb-2 d-flex flex-nowrap "
+                    className="pt-2 pb-2 d-flex flex-nowrap"
                     key={item.id}
                     variant="light"
                   >
@@ -109,18 +88,9 @@ function List() {
                       }}
                     >
                       {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-x-lg"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                      </svg>
+                    <i className="bi bi-x-lg"></i>
                     </button>
-                    <div className=" hopeItem ">{item.value}</div>
+                    <div className="hopeItem">{item.value}</div>
                   </ListGroup.Item>
                 );
               })}
@@ -134,36 +104,17 @@ function List() {
   } else {
     return (
       <>
-        <Row>
-          <h4 className="mb-3 mt-3 text-center">
-            {totalHope === 10
-              ? "Yay! I filled up on lots of hope today! Today I've done my best. Tomorrow is a new day and a new hope list!"
-              : ""}
-          </h4>
-
-        </Row>
-     
-       <Row className="text-center p-2 mt-2 jusity-content-center">
-          <Col className="col-md-8 mx-auto">
-            {totalHope < 10 && (          
-           <button type="button" class="btn btn-primary" onClick={()=>{onNoCopy()}}> <span class="copyButton" data-clipboard-target="#contentToCopy">You have {totalHope} so you need {10 - totalHope} to copy Your HopeBucket and share.</span></button>
-               )}
-               {totalHope === 10 && (          
-           <button type="button" class="btn btn-primary"  onClick={() => {onCopy()}}> <span class="copyButton" data-clipboard-target="#contentToCopy">Copy Your HopeBucket and share!</span></button>
-               )}
-           </Col>
-        </Row>
-
+ 
         <Row className="mt-4">
           <Col>
             <ListGroup>
               {list.map((item) => {
                 return (
-                  <ListGroup.Item className="pt-1 pb-1">
+                  <ListGroup.Item className="pt-2 pb-2 d-flex flex-nowrap">
                     <div
                       className="alignRightX"
                       key={item.id}
-                      variant="dark"
+                      variant="light"
                     ></div> <button
                       className="closeX btn "
                       onClick={() => {
@@ -171,16 +122,7 @@ function List() {
                       }}
                     >
                       {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-x-lg"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                      </svg>
+                         <i className="bi bi-x-lg"></i>
                     </button>
                     <div className="hopeItem">{item.value}</div>
                   </ListGroup.Item>
