@@ -1,8 +1,9 @@
-import { React, useState, useContext, useRef, useEffect, useMemo } from "react";
+import { useState, useContext, useRef, useEffect, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 //bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
+import Overlay from 'react-bootstrap/Overlay';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
@@ -10,17 +11,26 @@ import Form from "react-bootstrap/Form";
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 //hook
+<<<<<<< HEAD
 <<<<<<< HEAD:src/components/Nav.js
 import LottieControlNavMsg from "../hooks/navMsgControl";
 import { Offcanvas } from "react-bootstrap";
 =======
 >>>>>>> parent of 58f30e6 (Removed react bootstrap code; Added plain divs and classNames):src/components/Nav2.js
+=======
+import ClipboardJS from "clipboard";
+>>>>>>> staging
 
 function OffCanvasExample({ name, ...props }) {
+
   const [showAddField, setShowAddField] = useState(false);
-  const [isLeft, setLeft] = useState(true);
   const [showNewList, setShowListLinks] = useState(false);
-  const [toggleAlignNav, setToggleAlignNav] = useState(true);
+
+  const [copyStyle, setCopyStyle] = useState(false);
+
+  const [show, setShow] = useState(false);
+  const target = useRef(null);
+  
   let [input, setInput] = useState("");
   let [currDate] = useState(new Date());
 
@@ -31,29 +41,14 @@ function OffCanvasExample({ name, ...props }) {
   const list = listContext.list;
   let totalHope = list.length;
 
-  const navigate = useNavigate(listContext.list.length);
-
-  function updateInput(input) {
-    setInput(input);
-  }
+  // const navigate = useNavigate(listContext.list.length);
 
   const fieldFocus = useRef();
 
-  const navStyles = {
-    display: "flex",
-    position: "fixed",
-    zIndex: "3",
-    bottom: "15px",
-    //fun use flex direction to change row direction
-    flexDirection: isLeft ? "row-reverse" : "",
-    left: isLeft ? "24px" : "",
-    right: isLeft ? "" : "24px",
-  };
-
-  const handleNavAlign = (event) => {
-    setLeft((isLeft) => !isLeft);
-    setToggleAlignNav((current) => !current);
-  };
+  const copyStyles = {
+    border: "5px solid lightblue",
+    borderRadius: "10px"
+  }
 
   const today = useMemo(() => {
     const dd1 = currDate.getDate();
@@ -75,30 +70,35 @@ function OffCanvasExample({ name, ...props }) {
     return nextDay;
   }, [currDate]);
 
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       if (today === expDate) {
         // Update list state to empty array when a new day starts but don't update exp date until user clicks on start new list
-        console.log("new day today!");
+        console.log("It is a new day today! List resets");
+        console.log("expDate is " + expDate);
+        console.log("today is " + today);
         setShowListLinks(true);
         listContext.setList((list) => (list = []));
       }
     }, 1000); // Check every second
 
     return () => clearInterval(intervalId); // Clear interval on unmount
+    //The clearInterval() method of the Window interface cancels a timed, repeating action which was previously established by a call to setInterval().
   }, [expDate, today, listContext]);
-
+  //run when exp today or listContext changes
 
   const handleNewList = (event) => {
-    setShowListLinks(false);
-    expContext.setListDate(tomorrow);
-    listContext.setList((list) => (list = []));
+    if (totalHope < 10) {
+      setShowListLinks(false);
+      expContext.setListDate(tomorrow);
+      listContext.setList((list) => (list = []));
+    } else {
+      return;
+    }
   };
-
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    if (totalHope === 3 || expDate !== tomorrow) {
+    if (totalHope === 10 || expDate !== tomorrow) {
       // if (!expDate) {
       setShowListLinks(true);
     } else {
@@ -106,11 +106,32 @@ function OffCanvasExample({ name, ...props }) {
     }
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
+  new ClipboardJS('.copyButton');
+
+  const onCopy = () => {
+    let copyText = "";
+
+    list.forEach((item, index) => {
+      copyText += `${index + 1}. ${item.value}\n`;
+    });
+  
+    console.log("onCopy runs");
+    return copyText;
+  }
+
+// var clipboard = new ClipboardJS('.btn');
+// clipboard.destroy();
+
+  function updateInput(input) {
+    setInput(input);
+  }
+
   function addItem() {
-    if (list.length === 3) {
-      navigate("/");
+    if (list.length === 10) {
       setShowAddField(false);
-    } else if (list.length <= 3) {
+
+      return;
+    } else if (list.length <= 10) {
       if (input !== "") {
         input = {
           id: Math.random(),
@@ -122,6 +143,7 @@ function OffCanvasExample({ name, ...props }) {
         console.log("add item equals totalhope as " + totalHope);
         setInput((input) => (input = ""));
         setShowAddField(false);
+
       }
     } else {
       setShowAddField(false);
@@ -134,7 +156,7 @@ function OffCanvasExample({ name, ...props }) {
   const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {
-    if (totalHope <= 3) {
+    if (totalHope <= 10) {
       setShowAddField(true);
     } else {
       setShowAddField(false);
@@ -144,18 +166,6 @@ function OffCanvasExample({ name, ...props }) {
       fieldFocus.current.focus();
     }, "100");
   };
-
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="16"
-    height="16"
-    fill="currentColor"
-    className="bi bi-file-earmark-plus"
-    viewBox="0 0 16 16"
-  >
-    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
-  </svg>;
 
   return (
     <>
@@ -186,124 +196,107 @@ function OffCanvasExample({ name, ...props }) {
               />
             </Col>
             <p></p>
-            <Button onClick={addItem}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="40"
-                height="40"
-                fill="currentColor"
-                className="bi bi-check-circle-fill"
-                viewBox="0 0 16 16"
-              >
-                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
-              </svg>
+            <Button className="addHopeConfirm" onClick={addItem}>
+             <i  className="bi bi-check-circle-fill"></i>
             </Button>
           </Row>
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-        <nav>
-          <i className="bi bi-box-arrow-left"></i>
-          <div style={navStyles}>
-            {toggleAlignNav ? (
-              <Link onClick={handleNavAlign}>
-                <button type="button" className="btn btn-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-box-arrow-right"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
-                    />
-                  </svg>
-                </button>
-              </Link>
-            ) : (
-              <Link onClick={handleNavAlign}>
-                <button type="button" className="btn btn-primary">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-box-arrow-left"
-                    viewBox="0 0 16 16"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z"
-                    />
-                    <path
-                      fillRule="evenodd"
-                      d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708z"
-                    />
-                  </svg>
-                </button>
-              </Link>
-            )}
-
-            {showNewList && (
-              <Link onClick={handleNewList}>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  disabled={totalHope === 3}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-file-earmark-plus"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M8 6.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 .5-.5" />
-                    <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z" />
-                  </svg>
-                </button>
-              </Link>
-            
-            )}
-
-  {!showNewList && (
-    <Link to="/bucket"><i class="bi bi-bucket"></i></Link>
-  )}
-            {!showNewList && (
-              
-              <Link onClick={handleOpen}>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  disabled={totalHope >= 3}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="44"
-                    height="44"
-                    fill="currentColor"
-                    className="bi bi-plus-circle-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z" />
-                  </svg>
-                </button>
-              </Link>
-            )}
+        <div><Overlay target={target.current} show={copyStyle} placement="top">
+        {({
+          placement: _placement,
+          arrowProps: _arrowProps,
+          show: _show,
+          popper: _popper,
+          hasDoneInitialMeasure: _hasDoneInitialMeasure,
+          ...props
+        }) => (
+          <div
+            {...props}
+            style={{
+              position: 'absolute',
+              backgroundColor: 'rgba(255, 255, 255, 0.85)',
+              padding: '30px',
+              margin: '20px',
+              color: '#000',
+              borderRadius: 3,
+              ...props.style,
+            }}
+          >
+           HopeBucket Copied!
           </div>
-        </nav>
+        )}
+      </Overlay>
+          <nav>
+            {showNewList && (
+              <>
+                <Link to="/bucket">
+                  <button  variant="danger" ref={target} onClick={() => setShow(!show)} type="button" className="btn btn-primary">
+                     <i className="bi bi-bucket"></i>
+                  </button>
+                </Link>
+           <Link> 
+              {(totalHope >= 10) ?
+                  <button type="button" className="btn btn-primary"  onClick={()=> setCopyStyle(copyStyles)}>
+                       <div className="copyButton" data-clipboard-text={onCopy(list)}><i className="bi bi-copy"></i></div>
+                  </button> :  <Button disabled type="button" className="btn btn-primary">
+             <i  className="bi bi-plus-circle-fill"></i>
+            </Button>}
+                </Link>    
+                
+                
+{(totalHope >= 10) ? 
+ <Link to="/list">
+                  <button
+                    type="button"
+                    className="btn btn-primary"
+                  >
+                    <i className="bi bi-file-earmark"></i>
+                  </button>
+                </Link>
+                 :   <Button type="button" className="btn btn-primary" onClick={handleNewList}>
+             <i  className="bi bi-file-earmark-plus"></i>
+            </Button>}
+
+               
+              </>
+            )}
+
+            {!showNewList && (
+              <>
+                <Link to="/bucket">
+                  <button type="button" className="btn btn-primary">
+                    <i className="bi bi-bucket-fill"></i>
+                  </button>
+                </Link>
+
+                {!showNewList && (
+                  <Link onClick={handleOpen}>
+                    <button
+                      type="button"
+                      className="btn btn-primary"
+                      disabled={totalHope >= 10}
+                    >
+                      <i className="bi bi-plus-circle-fill"></i>
+                    </button>
+                  </Link>
+                )}
+               
+                <Link to="/list">
+                  <button type="button" className="btn btn-primary">
+                    <i className="bi bi-file-earmark"></i>
+                  </button>
+                </Link>
+              </>
+            )}
+          </nav>
+        </div>
       </Row>
     </>
   );
 }
+
 
 function Nav2() {
   return (

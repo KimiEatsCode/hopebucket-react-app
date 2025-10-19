@@ -1,19 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
-
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 
 
 body {
-  margin: 0;
   font-family: 'Cabin', 'Helvetica Neue',
     sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background-color: aliceblue !important;
+<<<<<<< HEAD
   padding-bottom: 20px;
   color: #A3C2F3;
+=======
+  color: #254c90;
+>>>>>>> staging
 }
-
 
 .logoName {
   font-family: "Delicious Handrawn", cursive;
@@ -21,7 +21,12 @@ body {
   font-weight: bold;
   font-style: normal;
   text-align: center;
+<<<<<<< HEAD
   color: #4F8AE8;
+=======
+  color: #254c90;
+  margin-top:10px;
+>>>>>>> staging
 }
 
 .light-theme {
@@ -51,8 +56,62 @@ a {
   text-decoration:none
 }
 
-nav a {
-  padding: 5px;
+/* nav {
+  display: flex;
+  flex-direction:row;
+  width:90%;
+  gap:10px;
+} */
+
+nav {
+  position:fixed;
+  bottom:14px;
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  gap: 10px;
+  padding-top: 15px;
+  /* animation: navRise 1s ease-in; */
+}
+
+/* @keyframes navRise {
+  0% {
+    transform: translateY(-20%);
+  }
+  100% {
+    transform: translateY(20%);
+  }
+} */
+
+nav button {
+  width:100%;
+  border: 5px solid lightgrey!important;
+  border-radius: 10px;
+}
+
+nav a:nth-of-type(1) {flex-grow: 1;} 
+nav a:nth-of-type(2) {flex-grow: 3;} 
+nav a:nth-of-type(3) {flex-grow: 1;} 
+nav a:nth-of-type(4) {flex-grow: 1;} 
+
+nav i, .addHopeConfirm i{
+  font-size: 24px;
+}
+
+#newListIcon {
+  background-color:#b912e7 !important;
+  color:#ffffff;
+  animation: tilt-n-move-shaking 3s;
+  animation-iteration-count: 2;
+  border:none;
+}
+
+@keyframes tilt-n-move-shaking {
+  0% { transform: translate(0, 0) }
+  25% { transform: translate(0, -20px) }
+  50% { transform: translate(0, 0) }
+  75% { transform: translate(0, 5px)  }
+  100% { transform: translate(0, 0) }
 }
 
 .topNav {
@@ -74,11 +133,24 @@ h5 {
   line-height: 1.3em !important;
 }
 
+<<<<<<< HEAD
 .instructions-text {
   font-size: 1.2em;
   margin-bottom: 12px;
   font-weight: 700;
   text-align:center;
+=======
+h4 {
+  font-size: 1.2em !important;
+}
+
+h5 {
+  font-size: 1em !important;
+}
+
+textarea.form-control.form-control-lg {
+  font-size:1.2em;
+>>>>>>> staging
 }
 
 .section-center-content {
@@ -104,9 +176,10 @@ h5 {
 
 .hopeCount {
   position: relative;
-  width: 200px;
-  top: 200px;
+  width: 198px;
+  top: 167px;
   font-weight: 800;
+  font-size: 1.5em;
 }
 
 .no-wrap {
@@ -114,8 +187,10 @@ h5 {
 }
 
 .list-group {
+  flex-direction: column-reverse;
   padding-left: 50px;
   display: inherit;
+<<<<<<< HEAD
   margin: 0 auto;
   max-width: 600px;
 }
@@ -123,6 +198,13 @@ h5 {
 .list-group-item.list-group-item-light {
   /* border: 2px solid #999 !important; */
   margin-bottom: 6px;
+=======
+ 
+}
+
+.list-group-item {
+  margin-top: 6px!important;
+>>>>>>> staging
 }
 
 .hopeItem {
@@ -131,8 +213,12 @@ h5 {
   align-items: center;
   word-break: break-word;
   padding: 10px;
+<<<<<<< HEAD
   font-size: 1.2em;
   color: #1650AC !important;
+=======
+  font-size: 1em;
+>>>>>>> staging
 }
 
 .removeItem {

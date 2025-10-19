@@ -1,6 +1,7 @@
 
 import React from "react";
 import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+<<<<<<< HEAD
 //css
 import "./styles/index.css";
 //bootstrap
@@ -13,6 +14,12 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 //components
 import List from "./components/List";
 import Nav from "./components/Nav2";
+=======
+import Container from "react-bootstrap/Container";
+//components
+import List from "./components/List";
+import Nav2 from "./components/Nav2";
+>>>>>>> staging
 import Bucket from "./components/Bucket";
 //context
 import { ListContextProvider } from "./contexts/ListContext";
@@ -21,6 +28,7 @@ import { ExpContextProvider } from "./contexts/ExpContext";
 function App() {
   return (
     <>
+<<<<<<< HEAD
       <React.StrictMode>
     <ExpContextProvider>
       <ListContextProvider>
@@ -29,6 +37,16 @@ function App() {
           <Container>
             <Link to="/">
               <h1 className="logoName mb-2">HopeBucket</h1>
+=======
+  <React.StrictMode>
+    <ExpContextProvider>
+      <ListContextProvider>
+        <BrowserRouter>
+    
+          <Container>
+            <Link to="/" style={{ textDecoration: "none"}}>
+              <h1 className="logoName mb-4">HopeBucket</h1>
+>>>>>>> staging
             </Link>
 
             <Routes>
@@ -37,13 +55,21 @@ function App() {
               <Route path="/list" element={<List />} />
             </Routes>
 
+<<<<<<< HEAD
             <Nav></Nav>
+=======
+            <Nav2></Nav2>
+>>>>>>> staging
           </Container>
         </BrowserRouter>
         <Outlet />
       </ListContextProvider>
     </ExpContextProvider>
+<<<<<<< HEAD
   </React.StrictMode>
+=======
+  </React.StrictMode>,
+>>>>>>> staging
     </>
   );
 }

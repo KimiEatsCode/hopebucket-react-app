@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
@@ -7,11 +7,15 @@ import { ExpContext } from "../contexts/ExpContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
-//hooks
 //components
 import LottieControl from "../hooks/confettiControl";
+// import ClipboardJS from "clipboard";
+
 
 function List() {
+
+  // new ClipboardJS('.copyButton')
+
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
@@ -34,60 +38,46 @@ function List() {
     listContext.setList(updateList);
   }
 
-  // useEffect(() => {
-  //   if (totalHope === 3) {
-  //     window.scrollTo(0, 0);
-  //   }
-  // }, [totalHope]);
-
-  // if (totalHope < 3 || expDate === today) {
-  if (totalHope <= 3) {
+  if (totalHope < 10) {
     return (
       <>
         <LottieControl></LottieControl>
+      
         <Row className="d-flex text-center mt-2">
-          <Link to="/">
-            {/* {expDate !== today && <h4>List Expires: {expDate}</h4>} */}
 
+          <Link to="/" style={{ textDecoration: "none"}}>
             <h2 className="pt-2">
-              <strong>{totalHope} of 3</strong>
+              <strong>{totalHope} of 10</strong>
             </h2>
           </Link>
+    
         </Row>
-        <Row className="text-center p-2 mt-2 jusity-content-center ">
+        <Row className="text-center p-2 mt-2 jusity-content-center">
           <Col className="col-md-8 mx-auto">
             {totalHope === 0 && (
-              <h5>
-                Fill up your hope bucket with positive thoughts, good things
-                that happen during the day, names of people who helped or
-                supported you, or an action you took that gives you hope.
-              </h5>
+              <>            
+                <h5>
+                  For today, fill up your hope bucket with positive thoughts, good
+                  things that happen, names of people who help
+                  or support you, and actions you took that gives you hope.
+                </h5>
+                <br></br>
+                <h5>
+                  Add 10 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will empty on a new day.
+                </h5>
+          
+              </>
             )}
-            {/* {totalHope < 3 && (
-              <h5>
-                Try to add 3 hope items before the day ends and a new day
-                begins!
-              </h5>
-            )} */}
           </Col>
         </Row>
-        {/* <Row>
-     { showNewList && <h2 className="mt-3 text-center">
-            <button onClick={handleOpen} className="btn btn-primary p-4 mt-2">
-              Add hope
-            </button>
-          </h2>
-           }
-        </Row> */}
 
         <Row className="pb-5">
           <Col className="pb-5">
-            <ListGroup>
+            <ListGroup id="contentToCopy">
               {list.map((item) => {
                 return (
-                  // <ListGroup.Item className="d-flex flex-wrap">
                   <ListGroup.Item
-                    className="pt-2 pb-2 d-flex flex-nowrap "
+                    className="pt-2 pb-2 d-flex flex-nowrap"
                     key={item.id}
                     variant="light"
                   >
@@ -98,23 +88,14 @@ function List() {
                       }}
                     >
                       {" "}
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        fill="currentColor"
-                        className="bi bi-x-lg"
-                        viewBox="0 0 16 16"
-                      >
-                        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z" />
-                      </svg>
+                    <i className="bi bi-x-lg"></i>
                     </button>
-
-                    <div className=" hopeItem ">{item.value}</div>
+                    <div className="hopeItem">{item.value}</div>
                   </ListGroup.Item>
-                  // </ListGroup.Item>
                 );
               })}
+              <br></br>
+        
             </ListGroup>
           </Col>
         </Row>
@@ -123,34 +104,26 @@ function List() {
   } else {
     return (
       <>
-        <Row>
-          <h4 className="mb-3 mt-3 text-center">
-            {totalHope === 3
-              ? "Great Job! You've filled up your hope for today! Treat yourself to some grace, fun, or rest today if you can. Tomorrow is a new day and new list!"
-              : ""}
-          </h4>
-        </Row>
-        <Row>
-          <h3 className="mt-3 mb-2 text-center">
-            {/* {showNewList && (
-              <button onClick={handleNewList} className="btn btn-primary mt-2">
-                Start New List
-              </button>
-            )} */}
-          </h3>
-        </Row>
-
+ 
         <Row className="mt-4">
           <Col>
             <ListGroup>
               {list.map((item) => {
                 return (
-                  <ListGroup.Item className="pt-1 pb-1">
+                  <ListGroup.Item className="pt-2 pb-2 d-flex flex-nowrap">
                     <div
                       className="alignRightX"
                       key={item.id}
-                      variant="dark"
-                    ></div>
+                      variant="light"
+                    ></div> <button
+                      className="closeX btn "
+                      onClick={() => {
+                        deleteItem(item.id);
+                      }}
+                    >
+                      {" "}
+                         <i className="bi bi-x-lg"></i>
+                    </button>
                     <div className="hopeItem">{item.value}</div>
                   </ListGroup.Item>
                 );
@@ -158,9 +131,12 @@ function List() {
             </ListGroup>
           </Col>
         </Row>
+        <Row className="mt-5 mb-5">
+        </Row>
       </>
     );
   }
+
 }
 
 export default List;

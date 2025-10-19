@@ -13,16 +13,37 @@ const LottieControlBucket = () => {
   useEffect(() => {
     if (totalHope === 0) {
       console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(10, true);
+      lottieRef.current.goToAndStop(2, true);
     } else if (totalHope === 1) {
       console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(20, true);
+      lottieRef.current.goToAndStop(4, true);
     } else if (totalHope === 2) {
       console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(55, true);
+      lottieRef.current.goToAndStop(6, true);
     } else if (totalHope === 3) {
       console.log("totalHope" + list);
-      lottieRef.current.playSegments(55, 100);
+      lottieRef.current.playSegments(8, true);
+     } else if (totalHope === 4) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(10, true);
+     } else if (totalHope === 5) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(12, true);
+       } else if (totalHope === 6) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(15, true);
+       } else if (totalHope === 7) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(20, 100);
+       } else if (totalHope === 8) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(25, 100);
+       } else if (totalHope === 9) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(30, 100);
+       } else if (totalHope === 10) {
+      console.log("totalHope" + list);
+      lottieRef.current.playSegments(100, 100);
     } else {
       lottieRef.current.stop();
     }
@@ -32,8 +53,13 @@ const LottieControlBucket = () => {
     position: "absolute",
     zIndex: "-1",
     left: "0",
+<<<<<<< HEAD
     top: "140px",
     height: "70%",
+=======
+    top: "170px",
+    height: "60%",
+>>>>>>> staging
     width: "100%",
   };
 
