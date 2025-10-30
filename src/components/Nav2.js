@@ -11,15 +11,10 @@ import Form from "react-bootstrap/Form";
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 //hook
-<<<<<<< HEAD
-<<<<<<< HEAD:src/components/Nav.js
+
 import LottieControlNavMsg from "../hooks/navMsgControl";
-import { Offcanvas } from "react-bootstrap";
-=======
->>>>>>> parent of 58f30e6 (Removed react bootstrap code; Added plain divs and classNames):src/components/Nav2.js
-=======
 import ClipboardJS from "clipboard";
->>>>>>> staging
+
 
 function OffCanvasExample({ name, ...props }) {
 
@@ -66,12 +61,14 @@ function OffCanvasExample({ name, ...props }) {
     const yyyy = currDate.getFullYear();
     const dd2 = dd1 + 1;
     const nextDay = mm + "/" + dd2 + "/" + yyyy;
-    console.log("currDate is " + nextDay);
+    console.log("tomorrow's date is " + nextDay);
     return nextDay;
   }, [currDate]);
 
+  //runs when exp today or listContext changes
   useEffect(() => {
-    const intervalId = setInterval(() => {
+    // const intervalId = setInterval(() => {
+        setInterval(() => {
       if (today === expDate) {
         // Update list state to empty array when a new day starts but don't update exp date until user clicks on start new list
         console.log("It is a new day today! List resets");
@@ -82,10 +79,11 @@ function OffCanvasExample({ name, ...props }) {
       }
     }, 1000); // Check every second
 
-    return () => clearInterval(intervalId); // Clear interval on unmount
-    //The clearInterval() method of the Window interface cancels a timed, repeating action which was previously established by a call to setInterval().
-  }, [expDate, today, listContext]);
-  //run when exp today or listContext changes
+    return () => {
+      console.log("checking date, clearing list if today matches exp date");
+  }
+}, [expDate, today, listContext]);
+  
 
   const handleNewList = (event) => {
     if (totalHope < 10) {
@@ -169,23 +167,15 @@ function OffCanvasExample({ name, ...props }) {
 
   return (
     <>
-<<<<<<< HEAD:src/components/Nav.js
+ 
       <Offcanvas className="offCanvas" show={showAddField} onHide={handleClose} {...props}>
+        <Offcanvas.Body>
+           <Row>
         <div className="no-wrap">
           <div className="row" mb={3}>
             <div className="col">
               <div className="form"> <form 
                 type="textarea"
-
-=======
-      <Offcanvas show={showAddField} onHide={handleClose} {...props}>
-        <Offcanvas.Body className="no-wrap">
-          <Row mb={3}>
-            <Col>
-              <Form.Control
-                as="textarea"
-                rows={3}
->>>>>>> parent of 58f30e6 (Removed react bootstrap code; Added plain divs and classNames):src/components/Nav2.js
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
@@ -194,7 +184,13 @@ function OffCanvasExample({ name, ...props }) {
                 aria-label="form field to type text"
                 aria-describedby="basic-addon2"
               />
-            </Col>
+              </div>
+              </div>
+          </div>
+        </div>
+      </Row>
+          <Row className="justify-content-center">
+
             <p></p>
             <Button className="addHopeConfirm" onClick={addItem}>
              <i  className="bi bi-check-circle-fill"></i>

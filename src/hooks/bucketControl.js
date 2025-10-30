@@ -53,13 +53,8 @@ const LottieControlBucket = () => {
     position: "absolute",
     zIndex: "-1",
     left: "0",
-<<<<<<< HEAD
     top: "140px",
     height: "70%",
-=======
-    top: "170px",
-    height: "60%",
->>>>>>> staging
     width: "100%",
   };
 
