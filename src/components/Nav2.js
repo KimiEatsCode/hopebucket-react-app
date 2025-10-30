@@ -85,7 +85,7 @@ return () => clearInterval(intervalId);
   
 
   const handleNewList = (event) => {
-    if (totalHope < 10) {
+    if (totalHope < 3) {
       setShowListLinks(false);
       expContext.setListDate(tomorrow);
       listContext.setList((list) => (list = []));
@@ -95,7 +95,7 @@ return () => clearInterval(intervalId);
   };
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    if (totalHope === 10 || expDate !== tomorrow) {
+    if (totalHope === 3 || expDate !== tomorrow) {
       // if (!expDate) {
       setShowListLinks(true);
     } else {
@@ -124,11 +124,11 @@ return () => clearInterval(intervalId);
   }
 
   function addItem() {
-    if (list.length === 10) {
+    if (list.length === 3) {
       setShowAddField(false);
 
       return;
-    } else if (list.length <= 10) {
+    } else if (list.length <= 3) {
       if (input !== "") {
         input = {
           id: Math.random(),
@@ -153,7 +153,7 @@ return () => clearInterval(intervalId);
   const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {
-    if (totalHope <= 10) {
+    if (totalHope <= 3) {
       setShowAddField(true);
     } else {
       setShowAddField(false);
@@ -224,7 +224,7 @@ return () => clearInterval(intervalId);
                   </button>
                 </Link>
            <Link> 
-              {(totalHope >= 10) ?
+              {(totalHope >= 3) ?
                   <button type="button" className="btn btn-primary"  onClick={()=> setCopyStyle(copyStyles)}>
                        <div className="copyButton" data-clipboard-text={onCopy(list)}><i className="bi bi-copy"></i></div>
                   </button> :  <Button disabled type="button" className="btn btn-primary">
@@ -233,7 +233,7 @@ return () => clearInterval(intervalId);
                 </Link>    
                 
                 
-{(totalHope >= 10) ? 
+{(totalHope >= 3) ? 
  <Link to="/list">
                   <button
                     type="button"
@@ -263,7 +263,7 @@ return () => clearInterval(intervalId);
                     <button
                       type="button"
                       className="btn btn-primary"
-                      disabled={totalHope >= 10}
+                      disabled={totalHope >= 3}
                     >
                       <i className="bi bi-plus-circle-fill"></i>
                     </button>

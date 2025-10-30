@@ -38,7 +38,7 @@ function List() {
     listContext.setList(updateList);
   }
 
-  if (totalHope < 10) {
+  if (totalHope < 3) {
     return (
       <>
         <LottieControl></LottieControl>
@@ -47,7 +47,7 @@ function List() {
 
           <Link to="/" style={{ textDecoration: "none"}}>
             <h2 className="pt-2">
-              <strong>{totalHope} of 10</strong>
+              <strong>{totalHope} of 3</strong>
             </h2>
           </Link>
     
@@ -63,7 +63,7 @@ function List() {
                 </h5>
                 <br></br>
                 <h5>
-                  Add a total of 10 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will reset on a new day.
+                  Add a total of 3 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will reset on a new day.
                 </h5>
           
               </>
