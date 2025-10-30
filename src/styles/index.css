@@ -7,12 +7,7 @@ body {
   font-family: 'Cabin', 'Helvetica Neue',
     sans-serif;
   background-color: aliceblue !important;
-<<<<<<< HEAD
-  padding-bottom: 20px;
-  color: #A3C2F3;
-=======
-  color: #254c90;
->>>>>>> staging
+
 }
 
 .logoName {
@@ -21,12 +16,8 @@ body {
   font-weight: bold;
   font-style: normal;
   text-align: center;
-<<<<<<< HEAD
-  color: #4F8AE8;
-=======
-  color: #254c90;
+  color: #1650AC;
   margin-top:10px;
->>>>>>> staging
 }
 
 .light-theme {
@@ -56,39 +47,26 @@ a {
   text-decoration:none
 }
 
-/* nav {
-  display: flex;
-  flex-direction:row;
-  width:90%;
-  gap:10px;
-} */
-
 nav {
   position:fixed;
   bottom:14px;
+  left:2px;
   display: flex;
   flex-direction: row;
-  width: 90%;
+  width: 98%;
   gap: 10px;
   padding-top: 15px;
-  /* animation: navRise 1s ease-in; */
 }
-
-/* @keyframes navRise {
-  0% {
-    transform: translateY(-20%);
-  }
-  100% {
-    transform: translateY(20%);
-  }
-} */
 
 nav button {
-  width:100%;
-  border: 5px solid lightgrey!important;
-  border-radius: 10px;
+  justify-self:center;
+  width:100%!important;
 }
 
+nav a {
+  background-color:#1650AC;
+
+}
 nav a:nth-of-type(1) {flex-grow: 1;} 
 nav a:nth-of-type(2) {flex-grow: 3;} 
 nav a:nth-of-type(3) {flex-grow: 1;} 
@@ -133,13 +111,6 @@ h5 {
   line-height: 1.3em !important;
 }
 
-<<<<<<< HEAD
-.instructions-text {
-  font-size: 1.2em;
-  margin-bottom: 12px;
-  font-weight: 700;
-  text-align:center;
-=======
 h4 {
   font-size: 1.2em !important;
 }
@@ -150,7 +121,6 @@ h5 {
 
 textarea.form-control.form-control-lg {
   font-size:1.2em;
->>>>>>> staging
 }
 
 .section-center-content {
@@ -190,21 +160,11 @@ textarea.form-control.form-control-lg {
   flex-direction: column-reverse;
   padding-left: 50px;
   display: inherit;
-<<<<<<< HEAD
-  margin: 0 auto;
-  max-width: 600px;
-}
-
-.list-group-item.list-group-item-light {
-  /* border: 2px solid #999 !important; */
-  margin-bottom: 6px;
-=======
  
 }
 
 .list-group-item {
   margin-top: 6px!important;
->>>>>>> staging
 }
 
 .hopeItem {
@@ -213,12 +173,7 @@ textarea.form-control.form-control-lg {
   align-items: center;
   word-break: break-word;
   padding: 10px;
-<<<<<<< HEAD
-  font-size: 1.2em;
-  color: #1650AC !important;
-=======
   font-size: 1em;
->>>>>>> staging
 }
 
 .removeItem {
@@ -238,15 +193,14 @@ textarea.form-control.form-control-lg {
 }
 
 
-button.btn{
+button.btn, nav a {
     color: #fff;
     padding: 5px;
-    background-color: #16448f !important;
+    background-color: #1650AC !important;
     border: 0;
     padding: 7px;
-    border-radius: 5px;
-     width: 60px;
-    height: 60px;
+    border-radius: 10px;
+    width: 60px;
     font-size: 24px;
 }
 
