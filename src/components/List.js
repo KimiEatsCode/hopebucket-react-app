@@ -58,12 +58,12 @@ function List() {
               <>            
                 <h5>
                   For today, fill up your hope bucket with positive thoughts, good
-                  things that happen, names of people who help
-                  or support you, and actions you took that gives you hope.
+                  things that happen, names of people who helped
+                  or supported you, and actions you took that gives you hope.
                 </h5>
                 <br></br>
                 <h5>
-                  Add 10 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will empty on a new day.
+                  Add a total of 10 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will reset on a new day.
                 </h5>
           
               </>
