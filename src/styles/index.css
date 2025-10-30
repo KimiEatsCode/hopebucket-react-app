@@ -213,6 +213,11 @@ button.btn, nav a {
     font-size: 24px;
 }
 
+.addHopeConfirm.btn {
+  width: 97%;
+  margin: 0 auto;
+}
+
 .form-control {
   border: 2px solid !important;
 }
