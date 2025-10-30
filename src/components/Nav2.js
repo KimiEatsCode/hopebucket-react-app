@@ -78,10 +78,10 @@ function OffCanvasExample({ name, ...props }) {
         listContext.setList((list) => (list = []));
       }
     }, 1000); // Check every second
-
-    return () => {
-      console.log("checking date, clearing list if today matches exp date");
-  }
+return () => clearInterval(intervalId);
+    // return () => {
+    //   console.log("checking date, clearing list if today matches exp date");
+  // }
 }, [expDate, today, listContext]);
   
 
