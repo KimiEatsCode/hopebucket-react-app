@@ -67,8 +67,7 @@ function OffCanvasExample({ name, ...props }) {
 
   //runs when exp today or listContext changes
   useEffect(() => {
-    // const intervalId = setInterval(() => {
-        setInterval(() => {
+      const intervalId =  setInterval(() => {
       if (today === expDate) {
         // Update list state to empty array when a new day starts but don't update exp date until user clicks on start new list
         console.log("It is a new day today! List resets");
@@ -167,15 +166,13 @@ return () => clearInterval(intervalId);
 
   return (
     <>
- 
-      <Offcanvas className="offCanvas" show={showAddField} onHide={handleClose} {...props}>
-        <Offcanvas.Body>
-           <Row>
-        <div className="no-wrap">
-          <div className="row" mb={3}>
-            <div className="col">
-              <div className="form"> <form 
-                type="textarea"
+ <Offcanvas show={showAddField} onHide={handleClose} {...props}>
+        <Offcanvas.Body className="no-wrap">
+          <Row mb={3}>
+            <Col>
+              <Form.Control
+                as="textarea"
+                rows={3}
                 placeholder="What is something positive that happened or something you did that gives you hope today?"
                 size="lg"
                 ref={fieldFocus}
@@ -184,13 +181,7 @@ return () => clearInterval(intervalId);
                 aria-label="form field to type text"
                 aria-describedby="basic-addon2"
               />
-              </div>
-              </div>
-          </div>
-        </div>
-      </Row>
-          <Row className="justify-content-center">
-
+            </Col>
             <p></p>
             <Button className="addHopeConfirm" onClick={addItem}>
              <i  className="bi bi-check-circle-fill"></i>

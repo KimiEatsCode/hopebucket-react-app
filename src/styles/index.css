@@ -192,16 +192,30 @@ textarea.form-control.form-control-lg {
   min-width: 200px;
 }
 
+.closeX.btn:hover {
+color:#fff;
+font-weight:bold;
+background-color:#1650AC!important;
+}
+
+.closeX.btn {
+background-color: #ccc!important;
+
+}
 
 button.btn, nav a {
     color: #fff;
     padding: 5px;
     background-color: #1650AC !important;
     border: 0;
-    padding: 7px;
     border-radius: 10px;
     width: 60px;
     font-size: 24px;
+}
+
+.addHopeConfirm.btn {
+  width: 97%;
+  margin: 0 auto;
 }
 
 .form-control {

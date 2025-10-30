@@ -11,7 +11,7 @@ const LottieControlConfetti = () => {
   let totalHope = listContext.list.length;
 
   useEffect(() => {
-    if (totalHope === 10) {
+    if (totalHope === 3) {
       console.log("totalHope" + list);
       lottieRef.current.play();
     } else {
