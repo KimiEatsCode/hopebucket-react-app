@@ -190,31 +190,8 @@ return () => clearInterval(intervalId);
         </Offcanvas.Body>
       </Offcanvas>
       <Row>
-        <div><Overlay target={target.current} show={copyStyle} placement="top">
-        {({
-          placement: _placement,
-          arrowProps: _arrowProps,
-          show: _show,
-          popper: _popper,
-          hasDoneInitialMeasure: _hasDoneInitialMeasure,
-          ...props
-        }) => (
-          <div
-            {...props}
-            style={{
-              position: 'absolute',
-              backgroundColor: 'rgba(255, 255, 255, 0.85)',
-              padding: '30px',
-              margin: '20px',
-              color: '#000',
-              borderRadius: 3,
-              ...props.style,
-            }}
-          >
-           HopeBucket Copied!
-          </div>
-        )}
-      </Overlay>
+        <div>
+         
           <nav>
             {showNewList && (
               <>

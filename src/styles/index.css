@@ -199,6 +199,7 @@ background-color:#1650AC!important;
 }
 
 .closeX.btn {
+  color:#333;
 background-color: #ccc!important;
 
 }
@@ -227,10 +228,17 @@ button.btn, nav a {
   text-decoration: none;
 }
 
-
 @media screen and (min-width:768px) {
   .hopeCount.text-center {
     position: relative;
     top: 175px;
+  }
+}
+
+@media screen and (max-width:768px) {
+    .closeX.btn:hover {
+      color:#333;
+      font-weight:bold;
+      background-color:#ccc!important;
   }
 }

@@ -35,7 +35,7 @@ function App() {
         <Outlet />
       </ListContextProvider>
     </ExpContextProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
     </>
   );
 }
