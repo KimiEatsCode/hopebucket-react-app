@@ -12,17 +12,15 @@ const LottieControlBucket = () => {
 
   useEffect(() => {
     if (totalHope === 0) {
-      console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(2, true);
+      lottieRef.current.goToAndStop(0,true);
     } else if (totalHope === 1) {
-      console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(4, true);
+      lottieRef.current.goToAndStop(40,true);
     } else if (totalHope === 2) {
       console.log("totalHope" + list);
-      lottieRef.current.goToAndStop(6, true);
+      lottieRef.current.goToAndStop(70, true);
     } else if (totalHope === 3) {
       console.log("totalHope" + list);
-      lottieRef.current.playSegments(8, 100);
+      lottieRef.current.playSegments(100, true);
     
     } else {
       lottieRef.current.stop();

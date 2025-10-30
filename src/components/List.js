@@ -68,6 +68,7 @@ function List() {
           
               </>
             )}
+
           </Col>
         </Row>
 
@@ -133,6 +134,9 @@ function List() {
         </Row>
         <Row className="mt-5 mb-5">
         </Row>
+        <Row> {totalHope === 3 && (
+                <h4 className="text-center">Click on copy button below to share your HopeBucket!</h4>
+            )}</Row>
       </>
     );
   }

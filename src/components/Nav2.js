@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 //bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
-import Overlay from 'react-bootstrap/Overlay';
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
