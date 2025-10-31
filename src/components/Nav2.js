@@ -20,8 +20,6 @@ function OffCanvasExample({ name, ...props }) {
   const [showAddField, setShowAddField] = useState(false);
   const [showNewList, setShowListLinks] = useState(false);
 
-  const [copyStyle, setCopyStyle] = useState(false);
-
   const [show, setShow] = useState(false);
   const target = useRef(null);
   
@@ -38,11 +36,6 @@ function OffCanvasExample({ name, ...props }) {
   // const navigate = useNavigate(listContext.list.length);
 
   const fieldFocus = useRef();
-
-  const copyStyles = {
-    border: "5px solid lightblue",
-    borderRadius: "10px"
-  }
 
   const today = useMemo(() => {
     const dd1 = currDate.getDate();
@@ -102,21 +95,25 @@ return () => clearInterval(intervalId);
     }
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
-  new ClipboardJS('.copyButton');
+  new ClipboardJS('.copyButton').on('success', function(e) {
+    console.log('success')
+
+    e.clearSelection();
+    setInterval(() => {
+    listContext.copyText = false;
+  }, 1000);
+});
 
   const onCopy = () => {
     let copyText = "";
-
     list.forEach((item, index) => {
-      copyText += `${index + 1}. ${item.value}\n`;
+      copyText += `${item.value}\n\n`;
     });
-  
-    console.log("onCopy runs");
+  listContext.copyText = true;
+    console.log("onCopy runs " + listContext.copyText);
     return copyText;
   }
-
-// var clipboard = new ClipboardJS('.btn');
-// clipboard.destroy();
+  
 
   function updateInput(input) {
     setInput(input);
@@ -201,7 +198,7 @@ return () => clearInterval(intervalId);
                 </Link>
            <Link> 
               {(totalHope >= 3) ?
-                  <button type="button" className="btn btn-primary"  onClick={()=> setCopyStyle(copyStyles)}>
+                  <button type="button" className="btn btn-primary" >
                        <div className="copyButton" data-clipboard-text={onCopy(list)}><i className="bi bi-copy"></i></div>
                   </button> :  <Button disabled type="button" className="btn btn-primary">
              <i  className="bi bi-plus-circle-fill"></i>

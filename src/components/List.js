@@ -134,9 +134,14 @@ function List() {
         </Row>
         <Row className="mt-5 mb-5">
         </Row>
-        <Row> {totalHope === 3 && (
+        <Row> 
+            {totalHope === 3 && (
                 <h4 className="text-center">Click on copy button below to share your HopeBucket!</h4>
-            )}</Row>
+            )}
+            { listContext.copyText = true && (
+                <h4 className="text-center">Success! HopeBucket Copied!</h4>
+            )}
+        </Row>
       </>
     );
   }
