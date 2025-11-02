@@ -105,7 +105,14 @@ function List() {
   } else {
     return (
       <>
- 
+  <Row> 
+            {totalHope === 3 && (
+                <h4 className="text-center">Click on copy button below to share your HopeBucket!</h4>
+            )}
+            { listContext.copyText = true && (
+                <h4 className="text-center">Success! HopeBucket Copied!</h4>
+            )}
+        </Row>
         <Row className="mt-4">
           <Col>
             <ListGroup>
@@ -134,14 +141,7 @@ function List() {
         </Row>
         <Row className="mt-5 mb-5">
         </Row>
-        <Row> 
-            {totalHope === 3 && (
-                <h4 className="text-center">Click on copy button below to share your HopeBucket!</h4>
-            )}
-            { listContext.copyText = true && (
-                <h4 className="text-center">Success! HopeBucket Copied!</h4>
-            )}
-        </Row>
+       
       </>
     );
   }
