@@ -50,15 +50,15 @@ function List() {
           <Col className="col-md-8 mx-auto">
             {totalHope === 0 && (
               <>            
-                <h5>
+                <h4>
                   For today, fill up your hope bucket with positive thoughts, good
                   things that happen, names of people who helped
                   or supported you, and actions you took that gives you hope.
-                </h5>
+                </h4>
                 <br></br>
-                <h5>
+                <h4>
                   Add a total of 3 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will reset on a new day.
-                </h5>test
+                </h4>
        
               </>
             )}
