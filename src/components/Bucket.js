@@ -31,6 +31,7 @@ function Bucket() {
               <LottieControlBucket></LottieControlBucket>
             </div>
           </Link>
+          <div id="copyMsg" class="hideBucketCopyMsg"></div>
         </Col>
       </Row>
     </>

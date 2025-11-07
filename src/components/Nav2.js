@@ -1,5 +1,5 @@
 import { useState, useContext, useRef, useEffect, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 //bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
@@ -10,10 +10,8 @@ import Form from "react-bootstrap/Form";
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 //hook
-
 import LottieControlNavMsg from "../hooks/navMsgControl";
-import ClipboardJS from "clipboard";
-
+import ClipboardJS, { copy } from "clipboard";
 
 function OffCanvasExample({ name, ...props }) {
 
@@ -30,10 +28,9 @@ function OffCanvasExample({ name, ...props }) {
   const expDate = expContext.expDate;
 
   const listContext = useContext(ListContext);
+
   const list = listContext.list;
   let totalHope = list.length;
-
-  // const navigate = useNavigate(listContext.list.length);
 
   const fieldFocus = useRef();
 
@@ -94,26 +91,60 @@ return () => clearInterval(intervalId);
       setShowListLinks(false);
     }
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
+// Declare the clipboard variable in a scope accessible by your functions (e.g., globally or in a module scope)
+let clipboard = null;
 
-  new ClipboardJS('.copyButton').on('success', function(e) {
-    console.log('success')
+function initializeClipboard() {
+    // If a clipboard instance already exists, destroy it first
+    if (clipboard) {
+        clipboard.destroy();
+    }
+  
+    clipboard = new ClipboardJS('.copyButton');
+          
+    const el = document.getElementById('copyMsg');
 
-    e.clearSelection();
-    setInterval(() => {
-    listContext.copyText = false;
-  }, 1000);
+    clipboard.on('success', function(e) {
+      if(el === null) {
+        console.log('copy successful')
+} else {
+      document.getElementById('copyMsg').innerHTML= 'HopeBucket Copied! Share mindfully.'
+
+}
 });
+
+    clipboard.on('error', function(e) {
+      console.error('Error copying text to clipboard');
+        // Add your error handling logic here
+    });
+}
 
   const onCopy = () => {
     let copyText = "";
     list.forEach((item, index) => {
       copyText += `${item.value}\n\n`;
     });
-  listContext.copyText = true;
+    initializeClipboard(); // Re-initialize clipboard to ensure it captures the latest elements
+  
     console.log("onCopy runs " + listContext.copyText);
     return copyText;
   }
   
+  function keyDownAddItem(e) {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault(); // Prevents the default action of adding a new line
+      addItem();
+    }
+  }
+
+  //not work cause not a form
+  function keyDownOpenForm(e) {
+    console.log("keyDownOpenForm runs");
+    if (e.key === " ") {
+      e.preventDefault(); // Prevents the default action of adding a space
+      handleOpen();
+    }
+  }
 
   function updateInput(input) {
     setInput(input);
@@ -162,6 +193,7 @@ return () => clearInterval(intervalId);
 
   return (
     <>
+    
  <Offcanvas show={showAddField} onHide={handleClose} {...props}>
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
@@ -173,13 +205,14 @@ return () => clearInterval(intervalId);
                 size="lg"
                 ref={fieldFocus}
                 value={input}
+                onKeyDown={keyDownAddItem}
                 onChange={(item) => updateInput(item.target.value)}
                 aria-label="form field to type text"
                 aria-describedby="basic-addon2"
               />
             </Col>
             <p></p>
-            <Button className="addHopeConfirm" onClick={addItem}>
+            <Button className="addHopeConfirm" onClick={addItem} onKeyDown={keyDownOpenForm} type="button">
              <i  className="bi bi-check-circle-fill"></i>
             </Button>
           </Row>
@@ -198,16 +231,17 @@ return () => clearInterval(intervalId);
                 </Link>
            <Link> 
               {(totalHope >= 3) ?
+            
                   <button type="button" className="btn btn-primary" >
                        <div className="copyButton" data-clipboard-text={onCopy(list)}><i className="bi bi-copy"></i></div>
                   </button> :  <Button disabled type="button" className="btn btn-primary">
              <i  className="bi bi-plus-circle-fill"></i>
             </Button>}
                 </Link>    
+  <LottieControlNavMsg></LottieControlNavMsg>                
                 
-                
-{(totalHope >= 3) ? 
- <Link to="/list">
+          {(totalHope >= 3) ? 
+          <Link to="/list">
                   <button
                     type="button"
                     className="btn btn-primary"
@@ -218,8 +252,7 @@ return () => clearInterval(intervalId);
                  :   <Button type="button" className="btn btn-primary" onClick={handleNewList}>
              <i  className="bi bi-file-earmark-plus"></i>
             </Button>}
-
-               
+             
               </>
             )}
 
@@ -232,11 +265,12 @@ return () => clearInterval(intervalId);
                 </Link>
 
                 {!showNewList && (
-                  <Link onClick={handleOpen}>
+                  <Link onClick={handleOpen} onKeyDown={keyDownOpenForm}>
                     <button
                       type="button"
                       className="btn btn-primary"
                       disabled={totalHope >= 3}
+                      
                     >
                       <i className="bi bi-plus-circle-fill"></i>
                     </button>

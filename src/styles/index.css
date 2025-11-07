@@ -20,6 +20,41 @@ body {
   margin-top:10px;
 }
 
+#copyMsg {
+  text-align: center;
+  font-family: "Cabin", sans-serif;
+  font-weight: bold;
+  color: #1650AC;  
+  font-size: 2em;
+  animation: copyAnimate 1s ease;
+}
+
+@keyframes copyAnimate {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(-20px);
+  }
+  40% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+.hideBucketCopyMsg {
+  display:none!important;
+}
+
 .light-theme {
   background-color: whitesmoke;
   color: #333;
@@ -65,8 +100,8 @@ nav button {
 
 nav a {
   background-color:#1650AC;
-
 }
+
 nav a:nth-of-type(1) {flex-grow: 1;} 
 nav a:nth-of-type(2) {flex-grow: 3;} 
 nav a:nth-of-type(3) {flex-grow: 1;} 
@@ -241,4 +276,6 @@ button.btn, nav a {
       font-weight:bold;
       background-color:#ccc!important;
   }
+
+  
 }

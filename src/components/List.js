@@ -9,17 +9,13 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 //components
 import LottieControl from "../hooks/confettiControl";
-// import ClipboardJS from "clipboard";
-
 
 function List() {
-
-  // new ClipboardJS('.copyButton')
 
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
-
+  
   const expContext = useContext(ExpContext);
   const expDate = expContext.expDate;
 
@@ -41,14 +37,12 @@ function List() {
   if (totalHope < 3) {
     return (
       <>
-        <LottieControl></LottieControl>
-      
-        <Row className="d-flex text-center mt-2">
-
+       
+       <Row className="d-flex text-center mt-2">
           <Link to="/" style={{ textDecoration: "none"}}>
             <h2 className="pt-2">
               <strong>{totalHope} of 3</strong>
-            </h2>
+              </h2>
           </Link>
     
         </Row>
@@ -64,8 +58,8 @@ function List() {
                 <br></br>
                 <h5>
                   Add a total of 3 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will reset on a new day.
-                </h5>
-          
+                </h5>test
+       
               </>
             )}
 
@@ -105,14 +99,7 @@ function List() {
   } else {
     return (
       <>
-  <Row> 
-            {totalHope === 3 && (
-                <h4 className="text-center">Click on copy button below to share your HopeBucket!</h4>
-            )}
-            { listContext.copyText = true && (
-                <h4 className="text-center">Success! HopeBucket Copied!</h4>
-            )}
-        </Row>
+
         <Row className="mt-4">
           <Col>
             <ListGroup>
@@ -140,6 +127,7 @@ function List() {
           </Col>
         </Row>
         <Row className="mt-5 mb-5">
+          <div id="copyMsg"></div>
         </Row>
        
       </>

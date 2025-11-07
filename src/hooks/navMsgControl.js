@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useRef } from "react";
 import Lottie from "lottie-react";
-// import bucketAnimation from "../images/arrow-with-msg.json";
+import bucketAnimation from "../images/Arrow-with-Msg.json";
 import { ListContext } from "../contexts/ListContext";
 
 const LottieControlNavMsg = () => {
@@ -11,7 +11,8 @@ const LottieControlNavMsg = () => {
   let totalHope = listContext.list.length;
 
   useEffect(() => {
-    if (totalHope === 0) {
+    if (totalHope === 3) {
+      console.log("totalHope is 3, play full animation");
       lottieRef.current.playSegments(55, 100);
     } else if (totalHope === 1) {
       lottieRef.current.goToAndStop(20, true);
@@ -33,7 +34,7 @@ const LottieControlNavMsg = () => {
       lottieRef={lottieRef}
       autoPlay={false}
       loop={false}
-      // animationData={bucketAnimation}
+      animationData={bucketAnimation}
       style={msgstyle}
     />
   );
