@@ -326,5 +326,6 @@ button.btn, nav a {
 
     #copyMsg {
       bottom:40px;
+      width: 80%;
     }
 }
