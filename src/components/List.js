@@ -50,14 +50,8 @@ function List() {
           <Col className="col-md-8 mx-auto">
             {totalHope === 0 && (
               <>            
-                <h4>
-                  For today, fill up your hope bucket with positive thoughts, good
-                  things that happen, names of people who helped
-                  or supported you, and actions you took that gives you hope.
-                </h4>
-                <br></br>
-                <h4>
-                  Add a total of 3 hope items before the day ends to be able to share your hopebucket with others. Your hope bucket will reset on a new day.
+        
+                <h4>Add up to 3 pieces of hopes to be able to share. Your bucket resets each day at midnight. Each day is a new beginning!
                 </h4>
        
               </>
@@ -86,11 +80,12 @@ function List() {
                     <i className="bi bi-x-lg"></i>
                     </button>
                     <div className="hopeItem">{item.value}</div>
-                  </ListGroup.Item>
+                   
+                  </ListGroup.Item>      
                 );
               })}
               <br></br>
-        
+      
             </ListGroup>
           </Col>
         </Row>
@@ -107,17 +102,16 @@ function List() {
                 return (
                   <ListGroup.Item className="pt-2 pb-2 mb-3 d-flex flex-nowrap">
                     <div
-                      className="alignRightX"
                       key={item.id}
                       variant="light"
                     ></div> <button
-                      className="closeX btn "
+                      className="closeX btn"
                       onClick={() => {
                         deleteItem(item.id);
                       }}
                     >
                       {" "}
-                         <i className="bi bi-x-lg"></i>
+                        <i class="bi bi-x-lg"></i>
                     </button>
                     <div className="hopeItem">{item.value}</div>
                   </ListGroup.Item>
