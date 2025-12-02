@@ -171,6 +171,7 @@ function initializeClipboard() {
       }
     } else {
       setShowAddField(false);
+       list.push('test')
     }
   }
 
@@ -198,6 +199,12 @@ function initializeClipboard() {
         <Offcanvas.Body className="no-wrap">
           <Row mb={3}>
             <Col>
+            <Form.Select aria-label="select start of hope item input" onKeyDown={keyDownAddItem} onChange={(item) => updateInput(item.target.value)}>
+              <option>Start with these suggestions:</option>
+              <option value="I am grateful for: ">I am grateful for: </option>
+              <option value="A person or thing that gives me hope is: ">A person or thing that gives me hope is: </option>
+              <option value="An action I took that gives me hope is: ">An action I took that gives me hope is: </option>
+            </Form.Select>
               <Form.Control
                 as="textarea"
                 rows={3}
