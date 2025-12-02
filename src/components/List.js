@@ -66,7 +66,7 @@ function List() {
               {list.map((item) => {
                 return (
                   <ListGroup.Item
-                    className="pt-2 pb-2 mb-3 d-flex flex-nowrap"
+                    className="d-flex flex-nowrap"
                     key={item.id}
                     variant="light"
                   >
@@ -100,7 +100,7 @@ function List() {
             <ListGroup>
               {list.map((item) => {
                 return (
-                  <ListGroup.Item className="pt-2 pb-2 mb-3 d-flex flex-nowrap">
+                  <ListGroup.Item className="d-flex flex-nowrap">
                     <div
                       key={item.id}
                       variant="light"
