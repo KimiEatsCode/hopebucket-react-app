@@ -24,12 +24,22 @@ body {
   font-family: "Cabin", sans-serif;
   font-weight: bold;
   color: #F29857;  
-  font-size: 2em;
-filter: drop-shadow(4px 0px 0 white) 
-          drop-shadow(-4px 0px 0 white)
-          drop-shadow(0px 4px 0 white)
-          drop-shadow(0px -4px 0 white)
-drop-shadow(0px 0px 1px black);}
+  font-size: 1.5em;
+  position: relative;
+  /* bottom:65px; */
+  /* background-color: #fff; */
+  padding-top: 20px;
+  padding-bottom:20px;
+  border-radius: 30px;  
+  width:60%;
+  margin: 0 auto;
+  opacity: 1;
+  z-index: 100;
+}
+
+.copyAnimate {
+  animation: copyAnimate 2s;
+}
 
 @keyframes copyAnimate {
   0% {
@@ -314,5 +324,7 @@ button.btn, nav a {
       font-weight:bold;
   }
 
-  
+    #copyMsg {
+      bottom:40px;
+    }
 }
