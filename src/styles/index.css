@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
-
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Just+Another+Hand&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 body {
   font-family: 'Cabin', 'Helvetica Neue',
     sans-serif;
-  background-color: aliceblue !important;
-
+  background-color: aliceblue !important; 
 }
 
 .logoName {
@@ -24,10 +23,13 @@ body {
   text-align: center;
   font-family: "Cabin", sans-serif;
   font-weight: bold;
-  color: #1650AC;  
+  color: #F29857;  
   font-size: 2em;
-  animation: copyAnimate 1s ease;
-}
+filter: drop-shadow(4px 0px 0 white) 
+          drop-shadow(-4px 0px 0 white)
+          drop-shadow(0px 4px 0 white)
+          drop-shadow(0px -4px 0 white)
+drop-shadow(0px 0px 1px black);}
 
 @keyframes copyAnimate {
   0% {
@@ -96,6 +98,7 @@ nav {
 nav button {
   justify-self:center;
   width:100%!important;
+  background-color:#1650AC!important;
 }
 
 nav a {
@@ -146,9 +149,6 @@ h5 {
   line-height: 1.3em !important;
 }
 
-h4 {
-  font-size: 1.2em !important;
-}
 
 h5 {
   font-size: 1em !important;
@@ -156,6 +156,12 @@ h5 {
 
 textarea.form-control.form-control-lg {
   font-size:1.2em;
+}
+
+.form-select {
+  background-color:lightskyblue!important;
+  margin-bottom:10px!important;
+  font-size:1.2em!important;
 }
 
 .section-center-content {
@@ -179,6 +185,12 @@ textarea.form-control.form-control-lg {
   height: 70%;
 }
 
+.topCopyBucket {
+  font-family: "Cabin",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .hopeCount {
   position: relative;
   width: 198px;
@@ -191,6 +203,12 @@ textarea.form-control.form-control-lg {
   flex: 0 0 auto;
 }
 
+.topCopyList {
+  font-family: "Cabin",sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
 .list-group {
   flex-direction: column-reverse;
   padding-left: 50px;
@@ -200,6 +218,8 @@ textarea.form-control.form-control-lg {
 
 .list-group-item {
   margin-top: 6px!important;
+  background-color:transparent!important;
+  border:none!important;
 }
 
 .hopeItem {
@@ -207,8 +227,13 @@ textarea.form-control.form-control-lg {
   flex-direction: row;
   align-items: center;
   word-break: break-word;
-  padding: 10px;
-  font-size: 1em;
+    padding: 10px;
+   font-family:"Just Another Hand",cursive;
+  font-weight: 400!important;
+  font-size: 2.5em;
+  color:#1650AC;
+  letter-spacing: 0.6px;
+  line-height:36px;
 }
 
 .removeItem {
@@ -228,21 +253,27 @@ textarea.form-control.form-control-lg {
 }
 
 .closeX.btn:hover {
-color:#fff;
-font-weight:bold;
-background-color:#1650AC!important;
+color:#333;
+font-weight:bold!important;
 }
 
 .closeX.btn {
-  color:#333;
-background-color: #ccc!important;
+  color: #1650AC;
+  width: 40px;
+  height: 40px;
+  padding-top: 16px;
+  padding-right:50px;
+  font-size: 30px;
+}
 
+.bi-dash {
+  font-size:20px;
+  font-weight: bold;
 }
 
 button.btn, nav a {
     color: #fff;
     padding: 5px;
-    background-color: #1650AC !important;
     border: 0;
     border-radius: 10px;
     width: 60px;
@@ -270,11 +301,17 @@ button.btn, nav a {
   }
 }
 
+@media screen and (min-width:1024px) {
+  .list-group {
+    padding-top:30px;
+    padding-left:20px;
+  }
+}
+
 @media screen and (max-width:768px) {
     .closeX.btn:hover {
       color:#333;
       font-weight:bold;
-      background-color:#ccc!important;
   }
 
   
