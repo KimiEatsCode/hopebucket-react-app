@@ -215,7 +215,7 @@ function initializeClipboard() {
                 onKeyDown={keyDownAddItem}
                 onChange={(item) => updateInput(item.target.value)}
                 aria-label="form field to type text"
-                aria-describedby="basic-addon2"
+        
               />
             </Col>
             <p></p>
