@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import List from "./components/List";
 import Nav2 from "./components/Nav2";
 import Bucket from "./components/Bucket";
+import QuoteGenerator from "./components/QuoteGenerator";
 //context
 import { ListContextProvider } from "./contexts/ListContext";
 import { ExpContextProvider } from "./contexts/ExpContext";
@@ -27,6 +28,7 @@ function App() {
               <Route path="/" element={<Bucket />} />
               <Route path="/bucket" element={<Bucket />} />
               <Route path="/list" element={<List />} />
+              <Route path="/quotes" element={<QuoteGenerator />} />
             </Routes>
 
             <Nav2></Nav2>
