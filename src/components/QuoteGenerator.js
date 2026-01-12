@@ -70,12 +70,12 @@ function QuoteGenerator() {
 
   useEffect(() => {
     fetchQuote();
-    
+    //calls fetchQuote() when the component mounts
     // Cleanup: reset background when component unmounts
     return () => {
-      document.body.style.backgroundImage = '';
+      document.body.style.backgroundImage = ''; //reset background when component unmounts
     };
-  }, []);
+  }, []); //empty dependency array means this effect runs only once on mount
 
   return (
     <div className="quote-generator-container">
