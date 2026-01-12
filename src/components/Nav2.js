@@ -260,11 +260,6 @@ function initializeClipboard() {
              <i  className="bi bi-file-earmark-plus"></i>
             </Button>}
              
-                <Link to="/quotes">
-                  <button type="button" className="btn btn-primary">
-                    <i className="bi bi-quote"></i>
-                  </button>
-                </Link>
               </>
             )}
 
@@ -292,12 +287,6 @@ function initializeClipboard() {
                 <Link to="/list">
                   <button type="button" className="btn btn-primary">
                     <i className="bi bi-file-earmark"></i>
-                  </button>
-                </Link>
-
-                <Link to="/quotes">
-                  <button type="button" className="btn btn-primary">
-                    <i className="bi bi-quote"></i>
                   </button>
                 </Link>
               </>
