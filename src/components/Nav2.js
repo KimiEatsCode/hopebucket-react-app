@@ -9,9 +9,7 @@ import Form from "react-bootstrap/Form";
 //context
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
-//hook
-import LottieControlNavMsg from "../hooks/navMsgControl";
-import ClipboardJS, { copy } from "clipboard";
+import { ModalContext } from "../contexts/ModalContext";
 
 function OffCanvasExample({ name, ...props }) {
 
@@ -31,6 +29,12 @@ function OffCanvasExample({ name, ...props }) {
 
   const list = listContext.list;
   let totalHope = list.length;
+
+  const modalContext = useContext(ModalContext);
+  const showListModal = modalContext.showListModal;
+  const setShowListModal = modalContext.setShowListModal;
+
+  const toggleListModal = () => setShowListModal(!showListModal);
 
   const fieldFocus = useRef();
 
@@ -91,44 +95,25 @@ return () => clearInterval(intervalId);
       setShowListLinks(false);
     }
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
-// Declare the clipboard variable in a scope accessible by your functions (e.g., globally or in a module scope)
-let clipboard = null;
 
-function initializeClipboard() {
-    // If a clipboard instance already exists, destroy it first
-    if (clipboard) {
-        clipboard.destroy();
-    }
-  
-    clipboard = new ClipboardJS('.copyButton');
-          
-    const el = document.getElementById('copyMsg');
-
-    clipboard.on('success', function(e) {
-      if(el === null) {
-        console.log('copy successful')
-} else {
-      document.getElementById('copyMsg').innerHTML= 'HopeBucket Copied! Share mindfully.'
-
-}
-});
-
-    clipboard.on('error', function(e) {
-      console.error('Error copying text to clipboard');
-        // Add your error handling logic here
-    });
-}
-
-  const onCopy = () => {
+  // Handle copy using native Clipboard API instead of ClipboardJS
+  const handleCopyClick = async () => {
     let copyText = "";
     list.forEach((item, index) => {
       copyText += `${item.value}\n\n`;
     });
-    initializeClipboard(); // Re-initialize clipboard to ensure it captures the latest elements
-  
-    console.log("onCopy runs " + listContext.copyText);
-    return copyText;
-  }
+
+    try {
+      await navigator.clipboard.writeText(copyText);
+      const el = document.getElementById('copyMsg');
+      if (el !== null) {
+        el.innerHTML = 'HopeBucket Copied! Share mindfully.';
+      }
+      console.log('copy successful');
+    } catch (err) {
+      console.error('Error copying text to clipboard:', err);
+    }
+  };
   
   function keyDownAddItem(e) {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -200,10 +185,12 @@ function initializeClipboard() {
           <Row mb={3}>
             <Col>
             <Form.Select aria-label="select start of hope item input" onKeyDown={keyDownAddItem} onChange={(item) => updateInput(item.target.value)}>
-              <option>Start with these suggestions:</option>
-              <option value="I am grateful for: ">I am grateful for: </option>
-              <option value="A person or thing that gives me hope is: ">A person or thing that gives me hope is: </option>
-              <option value="An action I took that gives me hope is: ">An action I took that gives me hope is: </option>
+              <option>Click to view suggestions:</option>
+              <option value="I am grateful for ">I am grateful for</option>
+              <option value="A person or thing that gives me hope is ">A person or thing that gives me hope is</option>
+              <option value="An action I took that gives me hope is ">An action I took that gives me hope is</option>
+              <option value="Something I can look forward to is ">Something I can look forward to is </option>
+              <option value="Something that happened today that gives me hope is ">Something that happened today that gives me hope is </option>
             </Form.Select>
               <Form.Control
                 as="textarea"
@@ -231,64 +218,52 @@ function initializeClipboard() {
           <nav>
             {showNewList && (
               <>
-                <Link to="/bucket">
-                  <button  variant="danger" ref={target} onClick={() => setShow(!show)} type="button" className="btn btn-primary">
-                     <i className="bi bi-bucket"></i>
-                  </button>
-                </Link>
-           <Link> 
-              {(totalHope >= 3) ?
-            
-                  <button type="button" className="btn btn-primary" >
-                       <div className="copyButton" data-clipboard-text={onCopy(list)}><i className="bi bi-copy"></i></div>
-                  </button> :  <Button disabled type="button" className="btn btn-primary">
-             <i  className="bi bi-plus-circle-fill"></i>
-            </Button>}
-                </Link>    
-  <LottieControlNavMsg></LottieControlNavMsg>                
-                
-          {(totalHope >= 3) ? 
-          <Link to="/list">
+         
+           {(totalHope >= 3) ? 
                   <button
                     type="button"
-                    className="btn btn-primary"
+                    className="btn btn-primary viewListButton"
+                    onClick={toggleListModal}
                   >
-                    <i className="bi bi-file-earmark"></i>
+                    <i className="bi bi-file-earmark"></i><span className="m-2">View List</span>
                   </button>
-                </Link>
-                 :   <Button type="button" className="btn btn-primary" onClick={handleNewList}>
-             <i  className="bi bi-file-earmark-plus"></i>
-            </Button>}
+                 :   <button type="button" className="btn btn-primary newListButton" onClick={handleNewList}>
+             <i  className="bi bi-file-earmark-plus"></i><span className="m-2">New List</span>
+            </button>}
+
+              {(totalHope >= 3) ?
+                  <button type="button" className="btn btn-primary copyListButton" onClick={handleCopyClick}>
+                       <i className="bi bi-copy"></i><span className="m-2">Copy List</span>
+                  </button> :  <button disabled type="button" className="btn btn-primary">
+             <i  className="bi bi-plus-circle-fill"></i>
+            </button>}
+                         
+               
              
               </>
             )}
+       
 
             {!showNewList && (
               <>
-                <Link to="/bucket">
-                  <button type="button" className="btn btn-primary">
-                    <i className="bi bi-bucket-fill"></i>
-                  </button>
-                </Link>
+
+            <button type="button" className="btn btn-primary viewListButton" onClick={toggleListModal}>
+                  <i className="bi bi-file-earmark"></i><span className="m-2">View List</span>
+                </button>
 
                 {!showNewList && (
-                  <Link onClick={handleOpen} onKeyDown={keyDownOpenForm}>
+                  // <Link onClick={handleOpen} onKeyDown={keyDownOpenForm}>
                     <button
+                    onClick={handleOpen} onKeyDown={keyDownOpenForm}
                       type="button"
-                      className="btn btn-primary"
+                      className="btn btn-primary addItemButton"
                       disabled={totalHope >= 3}
-                      
                     >
-                      <i className="bi bi-plus-circle-fill"></i>
+                      <i className="bi bi-plus-circle-fill"></i><span className="m-2">Add Item</span>
                     </button>
-                  </Link>
+                  // </Link>
                 )}
-               
-                <Link to="/list">
-                  <button type="button" className="btn btn-primary">
-                    <i className="bi bi-file-earmark"></i>
-                  </button>
-                </Link>
+                   
               </>
             )}
           </nav>

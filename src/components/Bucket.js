@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
 import { ListContext } from "../contexts/ListContext";
+import { ModalContext } from "../contexts/ModalContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import LottieControlConfetti from "../hooks/confettiControl";
@@ -10,9 +10,12 @@ function Bucket() {
   const listContext = useContext(ListContext);
   let totalHope = listContext.list.length;
 
-  const linkRemoveUnderline = {
-    textDecoration: "none",
-  };
+  const modalContext = useContext(ModalContext);
+  const setShowListModal = modalContext.setShowListModal;
+  const showListModal = modalContext.showListModal;
+
+  const toggleListModal = () => setShowListModal(!showListModal);
+
   return (
     <>
       <LottieControlConfetti></LottieControlConfetti>
@@ -21,17 +24,16 @@ function Bucket() {
       </Row>
       <Row className="mx-auto text-center">
         <Col>
-          <h3 className="topCopyBucket">
+          <h3 className="topCopyBucket" id="copyMsg">
             {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
+          
             {totalHope < 3 ? "Add hope to fill up your HopeBucket!" : ""}
           </h3>
-          <Link to="/list" style={linkRemoveUnderline}>
-            <div className="bucketIcon">
-              <h1 className="hopeCount">{totalHope} of 3</h1>
-              <LottieControlBucket></LottieControlBucket>
-            </div>
-          </Link>
-          <div id="copyMsg" class="hideBucketCopyMsg"></div>
+          <div className="bucketIcon" onClick={toggleListModal} style={{ cursor: "pointer" }}>
+            <h1 className="hopeCount">{totalHope} of 3</h1>
+            <LottieControlBucket></LottieControlBucket>
+          </div>
+      
         </Col>
       </Row>
     </>

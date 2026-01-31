@@ -9,6 +9,7 @@ import Bucket from "./components/Bucket";
 //context
 import { ListContextProvider } from "./contexts/ListContext";
 import { ExpContextProvider } from "./contexts/ExpContext";
+import { ModalContextProvider } from "./contexts/ModalContext";
 
 function App() {
   return (
@@ -16,23 +17,25 @@ function App() {
   <React.StrictMode>
     <ExpContextProvider>
       <ListContextProvider>
-        <BrowserRouter>
-    
-          <Container>
-            <Link to="/" style={{ textDecoration: "none"}}>
-              <h1 className="logoName mb-4">HopeBucket</h1>
-            </Link>
+        <ModalContextProvider>
+          <BrowserRouter>
+      
+            <Container>
+              <Link to="/" style={{ textDecoration: "none"}}>
+                <h1 className="logoName mb-4">HopeBucket</h1>
+              </Link>
 
-            <Routes>
-              <Route path="/" element={<Bucket />} />
-              <Route path="/bucket" element={<Bucket />} />
-              <Route path="/list" element={<List />} />
-            </Routes>
+              <Routes>
+                <Route path="/" element={<Bucket />} />
+                <Route path="/bucket" element={<Bucket />} />
+              </Routes>
 
-            <Nav2></Nav2>
-          </Container>
-        </BrowserRouter>
-        <Outlet />
+              <Nav2></Nav2>
+              <List />
+            </Container>
+          </BrowserRouter>
+          <Outlet />
+        </ModalContextProvider>
       </ListContextProvider>
     </ExpContextProvider>
   </React.StrictMode>

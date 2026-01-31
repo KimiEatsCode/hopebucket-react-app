@@ -19,23 +19,10 @@ body {
   margin-top:10px;
 }
 
-#copyMsg {
+/* #copyMsg {
   text-align: center;
   font-family: "Cabin", sans-serif;
-  font-weight: bold;
-  color: #F29857;  
-  font-size: 1.5em;
-  position: relative;
-  /* bottom:65px; */
-  /* background-color: #fff; */
-  padding-top: 20px;
-  padding-bottom:20px;
-  border-radius: 30px;  
-  width:60%;
-  margin: 0 auto;
-  opacity: 1;
-  z-index: 100;
-}
+} */
 
 .copyAnimate {
   animation: copyAnimate 2s;
@@ -107,7 +94,7 @@ nav {
 
 nav button {
   justify-self:center;
-  width:100%!important;
+  /* width:100%!important; */
   background-color:#1650AC!important;
 }
 
@@ -115,10 +102,14 @@ nav a {
   background-color:#1650AC;
 }
 
-nav a:nth-of-type(1) {flex-grow: 1;} 
-nav a:nth-of-type(2) {flex-grow: 3;} 
-nav a:nth-of-type(3) {flex-grow: 1;} 
-nav a:nth-of-type(4) {flex-grow: 1;} 
+.viewListButton, .newListButton, .copyListButton {
+    flex-grow: 1!important;
+  }
+
+.addItemButton {
+  flex-grow: 3!important;
+}
+
 
 nav i, .addHopeConfirm i{
   font-size: 24px;
@@ -318,14 +309,65 @@ button.btn, nav a {
   }
 }
 
+/* List Modal Styles */
+.modal-content {
+  border-radius: 15px;
+  border: 3px solid #1650AC;
+}
+
+.modal-header {
+  background-color: #4F8AE8;
+  color: white;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  border-bottom: 2px solid #1650AC;
+}
+
+.modal-header .modal-title {
+  color: white !important;
+  font-weight: bold;
+}
+
+.modal-header .btn-close {
+  color: white;
+  opacity: 1;
+  font-size: 1.5rem;
+  filter: brightness(0) invert(1);
+}
+
+.modal-header .btn-close:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s;
+}
+
+.modal-body {
+  background-color: aliceblue;
+}
+
+.modal-backdrop {
+  background-color: rgba(22, 80, 172, 0.4);
+}
+
+.modal-body .list-group {
+  padding-left: 0;
+}
+
 @media screen and (max-width:768px) {
     .closeX.btn:hover {
       color:#333;
       font-weight:bold;
   }
 
-    #copyMsg {
+    /* #copyMsg {
       bottom:40px;
       width: 80%;
+    } */
+
+    .modal-content {
+      margin: 10px;
     }
+    .viewListButton, .newListButton, .copyListButton, .addItemButton, a{
+      flex-grow: 2!important;
+    }
+  
 }
