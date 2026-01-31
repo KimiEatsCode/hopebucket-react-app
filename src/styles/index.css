@@ -19,11 +19,6 @@ body {
   margin-top:10px;
 }
 
-/* #copyMsg {
-  text-align: center;
-  font-family: "Cabin", sans-serif;
-} */
-
 .copyAnimate {
   animation: copyAnimate 2s;
 }
@@ -214,13 +209,16 @@ textarea.form-control.form-control-lg {
   flex-direction: column-reverse;
   padding-left: 50px;
   display: inherit;
- 
 }
 
 .list-group-item {
   margin-top: 6px!important;
   background-color:transparent!important;
   border:none!important;
+}
+
+.list-group-item:first-child {
+  padding-top:0!important;
 }
 
 .hopeItem {
