@@ -1,7 +1,6 @@
 import { useContext } from "react";
 //context
 import { ListContext } from "../contexts/ListContext";
-import { ExpContext } from "../contexts/ExpContext";
 import { ModalContext } from "../contexts/ModalContext";
 //bootstrap
 import Row from "react-bootstrap/Row";
@@ -9,16 +8,12 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 //components
-import LottieControl from "../hooks/confettiControl";
 import LottieControlNavMsg from "../hooks/navMsgControl";
 function List() {
 
   const listContext = useContext(ListContext);
   const list = listContext.list;
   let totalHope = listContext.list.length;
-  
-  const expContext = useContext(ExpContext);
-  const expDate = expContext.expDate;
 
   const modalContext = useContext(ModalContext);
   const showListModal = modalContext.showListModal;

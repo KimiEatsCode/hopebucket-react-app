@@ -1,5 +1,4 @@
 import { useState, useContext, useRef, useEffect, useMemo } from "react";
-import { Link } from "react-router-dom";
 //bootstrap
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
@@ -15,9 +14,6 @@ function OffCanvasExample({ name, ...props }) {
 
   const [showAddField, setShowAddField] = useState(false);
   const [showNewList, setShowListLinks] = useState(false);
-
-  const [show, setShow] = useState(false);
-  const target = useRef(null);
   
   let [input, setInput] = useState("");
   let [currDate] = useState(new Date());
