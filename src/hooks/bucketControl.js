@@ -11,6 +11,8 @@ const LottieControlBucket = () => {
   let totalHope = listContext.list.length;
 
   useEffect(() => {
+    if (!lottieRef.current) return;
+    
     if (totalHope === 0) {
       lottieRef.current.goToAndStop(0,true);
     } else if (totalHope === 1) {
