@@ -102,7 +102,7 @@ return () => clearInterval(intervalId);
 
     try {
       await navigator.clipboard.writeText(copyText);
-      setCopyMessage('HopeBucket List Copied! Share to social. <p>Check out <a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">Pixabay</a> to find an image for your background.</p>');
+      setCopyMessage('HopeBucket Copied! <p>Find a background on <a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">Pixabay</a> and share to social.</p>');
       console.log('copy successful');
     } catch (err) {
       console.error('Error copying text to clipboard:', err);
