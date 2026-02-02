@@ -33,7 +33,7 @@ function List() {
 
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
-    listContext.setList(updateList);
+    return listContext.setList(updateList);
   }
 
   if (totalHope < 3) {
