@@ -41,9 +41,9 @@ function List() {
       <Modal show={showListModal} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-            <h2 className="pt-2">
-              <strong>{totalHope} of 3</strong>
-            </h2>
+            <h3 className="pt-2">
+              <strong>Today {today} - Hope Items You have added: {totalHope} of 3</strong>
+            </h3>
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -63,23 +63,23 @@ function List() {
               <ListGroup id="contentToCopy">
                 {list.map((item) => {
                   return (
-                    <ListGroup.Item
-                      className="d-flex flex-nowrap"
-                      key={item.id}
-                      variant="light"
-                    >
-                      <button
+                    <button
                         className="closeX btn "
                         onClick={() => {
                           deleteItem(item.id);
                         }}
-                      >
+                      > <ListGroup.Item
+                      className="d-flex flex-nowrap"
+                      key={item.id}
+                      variant="light"
+                    >
+                     
                         {" "}
                       <i className="bi bi-x-lg"></i>
-                      </button>
+              
                       <div className="hopeItem">{item.value}</div>
-                     
-                    </ListGroup.Item>      
+              
+                    </ListGroup.Item>              </button>
                   );
                 })}
                 <br></br>
@@ -102,18 +102,18 @@ function List() {
               <ListGroup>
                 {list.map((item) => {
                   return (
-                    <ListGroup.Item className="d-flex flex-nowrap" key={item.id}>
-                      <button
-                        className="closeX btn"
-                        onClick={() => {
-                          deleteItem(item.id);
-                        }}
-                      >
+                    <button
+                    className="closeX btn"
+                    onClick={() => {
+                      deleteItem(item.id);
+                    }}
+                  >   <ListGroup.Item className="d-flex flex-nowrap" key={item.id}>
+                    
                         {" "}
                           <i className="bi bi-x-lg"></i>
-                      </button>
+                    
                       <div className="hopeItem">{item.value}</div>
-                    </ListGroup.Item>
+                    </ListGroup.Item>  </button>
                   );
                 })}
               </ListGroup>

@@ -13,6 +13,7 @@ function Bucket() {
   const modalContext = useContext(ModalContext);
   const setShowListModal = modalContext.setShowListModal;
   const showListModal = modalContext.showListModal;
+  const copyMessage = modalContext.copyMessage;
 
   const toggleListModal = () => setShowListModal(!showListModal);
 
@@ -24,11 +25,15 @@ function Bucket() {
       </Row>
       <Row className="mx-auto text-center">
         <Col>
-          <h3 className="topCopyBucket" id="copyMsg">
-            {totalHope === 3 ? "Congrats! You filled your hope bucket!" : ""}
-          
-            {totalHope < 3 ? "Add hope to fill up your HopeBucket!" : ""}
-          </h3>
+          <h4 
+            className="topCopyBucket" 
+            id="copyMsg"
+            dangerouslySetInnerHTML={{
+              __html: copyMessage ? copyMessage : 
+                totalHope === 3 ? "Congrats! You filled your hope bucket!" : 
+                totalHope < 3 ? "Add hope to fill up your HopeBucket!" : ""
+            }}
+          ></h4>
           <div className="bucketIcon" onClick={toggleListModal} style={{ cursor: "pointer" }}>
             <h1 className="hopeCount">{totalHope} of 3</h1>
             <LottieControlBucket></LottieControlBucket>
