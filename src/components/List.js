@@ -39,15 +39,20 @@ function List() {
   if (totalHope < 3) {
     return (
       <Modal show={showListModal} onHide={handleClose} centered size="lg">
-        <Modal.Header closeButton>
-          <Modal.Title>
-            <h3 className="pt-2">
-              <strong>Today {today} - Hope Items You have added: {totalHope} of 3</strong>
-            </h3>
+        <Modal.Header> 
+     
+          <Modal.Title> 
+            <h4 className="pt-2">
+              <strong>Today {today} - {totalHope} of 3 Completed</strong>
+            </h4>
+
           </Modal.Title>
+          <button className="closeButton" onClick={() => { handleClose(); }}>
+              <i className="bi bi-x-lg"></i>
+            </button>
         </Modal.Header>
         <Modal.Body>
-          <Row className="text-center p-2 mt-2 jusity-content-center">
+          <Row className="jusity-content-center">
             <Col className="col-md-8 mx-auto">
               {totalHope === 0 && (
                 <>            
@@ -63,23 +68,22 @@ function List() {
               <ListGroup id="contentToCopy">
                 {list.map((item) => {
                   return (
-                    <button
-                        className="closeX btn "
-                        onClick={() => {
-                          deleteItem(item.id);
-                        }}
-                      > <ListGroup.Item
+                    <ListGroup.Item
                       className="d-flex flex-nowrap"
                       key={item.id}
                       variant="light"
                     >
-                     
-                        {" "}
+                       <button
+                        className="closeX btn "
+                        onClick={() => {
+                          deleteItem(item.id);
+                        }}
+                      >
                       <i className="bi bi-x-lg"></i>
               
                       <div className="hopeItem">{item.value}</div>
-              
-                    </ListGroup.Item>              </button>
+                      </button>
+                    </ListGroup.Item>            
                   );
                 })}
                 <br></br>
@@ -102,18 +106,19 @@ function List() {
               <ListGroup>
                 {list.map((item) => {
                   return (
-                    <button
+                     <ListGroup.Item className="d-flex flex-nowrap" key={item.id}>
+                     <button
                     className="closeX btn"
                     onClick={() => {
                       deleteItem(item.id);
                     }}
-                  >   <ListGroup.Item className="d-flex flex-nowrap" key={item.id}>
-                    
+                  > 
                         {" "}
                           <i className="bi bi-x-lg"></i>
                     
-                      <div className="hopeItem">{item.value}</div>
-                    </ListGroup.Item>  </button>
+                      <div className="hopeItem">{item.value}</div> 
+                      </button>
+                    </ListGroup.Item> 
                   );
                 })}
               </ListGroup>
