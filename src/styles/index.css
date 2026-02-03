@@ -234,11 +234,6 @@ textarea.form-control.form-control-lg {
   line-height: 1.5em;
 }
 
-.hopeItem:hover {
-  color: #e673d3;
-  font-weight: bold;
-}
-
 .removeItem {
   font-style: bold;
   font-weight: 700;
