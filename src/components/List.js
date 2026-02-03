@@ -80,9 +80,9 @@ function List() {
                         }}
                       >
                       <i className="bi bi-x-lg"></i>
-              
-                      <div className="hopeItem">{item.value}</div>
                       </button>
+                      <div className="hopeItem">{item.value}</div>
+                    
                     </ListGroup.Item>            
                   );
                 })}
@@ -100,7 +100,7 @@ function List() {
         <Modal.Header closeButton>
           <Modal.Title>
           <h4 className="pt-2">
-              <strong>Today {today} - {totalHope} of 3 Completed</strong>
+              <strong>Congrats! You filled your HopeBucket! {totalHope} of 3 Completed. List expires at midnight.</strong>
             </h4>
           </Modal.Title>
           <button className="closeButton" onClick={() => { handleClose(); }}>
@@ -121,9 +121,9 @@ function List() {
                     }}
                   > 
                           <i className="bi bi-x-lg"></i>
-                    
+                          </button>
                       <div className="hopeItem">{item.value}</div> 
-                      </button>
+                   
                     </ListGroup.Item> 
                   );
                 })}
