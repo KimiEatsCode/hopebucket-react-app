@@ -52,7 +52,7 @@ function List() {
             </button>
         </Modal.Header>
         <Modal.Body>
-          <Row className="jusity-content-center">
+          <Row className="text-center pt-2">
             <Col className="col-md-8 mx-auto">
               {totalHope === 0 && (
                 <>            
@@ -98,7 +98,14 @@ function List() {
     return (
       <Modal show={showListModal} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton>
-          <Modal.Title>Your Hope List</Modal.Title>
+          <Modal.Title>
+          <h4 className="pt-2">
+              <strong>Today {today} - {totalHope} of 3 Completed</strong>
+            </h4>
+          </Modal.Title>
+          <button className="closeButton" onClick={() => { handleClose(); }}>
+              <i className="bi bi-x-lg"></i>
+            </button>
         </Modal.Header>
         <Modal.Body>
           <Row>
@@ -113,7 +120,6 @@ function List() {
                       deleteItem(item.id);
                     }}
                   > 
-                        {" "}
                           <i className="bi bi-x-lg"></i>
                     
                       <div className="hopeItem">{item.value}</div> 
