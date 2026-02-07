@@ -180,6 +180,7 @@ textarea.form-control.form-control-lg {
   font-weight: bold;
   margin-top: 10px;
   height: 70%;
+  position: relative;
 }
 
 .topCopyBucket {
@@ -189,11 +190,14 @@ textarea.form-control.form-control-lg {
 }
 
 .hopeCount {
-  position: relative;
+  position: absolute;
   width: 198px;
-  top: 167px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-weight: 800;
   font-size: 1.5em;
+  z-index: 1;
 }
 
 .no-wrap {
@@ -301,8 +305,7 @@ button.btn, nav a {
 
 @media screen and (min-width:768px) {
   .hopeCount.text-center {
-    position: relative;
-    top: 175px;
+    /* centered via absolute positioning on .hopeCount */
   }
 }
 
