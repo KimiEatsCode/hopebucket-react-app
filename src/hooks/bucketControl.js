@@ -29,10 +29,12 @@ const LottieControlBucket = () => {
   const bucketstyle = {
     position: "absolute",
     zIndex: "-1",
-    left: "0",
-    top: "140px",
-    height: "70%",
+    left: "50%",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+    height: "100%",
     width: "100%",
+    maxWidth: "350px",
   };
 
   return (
