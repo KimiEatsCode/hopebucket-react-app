@@ -34,7 +34,7 @@ const LottieControlBucket = () => {
     transform: "translate(-50%, -50%)",
     height: "100%",
     width: "100%",
-    maxWidth: "350px",
+    maxWidth: "500px",
   };
 
   return (
