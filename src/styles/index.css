@@ -129,7 +129,42 @@ nav i, .addHopeConfirm i{
 
 .topNav {
   text-align: right;
-  padding: 10px 20px;
+  padding: 10px 0;
+}
+
+.privacy-link {
+  font-size: 0.85em;
+  color: #4F8AE8 !important;
+  text-decoration: none;
+}
+
+.privacy-link:hover {
+  text-decoration: underline;
+}
+
+.privacy-policy {
+  padding-bottom: 100px;
+}
+
+.privacy-policy h2 {
+  margin-bottom: 20px;
+}
+
+.privacy-policy h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  font-size: 1.3em !important;
+}
+
+.privacy-policy h4 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 1.1em !important;
+}
+
+.privacy-policy p, .privacy-policy li {
+  color: #333;
+  line-height: 1.6;
 }
 
 .feedback a {
