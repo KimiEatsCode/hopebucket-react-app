@@ -247,7 +247,7 @@ return () => clearInterval(intervalId);
               <>
 
             <button type="button" className="btn btn-primary viewListButton" onClick={toggleListModal}>
-                  <i className="bi bi-file-earmark"></i><span className="m-2">View List</span>
+                  <i className="bi bi-file-earmark"></i><span className="m-2"> List</span>
                 </button>
 
                 {!showNewList && (
@@ -257,7 +257,7 @@ return () => clearInterval(intervalId);
                       className="btn btn-primary addItemButton"
                       disabled={totalHope >= 3}
                     >
-                      <i className="bi bi-plus-circle-fill"></i><span className="m-2">Add Hope</span>
+                      <i className="bi bi-plus-circle-fill"></i><span className="m-2"> Hope</span>
                     </button>
                 )}
 

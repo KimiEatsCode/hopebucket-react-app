@@ -16,7 +16,7 @@ body {
   font-style: normal;
   text-align: center;
   color: #1650AC;
-  margin-top:10px;
+  margin-top:30px;
 }
 
 .copyAnimate {
@@ -361,7 +361,6 @@ button.btn, nav a {
     padding: 5px;
     border: 0;
     border-radius: 10px;
-    width: 60px;
     font-size: 24px;
 }
 
