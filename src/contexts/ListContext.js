@@ -5,7 +5,7 @@ export const ListAgeContext = createContext();
 export const ListContextProvider = (props) => {
   const [list, setList] = useLocalStorage("hopeList", []);
   const [listDate, setListDate] = useLocalStorage("hopeListDate", null);
-  const [setIsInitialized] = useState(false);
+  const [, setIsInitialized] = useState(false);
 
   useEffect(() => {
     // Get today's date in the format mm/dd/yyyy
@@ -22,7 +22,7 @@ export const ListContextProvider = (props) => {
       setListDate(todayString);
     }
     setIsInitialized(true);
-  }, []);
+  }, [listDate, setList, setListDate, setIsInitialized]);
 
   const copyText = false;
   return (
