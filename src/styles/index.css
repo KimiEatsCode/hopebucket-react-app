@@ -307,8 +307,7 @@ textarea.form-control.form-control-lg {
   letter-spacing: 0.8px;
   color: #1650AC;
   text-align: left;
-  padding-inline-start: 20px;
-  line-height: 1.5em;
+  align-content: center;
 }
 
 .removeItem {
@@ -398,14 +397,13 @@ button.btn, nav a {
 .modal-header {
   border-top-left-radius: 12px;
   border-top-right-radius: 12px;
-  border-bottom: 2px solid #1650AC;
+  background-color:#1650AC;
+  color:#fff!important;
 }
 
 
 .modal-header .btn-close {
-  color: #1650AC!important;
   font-size: 1.5rem;
-  filter: brightness(0) invert(1);
 }
 
 
@@ -435,8 +433,86 @@ button.btn, nav a {
     .modal-content {
       margin: 10px;
     }
-    .viewListButton, .newListButton, .copyListButton, .addItemButton, a{
+    .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, a{
       flex-grow: 2!important;
     }
   
+}
+
+/* Quotes */
+.quotesButton {
+  flex-grow: 1!important;
+}
+
+.quote-add-btn.btn.btn-primary {
+  width: 200px;
+  margin-top: 20px;
+}
+
+.quote-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px 0;
+}
+
+.quote-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background-color: #e8f0fe;
+  border-left: 4px solid #1650AC;
+  border-radius: 8px;
+}
+
+.quote-text {
+  font-style: italic;
+  color: #1650AC;
+  font-weight: 600;
+  font-size: 1em;
+  line-height: 1.4;
+  flex: 1;
+  word-break: break-word;
+}
+
+.quote-remove-btn {
+  color: #999 !important;
+  padding: 0 0 0 8px;
+  font-size: 1.2em;
+  text-decoration: none !important;
+}
+
+.quote-remove-btn:hover {
+  color: #dc3545 !important;
+}
+
+.quote-input-area {
+  margin-top: 8px;
+}
+
+.quote-input-area textarea {
+  border: 2px solid #1650AC !important;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.quote-input-footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.quote-add-btn {
+  background-color: #1650AC !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 6px 20px !important;
+  font-size: 0.95em !important;
+}
+
+.quote-add-btn:disabled {
+  opacity: 0.5;
 }

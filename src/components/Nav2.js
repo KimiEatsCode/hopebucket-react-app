@@ -9,11 +9,13 @@ import Form from "react-bootstrap/Form";
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 import { ModalContext } from "../contexts/ModalContext";
+import QuoteModal from "./QuoteModal";
 
 function OffCanvasExample({ name, ...props }) {
 
   const [showAddField, setShowAddField] = useState(false);
   const [showNewList, setShowListLinks] = useState(false);
+  const [showQuoteModal, setShowQuoteModal] = useState(false);
   
   let [input, setInput] = useState("");
   let [currDate] = useState(new Date());
@@ -206,6 +208,7 @@ return () => clearInterval(intervalId);
           </Row>
         </Offcanvas.Body>
       </Offcanvas>
+      <QuoteModal show={showQuoteModal} onHide={() => setShowQuoteModal(false)} />
       <Row>
         <div>
          
@@ -231,8 +234,10 @@ return () => clearInterval(intervalId);
                   </button> :  <button disabled type="button" className="btn btn-primary">
              <i  className="bi bi-plus-circle-fill"></i>
             </button>}
-                         
-               
+
+              <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
+                <i className="bi bi-chat-heart"></i><span className="m-2">Quotes</span>
+              </button>
              
               </>
             )}
@@ -246,7 +251,6 @@ return () => clearInterval(intervalId);
                 </button>
 
                 {!showNewList && (
-                  // <Link onClick={handleOpen} onKeyDown={keyDownOpenForm}>
                     <button
                     onClick={handleOpen} onKeyDown={keyDownOpenForm}
                       type="button"
@@ -255,8 +259,11 @@ return () => clearInterval(intervalId);
                     >
                       <i className="bi bi-plus-circle-fill"></i><span className="m-2">Add Item</span>
                     </button>
-                  // </Link>
                 )}
+
+                <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
+                  <i className="bi bi-chat-heart"></i><span className="m-2">Quotes</span>
+                </button>
                    
               </>
             )}

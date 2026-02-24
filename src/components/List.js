@@ -38,7 +38,7 @@ function List() {
   if (totalHope < 3) {
     return (
       <Modal show={showListModal} onHide={handleClose} centered size="lg">
-        <Modal.Header> 
+        <Modal.Header className="modal-header"> 
      
           <Modal.Title> 
             <h4 className="pt-2">

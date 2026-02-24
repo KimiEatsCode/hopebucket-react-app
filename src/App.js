@@ -11,6 +11,7 @@ import PrivacyPolicy from "./components/PrivacyPolicy";
 import { ListContextProvider } from "./contexts/ListContext";
 import { ExpContextProvider } from "./contexts/ExpContext";
 import { ModalContextProvider } from "./contexts/ModalContext";
+import { QuoteContextProvider } from "./contexts/QuoteContext";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
     <ExpContextProvider>
       <ListContextProvider>
         <ModalContextProvider>
+          <QuoteContextProvider>
           <BrowserRouter>
       
             <Container>
@@ -40,6 +42,7 @@ function App() {
             </Container>
           </BrowserRouter>
           <Outlet />
+          </QuoteContextProvider>
         </ModalContextProvider>
       </ListContextProvider>
     </ExpContextProvider>
