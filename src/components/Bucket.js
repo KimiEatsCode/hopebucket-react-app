@@ -29,10 +29,11 @@ function Bucket() {
             className="topCopyBucket" 
             id="copyMsg"
             dangerouslySetInnerHTML={{
-              __html: copyMessage ? copyMessage : 
+              __html: totalHope === 3 ? copyMessage : 
                 totalHope === 3 ? "Congrats! You filled your hope bucket!" : 
                 totalHope < 3 ? "Add hope to fill up your HopeBucket!" : ""
             }}
+            
           ></h4>
           <div className="bucketIcon" onClick={toggleListModal} style={{ cursor: "pointer" }}>
             <h1 className="hopeCount">{totalHope} of 3</h1>

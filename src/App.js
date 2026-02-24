@@ -25,7 +25,8 @@ function App() {
       
             <Container>
               <div className="topNav">
-                <Link to="/privacy-policy" className="privacy-link">Privacy Policy</Link>
+                <Link to="/privacy-policy" className="topNavLink">Privacy Policy</Link>
+                <Link to="https://sarahkimirettig.com/contact" className="topNavLink">Contact</Link>
               </div>
               <Link to="/" style={{ textDecoration: "none"}}>
                 <h1 className="logoName mb-4">HopeBucket</h1>

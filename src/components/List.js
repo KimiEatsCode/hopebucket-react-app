@@ -38,17 +38,15 @@ function List() {
   if (totalHope < 3) {
     return (
       <Modal show={showListModal} onHide={handleClose} centered size="lg">
-        <Modal.Header className="modal-header"> 
+        <Modal.Header closeButton> 
      
           <Modal.Title> 
-            <h4 className="pt-2">
-              <strong>Today {today} - {totalHope} of 3 Completed</strong>
-            </h4>
+            
+            Today {today} - {totalHope} of 3 Completed
+          
 
           </Modal.Title>
-          <button className="closeButton" onClick={() => { handleClose(); }}>
-              <i className="bi bi-x-lg"></i>
-            </button>
+         
         </Modal.Header>
         <Modal.Body>
           <Row className="text-center pt-2">
@@ -98,13 +96,9 @@ function List() {
       <Modal show={showListModal} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-          <h4 className="pt-2">
-              <strong>Congrats! You filled your HopeBucket! {totalHope} of 3 Completed. List expires at midnight.</strong>
-            </h4>
+          Congrats! {totalHope} of 3 Completed.
           </Modal.Title>
-          <button className="closeButton" onClick={() => { handleClose(); }}>
-              <i className="bi bi-x-lg"></i>
-            </button>
+      
         </Modal.Header>
         <Modal.Body>
           <Row>

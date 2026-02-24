@@ -52,14 +52,13 @@ function QuoteModal({ show, onHide }) {
           {quotes.map((q) => (
             <li key={q.id} className="quote-item">
       
-              <Button
-                variant="link"
-                className="quote-remove-btn"
+              <button
+                className="closeX btn"
                 onClick={() => removeQuote(q.id)}
                 aria-label="Remove quote"
               >
-                <i className="bi bi-x-circle"></i>
-              </Button>
+                <i className="bi bi-x-lg"></i>
+              </button>
               <span className="quote-text">"{q.text}"</span>
             </li>
            
@@ -97,9 +96,12 @@ function QuoteModal({ show, onHide }) {
         )}
 
         {!canAdd && (
-          <p className="text-muted text-center mt-2" style={{ fontSize: "0.9em" }}>
-            Maximum of 3 quotes reached. Remove one to add a new quote.
+          <div>
+          <p className="text text-center mt-2" style={{ fontSize: "1.2em" }}>
+            Maximum of 3 quotes reached.
+            <p>Remove one to add a new quote.</p>
           </p>
+          </div>
         )}
       </Modal.Body>
     </Modal>

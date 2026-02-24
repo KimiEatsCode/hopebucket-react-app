@@ -257,7 +257,7 @@ return () => clearInterval(intervalId);
                       className="btn btn-primary addItemButton"
                       disabled={totalHope >= 3}
                     >
-                      <i className="bi bi-plus-circle-fill"></i><span className="m-2">Add Item</span>
+                      <i className="bi bi-plus-circle-fill"></i><span className="m-2">Add Hope</span>
                     </button>
                 )}
 

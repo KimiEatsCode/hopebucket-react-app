@@ -130,6 +130,13 @@ nav i, .addHopeConfirm i{
 .topNav {
   text-align: right;
   padding: 10px 0;
+  font-size: 1.2em;
+}
+.topNavLink {
+  font-size: 0.85em;
+  color: #4F8AE8 !important;
+  text-decoration: none;
+  padding-left: 15px;
 }
 
 .privacy-link {
@@ -303,11 +310,12 @@ textarea.form-control.form-control-lg {
   word-break: break-word;
   font-family: sans-serif;
   font-weight: 900 !important;
-  font-size: 20px;
+  font-size:1.2em;
   letter-spacing: 0.8px;
   color: #1650AC;
   text-align: left;
   align-content: center;
+  padding-left: 10px;
 }
 
 .removeItem {
@@ -392,6 +400,7 @@ button.btn, nav a {
 .modal-content {
   border-radius: 15px;
   border: 3px solid #1650AC;
+  border-bottom: 5px solid #1650AC!important;
 }
 
 .modal-header {
@@ -445,7 +454,7 @@ button.btn, nav a {
 }
 
 .quote-add-btn.btn.btn-primary {
-  width: 200px;
+  width: 97%;
   margin-top: 20px;
 }
 
@@ -467,10 +476,9 @@ button.btn, nav a {
 }
 
 .quote-text {
-  font-style: italic;
   color: #1650AC;
   font-weight: 600;
-  font-size: 1em;
+  font-size: 1.2em;
   line-height: 1.4;
   flex: 1;
   word-break: break-word;
@@ -508,9 +516,9 @@ button.btn, nav a {
 .quote-add-btn {
   background-color: #1650AC !important;
   border: none !important;
-  border-radius: 8px !important;
-  padding: 6px 20px !important;
-  font-size: 0.95em !important;
+  border-radius: 10px !important;
+  padding: 10px 20px !important;
+  font-size: 1.2em !important;
 }
 
 .quote-add-btn:disabled {
