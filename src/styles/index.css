@@ -214,7 +214,11 @@ textarea.form-control.form-control-lg {
   text-align: center;
   font-weight: bold;
   margin-top: 10px;
-  height: 300px;
+  height: 350px;
+  width: 100%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
   position: relative;
 }
 
@@ -231,8 +235,42 @@ textarea.form-control.form-control-lg {
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: 800;
-  font-size: 1.5em;
+  font-size: 2em;
   z-index: 1;
+}
+
+@media screen and (min-width: 576px) {
+  .bucketIcon {
+    height: 400px;
+    max-width: 600px;
+  }
+  
+  .hopeCount {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bucketIcon {
+    height: 450px;
+    max-width: 700px;
+  }
+  
+  .hopeCount {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .bucketIcon {
+    height: 300px;
+    max-width: 100%;
+    padding: 0 15px;
+  }
+  
+  .hopeCount {
+    font-size: 1.75em;
+  }
 }
 
 .no-wrap {
