@@ -61,7 +61,7 @@ function List() {
               )}
             </Col>
           </Row>
-<LottieControlNavMsg></LottieControlNavMsg>
+
           <Row className="pb-5">
             <Col className="pb-5">
               <ListGroup id="contentToCopy">
