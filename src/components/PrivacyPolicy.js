@@ -27,7 +27,7 @@ function PrivacyPolicy() {
       </ReactMarkdown>
 
       <div className="text-center mt-4 mb-4">
-        <Link to="/" className="btn btn-primary" style={{ backgroundColor: "#1650AC", border: "none", borderRadius: "10px" }}>
+        <Link to="/" className="btn btn-primary quote-add-btn">
           Back to HopeBucket
         </Link>
       </div>
