@@ -7,8 +7,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
-//components
-import LottieControlNavMsg from "../hooks/navMsgControl";
+
 function List() {
 
   const listContext = useContext(ListContext);
