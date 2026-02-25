@@ -77,15 +77,14 @@ a {
 }
 
 nav {
-  position:fixed;
-  bottom:14px;
-  left:2px;
   display: flex;
+  justify-content: center;
+  bottom:45px;
   flex-direction: row;
-  width: 98%;
+  width: 100;
   gap: 10px;
   padding-top: 15px;
-  padding-left: 10px;
+  margin-bottom: 40px;
 }
 
 nav button {
@@ -107,8 +106,9 @@ nav a {
 }
 
 
-nav i, .addHopeConfirm i{
+nav i, .addHopeConfirm i {
   font-size: 24px;
+  padding-right:5px;
 }
 
 #newListIcon {
@@ -136,7 +136,16 @@ nav i, .addHopeConfirm i{
   font-size: 0.85em;
   color: #4F8AE8 !important;
   text-decoration: none;
-  padding-left: 15px;
+  display: inline-block;
+  border: 1px solid #4F8AE8;
+  border-radius: 999px;
+  padding: 6px 12px;
+  margin-left: 10px;
+}
+
+.topNavLink:hover {
+  background-color: #eef4ff;
+  text-decoration: none;
 }
 
 .privacy-link {
@@ -215,13 +224,14 @@ textarea.form-control.form-control-lg {
 
 .bucketIcon {
   display: flex;
+  min-height:90vh;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
   text-align: center;
   font-weight: bold;
   margin-top: 10px;
-  height: 350px;
+  height: 500px;
   width: 100%;
   max-width: 500px;
   margin-left: auto;
@@ -244,40 +254,6 @@ textarea.form-control.form-control-lg {
   font-weight: 800;
   font-size: 2em;
   z-index: 1;
-}
-
-@media screen and (min-width: 576px) {
-  .bucketIcon {
-    height: 400px;
-    max-width: 600px;
-  }
-  
-  .hopeCount {
-    font-size: 2.5em;
-  }
-}
-
-@media screen and (min-width: 992px) {
-  .bucketIcon {
-    height: 450px;
-    max-width: 700px;
-  }
-  
-  .hopeCount {
-    font-size: 3em;
-  }
-}
-
-@media screen and (max-width: 575px) {
-  .bucketIcon {
-    height: 300px;
-    max-width: 100%;
-    padding: 0 15px;
-  }
-  
-  .hopeCount {
-    font-size: 1.75em;
-  }
 }
 
 .no-wrap {
@@ -309,13 +285,13 @@ textarea.form-control.form-control-lg {
 .hopeItem {
   word-break: break-word;
   font-family: sans-serif;
-  font-weight: 900 !important;
-  font-size:1.2em;
+  font-size:1.3em;
   letter-spacing: 0.8px;
   color: #1650AC;
   text-align: left;
   align-content: center;
   padding-left: 10px;
+  padding-top: 15px;
 }
 
 .removeItem {
@@ -382,20 +358,6 @@ button.btn, nav a {
   text-align: center;
 }
 
-@media screen and (min-width:768px) {
-  .hopeCount.text-center {
-    /* centered via absolute positioning on .hopeCount */
-  }
-}
-
-@media screen and (min-width:1024px) {
-  .list-group {
-    padding-top:30px;
-    padding-left:20px;
-  }
-}
-
-
 .modal-content {
   border-radius: 15px;
   border: 3px solid #1650AC;
@@ -432,20 +394,6 @@ button.btn, nav a {
   padding-left: 0;
 }
 
-@media screen and (max-width:768px) {
-    .closeX.btn:hover {
-      color:#333;
-      font-weight:bold;
-  }
-
-    .modal-content {
-      margin: 10px;
-    }
-    .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, a{
-      flex-grow: 2!important;
-    }
-  
-}
 
 /* Quotes */
 .quotesButton {
@@ -522,4 +470,54 @@ button.btn, nav a {
 
 .quote-add-btn:disabled {
   opacity: 0.5;
+}
+
+@media screen and (min-width: 992px) {
+  /* .bucketIcon {
+    height: 450px;
+    max-width: 700px;
+  } */
+  
+  .hopeCount {
+    font-size: 3em;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .closeX.btn:hover {
+    color:#333;
+    font-weight:bold;
+}
+
+  .modal-content {
+    margin: 10px;
+  }
+  .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, a{
+    flex-grow: 2!important;
+  }
+
+}
+
+
+@media screen and (min-width: 576px) {
+  /* .bucketIcon {
+    height: 400px;
+    max-width: 600px;
+  } */
+  
+  .hopeCount {
+    font-size: 2.5em;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  /* .bucketIcon {
+    height: 300px;
+    max-width: 100%;
+    padding: 0 15px;
+  } */
+  
+  .hopeCount {
+    font-size: 1.75em;
+  }
 }
