@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 //components
 import List from "./components/List";
-import Nav2 from "./components/Nav2";
+import Nav from "./components/Nav";
 import Bucket from "./components/Bucket";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 //context
@@ -27,6 +27,7 @@ function App() {
               <div className="topNav">
                 <Link to="/privacy-policy" className="topNavLink">Privacy Policy</Link>
                 <Link to="https://sarahkimirettig.com/contact" className="topNavLink">Contact</Link>
+                <Link to="https://chat.988lifeline.org/" className="topNavLink">Crisis Chat</Link>
               </div>
               <Link to="/" style={{ textDecoration: "none"}}>
                 <h1 className="logoName mb-4">HopeBucket</h1>
@@ -38,7 +39,7 @@ function App() {
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
               </Routes>
 
-              <Nav2></Nav2>
+              <Nav></Nav>
               <List />
             </Container>
           </BrowserRouter>
