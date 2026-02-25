@@ -27,13 +27,12 @@ const LottieControlBucket = () => {
   }, [totalHope, list]);
 
   const bucketstyle = {
-    position: "absolute",
-    zIndex: "-1",
-    left: "50%",
-    top: "44%",
-    transform: "translate(-50%, -50%)",
-    height: "100%",
-    width: "100vw",
+    // position: "absolute",
+    // zIndex: "-1",
+    // left: "50%",
+    // top: "44%",
+    // transform: "translate(-50%, -50%)",
+    // width: "100vw",
   };
 
   return (
@@ -42,7 +41,7 @@ const LottieControlBucket = () => {
       autoPlay={false}
       loop={false}
       animationData={bucketAnimation}
-      style={bucketstyle}
+      // style={bucketstyle}
     />
   );
 };

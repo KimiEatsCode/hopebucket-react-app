@@ -80,15 +80,20 @@ nav {
   display: flex;
   position: fixed;
   justify-content: center;
-  bottom: 45px;
+  bottom: 15px;
+  left: 0;
+  right: 0;
   flex-direction: row;
   width: 100%;
   gap: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-top: 15px;
 }
 
 nav button {
-  justify-self:center;
+  flex: 1 1 0;
+  width: 100%;
   background-color:#1650AC!important;
 }
 
@@ -225,20 +230,7 @@ textarea.form-control.form-control-lg {
 }
 
 .bucketIcon {
-  display: flex;
   min-height:90vh;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 10px;
-  height: 500px;
-  width: 100vw;
-  max-width: none;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
 }
 
 .topCopyBucket {
