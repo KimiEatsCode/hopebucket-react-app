@@ -230,7 +230,25 @@ textarea.form-control.form-control-lg {
 }
 
 .bucketIcon {
-  /* min-height:90vh; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+  /* Keep bucket visible above fixed bottom nav on mobile */
+  height: min(52vh, 520px);
+  max-height: calc(100dvh - 320px);
+}
+
+.bucketIcon > div {
+  width: min(100%, 560px);
+  height: 100%;
+}
+
+.bucketIcon svg {
+  width: 100% !important;
+  height: 100% !important;
 }
 
 .topCopyBucket {
@@ -505,11 +523,10 @@ button.btn, nav a {
 }
 
 @media screen and (max-width: 575px) {
-  /* .bucketIcon {
-    height: 300px;
-    max-width: 100%;
-    padding: 0 15px;
-  } */
+  .bucketIcon {
+    height: min(46vh, 420px);
+    max-height: calc(100dvh - 320px);
+  }
   
   .hopeCount {
     font-size: 1.75em;
