@@ -78,18 +78,17 @@ a {
 
 nav {
   display: flex;
+  position: fixed;
   justify-content: center;
-  bottom:45px;
+  bottom: 45px;
   flex-direction: row;
-  width: 100;
+  width: 100%;
   gap: 10px;
   padding-top: 15px;
-  margin-bottom: 40px;
 }
 
 nav button {
   justify-self:center;
-  /* width:100%!important; */
   background-color:#1650AC!important;
 }
 
@@ -104,7 +103,6 @@ nav a {
 .addItemButton {
   flex-grow: 3!important;
 }
-
 
 nav i, .addHopeConfirm i {
   font-size: 24px;
@@ -128,10 +126,13 @@ nav i, .addHopeConfirm i {
 }
 
 .topNav {
+  display: inline-flex;
   text-align: right;
   padding: 10px 0;
   font-size: 1.2em;
+  margin-top: 15px;
 }
+
 .topNavLink {
   font-size: 0.85em;
   color: #4F8AE8 !important;
@@ -139,8 +140,9 @@ nav i, .addHopeConfirm i {
   display: inline-block;
   border: 1px solid #4F8AE8;
   border-radius: 999px;
-  padding: 6px 12px;
+  padding: 5px 8px;
   margin-left: 10px;
+  text-align: left;
 }
 
 .topNavLink:hover {
