@@ -222,21 +222,20 @@ return () => clearInterval(intervalId);
                     className="btn btn-primary viewListButton"
                     onClick={toggleListModal}
                   >
-                    <i className="bi bi-file-earmark"></i><span className="m-2">View List</span>
+                    <i className="bi bi-file-earmark"></i>List
                   </button>
                  :   <button type="button" className="btn btn-primary newListButton" onClick={handleNewList}>
-             <i  className="bi bi-file-earmark-plus"></i><span className="m-2">New List</span>
+             <i  className="bi bi-file-earmark-plus"></i>List
             </button>}
 
-              {(totalHope >= 3) ?
-                  <button type="button" className="btn btn-primary copyListButton" onClick={handleCopyClick}>
-                       <i className="bi bi-copy"></i><span className="m-2">Copy List</span>
-                  </button> :  <button disabled type="button" className="btn btn-primary">
-             <i  className="bi bi-plus-circle-fill"></i>
-            </button>}
+              {totalHope >= 3 && (
+                <button type="button" className="btn btn-primary copyListButton" onClick={handleCopyClick}>
+                  <i className="bi bi-copy"></i><span className="m-2">Copy</span>
+                </button>
+              )}
 
               <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
-                <i className="bi bi-chat-heart"></i><span className="m-2">Quotes</span>
+                <i className="bi bi-chat-heart"></i>Quotes
               </button>
              
               </>
@@ -247,7 +246,7 @@ return () => clearInterval(intervalId);
               <>
 
             <button type="button" className="btn btn-primary viewListButton" onClick={toggleListModal}>
-                  <i className="bi bi-file-earmark"></i><span className="m-2"> List</span>
+                  <i className="bi bi-file-earmark"></i>List
                 </button>
 
                 {!showNewList && (
@@ -257,12 +256,12 @@ return () => clearInterval(intervalId);
                       className="btn btn-primary addItemButton"
                       disabled={totalHope >= 3}
                     >
-                      <i className="bi bi-plus-circle-fill"></i><span className="m-2"> Hope</span>
+                      <i className="bi bi-plus-circle-fill"></i>Hope
                     </button>
                 )}
 
                 <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
-                  <i className="bi bi-chat-heart"></i><span className="m-2">Quotes</span>
+                  <i className="bi bi-chat-heart"></i>Quotes
                 </button>
                    
               </>
@@ -275,7 +274,7 @@ return () => clearInterval(intervalId);
 }
 
 
-function Nav2() {
+function Nav() {
   return (
     <>
       {["bottom"].map((placement, idx) => (
@@ -285,4 +284,4 @@ function Nav2() {
   );
 }
 
-export default Nav2;
+export default Nav;
