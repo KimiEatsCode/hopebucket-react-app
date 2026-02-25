@@ -230,7 +230,7 @@ textarea.form-control.form-control-lg {
 }
 
 .bucketIcon {
-  min-height:90vh;
+  /* min-height:90vh; */
 }
 
 .topCopyBucket {
