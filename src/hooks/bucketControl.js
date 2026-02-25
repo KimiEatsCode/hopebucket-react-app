@@ -26,14 +26,14 @@ const LottieControlBucket = () => {
     }
   }, [totalHope, list]);
 
-  const bucketstyle = {
+  // const bucketstyle = {
     // position: "absolute",
     // zIndex: "-1",
     // left: "50%",
     // top: "44%",
     // transform: "translate(-50%, -50%)",
     // width: "100vw",
-  };
+  // };
 
   return (
     <Lottie
