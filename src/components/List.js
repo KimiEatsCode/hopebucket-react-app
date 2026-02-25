@@ -22,13 +22,13 @@ function List() {
 
   // const [showNewList, setShowListLinks] = useState(true);
 
-  let today = new Date();
+  const currentDate = new Date();
+  const weekday = currentDate.toLocaleDateString("en-US", { weekday: "long" });
   //getMonth starts at 0 so add 1 to be this month
-  const dd1 = today.getDate();
-  const mm = today.getMonth() + 1;
-  const yyyy = today.getFullYear();
-
-  today = mm + "/" + dd1 + "/" + yyyy;
+  const dd1 = currentDate.getDate();
+  const mm = currentDate.getMonth() + 1;
+  const yyyy = currentDate.getFullYear();
+  const today = mm + "/" + dd1 + "/" + yyyy;
 
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
@@ -42,7 +42,7 @@ function List() {
      
           <Modal.Title> 
             
-            Today {today} - {totalHope} of 3 Completed
+            Today {weekday}, {today} - {totalHope} of 3 Completed
           
 
           </Modal.Title>
