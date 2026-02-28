@@ -27,7 +27,7 @@ function App() {
               <div className="topNav">
                 <Link to="/privacy-policy" className="topNavLink">Privacy Policy</Link>
                 <Link to="https://sarahkimirettig.com/contact" className="topNavLink">Contact</Link>
-                <Link to="https://chat.988lifeline.org/" className="topNavLink">Crisis Chat</Link>
+                <Link to="https://apps.apple.com/us/app/hopebucket/id6758913831" className="topNavLink">Iphone App</Link>
               </div>
               <Link to="/" style={{ textDecoration: "none"}}>
                 <h1 className="logoName mb-4">HopeBucket</h1>
