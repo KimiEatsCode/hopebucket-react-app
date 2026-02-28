@@ -1,4 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap');
+@font-face {
+  font-family: "BagelFatOne-Regular";
+  src: url('../fonts/BagelFatOne-Regular.ttf') format('truetype');
+}
 @import '~bootstrap-icons/font/bootstrap-icons.css';
 @import url('https://fonts.googleapis.com/css2?family=Roboto');
 @import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Just+Another+Hand&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
@@ -10,7 +13,7 @@ body {
 }
 
 .logoName {
-  font-family: "Delicious Handrawn", cursive;
+  font-family: "BagelFatOne-Regular",sans-serif;
   font-size: 3.8em;
   font-weight: bold;
   font-style: normal;
