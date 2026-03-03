@@ -151,7 +151,7 @@ nav i, .addHopeConfirm i {
   border-radius: 999px;
   padding: 5px 10px;
   margin-left: 10px;
-  text-align: left;
+  text-align: center;
 }
 
 .topNavLink:hover {
@@ -486,6 +486,75 @@ button.btn, nav a {
 
 .quote-add-btn:disabled {
   opacity: 0.5;
+}
+
+/* Quote Bubbles (around bucket) */
+.quoteBubble {
+  position: absolute;
+  background-color: #1650AC;
+  border: none;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  box-shadow: 0 3px 12px rgba(22, 80, 172, 0.4);
+  animation: quoteBubbleFloat 1.6s ease-in-out infinite alternate;
+  padding: 0;
+}
+
+.quoteBubble i {
+  color: #fff;
+  font-size: 24px;
+  padding-right: 0 !important;
+}
+
+.quoteBubble:hover {
+  background-color: #1040a0;
+}
+
+.quoteBubble1 { animation-duration: 1.6s; }
+.quoteBubble2 { animation-duration: 2.0s; animation-delay: 0.3s; }
+.quoteBubble3 { animation-duration: 2.3s; animation-delay: 0.7s; }
+
+@keyframes quoteBubbleFloat {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-10px); }
+}
+
+/* Quote popup card */
+.quote-card-body {
+  text-align: center;
+  padding: 28px 24px 20px !important;
+  background-color: aliceblue;
+  border-radius: 15px;
+}
+
+.quote-card-text {
+  color: #1650AC;
+  font-size: 1.3em;
+  line-height: 1.5;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.quote-copy-btn.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  border-radius: 20px !important;
+  padding: 10px 22px !important;
+  font-size: 1.1em !important;
+}
+
+.quote-tap-hint {
+  color: #888;
+  font-size: 0.85em;
+  margin-bottom: 0;
 }
 
 @media screen and (min-width: 992px) {
