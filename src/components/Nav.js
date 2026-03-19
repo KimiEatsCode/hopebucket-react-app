@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import { useLocation } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
@@ -275,6 +276,13 @@ return () => clearInterval(intervalId);
 
 
 function Nav() {
+  const location = useLocation();
+
+  // Hide bottom nav buttons while the privacy policy is displayed.
+  if (location.pathname === "/privacy-policy" || location.pathname === "/privacy-policy/") {
+    return null;
+  }
+
   return (
     <>
       {["bottom"].map((placement, idx) => (
