@@ -419,6 +419,7 @@ button.btn, nav a {
 .quote-add-btn.btn.btn-primary {
   width: 97%;
   margin-top: 20px;
+  color: #fff!important;
 }
 
 .quote-list {
