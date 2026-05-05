@@ -48,6 +48,31 @@ function List() {
 
   const handleScreenshot = () => setIsCapturing(true);
 
+  const handleDownload = async () => {
+    try {
+      const response = await fetch(screenshotUrl);
+      const blob = await response.blob();
+      const file = new File([blob], 'hopebucket.png', { type: 'image/png' });
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({ files: [file], title: 'HopeBucket' });
+        return;
+      }
+    } catch (err) {
+      if (err.name === 'AbortError') return;
+    }
+
+    // Desktop fallback
+    const url = URL.createObjectURL(
+      await fetch(screenshotUrl).then((r) => r.blob())
+    );
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'hopebucket.png';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   // const [showNewList, setShowListLinks] = useState(true);
 
   const currentDate = new Date();
@@ -143,13 +168,12 @@ function List() {
        
         </Modal.Body>
         <Modal.Footer> <div className="d-flex flex-column align-items-center gap-3">
-                <a
-                  href={screenshotUrl}
-                  download="hopebucket.png"
+                <button
+                  onClick={handleDownload}
                   className="btn btn-primary btn-download"
                 >
                   <i className="bi bi-download"></i><span className="m-2">Download Screenshot</span>
-                </a>
+                </button>
                
                 <div className="d-flex gap-4 justify-content-center fs-2">
                   <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" style={{ color: '#E1306C' }}>
