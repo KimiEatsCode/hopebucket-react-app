@@ -44,7 +44,7 @@ function List() {
         setIsCapturing(false);
         console.error('Screenshot error:', err);
       });
-  }, [isCapturing]);
+  }, [isCapturing, setShowListModal]);
 
   const handleScreenshot = () => setIsCapturing(true);
 
