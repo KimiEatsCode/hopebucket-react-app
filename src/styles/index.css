@@ -113,8 +113,12 @@ nav a {
 }
 
 nav i, .addHopeConfirm i {
-  font-size: 24px;
-  padding-right:5px;
+  font-size: 1rem;
+  padding-right: 5px;
+}
+
+nav .btn {
+  font-size: 1rem;
 }
 
 #newListIcon {
@@ -348,6 +352,11 @@ textarea.form-control.form-control-lg {
   font-weight: bold;
 }
 
+.bi-camera::before {
+  content: "\f220";
+  padding-left: 8px!important;
+}
+
 button.btn, nav a {
     color: #fff;
     padding: 5px;
@@ -375,41 +384,53 @@ button.btn, nav a {
 }
 
 .modal-content {
-  border-radius: 15px;
+  border-radius: 0 !important;
   border: 3px solid #1650AC;
   border-bottom: 5px solid #1650AC!important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
 }
 
 .modal-header {
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
   background-color:#1650AC;
   color:#fff!important;
 }
 
 
 .modal-header .btn-close {
+  filter: invert(1);
   font-size: 1.5rem;
 }
 
 
 .modal-body {
   background-color: aliceblue;
-  margin-top:0px!important;
-  min-height: 400px !important;        
-  max-height: calc(70vh - 120px) !important;  
-  overflow-y: scroll !important;     
-  border-radius: 15px;    
+  margin-top: 0px !important;
+  flex: 1 1 auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  overflow-y: auto !important;
+  border-radius: 0;
 }
 
 .modal-backdrop {
   background-color: rgba(22, 80, 172, 0.4);
 }
 
+.modal-footer {
+  justify-content: center!important;
+}
+
+.modal-footer .screenshot-text {
+  font-size: 0.8em!important;
+}
+
 .modal-body .list-group {
   padding-left: 0;
 }
-
 
 /* Quotes */
 .quotesButton {
@@ -594,6 +615,24 @@ button.btn, nav a {
   .hopeCount {
     font-size: 2.5em;
   }
+}
+
+.modal-dialog {
+  width: 100vw !important;
+  max-width: 100vw !important;
+  height: 100dvh !important;
+  max-height: 100dvh !important;
+  margin: 0 !important;
+}
+
+.modal-footer {
+  box-shadow: inset 0 6px 8px -6px rgba(0, 0, 0, 0.2);
+  margin-top: auto;
+}
+
+.btn-download {
+  color: white !important;
+  text-decoration: none !important;
 }
 
 @media screen and (max-width: 575px) {

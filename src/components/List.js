@@ -1,4 +1,5 @@
-import { useContext } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
 import { ModalContext } from "../contexts/ModalContext";
@@ -7,6 +8,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
+//html-to-image
+import { toPng } from 'html-to-image';
+
 
 function List() {
 
@@ -19,6 +23,30 @@ function List() {
   const setShowListModal = modalContext.setShowListModal;
 
   const handleClose = () => setShowListModal(false);
+
+  const [screenshotUrl, setScreenshotUrl] = useState(null);
+  const [showScreenshotModal, setShowScreenshotModal] = useState(false);
+  const [isCapturing, setIsCapturing] = useState(false);
+  const listContentRef = useRef(null);
+
+  useEffect(() => {
+    if (!isCapturing) return;
+    const node = listContentRef.current;
+    if (!node) return;
+    toPng(node, { cacheBust: true })
+      .then((dataUrl) => {
+        setIsCapturing(false);
+        setShowListModal(false);
+        setScreenshotUrl(dataUrl);
+        setShowScreenshotModal(true);
+      })
+      .catch((err) => {
+        setIsCapturing(false);
+        console.error('Screenshot error:', err);
+      });
+  }, [isCapturing]);
+
+  const handleScreenshot = () => setIsCapturing(true);
 
   // const [showNewList, setShowListLinks] = useState(true);
 
@@ -35,99 +63,112 @@ function List() {
     return listContext.setList(updateList);
   }
 
-  if (totalHope < 3) {
-    return (
-      <Modal show={showListModal} onHide={handleClose} centered size="lg">
-        <Modal.Header closeButton> 
-     
-          <Modal.Title> 
-            
-            Today {weekday}, {today} - {totalHope} of 3 Completed
-          
-
-          </Modal.Title>
-         
-        </Modal.Header>
-        <Modal.Body>
-          <Row className="text-center pt-2">
-            <Col className="col-md-8 mx-auto">
-              {totalHope === 0 && (
-                <>            
-                  <h4>Add 3 items of hope to be able to copy and share. Your bucket resets each day at midnight. Each day is a new beginning!
-                  </h4>
-                </>
-              )}
-            </Col>
-          </Row>
-
-          <Row className="pb-5">
-            <Col className="pb-5">
-              <ListGroup id="contentToCopy">
-                {list.map((item) => {
-                  return (
-                    <ListGroup.Item
-                      className="d-flex flex-nowrap"
-                      key={item.id}
-                      variant="light"
-                    >
-                       <button
-                        className="closeX btn "
-                        onClick={() => {
-                          deleteItem(item.id);
-                        }}
-                      >
-                      <i className="bi bi-x-lg"></i>
-                      </button>
-                      <div className="hopeItem">{item.value}</div>
-                    
-                    </ListGroup.Item>            
-                  );
-                })}
-                <br></br>
-        
-              </ListGroup>
-            </Col>
-          </Row>
-        </Modal.Body>
-      </Modal>
-    );
-  } else {
-    return (
-      <Modal show={showListModal} onHide={handleClose} centered size="lg">
+  return (
+    <>
+      <Modal id="listModal" show={showListModal} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-          Congrats! {totalHope} of 3 Completed.
+            {totalHope >= 3
+              ? `Congrats! ${totalHope} of 3 Completed.`
+              : `Today ${weekday}, ${today} - ${totalHope} of 3 Completed`}
           </Modal.Title>
-      
         </Modal.Header>
         <Modal.Body>
-          <Row>
-            <Col>
-              <ListGroup>
-                {list.map((item) => {
-                  return (
-                     <ListGroup.Item className="d-flex flex-nowrap" key={item.id}>
-                     <button
-                    className="closeX btn"
-                    onClick={() => {
-                      deleteItem(item.id);
-                    }}
-                  > 
-                          <i className="bi bi-x-lg"></i>
+          <div ref={listContentRef}>
+            {totalHope === 0 && (
+              <Row className="text-center pt-2">
+                <Col className="col-md-8 mx-auto">
+                  <h4>Add 3 items of hope to be able to copy and share. Your bucket resets each day at midnight. Each day is a new beginning!</h4>
+                </Col>
+              </Row>
+            )}
+            <Row className="pb-5">
+            <Link to="/" style={{ textDecoration: "none"}}>
+                <h1 className="logoName mb-4">HopeBucket</h1>
+              </Link>
+              <Col className="pb-5">
+                <ListGroup id="contentToCopy">
+                  {list.map((item) => {
+                    return (
+                      <ListGroup.Item
+                        className={`d-flex flex-nowrap${isCapturing ? ' justify-content-center text-center' : ''}`}
+                        key={item.id}
+                        variant="light"
+                      >
+                        {!isCapturing && (
+                          <button
+                            className="closeX btn"
+                            onClick={() => deleteItem(item.id)}
+                          >
+                            ✕
                           </button>
-                      <div className="hopeItem">{item.value}</div> 
-                   
-                    </ListGroup.Item> 
-                  );
-                })}
-              </ListGroup>
-            </Col>
-          </Row>
-        
+                        )}
+                        <div className="hopeItem">{item.value}</div>
+                      </ListGroup.Item>
+                    );
+                  })}
+                </ListGroup>
+              </Col>
+            </Row>
+          </div>
         </Modal.Body>
+        <Modal.Footer>
+          <button type="button" className="btn btn-primary pl-2" onClick={handleScreenshot}>
+            <i className="bi bi-camera"></i><span className="pl-2 m-2 screenshot-text">Screenshot</span>
+          </button>
+        </Modal.Footer>
       </Modal>
-    );
-  }
+
+      <Modal show={showScreenshotModal} onHide={() => setShowScreenshotModal(false)} centered size="lg">
+        <Modal.Header>
+          <Modal.Title>Download and Share</Modal.Title>
+          <button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            onClick={() => setShowScreenshotModal(false)}
+            style={{ filter: 'invert(0)', opacity: 1 }}
+          />
+        </Modal.Header>
+        {screenshotUrl && (
+              <>
+        <Modal.Body className="text-center">
+        
+              <img
+                src={screenshotUrl}
+                alt="HopeBucket screenshot"
+                style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '1.25rem' }}
+              />
+          
+       
+        </Modal.Body>
+        <Modal.Footer> <div className="d-flex flex-column align-items-center gap-3">
+                <a
+                  href={screenshotUrl}
+                  download="hopebucket.png"
+                  className="btn btn-primary btn-download"
+                >
+                  <i className="bi bi-download"></i><span className="m-2">Download Screenshot</span>
+                </a>
+               
+                <div className="d-flex gap-4 justify-content-center fs-2">
+                  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" style={{ color: '#E1306C' }}>
+                    <i className="bi bi-instagram"></i>
+                  </a>
+                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook" style={{ color: '#1877F2' }}>
+                    <i className="bi bi-facebook"></i>
+                  </a>
+                  <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" title="TikTok" style={{ color: '#000000' }}>
+                    <i className="bi bi-tiktok"></i>
+                  </a>
+                </div>
+              </div></Modal.Footer>
+              </>
+                 )}
+    
+      </Modal>
+    </>
+  );
 
 }
 

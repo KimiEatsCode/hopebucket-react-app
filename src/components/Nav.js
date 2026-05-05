@@ -33,6 +33,7 @@ function OffCanvasExample({ name, ...props }) {
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
   const setCopyMessage = modalContext.setCopyMessage;
+const node = document.getElementById('listModal');
 
   const toggleListModal = () => setShowListModal(!showListModal);
 
@@ -153,9 +154,11 @@ return () => clearInterval(intervalId);
       }
     } else {
       setShowAddField(false);
-       list.push('test')
+      // Do nothing, as list is already at maximum capacity
     }
   }
+  
+
 
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
@@ -198,8 +201,7 @@ return () => clearInterval(intervalId);
                 value={input}
                 onKeyDown={keyDownAddItem}
                 onChange={(item) => updateInput(item.target.value)}
-                aria-label="form field to type text"
-        
+                aria-label="form field to type text"      
               />
             </Col>
             <p></p>
