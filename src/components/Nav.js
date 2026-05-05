@@ -33,8 +33,6 @@ function OffCanvasExample({ name, ...props }) {
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
   const setCopyMessage = modalContext.setCopyMessage;
-const node = document.getElementById('listModal');
-
   const toggleListModal = () => setShowListModal(!showListModal);
 
   const fieldFocus = useRef();
