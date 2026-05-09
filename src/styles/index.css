@@ -645,3 +645,51 @@ button.btn, nav a {
     font-size: 1.75em;
   }
 }
+
+/* Install Banner */
+.install-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #eef4ff;
+  border: 1px solid #4F8AE8;
+  border-radius: 10px;
+  padding: 8px 14px;
+  margin: 6px 0 4px;
+  font-size: 1em;
+  color: #1650AC;
+  width: 100%;
+}
+
+.install-banner-text {
+  flex: 1;
+  text-align: center;
+}
+
+.install-banner-btn {
+  background: none;
+  border: none;
+  color: #1650AC;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.install-banner-btn:hover {
+  color: #4F8AE8;
+}
+
+.install-banner-dismiss {
+  background: none;
+  border: none;
+  color: #4F8AE8;
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 0 2px;
+  line-height: 1;
+  flex-shrink: 0;
+}
