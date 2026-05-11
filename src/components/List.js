@@ -145,7 +145,7 @@ function List() {
               className="btn btn-primary addItemButton"
               onClick={() => { setShowListModal(false); setShowAddField(true); }}
             >
-              <i className="bi bi-plus-circle-fill pr-2"></i>Hope
+              <i className="bi bi-plus-circle-fill p-2"></i>Hope
             </button>
           )}
           <button type="button" className="btn btn-primary pl-2" onClick={handleScreenshot}>
