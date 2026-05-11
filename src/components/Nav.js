@@ -14,7 +14,6 @@ import QuoteModal from "./QuoteModal";
 
 function OffCanvasExample({ name, ...props }) {
 
-  const [showAddField, setShowAddField] = useState(false);
   const [showNewList, setShowListLinks] = useState(false);
   const [showQuoteModal, setShowQuoteModal] = useState(false);
   
@@ -33,6 +32,8 @@ function OffCanvasExample({ name, ...props }) {
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
   const setCopyMessage = modalContext.setCopyMessage;
+  const showAddField = modalContext.showAddField;
+  const setShowAddField = modalContext.setShowAddField;
   const toggleListModal = () => setShowListModal(!showListModal);
 
   const fieldFocus = useRef();
@@ -161,18 +162,20 @@ return () => clearInterval(intervalId);
   window.localStorage.setItem("hopeList", JSON.stringify(list));
 
   console.log("totalhope items =" + totalHope);
+  useEffect(() => {
+    if (showAddField) {
+      setTimeout(() => {
+        if (fieldFocus.current) fieldFocus.current.focus();
+      }, 100);
+    }
+  }, [showAddField]);
+
   const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {
-    if (totalHope <= 3) {
+    if (totalHope < 3) {
       setShowAddField(true);
-    } else {
-      setShowAddField(false);
-      return;
     }
-    setTimeout(() => {
-      fieldFocus.current.focus();
-    }, "100");
   };
 
   return (

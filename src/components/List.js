@@ -21,6 +21,7 @@ function List() {
   const modalContext = useContext(ModalContext);
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
+  const setShowAddField = modalContext.setShowAddField;
 
   const handleClose = () => setShowListModal(false);
 
@@ -138,6 +139,15 @@ function List() {
           </div>
         </Modal.Body>
         <Modal.Footer>
+          {totalHope < 3 && (
+            <button
+              type="button"
+              className="btn btn-primary addItemButton"
+              onClick={() => { setShowListModal(false); setShowAddField(true); }}
+            >
+              <i className="bi bi-plus-circle-fill pr-2"></i>Hope
+            </button>
+          )}
           <button type="button" className="btn btn-primary pl-2" onClick={handleScreenshot}>
             <i className="bi bi-camera"></i><span className="pl-2 m-2 screenshot-text">Screenshot</span>
           </button>
