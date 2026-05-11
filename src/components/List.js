@@ -152,7 +152,6 @@ function List() {
             className="btn-close"
             aria-label="Close"
             onClick={() => setShowScreenshotModal(false)}
-            style={{ filter: 'invert(0)', opacity: 1 }}
           />
         </Modal.Header>
         {screenshotUrl && (
