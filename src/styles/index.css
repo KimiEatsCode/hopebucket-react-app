@@ -302,6 +302,11 @@ textarea.form-control.form-control-lg {
   padding-top:0!important;
 }
 
+#contentToCopy {
+  max-width:400px;
+  margin:0 auto;
+}
+
 .hopeItem {
   word-break: break-word;
   font-family: sans-serif;
