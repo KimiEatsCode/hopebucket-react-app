@@ -112,9 +112,10 @@ nav a {
   flex-grow: 3!important;
 }
 
-nav i, .addHopeConfirm i {
-  font-size: 1rem;
-  padding-right: 5px;
+nav i {
+  font-size: 1.2rem;
+  padding-right: 10px;
+
 }
 
 nav .btn {
@@ -583,12 +584,9 @@ button.btn, nav a {
   font-size: 0.85em;
   margin-bottom: 0;
 }
+/************************Mobile Styles****************/
 
 @media screen and (min-width: 992px) {
-  /* .bucketIcon {
-    height: 450px;
-    max-width: 700px;
-  } */
   
   .hopeCount {
     font-size: 3em;
@@ -606,6 +604,13 @@ button.btn, nav a {
   }
   .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, a{
     flex-grow: 2!important;
+  }
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-right: 0;
   }
 
 }

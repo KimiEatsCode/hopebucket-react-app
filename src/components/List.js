@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 //html-to-image
-import { toPng } from 'html-to-image';
+import { toJpeg } from 'html-to-image';
 
 
 function List() {
@@ -22,24 +22,41 @@ function List() {
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
   const setShowAddField = modalContext.setShowAddField;
+  const triggerScreenshot = modalContext.triggerScreenshot;
+  const setTriggerScreenshot = modalContext.setTriggerScreenshot;
 
   const handleClose = () => setShowListModal(false);
 
-  const [screenshotUrl, setScreenshotUrl] = useState(null);
-  const [showScreenshotModal, setShowScreenshotModal] = useState(false);
   const [isCapturing, setIsCapturing] = useState(false);
   const listContentRef = useRef(null);
+
+  // When Nav fires triggerScreenshot, open the list modal then begin capture
+  useEffect(() => {
+    if (!triggerScreenshot) return;
+    setTriggerScreenshot(false);
+    setShowListModal(true);
+    // Give the modal one frame to mount before capturing
+    setTimeout(() => setIsCapturing(true), 50);
+  }, [triggerScreenshot, setTriggerScreenshot, setShowListModal]);
 
   useEffect(() => {
     if (!isCapturing) return;
     const node = listContentRef.current;
     if (!node) return;
-    toPng(node, { cacheBust: true })
+    toJpeg(node, { cacheBust: true, quality: 0.95, backgroundColor: 'aliceblue' })
       .then((dataUrl) => {
         setIsCapturing(false);
         setShowListModal(false);
-        setScreenshotUrl(dataUrl);
-        setShowScreenshotModal(true);
+        const newTab = window.open('', '_blank');
+        if (newTab) {
+          newTab.document.write(
+            `<!DOCTYPE html><html><head><title>HopeBucket Screenshot</title>` +
+            `<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#f5f5f5;}` +
+            `img{max-width:100%;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.15);}</style></head>` +
+            `<body><img src="${dataUrl}" alt="HopeBucket screenshot" /></body></html>`
+          );
+          newTab.document.close();
+        }
       })
       .catch((err) => {
         setIsCapturing(false);
@@ -48,31 +65,6 @@ function List() {
   }, [isCapturing, setShowListModal]);
 
   const handleScreenshot = () => setIsCapturing(true);
-
-  const handleDownload = async () => {
-    try {
-      const response = await fetch(screenshotUrl);
-      const blob = await response.blob();
-      const file = new File([blob], 'hopebucket.png', { type: 'image/png' });
-
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({ files: [file], title: 'HopeBucket' });
-        return;
-      }
-    } catch (err) {
-      if (err.name === 'AbortError') return;
-    }
-
-    // Desktop fallback
-    const url = URL.createObjectURL(
-      await fetch(screenshotUrl).then((r) => r.blob())
-    );
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'hopebucket.png';
-    a.click();
-    URL.revokeObjectURL(url);
-  };
 
   // const [showNewList, setShowListLinks] = useState(true);
 
@@ -104,7 +96,7 @@ function List() {
             {totalHope === 0 && (
               <Row className="text-center pt-2">
                 <Col className="col-md-8 mx-auto">
-                  <h4>Add 3 items of hope to be able to copy and share. Your bucket resets each day at midnight. Each day is a new beginning!</h4>
+                  <h4>Add 3 items of hope to be able to share. Your bucket resets each day at midnight. Each day is a new beginning!</h4>
                 </Col>
               </Row>
             )}
@@ -113,11 +105,11 @@ function List() {
                 <h1 className="logoName mb-4">HopeBucket</h1>
               </Link>
               <Col className="pb-5">
-                <ListGroup id="contentToCopy">
+                <ListGroup id="contentToCopy" className={isCapturing ? 'mx-auto' : ''}>
                   {list.map((item) => {
                     return (
                       <ListGroup.Item
-                        className={`d-flex flex-nowrap${isCapturing ? ' justify-content-center text-center' : ''}`}
+                        className="d-flex flex-nowrap"
                         key={item.id}
                         variant="light"
                       >
@@ -148,58 +140,14 @@ function List() {
               <i className="bi bi-plus-circle-fill p-2"></i>Hope
             </button>
           )}
-          <button type="button" className="btn btn-primary pl-2" onClick={handleScreenshot}>
-            <i className="bi bi-camera"></i><span className="pl-2 m-2 screenshot-text">Screenshot</span>
-          </button>
+          {totalHope >= 3 && (
+            <button type="button" className="btn btn-primary pl-2 addItemButton" onClick={handleScreenshot}>
+              <i className="bi bi-camera"></i><span className="pl-2 m-2 screenshot-text">Screenshot</span>
+            </button>
+          )}
         </Modal.Footer>
       </Modal>
 
-      <Modal show={showScreenshotModal} onHide={() => setShowScreenshotModal(false)} centered size="lg">
-        <Modal.Header>
-          <Modal.Title>Download and Share</Modal.Title>
-          <button
-            type="button"
-            className="btn-close"
-            aria-label="Close"
-            onClick={() => setShowScreenshotModal(false)}
-          />
-        </Modal.Header>
-        {screenshotUrl && (
-              <>
-        <Modal.Body className="text-center">
-        
-              <img
-                src={screenshotUrl}
-                alt="HopeBucket screenshot"
-                style={{ maxWidth: '100%', borderRadius: '8px', marginBottom: '1.25rem' }}
-              />
-          
-       
-        </Modal.Body>
-        <Modal.Footer> <div className="d-flex flex-column align-items-center gap-3">
-                <button
-                  onClick={handleDownload}
-                  className="btn btn-primary btn-download"
-                >
-                  <i className="bi bi-download"></i><span className="m-2">Download Screenshot</span>
-                </button>
-               
-                <div className="d-flex gap-4 justify-content-center fs-2">
-                  <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" title="Instagram" style={{ color: '#E1306C' }}>
-                    <i className="bi bi-instagram"></i>
-                  </a>
-                  <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" title="Facebook" style={{ color: '#1877F2' }}>
-                    <i className="bi bi-facebook"></i>
-                  </a>
-                  <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" title="TikTok" style={{ color: '#000000' }}>
-                    <i className="bi bi-tiktok"></i>
-                  </a>
-                </div>
-              </div></Modal.Footer>
-              </>
-                 )}
-    
-      </Modal>
     </>
   );
 

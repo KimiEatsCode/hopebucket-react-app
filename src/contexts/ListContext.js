@@ -24,9 +24,8 @@ export const ListContextProvider = (props) => {
     setIsInitialized(true);
   }, [listDate, setList, setListDate, setIsInitialized]);
 
-  const copyText = false;
   return (
-    <ListContext.Provider value={{ list, setList, copyText }}>
+    <ListContext.Provider value={{ list, setList }}>
       {props.children}
     </ListContext.Provider>
   );

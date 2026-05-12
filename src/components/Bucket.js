@@ -5,7 +5,6 @@ import { QuoteContext } from "../contexts/QuoteContext";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
-import Button from "react-bootstrap/Button";
 import LottieControlConfetti from "../hooks/confettiControl";
 import LottieControlBucket from "../hooks/bucketControl";
 
@@ -22,28 +21,14 @@ function Bucket() {
   const modalContext = useContext(ModalContext);
   const setShowListModal = modalContext.setShowListModal;
   const showListModal = modalContext.showListModal;
-  const copyMessage = modalContext.copyMessage;
 
   const { quotes = [] } = useContext(QuoteContext);
   const [selectedQuote, setSelectedQuote] = useState(null);
-  const [copied, setCopied] = useState(false);
 
   const toggleListModal = () => setShowListModal(!showListModal);
 
-  const handleCopyQuote = async () => {
-    if (!selectedQuote) return;
-    try {
-      await navigator.clipboard.writeText(selectedQuote);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      console.error("Error copying quote:", err);
-    }
-  };
-
   const handleCloseQuote = () => {
     setSelectedQuote(null);
-    setCopied(false);
   };
 
   return (
@@ -54,15 +39,9 @@ function Bucket() {
       </Row>
       <Row className="mx-auto text-center">
         <Col>
-          <h4 
-            className="topCopyBucket" 
-            id="copyMsg"
-            dangerouslySetInnerHTML={{
-              __html: totalHope === 3 ? copyMessage : 
-                totalHope === 3 ? "Congrats! You filled your hope bucket!" : 
-                totalHope < 3 ? "Add hope to fill up your HopeBucket!" : ""
-            }}
-          ></h4>
+          <h4 className="topCopyBucket" id="copyMsg">
+            {totalHope === 3 ? "Congrats! You filled your hope bucket!" : "Add hope to fill up your HopeBucket!"}
+          </h4>
           <div className="bucketIcon" onClick={toggleListModal} style={{ cursor: "pointer" }}>
             <h1 className="hopeCount">{totalHope} of 3</h1>
             <LottieControlBucket></LottieControlBucket>
@@ -84,9 +63,6 @@ function Bucket() {
       <Modal show={Boolean(selectedQuote)} onHide={handleCloseQuote} centered>
         <Modal.Body className="quote-card-body">
           <p className="quote-card-text">"{selectedQuote}"</p>
-          <Button className="quote-copy-btn btn-primary" onClick={handleCopyQuote}>
-            <i className="bi bi-copy"></i> {copied ? "Copied!" : "Copy Quote"}
-          </Button>
           <p className="quote-tap-hint">Click anywhere outside to close</p>
         </Modal.Body>
       </Modal>

@@ -31,7 +31,7 @@ function OffCanvasExample({ name, ...props }) {
   const modalContext = useContext(ModalContext);
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
-  const setCopyMessage = modalContext.setCopyMessage;
+  const setTriggerScreenshot = modalContext.setTriggerScreenshot;
   const showAddField = modalContext.showAddField;
   const setShowAddField = modalContext.setShowAddField;
   const toggleListModal = () => setShowListModal(!showListModal);
@@ -96,22 +96,6 @@ return () => clearInterval(intervalId);
     }
   }, [totalHope, expDate, tomorrow]); // The dependency array ensures this effect runs only when 'count' changes
 
-  // Handle copy using native Clipboard API instead of ClipboardJS
-  const handleCopyClick = async () => {
-    let copyText = "";
-    list.forEach((item, index) => {
-      copyText += `${item.value}\n\n`;
-    });
-
-    try {
-      await navigator.clipboard.writeText(copyText);
-      setCopyMessage('HopeBucket Copied! <p>Find a background on <a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">Pixabay</a> and share to social.</p>');
-      console.log('copy successful');
-    } catch (err) {
-      console.error('Error copying text to clipboard:', err);
-    }
-  };
-  
   function keyDownAddItem(e) {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault(); // Prevents the default action of adding a new line
@@ -233,8 +217,8 @@ return () => clearInterval(intervalId);
             </button>}
 
               {totalHope >= 3 && (
-                <button type="button" className="btn btn-primary copyListButton" onClick={handleCopyClick}>
-                  <i className="bi bi-copy"></i><span className="m-2">Copy</span>
+                <button type="button" className="btn btn-primary copyListButton" onClick={() => setTriggerScreenshot(true)}>
+                  <i className="bi bi-camera"></i><span className="m-2">Screenshot</span>
                 </button>
               )}
 
