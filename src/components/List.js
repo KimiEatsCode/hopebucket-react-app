@@ -11,6 +11,29 @@ import Modal from "react-bootstrap/Modal";
 //html-to-image
 import { toJpeg } from 'html-to-image';
 
+async function presentScreenshot(dataUrl, filename) {
+  try {
+    const res = await fetch(dataUrl);
+    const blob = await res.blob();
+    const file = new File([blob], filename, { type: 'image/jpeg' });
+    const shareData = { files: [file], title: 'HopeBucket' };
+    if (navigator.share && (!navigator.canShare || navigator.canShare(shareData))) {
+      await navigator.share(shareData);
+      return;
+    }
+  } catch (err) {
+    if (err?.name === 'AbortError') return;
+    console.warn('Share failed, using download fallback:', err);
+  }
+
+  const link = document.createElement('a');
+  link.href = dataUrl;
+  link.download = filename;
+  link.rel = 'noopener';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 
 function List() {
 
@@ -27,54 +50,76 @@ function List() {
 
   const handleClose = () => setShowListModal(false);
 
+  const currentDate = new Date();
+  const weekday = currentDate.toLocaleDateString("en-US", { weekday: "long" });
+  const dd1 = currentDate.getDate();
+  const mm = currentDate.getMonth() + 1;
+  const yyyy = currentDate.getFullYear();
+  const today = mm + "/" + dd1 + "/" + yyyy;
+  const screenshotFilename = `hopebucket-${mm}-${dd1}-${yyyy}.jpg`;
+
   const [isCapturing, setIsCapturing] = useState(false);
+  const [screenshotError, setScreenshotError] = useState(null);
   const listContentRef = useRef(null);
 
   // When Nav fires triggerScreenshot, open the list modal then begin capture
   useEffect(() => {
     if (!triggerScreenshot) return;
     setTriggerScreenshot(false);
+    setScreenshotError(null);
     setShowListModal(true);
-    // Give the modal one frame to mount before capturing
-    setTimeout(() => setIsCapturing(true), 50);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setIsCapturing(true));
+    });
   }, [triggerScreenshot, setTriggerScreenshot, setShowListModal]);
 
   useEffect(() => {
     if (!isCapturing) return;
-    const node = listContentRef.current;
-    if (!node) return;
-    toJpeg(node, { cacheBust: true, quality: 0.95, backgroundColor: 'aliceblue' })
-      .then((dataUrl) => {
+
+    let cancelled = false;
+
+    const capture = async () => {
+      const deadline = Date.now() + 2000;
+      let node = listContentRef.current;
+      while (!node && Date.now() < deadline) {
+        await new Promise((resolve) => requestAnimationFrame(resolve));
+        node = listContentRef.current;
+      }
+
+      if (cancelled) return;
+      if (!node) {
+        setIsCapturing(false);
+        setScreenshotError('Could not prepare screenshot. Please try again.');
+        return;
+      }
+
+      try {
+        const dataUrl = await toJpeg(node, {
+          cacheBust: true,
+          quality: 0.95,
+          backgroundColor: 'aliceblue',
+          pixelRatio: Math.min(window.devicePixelRatio || 1, 2),
+        });
+        if (cancelled) return;
         setIsCapturing(false);
         setShowListModal(false);
-        const newTab = window.open('', '_blank');
-        if (newTab) {
-          newTab.document.write(
-            `<!DOCTYPE html><html><head><title>HopeBucket Screenshot</title>` +
-            `<style>body{margin:0;display:flex;justify-content:center;align-items:center;min-height:100vh;background:#f5f5f5;}` +
-            `img{max-width:100%;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.15);}</style></head>` +
-            `<body><img src="${dataUrl}" alt="HopeBucket screenshot" /></body></html>`
-          );
-          newTab.document.close();
-        }
-      })
-      .catch((err) => {
+        await presentScreenshot(dataUrl, screenshotFilename);
+      } catch (err) {
+        if (cancelled) return;
         setIsCapturing(false);
         console.error('Screenshot error:', err);
-      });
-  }, [isCapturing, setShowListModal]);
+        setScreenshotError('Could not capture screenshot. Please try again.');
+      }
+    };
 
-  const handleScreenshot = () => setIsCapturing(true);
+    capture();
+    return () => { cancelled = true; };
+  }, [isCapturing, setShowListModal, screenshotFilename]);
 
-  // const [showNewList, setShowListLinks] = useState(true);
-
-  const currentDate = new Date();
-  const weekday = currentDate.toLocaleDateString("en-US", { weekday: "long" });
-  //getMonth starts at 0 so add 1 to be this month
-  const dd1 = currentDate.getDate();
-  const mm = currentDate.getMonth() + 1;
-  const yyyy = currentDate.getFullYear();
-  const today = mm + "/" + dd1 + "/" + yyyy;
+  const handleScreenshot = () => {
+    setScreenshotError(null);
+    setIsCapturing(true);
+  };
 
   function deleteItem(key) {
     const updateList = list.filter((item) => item.id !== key);
@@ -101,9 +146,13 @@ function List() {
               </Row>
             )}
             <Row className="pb-5">
-            <Link to="/" style={{ textDecoration: "none"}}>
+            {isCapturing ? (
+              <h1 className="logoName mb-4">HopeBucket</h1>
+            ) : (
+              <Link to="/" style={{ textDecoration: "none"}}>
                 <h1 className="logoName mb-4">HopeBucket</h1>
               </Link>
+            )}
               <Col className="pb-5">
                 <ListGroup id="contentToCopy" className={isCapturing ? 'mx-auto' : ''}>
                   {list.map((item) => {
@@ -131,6 +180,9 @@ function List() {
           </div>
         </Modal.Body>
         <Modal.Footer>
+          {screenshotError && (
+            <p className="text-danger small mb-0 me-auto">{screenshotError}</p>
+          )}
           {totalHope < 3 && (
             <button
               type="button"
@@ -141,8 +193,16 @@ function List() {
             </button>
           )}
           {totalHope >= 3 && (
-            <button type="button" className="btn btn-primary pl-2 addItemButton" onClick={handleScreenshot}>
-              <i className="bi bi-camera"></i><span className="pl-2 m-2 screenshot-text">Screenshot</span>
+            <button
+              type="button"
+              className="btn btn-primary pl-2 addItemButton"
+              onClick={handleScreenshot}
+              disabled={isCapturing}
+            >
+              <i className="bi bi-camera"></i>
+              <span className="pl-2 m-2 screenshot-text">
+                {isCapturing ? 'Capturing…' : 'Screenshot'}
+              </span>
             </button>
           )}
         </Modal.Footer>

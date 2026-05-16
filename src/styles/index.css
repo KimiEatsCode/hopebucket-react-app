@@ -83,20 +83,24 @@ nav {
   display: flex;
   position: fixed;
   justify-content: center;
+  align-items: stretch;
   bottom: 15px;
   left: 0;
   right: 0;
   flex-direction: row;
+  flex-wrap: nowrap;
   width: 100%;
   gap: 10px;
   padding-left: 10px;
   padding-right: 10px;
   padding-top: 15px;
+  box-sizing: border-box;
 }
 
 nav button {
   flex: 1 1 0;
-  width: 100%;
+  min-width: 0;
+  width: auto;
   background-color:#1650AC!important;
 }
 
@@ -119,7 +123,12 @@ nav i {
 }
 
 nav .btn {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
   font-size: 1rem;
+  white-space: nowrap;
 }
 
 #newListIcon {
@@ -607,9 +616,8 @@ button.btn, nav a {
   }
 
   nav {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
     padding-right: 0;
   }
 
@@ -702,4 +710,189 @@ button.btn, nav a {
   padding: 0 2px;
   line-height: 1;
   flex-shrink: 0;
+}
+
+/* Welcome modal — bottom sheet (matches native app) */
+.welcome-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: rgba(22, 80, 172, 0.4);
+  animation: welcome-fade-in 0.25s ease-out;
+}
+
+.welcome-modal-dismiss-area {
+  flex: 1;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+}
+
+.welcome-modal-sheet {
+  background-color: #fff;
+  border: 2px solid #1650AC;
+  border-bottom: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 10px 16px max(16px, env(safe-area-inset-bottom));
+  max-height: 85dvh;
+  display: flex;
+  flex-direction: column;
+  animation: welcome-slide-up 0.3s ease-out;
+}
+
+.welcome-modal-handle {
+  width: 48px;
+  height: 5px;
+  border-radius: 3px;
+  background-color: #d1d5db;
+  align-self: center;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.welcome-modal-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.welcome-modal-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.welcome-modal-title {
+  font-family: "BagelFatOne-Regular", sans-serif;
+  font-size: 1.65rem;
+  color: #1650AC;
+  margin: 0 0 4px;
+  line-height: 1.2;
+}
+
+.welcome-modal-subtitle {
+  font-size: 1rem;
+  color: #333;
+  font-style: italic;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.welcome-modal-close {
+  border: none;
+  background: transparent;
+  color: #1650AC;
+  font-size: 1.5rem;
+  padding: 4px;
+  cursor: pointer;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.welcome-modal-divider {
+  height: 2px;
+  background-color: #1650AC;
+  margin-bottom: 14px;
+  flex-shrink: 0;
+}
+
+.welcome-modal-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  padding-bottom: 16px;
+}
+
+.welcome-modal-step-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background-color: #F0F8FF;
+  border-radius: 10px;
+  border: 1.5px solid #4F8AE8;
+  padding: 16px;
+  margin: 0;
+}
+
+.welcome-modal-icon-circle {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background-color: #1650AC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.6rem;
+  color: #fff;
+}
+
+.welcome-modal-icon-circle--light {
+  background-color: #e8eef8;
+  color: #1650AC;
+}
+
+.welcome-modal-step-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.welcome-modal-step-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #1650AC;
+  letter-spacing: 0.08em;
+  margin: 0 0 2px;
+}
+
+.welcome-modal-step-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 4px;
+  line-height: 1.3;
+}
+
+.welcome-modal-step-description {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.welcome-modal-cta {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background-color: #1650AC;
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 700;
+  padding: 16px;
+  cursor: pointer;
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.welcome-modal-cta:hover {
+  background-color: #4F8AE8;
+}
+
+@keyframes welcome-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes welcome-slide-up {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
 }
