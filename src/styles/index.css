@@ -227,6 +227,10 @@ h5 {
   font-size: 1em !important;
 }
 
+p {
+  font-size: 1.2rem;
+}
+
 textarea.form-control.form-control-lg {
   font-size:1.2em;
 }
@@ -502,7 +506,7 @@ button.btn, nav a {
 .quote-input-area textarea {
   border: 2px solid #1650AC !important;
   border-radius: 8px;
-  font-size: 1em;
+  font-size: 1.2em;
 }
 
 .quote-input-footer {
