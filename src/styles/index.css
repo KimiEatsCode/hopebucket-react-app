@@ -14,7 +14,7 @@ body {
 
 .logoName {
   font-family: "BagelFatOne-Regular",sans-serif;
-  font-size: 3.8em;
+  font-size: 3em;
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -112,14 +112,14 @@ nav a {
     flex-grow: 1!important;
   }
 
-.addItemButton {
+nav .addItemButton {
   flex-grow: 3!important;
 }
 
 nav i {
-  font-size: 1.2rem;
-  padding-right: 10px;
-
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  padding-right: 0;
 }
 
 nav .btn {
@@ -127,8 +127,11 @@ nav .btn {
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
+  font-size: 20px;
+  padding: 6px 8px;
   white-space: nowrap;
+  overflow: hidden;
+  gap: 6px;
 }
 
 #newListIcon {
@@ -148,8 +151,10 @@ nav .btn {
 }
 
 .topNav {
-  display: inline-flex;
+  display: flex;
+  align-items: stretch;
   justify-content: center;
+  gap: 10px;
   padding: 10px 0;
   font-size: 1.2em;
   margin-top: 15px;
@@ -160,11 +165,14 @@ nav .btn {
   font-size: 0.85em;
   color: #4F8AE8 !important;
   text-decoration: none;
-  display: inline-block;
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
   border: 1px solid #4F8AE8;
   border-radius: 999px;
   padding: 5px 10px;
-  margin-left: 10px;
   text-align: center;
 }
 
@@ -373,15 +381,18 @@ textarea.form-control.form-control-lg {
 
 .bi-camera::before {
   content: "\f220";
-  padding-left: 8px!important;
 }
 
-button.btn, nav a {
+button.btn:not(nav .btn):not(.closeX), nav a {
     color: #fff;
     padding: 5px;
     border: 0;
     border-radius: 10px;
     font-size: 24px;
+}
+
+nav button.btn {
+  font-size: 20px !important;
 }
 
 .addHopeConfirm.btn {
@@ -443,12 +454,57 @@ button.btn, nav a {
   justify-content: center!important;
 }
 
-.modal-footer .screenshot-text {
-  font-size: 0.8em!important;
+.modal-footer .btn-primary {
+  background-color: #1650AC !important;
+  border-color: #1650AC !important;
+}
+
+.modal-footer .btn-primary:hover,
+.modal-footer .btn-primary:focus {
+  background-color: #1040a0 !important;
+  border-color: #1040a0 !important;
+}
+
+.modal-footer button.btn {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px !important;
+  gap: 6px;
+  color: #fff !important;
+  padding: 6px 12px !important;
+  border: 0;
+  border-radius: 10px;
+}
+
+.modal-footer button.btn i {
+  font-size: 1.25rem !important;
+  flex-shrink: 0;
+  padding: 0 !important;
 }
 
 .modal-body .list-group {
   padding-left: 0;
+}
+
+#listModal .modal-dialog {
+  padding: 1.5rem 1.5rem 0;
+  box-sizing: border-box;
+}
+
+#listModal .modal-body {
+  padding: 1.5rem;
+  padding-top: 2rem;
+}
+
+#listModal .logoName {
+  font-size: 1.85em;
+  margin-top: 0;
+}
+
+#listModal .closeX.btn {
+  color: #1650AC;
 }
 
 /* Quotes */
@@ -507,6 +563,7 @@ button.btn, nav a {
   border: 2px solid #1650AC !important;
   border-radius: 8px;
   font-size: 1.2em;
+  min-height: 400px;
 }
 
 .quote-input-footer {
@@ -623,8 +680,31 @@ button.btn, nav a {
     flex-direction: row;
     flex-wrap: nowrap;
     padding-right: 0;
+    gap: 8px;
   }
 
+  nav button.btn {
+    font-size: 20px !important;
+    padding: 6px 6px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  nav {
+    gap: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  nav button.btn {
+    font-size: 20px !important;
+    padding: 6px 4px;
+    gap: 4px;
+  }
+
+  nav i {
+    font-size: 1.25rem;
+  }
 }
 
 
@@ -705,15 +785,16 @@ button.btn, nav a {
   color: #4F8AE8;
 }
 
-.install-banner-dismiss {
+.install-banner .closeX.btn.install-banner-dismiss {
   background: none;
   border: none;
-  color: #4F8AE8;
-  font-size: 1.1em;
-  cursor: pointer;
-  padding: 0 2px;
+  color: #1650AC;
+  font-size: 30px;
+  padding: 0;
+  margin-right: 0;
   line-height: 1;
   flex-shrink: 0;
+  cursor: pointer;
 }
 
 /* Welcome modal — bottom sheet (matches native app) */
@@ -899,4 +980,53 @@ button.btn, nav a {
 @keyframes welcome-slide-up {
   from { transform: translateY(100%); }
   to { transform: translateY(0); }
+}
+
+/* Privacy policy acknowledgment — blocks app until user acknowledges */
+.privacy-ack-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: rgba(22, 80, 172, 0.5);
+  animation: welcome-fade-in 0.25s ease-out;
+}
+
+.privacy-ack-sheet {
+  background-color: #fff;
+  border: 2px solid #1650AC;
+  border-bottom: none;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 10px 16px max(16px, env(safe-area-inset-bottom));
+  animation: welcome-slide-up 0.3s ease-out;
+}
+
+.privacy-ack-body {
+  font-size: 1rem;
+  color: #333;
+  line-height: 1.5;
+  margin: 0 0 16px;
+}
+
+.privacy-ack-policy-link {
+  display: block;
+  text-align: center;
+  color: #1650AC;
+  font-weight: 700;
+  margin-bottom: 16px;
+  text-decoration: underline;
+}
+
+.privacy-ack-policy-link:hover {
+  color: #4F8AE8;
+}
+
+.privacy-policy-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
 }

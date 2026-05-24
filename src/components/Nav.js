@@ -31,7 +31,6 @@ function OffCanvasExample({ name, ...props }) {
   const modalContext = useContext(ModalContext);
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
-  const setTriggerScreenshot = modalContext.setTriggerScreenshot;
   const showAddField = modalContext.showAddField;
   const setShowAddField = modalContext.setShowAddField;
   const toggleListModal = () => setShowListModal(!showListModal);
@@ -215,12 +214,6 @@ return () => clearInterval(intervalId);
                  :   <button type="button" className="btn btn-primary newListButton" onClick={handleNewList}>
              <i  className="bi bi-file-earmark-plus"></i>List
             </button>}
-
-              {totalHope >= 3 && (
-                <button type="button" className="btn btn-primary copyListButton" onClick={() => setTriggerScreenshot(true)}>
-                  <i className="bi bi-camera"></i><span className="m-2">Screenshot</span>
-                </button>
-              )}
 
               <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
                 <i className="bi bi-chat-heart"></i>Quotes

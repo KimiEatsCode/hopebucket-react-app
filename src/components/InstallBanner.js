@@ -53,8 +53,7 @@ function InstallBanner() {
       <span className="install-banner-text">
         {showIosHint ? (
           <>
-            Save to home screen: tap{" "}
-            <i className="bi bi-box-arrow-up"></i> then{" "}
+            Tap <i className="bi bi-box-arrow-up"></i> then{" "}
             <strong>Add to Home Screen</strong>
           </>
         ) : (
@@ -69,11 +68,12 @@ function InstallBanner() {
         )}
       </span>
       <button
-        className="install-banner-dismiss"
+        type="button"
+        className="closeX btn install-banner-dismiss"
         onClick={handleDismiss}
         aria-label="Dismiss"
       >
-        <i className="bi bi-x"></i>
+        <i className="bi bi-x-lg"></i>
       </button>
     </div>
   );

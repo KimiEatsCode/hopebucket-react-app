@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import { usePrivacyPolicyAck } from "../hooks/usePrivacyPolicyAck";
 
 function PrivacyPolicy() {
   const [content, setContent] = useState("");
+  const { needsAck, acknowledge } = usePrivacyPolicyAck();
 
   useEffect(() => {
     fetch(`${process.env.PUBLIC_URL}/PRIVACY_POLICY.md`)
@@ -26,7 +28,16 @@ function PrivacyPolicy() {
         {content}
       </ReactMarkdown>
 
-      <div className="text-center mt-4 mb-4">
+      <div className="text-center mt-4 mb-4 privacy-policy-actions">
+        {needsAck && (
+          <button
+            type="button"
+            className="btn btn-primary quote-add-btn me-2 mb-2"
+            onClick={acknowledge}
+          >
+            I acknowledge
+          </button>
+        )}
         <Link to="/" className="btn btn-primary quote-add-btn">
           Back to HopeBucket
         </Link>

@@ -67,6 +67,8 @@ public/
 
 The app includes a dedicated `/privacy-policy` route that renders the markdown file located at `public/PRIVACY_POLICY.md`.
 
+When you change privacy-related behavior or legal text, update both files and bump the version in `public/privacy-meta.json` (for example `"version": "2026-05-22"`). Users who have not acknowledged that version will see an acknowledgment modal on their next visit (after the welcome guide, if shown). Match the `effectiveDate` and the "Last updated" line in the policy.
+
 ## Contributing
 
 1. Create a feature branch

@@ -1,9 +1,9 @@
 
-**Last updated: February 8, 2026**
+**Last updated: May 22, 2026**
 
 ### Introduction
 
-HopeBucket ("the App") is a daily gratitude and hope journaling app developed by Sarah Rettig. Your privacy is important to us, and this policy explains how the App handles your information.
+HopeBucket ("the App") is a daily gratitude and hope journaling web app developed by Sarah Rettig. Your privacy is important to us, and this policy explains how the App handles your information.
 
 ### Information We Collect
 
@@ -17,35 +17,50 @@ The only data the App stores is:
 
 - **Hope list entries**: The text you enter as your daily hope items.
 - **Date tracking**: The current date, used to reset your list daily.
+- **Custom inspiration quotes**: Up to three short quotes you optionally add for personal motivation.
+- **App preferences**: Whether you have seen the welcome screen and whether you dismissed the “add to home screen” install prompt.
 
-This data is stored **exclusively on your device** using local storage (AsyncStorage). It is never transmitted to any external server, cloud service, or third party.
+This data is stored **exclusively in your browser** using local storage. It is never transmitted to any external server, cloud service, or third party operated by HopeBucket.
 
 ### Data Sharing
 
 **We do not share any data with third parties.**
 
-Since the App does not collect or transmit any data, there is nothing to share. Your hope list entries remain entirely on your device.
+Since the App does not collect or transmit any data to HopeBucket, there is nothing for us to share. Your hope list entries and quotes remain entirely on your device unless you choose to share them yourself (see below).
 
 ### Third-Party Services
 
 The App does not use any third-party analytics, advertising, tracking, or crash reporting services.
 
-The App contains a link to [Pixabay](https://pixabay.com), an external website. If you choose to follow this link, you will leave the App and be subject to Pixabay's own privacy policy. We are not responsible for the privacy practices of external websites.
+The App does not link to external content sites for images or media. All hope list content is created and stored by you on your device.
 
-### Clipboard Access
+### Sharing Your Hope List (Screenshot)
 
-The App includes a feature that allows you to copy your hope list to your device's clipboard for sharing purposes. This action is initiated only by you and does not transmit any data externally.
+When you have added three hope items, the App lets you share your list as an image:
+
+- The App creates a **screenshot (JPEG)** of your list **entirely in your browser**. No image is uploaded to HopeBucket or any other server we operate.
+- On supported devices, the App may open your device’s **native share sheet** so you can send the image through apps you choose (for example, Messages or email). What you share and with whom is entirely up to you.
+- If sharing is not available, the App **downloads the image to your device** instead.
+
+This feature runs only when you tap Share. HopeBucket does not access your contacts, social accounts, or other apps—you control where the image goes through your device’s sharing options.
+
+### Progressive Web App (PWA)
+
+HopeBucket can be installed to your home screen as a progressive web app. A service worker may cache app files on your device so the App can load faster or work offline. That cached content is standard app assets, not your personal hope list data sent to us.
 
 ### Data Security
 
-Because all data is stored locally on your device and is never transmitted over the internet, your information is protected by your device's built-in security measures (such as device passcode, biometric authentication, and encryption).
+Because all data is stored locally in your browser and is never transmitted to HopeBucket over the internet, your information is protected by your device’s and browser’s built-in security measures (such as device passcode, biometric authentication, and encryption).
 
 ### Data Retention and Deletion
 
 Your hope list data is stored on your device until:
 
-- The App is uninstalled, which removes all locally stored data.
-- The daily reset clears your list at midnight each day (the previous day's entries are replaced).
+- You clear your browser’s site data or local storage for HopeBucket.
+- The App is uninstalled or removed from your home screen, and associated browser data is cleared (behavior depends on your browser and device).
+- The daily reset clears your list at midnight each day (the previous day’s entries are replaced).
+
+Custom quotes and app preferences remain until you remove them in the App or clear stored data as described above.
 
 You have full control over your data at all times.
 
@@ -67,7 +82,8 @@ If you have any questions or concerns about this Privacy Policy, please contact 
 
 - No personal data is collected
 - No accounts or sign-ups required
-- All data is stored locally on your device
+- All data is stored locally in your browser
 - No analytics, ads, or tracking
-- No data is shared with third parties
-- Uninstalling the App removes all stored data
+- No data is shared with third parties by HopeBucket
+- Optional share feature creates an image on your device; you choose where it goes
+- Clearing browser/site data or uninstalling removes stored data

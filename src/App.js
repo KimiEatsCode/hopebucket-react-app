@@ -9,8 +9,10 @@ import Bucket from "./components/Bucket";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import InstallBanner from "./components/InstallBanner";
 import WelcomeModal from "./components/WelcomeModal";
+import PrivacyPolicyAckModal from "./components/PrivacyPolicyAckModal";
 //context
 import { ListContextProvider } from "./contexts/ListContext";
+import { usePrivacyPolicyAck } from "./hooks/usePrivacyPolicyAck";
 import { ExpContextProvider } from "./contexts/ExpContext";
 import { ModalContextProvider } from "./contexts/ModalContext";
 import { QuoteContextProvider } from "./contexts/QuoteContext";
@@ -21,8 +23,13 @@ const MAIN_ROUTES = new Set(["/", "/bucket"]);
 function AppRoutes() {
   const location = useLocation();
   const [hasSeenWelcome, setHasSeenWelcome] = useLocalStorage("hasSeenWelcome", false);
+  const { needsAck, metaLoaded, effectiveDate, acknowledge } = usePrivacyPolicyAck();
   const path = location.pathname.replace(/\/$/, "") || "/";
+  const onPrivacyPolicyPage = path === "/privacy-policy";
   const showWelcome = MAIN_ROUTES.has(path) && !hasSeenWelcome;
+  // Show welcome first for new users; then require privacy acknowledgment.
+  const showPrivacyAck =
+    metaLoaded && needsAck && !onPrivacyPolicyPage && hasSeenWelcome;
 
   return (
     <Container id="app-container">
@@ -45,6 +52,11 @@ function AppRoutes() {
       <Nav />
       <List />
       <WelcomeModal show={showWelcome} onClose={() => setHasSeenWelcome(true)} />
+      <PrivacyPolicyAckModal
+        show={showPrivacyAck}
+        effectiveDate={effectiveDate}
+        onAcknowledge={acknowledge}
+      />
     </Container>
   );
 }

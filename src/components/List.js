@@ -45,8 +45,6 @@ function List() {
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
   const setShowAddField = modalContext.setShowAddField;
-  const triggerScreenshot = modalContext.triggerScreenshot;
-  const setTriggerScreenshot = modalContext.setTriggerScreenshot;
 
   const handleClose = () => setShowListModal(false);
 
@@ -61,17 +59,6 @@ function List() {
   const [isCapturing, setIsCapturing] = useState(false);
   const [screenshotError, setScreenshotError] = useState(null);
   const listContentRef = useRef(null);
-
-  // When Nav fires triggerScreenshot, open the list modal then begin capture
-  useEffect(() => {
-    if (!triggerScreenshot) return;
-    setTriggerScreenshot(false);
-    setScreenshotError(null);
-    setShowListModal(true);
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => setIsCapturing(true));
-    });
-  }, [triggerScreenshot, setTriggerScreenshot, setShowListModal]);
 
   useEffect(() => {
     if (!isCapturing) return;
@@ -189,20 +176,19 @@ function List() {
               className="btn btn-primary addItemButton"
               onClick={() => { setShowListModal(false); setShowAddField(true); }}
             >
-              <i className="bi bi-plus-circle-fill p-2"></i>Hope
+              <i className="bi bi-plus-circle-fill"></i>Hope
             </button>
           )}
           {totalHope >= 3 && (
             <button
               type="button"
-              className="btn btn-primary pl-2 addItemButton"
+              className="btn btn-primary addItemButton"
               onClick={handleScreenshot}
               disabled={isCapturing}
+              aria-label="Share list"
             >
               <i className="bi bi-camera"></i>
-              <span className="pl-2 m-2 screenshot-text">
-                {isCapturing ? 'Capturing…' : 'Screenshot'}
-              </span>
+              {isCapturing ? 'Sharing…' : 'Share'}
             </button>
           )}
         </Modal.Footer>
