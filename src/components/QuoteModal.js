@@ -32,7 +32,7 @@ function QuoteModal({ show, onHide }) {
   const charsLeft = charLimit - input.length;
 
   return (
-    <Modal show={show} onHide={onHide} centered>
+    <Modal id="quotesModal" show={show} onHide={onHide} centered>
       <Modal.Header
         closeButton
         style={{ backgroundColor: "#1650AC", color: "#fff" }}

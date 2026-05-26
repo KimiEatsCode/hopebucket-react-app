@@ -488,23 +488,43 @@ nav button.btn {
   padding-left: 0;
 }
 
-#listModal .modal-dialog {
-  padding: 1.5rem 1.5rem 0;
+/* id is on .modal-dialog in react-bootstrap, not the outer .modal */
+#listModal.modal-dialog,
+#quotesModal.modal-dialog {
+  padding: 1.5rem;
   box-sizing: border-box;
 }
 
-#listModal .modal-body {
+#listModal > .modal-content,
+#quotesModal > .modal-content {
+  margin: 0 !important;
+}
+
+#listModal .modal-body,
+#quotesModal .modal-body {
   padding: 1.5rem;
   padding-top: 2rem;
 }
 
 #listModal .logoName {
-  font-size: 1.85em;
   margin-top: 0;
+}
+
+.screenshot-url {
+  color: #1650AC;
+  font-family: "Cabin", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin: 0;
 }
 
 #listModal .closeX.btn {
   color: #1650AC;
+}
+
+#listModal .modal-footer .addItemButton {
+  width: 100%;
 }
 
 /* Quotes */
