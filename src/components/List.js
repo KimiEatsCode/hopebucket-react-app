@@ -134,7 +134,10 @@ function List() {
             )}
             <Row className="pb-5">
             {isCapturing ? (
-              <h1 className="logoName mb-4">HopeBucket</h1>
+              <div className="screenshot-brand text-center">
+                <h1 className="logoName mb-2">HopeBucket</h1>
+                <p className="screenshot-url mb-4">https://hopebucket.com</p>
+              </div>
             ) : (
               <Link to="/" style={{ textDecoration: "none"}}>
                 <h1 className="logoName mb-4">HopeBucket</h1>
