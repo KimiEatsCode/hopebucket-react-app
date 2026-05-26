@@ -563,7 +563,7 @@ nav button.btn {
   border: 2px solid #1650AC !important;
   border-radius: 8px;
   font-size: 1.2em;
-  min-height: 400px;
+  min-height: 400px !important;
 }
 
 .quote-input-footer {
