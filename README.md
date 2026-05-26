@@ -2,7 +2,7 @@
 
 A simple React app for building a daily "hope bucket" of three positive reflections.
 
-HopeBucket helps users capture small moments of gratitude, encouragement, and progress each day. The app includes animated bucket fill states, optional quote tracking, and one-click copy/share support.
+HopeBucket helps users capture small moments of gratitude, encouragement, and progress each day. The app includes animated bucket fill states, optional quote tracking, and screenshot sharing when the bucket is full.
 
 ## Features
 
@@ -10,10 +10,13 @@ HopeBucket helps users capture small moments of gratitude, encouragement, and pr
 - Visual bucket animation that fills as items are added
 - Confetti celebration when the bucket is full
 - View and manage the current list in a modal
-- Copy list text to clipboard for sharing
+- Share your completed list as a screenshot (native share sheet or download)
 - Add and manage up to 3 personal inspiration quotes
 - Daily reset flow for starting a new list
+- Welcome guide for first-time users
+- Install-to-home-screen prompt (PWA)
 - In-app Privacy Policy page rendered from markdown
+- Privacy policy acknowledgment when the policy version changes
 
 ## Built With
 
@@ -22,6 +25,7 @@ HopeBucket helps users capture small moments of gratitude, encouragement, and pr
 - React Bootstrap + Bootstrap Icons
 - Lottie (`lottie-react`) for animation
 - `canvas-confetti` for celebration effects
+- `html-to-image` for list screenshots
 
 ## Getting Started
 
@@ -61,6 +65,7 @@ src/
   styles/          # App styling
 public/
   PRIVACY_POLICY.md
+  privacy-meta.json
 ```
 
 ## Privacy Policy
