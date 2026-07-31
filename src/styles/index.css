@@ -14,12 +14,21 @@ body {
 
 .logoName {
   font-family: "BagelFatOne-Regular",sans-serif;
-  font-size: 4em;
+  font-size: clamp(1.75rem, 12vw, 4em);
   font-weight: bold;
   font-style: normal;
   text-align: center;
   color: #1650AC;
-  margin-top:30px;
+  margin-top: 30px;
+  max-width: 100%;
+  line-height: 1.1;
+  padding: 0 12px;
+  box-sizing: border-box;
+}
+
+a:has(> .logoName) {
+  display: block;
+  max-width: 100%;
 }
 
 .copyAnimate {
@@ -335,43 +344,6 @@ textarea.form-control.form-control-lg {
   margin:0 auto;
 }
 
-.social-share-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(22, 80, 172, 0.15);
-}
-
-.social-share-links .social-share-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  color: #1650AC;
-  font-family: "Cabin", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-}
-
-.social-share-links .social-share-link:hover,
-.social-share-links .social-share-link:focus {
-  color: #0d3a7a;
-  text-decoration: underline;
-}
-
-.social-share-links .social-share-link-inner {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-}
-
 .hopeItem {
   word-break: break-word;
   font-family: sans-serif;
@@ -657,8 +629,8 @@ nav button.btn {
   border: 2px solid #1650AC !important;
   border-radius: 8px;
   font-size: 1em;
-  min-height: 72px !important;
-  max-height: 120px;
+  min-height: 400px !important;
+  overflow-y: auto;
   resize: vertical;
 }
 
@@ -799,7 +771,6 @@ nav button.btn {
   nav {
     flex-direction: row;
     flex-wrap: nowrap;
-    padding-right: 0;
     gap: 8px;
   }
 

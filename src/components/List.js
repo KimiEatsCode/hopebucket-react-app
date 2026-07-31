@@ -10,11 +10,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 //html-to-image
 import { toJpeg } from 'html-to-image';
-import { FacebookShareButton, BlueskyShareButton } from 'react-share';
 import { MAX_HOPE_ITEMS } from "../constants";
-
-const SHARE_URL = 'https://hopebucket.com';
-const SHARE_TITLE = 'My HopeBucket list — 10 things that gave me hope today!';
 
 async function presentScreenshot(dataUrl, filename) {
   try {
@@ -174,40 +170,6 @@ function List() {
               </Col>
             </Row>
           </div>
-          {totalHope >= MAX_HOPE_ITEMS && !isCapturing && (
-            <div className="social-share-links text-center">
-              <a
-                href="https://www.instagram.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-share-link"
-                aria-label="Share on Instagram"
-              >
-                <i className="bi bi-instagram" aria-hidden="true"></i>
-                Instagram
-              </a>
-              <FacebookShareButton
-                url={SHARE_URL}
-                hashtag="#HopeBucket"
-                className="social-share-link"
-              >
-                <span className="social-share-link-inner">
-                  <i className="bi bi-facebook" aria-hidden="true"></i>
-                  Facebook
-                </span>
-              </FacebookShareButton>
-              <BlueskyShareButton
-                url={SHARE_URL}
-                title={SHARE_TITLE}
-                className="social-share-link"
-              >
-                <span className="social-share-link-inner">
-                  <i className="bi bi-bluesky" aria-hidden="true"></i>
-                  BlueSky
-                </span>
-              </BlueskyShareButton>
-            </div>
-          )}
         </Modal.Body>
         <Modal.Footer>
           {screenshotError && (
