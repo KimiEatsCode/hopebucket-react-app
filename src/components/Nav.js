@@ -11,6 +11,7 @@ import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 import { ModalContext } from "../contexts/ModalContext";
 import QuoteModal from "./QuoteModal";
+import { MAX_HOPE_ITEMS } from "../constants";
 
 function OffCanvasExample({ name, ...props }) {
 
@@ -77,7 +78,7 @@ return () => clearInterval(intervalId);
   
 
   const handleNewList = (event) => {
-    if (totalHope < 3) {
+    if (totalHope < MAX_HOPE_ITEMS) {
       setShowListLinks(false);
       expContext.setListDate(tomorrow);
       listContext.setList((list) => (list = []));
@@ -87,7 +88,7 @@ return () => clearInterval(intervalId);
   };
   //check state of total hope if 0 or expDate value does not exist, show new list icon and buttons
   useEffect(() => {
-    if (totalHope === 3 || expDate !== tomorrow) {
+    if (totalHope >= MAX_HOPE_ITEMS || expDate !== tomorrow) {
       // if (!expDate) {
       setShowListLinks(true);
     } else {
@@ -116,11 +117,11 @@ return () => clearInterval(intervalId);
   }
 
   function addItem() {
-    if (list.length === 3) {
+    if (list.length >= MAX_HOPE_ITEMS) {
       setShowAddField(false);
 
       return;
-    } else if (list.length <= 3) {
+    } else if (list.length < MAX_HOPE_ITEMS) {
       if (input !== "") {
         input = {
           id: Math.random(),
@@ -156,7 +157,7 @@ return () => clearInterval(intervalId);
   const handleClose = () => setShowAddField(false);
 
   const handleOpen = (e) => {
-    if (totalHope < 3) {
+    if (totalHope < MAX_HOPE_ITEMS) {
       setShowAddField(true);
     }
   };
@@ -203,7 +204,7 @@ return () => clearInterval(intervalId);
             {showNewList && (
               <>
          
-           {(totalHope >= 3) ? 
+           {(totalHope >= MAX_HOPE_ITEMS) ?
                   <button
                     type="button"
                     className="btn btn-primary viewListButton"
@@ -235,7 +236,7 @@ return () => clearInterval(intervalId);
                     onClick={handleOpen} onKeyDown={keyDownOpenForm}
                       type="button"
                       className="btn btn-primary addItemButton"
-                      disabled={totalHope >= 3}
+                      disabled={totalHope >= MAX_HOPE_ITEMS}
                     >
                       <i className="bi bi-plus-circle-fill"></i>Hope
                     </button>

@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useRef } from "react";
 import Lottie from "lottie-react";
 import confettiAnimation from "../images/confetti-lottie.json";
 import { ListContext } from "../contexts/ListContext";
+import { MAX_HOPE_ITEMS } from "../constants";
 
 const LottieControlConfetti = () => {
   const lottieRef = useRef();
@@ -13,7 +14,7 @@ const LottieControlConfetti = () => {
   useEffect(() => {
     if (!lottieRef.current) return;
     
-    if (totalHope === 3) {
+    if (totalHope === MAX_HOPE_ITEMS) {
       console.log("totalHope" + list);
       lottieRef.current.play();
     } else {

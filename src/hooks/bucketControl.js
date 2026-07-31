@@ -2,6 +2,7 @@ import React, { useEffect, useContext, useRef } from "react";
 import Lottie from "lottie-react";
 import bucketAnimation from "../images/bucket-lottie.json";
 import { ListContext } from "../contexts/ListContext";
+import { MAX_HOPE_ITEMS } from "../constants";
 
 const LottieControlBucket = () => {
   const lottieRef = useRef();
@@ -15,14 +16,11 @@ const LottieControlBucket = () => {
 
     if (totalHope === 0) {
       lottieRef.current.goToAndStop(0, true);
-    } else if (totalHope === 1) {
-      lottieRef.current.playSegments([0, 40], true);
-    } else if (totalHope === 2) {
-      lottieRef.current.playSegments([40, 70], true);
-    } else if (totalHope === 3) {
+    } else if (totalHope >= MAX_HOPE_ITEMS) {
       lottieRef.current.playSegments([70, 150], true);
     } else {
-      lottieRef.current.goToAndStop(150, true);
+      const frame = Math.round((totalHope / MAX_HOPE_ITEMS) * 150);
+      lottieRef.current.goToAndStop(frame, true);
     }
   }, [totalHope, list]);
 

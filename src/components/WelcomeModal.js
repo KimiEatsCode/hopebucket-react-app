@@ -6,7 +6,7 @@ const STEPS = [
     step: "STEP 1",
     title: "Add what gives you hope",
     description:
-      "Tap Hope in the bar below and write up to 3 things that give you hope today — big or small.",
+      "Tap Hope in the bar below and write up to 10 things that give you hope today — big or small.",
     iconLight: true,
   },
   {
