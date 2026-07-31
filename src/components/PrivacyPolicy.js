@@ -15,34 +15,36 @@ function PrivacyPolicy() {
   }, []);
 
   return (
-    <div className="privacy-policy">
-      <ReactMarkdown
-        components={{
-          a: ({ href, children }) => (
-            <a href={href} target="_blank" rel="noopener noreferrer">
-              {children}
-            </a>
-          ),
-        }}
-      >
-        {content}
-      </ReactMarkdown>
+    <>
+      <div className="privacy-policy">
+        <ReactMarkdown
+          components={{
+            a: ({ href, children }) => (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {children}
+              </a>
+            ),
+          }}
+        >
+          {content}
+        </ReactMarkdown>
+      </div>
 
-      <div className="text-center mt-4 mb-4 privacy-policy-actions">
+      <nav>
         {needsAck && (
           <button
             type="button"
-            className="btn btn-primary quote-add-btn me-2 mb-2"
+            className="btn btn-primary viewListButton"
             onClick={acknowledge}
           >
             I acknowledge
           </button>
         )}
-        <Link to="/" className="btn btn-primary quote-add-btn">
+        <Link to="/" className="btn btn-primary viewListButton">
           Back to HopeBucket
         </Link>
-      </div>
-    </div>
+      </nav>
+    </>
   );
 }
 

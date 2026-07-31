@@ -35,7 +35,8 @@ function QuoteModal({ show, onHide }) {
     <Modal id="quotesModal" show={show} onHide={onHide} centered>
       <Modal.Header
         closeButton
-        style={{ backgroundColor: "#1650AC", color: "#fff" }}
+        style={{ backgroundColor: "#1650AC", color: "#fff"}}
+  
       >
         <Modal.Title style={{ width: "100%" }}>
           My Quotes ({quotes.length}/3)
