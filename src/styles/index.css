@@ -14,7 +14,7 @@ body {
 
 .logoName {
   font-family: "BagelFatOne-Regular",sans-serif;
-  font-size: 3em;
+  font-size: 4em;
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -105,7 +105,12 @@ nav button {
 }
 
 nav a {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto;
   background-color:#1650AC;
+  color: #fff !important;
+  text-decoration: none;
 }
 
 .viewListButton, .newListButton, .copyListButton {
@@ -268,6 +273,7 @@ textarea.form-control.form-control-lg {
   margin: 0 auto;
   /* Keep bucket visible above fixed bottom nav on mobile */
   height: min(52vh, 520px);
+  min-height: 240px;
   max-height: calc(100dvh - 320px);
 }
 
@@ -327,6 +333,43 @@ textarea.form-control.form-control-lg {
 #contentToCopy {
   max-width:400px;
   margin:0 auto;
+}
+
+.social-share-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(22, 80, 172, 0.15);
+}
+
+.social-share-links .social-share-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: #1650AC;
+  font-family: "Cabin", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.social-share-links .social-share-link:hover,
+.social-share-links .social-share-link:focus {
+  color: #0d3a7a;
+  text-decoration: underline;
+}
+
+.social-share-links .social-share-link-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
 }
 
 .hopeItem {
@@ -495,6 +538,10 @@ nav button.btn {
   box-sizing: border-box;
 }
 
+.modal-footer .bi::before, .modal-footer [class^="bi-"]::before, .modal-footer [class*=" bi-"]::before {
+  padding-right: 10px!important;
+}
+
 #listModal > .modal-content,
 #quotesModal > .modal-content {
   margin: 0 !important;
@@ -504,6 +551,24 @@ nav button.btn {
 #quotesModal .modal-body {
   padding: 1.5rem;
   padding-top: 2rem;
+}
+
+#quotesModal .modal-body {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden !important;
+}
+
+#quotesModal .quote-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  min-height: 0;
+  margin-bottom: 12px;
+}
+
+#quotesModal .quote-input-area {
+  flex-shrink: 0;
+  margin-top: auto;
 }
 
 #listModal .logoName {
@@ -533,8 +598,8 @@ nav button.btn {
 }
 
 .quote-add-btn.btn.btn-primary {
-  width: 97%;
-  margin-top: 20px;
+  width: 100%;
+  margin-top: 12px;
   color: #fff!important;
 }
 
@@ -546,20 +611,29 @@ nav button.btn {
 
 .quote-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
-  padding: 12px 14px;
-  margin-bottom: 10px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
   background-color: #e8f0fe;
   border-left: 4px solid #1650AC;
   border-radius: 8px;
 }
 
+#quotesModal .quote-item .closeX.btn {
+  padding: 0;
+  font-size: 1.25rem;
+  margin-right: 8px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 2px;
+}
+
 .quote-text {
   color: #1650AC;
   font-weight: 600;
-  font-size: 1.2em;
-  line-height: 1.4;
+  font-size: 1em;
+  line-height: 1.35;
   flex: 1;
   word-break: break-word;
 }
@@ -582,8 +656,10 @@ nav button.btn {
 .quote-input-area textarea {
   border: 2px solid #1650AC !important;
   border-radius: 8px;
-  font-size: 1.2em;
-  min-height: 400px !important;
+  font-size: 1em;
+  min-height: 72px !important;
+  max-height: 120px;
+  resize: vertical;
 }
 
 .quote-input-footer {
@@ -674,6 +750,26 @@ nav button.btn {
   font-size: 0.85em;
   margin-bottom: 0;
 }
+
+.quote-view-backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.quote-view-dialog {
+  padding: 1.5rem;
+  box-sizing: border-box;
+  width: auto !important;
+  max-width: 500px !important;
+  height: auto !important;
+  max-height: none !important;
+  margin: auto !important;
+}
+
+.quote-view-dialog > .modal-content {
+  border-radius: 15px !important;
+  height: auto !important;
+}
+
 /************************Mobile Styles****************/
 
 @media screen and (min-width: 992px) {
@@ -684,6 +780,10 @@ nav button.btn {
 }
 
 @media screen and (max-width:768px) {
+  .topNav {
+    display: none;
+  }
+
   .closeX.btn:hover {
     color:#333;
     font-weight:bold;
@@ -760,6 +860,7 @@ nav button.btn {
 @media screen and (max-width: 575px) {
   .bucketIcon {
     height: min(46vh, 420px);
+    min-height: 200px;
     max-height: calc(100dvh - 320px);
   }
   
@@ -1042,11 +1143,4 @@ nav button.btn {
 
 .privacy-ack-policy-link:hover {
   color: #4F8AE8;
-}
-
-.privacy-policy-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 8px;
 }
