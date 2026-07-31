@@ -70,7 +70,7 @@ function QuoteModal({ show, onHide }) {
           <div className="quote-input-area">
             <Form.Control
               as="textarea"
-              rows={12}
+              rows={3}
               ref={inputRef}
               value={input}
               maxLength={charLimit}
