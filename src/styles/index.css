@@ -14,7 +14,7 @@ body {
 
 .logoName {
   font-family: "BagelFatOne-Regular",sans-serif;
-  font-size: clamp(1.75rem, 13vw, 4em);
+  font-size: clamp(1.75rem, 12vw, 4em);
   font-weight: bold;
   font-style: normal;
   text-align: center;
@@ -785,6 +785,8 @@ nav button.btn {
     flex-direction: row;
     flex-wrap: nowrap;
     gap: 8px;
+    bottom: 0;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
   }
 
   nav button.btn {
