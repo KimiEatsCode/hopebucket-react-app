@@ -7,6 +7,7 @@ import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import LottieControlConfetti from "../hooks/confettiControl";
 import LottieControlBucket from "../hooks/bucketControl";
+import { MAX_HOPE_ITEMS } from "../constants";
 
 const BUBBLE_POSITIONS = [
   { top: "10%", left: "8%" },
@@ -40,10 +41,10 @@ function Bucket() {
       <Row className="mx-auto text-center">
         <Col>
           <h4 className="topCopyBucket" id="copyMsg">
-            {totalHope === 3 ? "Congrats! You filled your hope bucket!" : "Add hope to fill up your HopeBucket!"}
+            {totalHope >= MAX_HOPE_ITEMS ? "Congrats! You filled your hope bucket!" : "Add hope to fill up your HopeBucket!"}
           </h4>
           <div className="bucketIcon" onClick={toggleListModal} style={{ cursor: "pointer" }}>
-            <h1 className="hopeCount">{totalHope} of 3</h1>
+            <h1 className="hopeCount">{totalHope} of {MAX_HOPE_ITEMS}</h1>
             <LottieControlBucket></LottieControlBucket>
             {quotes.slice(0, 3).map((quote, index) => (
               <button
@@ -60,10 +61,17 @@ function Bucket() {
         </Col>
       </Row>
 
-      <Modal show={Boolean(selectedQuote)} onHide={handleCloseQuote} centered>
+      <Modal
+        show={Boolean(selectedQuote)}
+        onHide={handleCloseQuote}
+        centered
+        backdropClassName="quote-view-backdrop"
+        dialogClassName="quote-view-dialog"
+      >
+        <Modal.Header closeButton />
         <Modal.Body className="quote-card-body">
           <p className="quote-card-text">"{selectedQuote}"</p>
-          <p className="quote-tap-hint">Click anywhere outside to close</p>
+      
         </Modal.Body>
       </Modal>
     </>

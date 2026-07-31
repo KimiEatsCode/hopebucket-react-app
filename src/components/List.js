@@ -10,6 +10,11 @@ import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 //html-to-image
 import { toJpeg } from 'html-to-image';
+import { FacebookShareButton, BlueskyShareButton } from 'react-share';
+import { MAX_HOPE_ITEMS } from "../constants";
+
+const SHARE_URL = 'https://hopebucket.com';
+const SHARE_TITLE = 'My HopeBucket list — 10 things that gave me hope today!';
 
 async function presentScreenshot(dataUrl, filename) {
   try {
@@ -118,31 +123,32 @@ function List() {
       <Modal id="listModal" show={showListModal} onHide={handleClose} centered size="lg">
         <Modal.Header closeButton>
           <Modal.Title>
-            {totalHope >= 3
-              ? `Congrats! ${totalHope} of 3 Completed.`
-              : `Today ${weekday}, ${today} - ${totalHope} of 3 Completed`}
+            {totalHope >= MAX_HOPE_ITEMS
+              ? `Congrats! ${totalHope} of ${MAX_HOPE_ITEMS} Completed.`
+              : `Today ${weekday}, ${today} - ${totalHope} of ${MAX_HOPE_ITEMS} Completed`}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <div ref={listContentRef}>
-            {totalHope === 0 && (
-              <Row className="text-center pt-2">
-                <Col className="col-md-8 mx-auto">
-                  <h4>Add 3 items of hope to be able to share. Your bucket resets each day at midnight. Each day is a new beginning!</h4>
-                </Col>
-              </Row>
-            )}
-            <Row className="pb-5">
-            {isCapturing ? (
+          {isCapturing ? (
               <div className="screenshot-brand text-center">
                 <h1 className="logoName mb-2">HopeBucket</h1>
-                <p className="screenshot-url mb-4">https://hopebucket.com</p>
+                <p className="screenshot-url mb-2">https://hopebucket.com</p>
               </div>
             ) : (
               <Link to="/" style={{ textDecoration: "none"}}>
                 <h1 className="logoName mb-4">HopeBucket</h1>
               </Link>
             )}
+            {totalHope === 0 && (
+              <Row className="text-center pt-2">
+                <Col className="col-md-8 mx-auto">
+                  <h4>Add {MAX_HOPE_ITEMS} items of hope to be able to share. Your bucket resets each day at midnight. Each day is a new beginning!</h4>
+                </Col>
+              </Row>
+            )}
+            <Row className="pb-2">
+       
               <Col className="pb-5">
                 <ListGroup id="contentToCopy" className={isCapturing ? 'mx-auto' : ''}>
                   {list.map((item) => {
@@ -168,12 +174,46 @@ function List() {
               </Col>
             </Row>
           </div>
+          {totalHope >= MAX_HOPE_ITEMS && !isCapturing && (
+            <div className="social-share-links text-center">
+              <a
+                href="https://www.instagram.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-share-link"
+                aria-label="Share on Instagram"
+              >
+                <i className="bi bi-instagram" aria-hidden="true"></i>
+                Instagram
+              </a>
+              <FacebookShareButton
+                url={SHARE_URL}
+                hashtag="#HopeBucket"
+                className="social-share-link"
+              >
+                <span className="social-share-link-inner">
+                  <i className="bi bi-facebook" aria-hidden="true"></i>
+                  Facebook
+                </span>
+              </FacebookShareButton>
+              <BlueskyShareButton
+                url={SHARE_URL}
+                title={SHARE_TITLE}
+                className="social-share-link"
+              >
+                <span className="social-share-link-inner">
+                  <i className="bi bi-bluesky" aria-hidden="true"></i>
+                  BlueSky
+                </span>
+              </BlueskyShareButton>
+            </div>
+          )}
         </Modal.Body>
         <Modal.Footer>
           {screenshotError && (
             <p className="text-danger small mb-0 me-auto">{screenshotError}</p>
           )}
-          {totalHope < 3 && (
+          {totalHope < MAX_HOPE_ITEMS && (
             <button
               type="button"
               className="btn btn-primary addItemButton"
@@ -182,7 +222,7 @@ function List() {
               <i className="bi bi-plus-circle-fill"></i>Hope
             </button>
           )}
-          {totalHope >= 3 && (
+          {totalHope >= MAX_HOPE_ITEMS && (
             <button
               type="button"
               className="btn btn-primary addItemButton"
@@ -190,7 +230,7 @@ function List() {
               disabled={isCapturing}
               aria-label="Share list"
             >
-              <i className="bi bi-camera"></i>
+              <i className="bi bi-camera-fill"></i>
               {isCapturing ? 'Sharing…' : 'Share'}
             </button>
           )}
