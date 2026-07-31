@@ -14,7 +14,7 @@ body {
 
 .logoName {
   font-family: "BagelFatOne-Regular",sans-serif;
-  font-size: clamp(1.75rem, 12vw, 4em);
+  font-size: clamp(1.75rem, 13vw, 4em);
   font-weight: bold;
   font-style: normal;
   text-align: center;
