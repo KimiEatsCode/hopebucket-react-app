@@ -507,7 +507,8 @@ nav button.btn {
 
 /* id is on .modal-dialog in react-bootstrap, not the outer .modal */
 #listModal.modal-dialog,
-#quotesModal.modal-dialog {
+#quotesModal.modal-dialog,
+#valuesModal.modal-dialog {
   padding: 1.5rem;
   box-sizing: border-box;
 }
@@ -517,12 +518,14 @@ nav button.btn {
 }
 
 #listModal > .modal-content,
-#quotesModal > .modal-content {
+#quotesModal > .modal-content,
+#valuesModal > .modal-content {
   margin: 0 !important;
 }
 
 #listModal .modal-body,
-#quotesModal .modal-body {
+#quotesModal .modal-body,
+#valuesModal .modal-body {
   padding: 1.5rem;
   padding-top: 2rem;
 }
