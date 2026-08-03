@@ -16,6 +16,7 @@ import { usePrivacyPolicyAck } from "./hooks/usePrivacyPolicyAck";
 import { ExpContextProvider } from "./contexts/ExpContext";
 import { ModalContextProvider } from "./contexts/ModalContext";
 import { QuoteContextProvider } from "./contexts/QuoteContext";
+import { ValuesContextProvider } from "./contexts/ValuesContext";
 import { useLocalStorage } from "./hooks/useLocalStorageReceipe";
 
 const MAIN_ROUTES = new Set(["/", "/bucket"]);
@@ -69,10 +70,12 @@ function App() {
       <ListContextProvider>
         <ModalContextProvider>
           <QuoteContextProvider>
+          <ValuesContextProvider>
           <BrowserRouter>
             <AppRoutes />
           </BrowserRouter>
           <Outlet />
+          </ValuesContextProvider>
           </QuoteContextProvider>
         </ModalContextProvider>
       </ListContextProvider>

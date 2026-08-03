@@ -11,12 +11,16 @@ import { ListContext } from "../contexts/ListContext";
 import { ExpContext } from "../contexts/ExpContext";
 import { ModalContext } from "../contexts/ModalContext";
 import QuoteModal from "./QuoteModal";
+import ValuesModal from "./ValuesModal";
 import { MAX_HOPE_ITEMS } from "../constants";
+import { ValuesContext } from "../contexts/ValuesContext";
 
 function OffCanvasExample({ name, ...props }) {
 
   const [showNewList, setShowListLinks] = useState(false);
   const [showQuoteModal, setShowQuoteModal] = useState(false);
+  const [showValuesModal, setShowValuesModal] = useState(false);
+  const [selectedValueId, setSelectedValueId] = useState("");
   
   let [input, setInput] = useState("");
   let [currDate] = useState(new Date());
@@ -35,6 +39,8 @@ function OffCanvasExample({ name, ...props }) {
   const showAddField = modalContext.showAddField;
   const setShowAddField = modalContext.setShowAddField;
   const toggleListModal = () => setShowListModal(!showListModal);
+
+  const { values = [] } = useContext(ValuesContext);
 
   const fieldFocus = useRef();
 
@@ -123,15 +129,19 @@ return () => clearInterval(intervalId);
       return;
     } else if (list.length < MAX_HOPE_ITEMS) {
       if (input !== "") {
-        input = {
+        const newItem = {
           id: Math.random(),
           value: input,
         };
+        if (selectedValueId) {
+          newItem.valueId = selectedValueId;
+        }
 
-        listContext.setList((list) => [...list, input]);
+        listContext.setList((list) => [...list, newItem]);
         totalHope = list.length;
         console.log("add item equals totalhope as " + totalHope);
         setInput((input) => (input = ""));
+        setSelectedValueId("");
         setShowAddField(false);
 
       }
@@ -154,7 +164,10 @@ return () => clearInterval(intervalId);
     }
   }, [showAddField]);
 
-  const handleClose = () => setShowAddField(false);
+  const handleClose = () => {
+    setSelectedValueId("");
+    setShowAddField(false);
+  };
 
   const handleOpen = (e) => {
     if (totalHope < MAX_HOPE_ITEMS) {
@@ -188,6 +201,19 @@ return () => clearInterval(intervalId);
                 onChange={(item) => updateInput(item.target.value)}
                 aria-label="form field to type text"      
               />
+              <Form.Select
+                className="value-picker mt-2"
+                aria-label="Link to a value (optional)"
+                value={selectedValueId}
+                onChange={(e) => setSelectedValueId(e.target.value)}
+              >
+                <option value="">Link to a value (optional)</option>
+                {values.map((v) => (
+                  <option key={v.id} value={v.id}>
+                    {v.text}
+                  </option>
+                ))}
+              </Form.Select>
             </Col>
             <p></p>
             <Button className="addHopeConfirm" onClick={addItem} onKeyDown={keyDownOpenForm} type="button">
@@ -197,57 +223,50 @@ return () => clearInterval(intervalId);
         </Offcanvas.Body>
       </Offcanvas>
       <QuoteModal show={showQuoteModal} onHide={() => setShowQuoteModal(false)} />
+      <ValuesModal show={showValuesModal} onHide={() => setShowValuesModal(false)} />
       <Row>
         <div>
-         
-          <nav>
-            {showNewList && (
-              <>
-         
-           {(totalHope >= MAX_HOPE_ITEMS) ?
-                  <button
-                    type="button"
-                    className="btn btn-primary viewListButton"
-                    // onClick={toggleListModal}
-                  >
-                    <i className="bi bi-file-earmark"></i>New List
-                  </button>
-                 :   <button type="button" className="btn btn-primary newListButton" onClick={handleNewList}>
-             <i  className="bi bi-file-earmark-plus"></i>List
-            </button>}
+          <nav className="nav-grid">
+            <button
+              type="button"
+              className="btn btn-primary viewListButton"
+              onClick={() => {
+                if (showNewList && totalHope < MAX_HOPE_ITEMS) {
+                  handleNewList();
+                } else {
+                  toggleListModal();
+                }
+              }}
+            >
+              <i className={`bi ${showNewList && totalHope < MAX_HOPE_ITEMS ? "bi-file-earmark-plus" : "bi-file-earmark"}`}></i>
+              List
+            </button>
 
-              <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
-                <i className="bi bi-chat-heart"></i>Quotes
-              </button>
-             
-              </>
-            )}
-       
+            <button
+              onClick={handleOpen}
+              onKeyDown={keyDownOpenForm}
+              type="button"
+              className="btn btn-primary addItemButton"
+              disabled={showNewList || totalHope >= MAX_HOPE_ITEMS}
+            >
+              <i className="bi bi-plus-circle-fill"></i>Hope
+            </button>
 
-            {!showNewList && (
-              <>
+            <button
+              type="button"
+              className="btn btn-primary quotesButton"
+              onClick={() => setShowQuoteModal(true)}
+            >
+              <i className="bi bi-chat-heart"></i>Quotes
+            </button>
 
-            <button type="button" className="btn btn-primary viewListButton" onClick={toggleListModal}>
-                  <i className="bi bi-file-earmark"></i>List
-                </button>
-
-                {!showNewList && (
-                    <button
-                    onClick={handleOpen} onKeyDown={keyDownOpenForm}
-                      type="button"
-                      className="btn btn-primary addItemButton"
-                      disabled={totalHope >= MAX_HOPE_ITEMS}
-                    >
-                      <i className="bi bi-plus-circle-fill"></i>Hope
-                    </button>
-                )}
-
-                <button type="button" className="btn btn-primary quotesButton" onClick={() => setShowQuoteModal(true)}>
-                  <i className="bi bi-chat-heart"></i>Quotes
-                </button>
-                   
-              </>
-            )}
+            <button
+              type="button"
+              className="btn btn-primary valuesButton"
+              onClick={() => setShowValuesModal(true)}
+            >
+              <i className="bi bi-star-fill"></i>Values
+            </button>
           </nav>
         </div>
       </Row>

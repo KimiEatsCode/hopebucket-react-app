@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 //context
 import { ListContext } from "../contexts/ListContext";
 import { ModalContext } from "../contexts/ModalContext";
+import { ValuesContext } from "../contexts/ValuesContext";
 //bootstrap
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
+import Form from "react-bootstrap/Form";
 //html-to-image
 import { toJpeg } from 'html-to-image';
 import { MAX_HOPE_ITEMS } from "../constants";
@@ -45,7 +47,8 @@ function List() {
   const modalContext = useContext(ModalContext);
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
-  // const setShowAddField = modalContext.setShowAddField;
+
+  const { values = [], getValueById } = useContext(ValuesContext);
 
   const handleClose = () => setShowListModal(false);
 
@@ -114,6 +117,19 @@ function List() {
     return listContext.setList(updateList);
   }
 
+  function updateItemValue(itemId, valueId) {
+    listContext.setList((prevList) =>
+      prevList.map((item) => {
+        if (item.id !== itemId) return item;
+        if (!valueId) {
+          const { valueId: _removed, ...rest } = item;
+          return rest;
+        }
+        return { ...item, valueId };
+      })
+    );
+  }
+
   return (
     <>
       <Modal id="listModal" show={showListModal} onHide={handleClose} centered size="lg">
@@ -148,6 +164,7 @@ function List() {
               <Col className="pb-5">
                 <ListGroup id="contentToCopy" className={isCapturing ? 'mx-auto' : ''}>
                   {list.map((item) => {
+                    const linkedValue = getValueById(item.valueId);
                     return (
                       <ListGroup.Item
                         className="d-flex flex-nowrap"
@@ -162,7 +179,29 @@ function List() {
                             ✕
                           </button>
                         )}
-                        <div className="hopeItem">{item.value}</div>
+                        <div className="hopeItemContent">
+                          <div className="hopeItem">{item.value}</div>
+                          {isCapturing && linkedValue && (
+                            <span className="value-badge">{linkedValue.text}</span>
+                          )}
+                          {!isCapturing && (
+                            <Form.Select
+                              className="value-picker value-picker-inline"
+                              aria-label="Change linked value"
+                              value={item.valueId ?? ""}
+                              onChange={(e) =>
+                                updateItemValue(item.id, e.target.value || null)
+                              }
+                            >
+                              <option value="">No linked value</option>
+                              {values.map((v) => (
+                                <option key={v.id} value={v.id}>
+                                  {v.text}
+                                </option>
+                              ))}
+                            </Form.Select>
+                          )}
+                        </div>
                       </ListGroup.Item>
                     );
                   })}

@@ -19,7 +19,6 @@ body {
   font-style: normal;
   text-align: center;
   color: #1650AC;
-  margin-top: 30px;
   max-width: 100%;
   line-height: 1.1;
   padding: 0 12px;
@@ -89,29 +88,30 @@ a {
 }
 
 nav {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
   position: fixed;
   box-sizing: border-box;
-  justify-content: center;
-  align-items: stretch;
   bottom: 15px;
   left: 0;
   right: 0;
-  flex-direction: row;
-  flex-wrap: nowrap;
   width: 100%;
   gap: 10px;
   padding-left: 2%;
   padding-right: 2%;
   padding-top: 15px;
-  margin-bottom:20px;
+  margin-bottom: 20px;
+}
+
+nav.nav-grid {
+  display: grid;
 }
 
 nav button {
-  flex: 1 1 0;
+  width: 100%;
   min-width: 0;
-  width: auto;
-  background-color:#1650AC!important;
+  background-color: #1650AC !important;
 }
 
 nav a {
@@ -123,12 +123,12 @@ nav a {
   text-decoration: none;
 }
 
-.viewListButton, .newListButton, .copyListButton {
-    flex-grow: 1!important;
-  }
+.viewListButton, .newListButton, .copyListButton, .valuesButton {
+  /* equal width in nav grid */
+}
 
 nav .addItemButton {
-  flex-grow: 3!important;
+  /* equal width in nav grid */
 }
 
 nav i {
@@ -284,7 +284,7 @@ textarea.form-control.form-control-lg {
   /* Keep bucket visible above fixed bottom nav on mobile */
   height: min(52vh, 520px);
   min-height: 240px;
-  max-height: calc(100dvh - 320px);
+  max-height: calc(100dvh - 380px);
 }
 
 .bucketIcon > div {
@@ -588,8 +588,8 @@ nav button.btn {
 }
 
 /* Quotes */
-.quotesButton {
-  flex-grow: 1!important;
+.quotesButton, .valuesButton {
+  /* equal width in nav grid */
 }
 
 .quote-add-btn.btn.btn-primary {
@@ -666,6 +666,90 @@ nav button.btn {
 
 .quote-add-btn:disabled {
   opacity: 0.5;
+}
+
+/* Values */
+.values-section-title {
+  color: #1650AC;
+  font-weight: 700;
+  margin-top: 12px;
+  margin-bottom: 8px;
+}
+
+.values-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px 0;
+}
+
+.values-item {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background-color: #e8f0fe;
+  border-left: 4px solid #1650AC;
+  border-radius: 8px;
+}
+
+.values-item-default {
+  background-color: #f3f6fc;
+}
+
+.values-text {
+  color: #1650AC;
+  font-weight: 600;
+  font-size: 1em;
+}
+
+.values-input-area {
+  margin-top: 12px;
+}
+
+.values-input-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.values-add-btn.btn.btn-primary {
+  width: 100%;
+  margin-top: 8px;
+  color: #fff !important;
+}
+
+.value-badge {
+  display: inline-block;
+  background-color: #e8eef8;
+  color: #1650AC;
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  margin-top: 6px;
+}
+
+.hopeItemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.value-picker {
+  margin-top: 8px;
+  font-size: 0.95em;
+}
+
+.value-picker-inline {
+  max-width: 220px;
+}
+
+#valuesModal .values-item .closeX.btn {
+  padding: 0;
+  font-size: 1.1rem;
+  margin-right: 8px;
+  flex-shrink: 0;
 }
 
 /* Quote Bubbles (around bucket) */
@@ -778,13 +862,14 @@ nav button.btn {
   .modal-content {
     margin: 10px;
   }
-  .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, a{
-    flex-grow: 2!important;
+  .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, .valuesButton, a {
+    /* equal width in nav grid */
   }
 
   nav {
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
     gap: 8px;
     bottom: 0;
     padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
