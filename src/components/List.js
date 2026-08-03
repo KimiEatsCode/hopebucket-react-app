@@ -45,8 +45,7 @@ function List() {
   const modalContext = useContext(ModalContext);
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
-  const setShowAddField = modalContext.setShowAddField;
-  const [showNewList, setShowListLinks] = useState(false);
+  // const setShowAddField = modalContext.setShowAddField;
 
   const handleClose = () => setShowListModal(false);
 
