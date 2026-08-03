@@ -7,7 +7,6 @@ import List from "./components/List";
 import Nav from "./components/Nav";
 import Bucket from "./components/Bucket";
 import PrivacyPolicy from "./components/PrivacyPolicy";
-import InstallBanner from "./components/InstallBanner";
 import WelcomeModal from "./components/WelcomeModal";
 import PrivacyPolicyAckModal from "./components/PrivacyPolicyAckModal";
 //context
@@ -39,7 +38,6 @@ function AppRoutes() {
         <Link to="https://sarahkimirettig.com/contact" className="topNavLink">Contact</Link>
         <Link to="https://apps.apple.com/us/app/hopebucket/id6758913831" className="topNavLink">Iphone App</Link>
       </div>
-      <InstallBanner />
       <Link to="/" style={{ textDecoration: "none"}}>
         <h1 className="logoName mb-4">HopeBucket</h1>
       </Link>
