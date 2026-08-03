@@ -852,7 +852,15 @@ nav button.btn {
 
 @media screen and (max-width:768px) {
   .topNav {
-    display: none;
+    gap: 6px;
+    padding: 8px 2%;
+    margin-top: 10px;
+    font-size: 1em;
+  }
+
+  .topNavLink {
+    font-size: 0.75em;
+    padding: 5px 6px;
   }
 
   .closeX.btn:hover {
@@ -883,6 +891,17 @@ nav button.btn {
 }
 
 @media screen and (max-width: 380px) {
+  .topNav {
+    gap: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .topNavLink {
+    font-size: 0.7em;
+    padding: 4px 4px;
+  }
+
   nav {
     gap: 6px;
     padding-left: 8px;
