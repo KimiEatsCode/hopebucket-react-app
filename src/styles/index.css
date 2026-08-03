@@ -757,8 +757,6 @@ nav button.btn {
   font-size: 0.95em;
 }
 
-
-
 #listModal .hope-item-delete-btn {
   display: block;
   margin-top: 8px;
@@ -904,9 +902,7 @@ nav button.btn {
   .modal-content {
     margin: 10px;
   }
-  .viewListButton, .newListButton, .copyListButton, .addItemButton, .quotesButton, .valuesButton, a {
-    /* equal width in nav grid */
-  }
+
 
   nav {
     display: grid;
@@ -914,7 +910,7 @@ nav button.btn {
     grid-template-rows: auto auto;
     gap: 8px;
     bottom: 0;
-    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+   
   }
 
   nav button.btn {

@@ -159,7 +159,8 @@ function List() {
           <Modal.Title>
             {totalHope >= MAX_HOPE_ITEMS
               ? `Congrats! ${totalHope} of ${MAX_HOPE_ITEMS} Completed.`
-              : `Today ${weekday}, ${today} - ${totalHope} of ${MAX_HOPE_ITEMS} Completed`}
+              // : `Today ${weekday}, ${today} - ${totalHope} of ${MAX_HOPE_ITEMS} Completed`}
+              : `${totalHope} of ${MAX_HOPE_ITEMS}`}
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -177,7 +178,7 @@ function List() {
             {totalHope === 0 && (
               <Row className="text-center pt-2">
                 <Col className="col-md-8 mx-auto">
-                  <h4>Add {MAX_HOPE_ITEMS} items of hope to be able to share. Your bucket resets each day at midnight. Each day is a new beginning!</h4>
+                  <h4>Click on List in the Nav to get started. Add {MAX_HOPE_ITEMS} items of hope to be able to share. Each day your list resets. A new day. A new beginning.</h4>
                 </Col>
               </Row>
             )}

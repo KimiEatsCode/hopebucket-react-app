@@ -14,7 +14,7 @@ const STEPS = [
     step: "STEP 2",
     title: "Watch your bucket fill",
     description:
-      "Each item fills your HopeBucket. Come back tomorrow to start fresh with a new list.",
+      "Each item fills your HopeBucket. Come back tomorrow to start fresh with a new hopebucket list.",
     iconLight: false,
   },
   {
@@ -22,7 +22,7 @@ const STEPS = [
     step: "STEP 3",
     title: "Add inspiring quotes",
     description:
-      "Tap Quotes in the bar below to save up to 3 personal quotes that inspire you — they'll appear in your bucket.",
+      "Tap Quotes in the bar below to save up to 3 personal quotes that inspire you — they'll appear on the screen available for you when you need them.",
     iconLight: false,
   },
 ];
