@@ -1,5 +1,5 @@
 
-**Last updated: May 22, 2026**
+**Last updated: August 3, 2026**
 
 ### Introduction
 
@@ -39,14 +39,12 @@ The App does not link to external content sites for images or media. All hope li
 When you have added three hope items, the App lets you share your list as an image:
 
 - The App creates a **screenshot (JPEG)** of your list **entirely in your browser**. No image is uploaded to HopeBucket or any other server we operate.
-- On supported devices, the App may open your device’s **native share sheet** so you can send the image through apps you choose (for example, Messages or email). What you share and with whom is entirely up to you.
+- On supported devices, the App may open your device’s **native share sheet** so you can send the image through apps you choose (for example, Messages or email). 
 - If sharing is not available, the App **downloads the image to your device** instead.
-
-This feature runs only when you tap Share. HopeBucket does not access your contacts, social accounts, or other apps—you control where the image goes through your device’s sharing options.
 
 ### Progressive Web App (PWA)
 
-HopeBucket can be installed to your home screen as a progressive web app. A service worker may cache app files on your device so the App can load faster or work offline. That cached content is standard app assets, not your personal hope list data sent to us.
+HopeBucket can be installed to your home screen as a progressive web app. A service worker may cache app files on your device so the App can load faster or work offline.
 
 ### Data Security
 
@@ -61,12 +59,6 @@ Your hope list data is stored on your device until:
 - The daily reset clears your list at midnight each day (the previous day’s entries are replaced).
 
 Custom quotes and app preferences remain until you remove them in the App or clear stored data as described above.
-
-You have full control over your data at all times.
-
-### Children's Privacy
-
-The App does not knowingly collect any personal information from anyone, including children under the age of 13. Since no personal data is collected, the App is suitable for users of all ages.
 
 ## Changes to This Privacy Policy
 
@@ -84,6 +76,6 @@ If you have any questions or concerns about this Privacy Policy, please contact 
 - No accounts or sign-ups required
 - All data is stored locally in your browser
 - No analytics, ads, or tracking
-- No data is shared with third parties by HopeBucket
+- No data is shared with third parties
 - Optional share feature creates an image on your device; you choose where it goes
-- Clearing browser/site data or uninstalling removes stored data
+- Clearing browser/site data or uninstalling removes stored data from your device

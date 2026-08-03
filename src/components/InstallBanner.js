@@ -49,7 +49,7 @@ function InstallBanner() {
   if (!visible) return null;
 
   return (
-    <div className="install-banner">
+    <div className="install-banner mt-3">
       <span className="install-banner-text">
         {showIosHint ? (
           <>

@@ -32,7 +32,7 @@ function PrivacyPolicy() {
 
       <nav>
         {needsAck && (
-          <button
+          <button to="/" 
             type="button"
             className="btn btn-primary viewListButton"
             onClick={acknowledge}
@@ -40,9 +40,7 @@ function PrivacyPolicy() {
             I acknowledge
           </button>
         )}
-        <Link to="/" className="btn btn-primary viewListButton">
-          Back to HopeBucket
-        </Link>
+       
       </nav>
     </>
   );
