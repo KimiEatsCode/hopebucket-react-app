@@ -29,8 +29,8 @@ export function ValuesContextProvider({ children }) {
   };
 
   const getValueById = (id) => {
-    if (id == null) return null;
-    return values.find((v) => v.id === id) ?? null;
+    if (id == null || id === "") return null;
+    return values.find((v) => String(v.id) === String(id)) ?? null;
   };
 
   return (

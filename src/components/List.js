@@ -14,6 +14,20 @@ import Form from "react-bootstrap/Form";
 import { toJpeg } from 'html-to-image';
 import { MAX_HOPE_ITEMS } from "../constants";
 
+async function waitForScreenshotLayout(node, timeoutMs = 2000) {
+  const deadline = Date.now() + timeoutMs;
+  while (Date.now() < deadline) {
+    if (node.querySelector(".screenshot-brand")) {
+      await new Promise((resolve) =>
+        requestAnimationFrame(() => requestAnimationFrame(resolve))
+      );
+      return true;
+    }
+    await new Promise((resolve) => requestAnimationFrame(resolve));
+  }
+  return false;
+}
+
 async function presentScreenshot(dataUrl, filename) {
   try {
     const res = await fetch(dataUrl);
@@ -84,6 +98,14 @@ function List() {
         return;
       }
 
+      const layoutReady = await waitForScreenshotLayout(node);
+      if (cancelled) return;
+      if (!layoutReady) {
+        setIsCapturing(false);
+        setScreenshotError('Could not prepare screenshot. Please try again.');
+        return;
+      }
+
       try {
         const dataUrl = await toJpeg(node, {
           cacheBust: true,
@@ -141,7 +163,7 @@ function List() {
           </Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div ref={listContentRef}>
+          <div ref={listContentRef} className={isCapturing ? "screenshot-capture" : undefined}>
           {isCapturing ? (
               <div className="screenshot-brand text-center">
                 <h1 className="logoName mb-2">HopeBucket</h1>
@@ -167,39 +189,42 @@ function List() {
                     const linkedValue = getValueById(item.valueId);
                     return (
                       <ListGroup.Item
-                        className="d-flex flex-nowrap"
                         key={item.id}
                         variant="light"
                       >
-                        {!isCapturing && (
-                          <button
-                            className="closeX btn"
-                            onClick={() => deleteItem(item.id)}
-                          >
-                            ✕
-                          </button>
-                        )}
                         <div className="hopeItemContent">
                           <div className="hopeItem">{item.value}</div>
                           {isCapturing && linkedValue && (
-                            <span className="value-badge">{linkedValue.text}</span>
+                            <span className="value-badge screenshot-value-badge">
+                              {linkedValue.text}
+                            </span>
                           )}
                           {!isCapturing && (
-                            <Form.Select
-                              className="value-picker value-picker-inline"
-                              aria-label="Change linked value"
-                              value={item.valueId ?? ""}
-                              onChange={(e) =>
-                                updateItemValue(item.id, e.target.value || null)
-                              }
-                            >
-                              <option value="">No linked value</option>
-                              {values.map((v) => (
-                                <option key={v.id} value={v.id}>
-                                  {v.text}
-                                </option>
-                              ))}
-                            </Form.Select>
+                            <>
+                              <Form.Select
+                                className="value-picker value-picker-inline"
+                                aria-label="Change linked value"
+                                value={item.valueId ?? ""}
+                                onChange={(e) =>
+                                  updateItemValue(item.id, e.target.value || null)
+                                }
+                              >
+                                <option value="">No linked value</option>
+                                {values.map((v) => (
+                                  <option key={v.id} value={v.id}>
+                                    {v.text}
+                                  </option>
+                                ))}
+                              </Form.Select>
+                              <button
+                                type="button"
+                                className="btn hope-item-delete-btn"
+                                onClick={() => deleteItem(item.id)}
+                                aria-label="Delete hope item"
+                              >
+                                Delete
+                              </button>
+                            </>
                           )}
                         </div>
                       </ListGroup.Item>

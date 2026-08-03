@@ -4,9 +4,6 @@ export const DEFAULT_VALUES = [
   { id: "default-gratitude", text: "Gratitude", isDefault: true },
   { id: "default-connection", text: "Connection", isDefault: true },
   { id: "default-growth", text: "Growth", isDefault: true },
-  { id: "default-peace", text: "Peace", isDefault: true },
-  { id: "default-joy", text: "Joy", isDefault: true },
-  { id: "default-resilience", text: "Resilience", isDefault: true },
 ];
 
 export const MAX_CUSTOM_VALUES = 5;

@@ -80,6 +80,8 @@ function ValuesModal({ show, onHide }) {
         {canAdd && (
           <div className="values-input-area">
             <Form.Control
+              as="textarea"
+              rows={2}
               ref={inputRef}
               value={input}
               maxLength={VALUE_CHAR_LIMIT}
