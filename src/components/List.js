@@ -46,6 +46,7 @@ function List() {
   const showListModal = modalContext.showListModal;
   const setShowListModal = modalContext.setShowListModal;
   const setShowAddField = modalContext.setShowAddField;
+  const [showNewList, setShowListLinks] = useState(false);
 
   const handleClose = () => setShowListModal(false);
 
@@ -175,15 +176,7 @@ function List() {
           {screenshotError && (
             <p className="text-danger small mb-0 me-auto">{screenshotError}</p>
           )}
-          {totalHope < MAX_HOPE_ITEMS && (
-            <button
-              type="button"
-              className="btn btn-primary addItemButton"
-              onClick={() => { setShowListModal(false); setShowAddField(true); }}
-            >
-              <i className="bi bi-plus-circle-fill"></i>Hope
-            </button>
-          )}
+        
           {totalHope >= MAX_HOPE_ITEMS && (
             <button
               type="button"

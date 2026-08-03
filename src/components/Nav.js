@@ -208,9 +208,9 @@ return () => clearInterval(intervalId);
                   <button
                     type="button"
                     className="btn btn-primary viewListButton"
-                    onClick={toggleListModal}
+                    // onClick={toggleListModal}
                   >
-                    <i className="bi bi-file-earmark"></i>List
+                    <i className="bi bi-file-earmark"></i>New List
                   </button>
                  :   <button type="button" className="btn btn-primary newListButton" onClick={handleNewList}>
              <i  className="bi bi-file-earmark-plus"></i>List
