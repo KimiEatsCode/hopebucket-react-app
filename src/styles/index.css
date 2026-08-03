@@ -757,14 +757,11 @@ nav button.btn {
   font-size: 0.95em;
 }
 
-.value-picker-inline {
-  max-width: 220px;
-}
+
 
 #listModal .hope-item-delete-btn {
   display: block;
   margin-top: 8px;
-  max-width: 220px;
   width: 100%;
   padding: 6px 12px !important;
   font-size: 0.95em !important;
