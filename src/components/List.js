@@ -67,11 +67,11 @@ function List() {
   const handleClose = () => setShowListModal(false);
 
   const currentDate = new Date();
-  const weekday = currentDate.toLocaleDateString("en-US", { weekday: "long" });
+  // const weekday = currentDate.toLocaleDateString("en-US", { weekday: "long" });
   const dd1 = currentDate.getDate();
   const mm = currentDate.getMonth() + 1;
   const yyyy = currentDate.getFullYear();
-  const today = mm + "/" + dd1 + "/" + yyyy;
+  // const today = mm + "/" + dd1 + "/" + yyyy;
   const screenshotFilename = `hopebucket-${mm}-${dd1}-${yyyy}.jpg`;
 
   const [isCapturing, setIsCapturing] = useState(false);
